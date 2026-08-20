@@ -237,11 +237,27 @@ footer{text-align:center;color:var(--ink-3);font-size:13px;padding:40px 0 20px;b
 .installcard ol{margin:8px 0 0;padding-left:20px}
 .installcard li{margin:3px 0}
 </style>
+<style>
+/* ===== 판 표시 ===== */
+.verbadge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.03em;
+  color:#727892;background:rgba(127,132,155,.10);border:1px solid rgba(127,132,155,.28);
+  border-radius:20px;padding:2px 9px;white-space:nowrap;vertical-align:middle}
+#vertoast{position:fixed;left:50%;transform:translateX(-50%) translateY(-14px);top:14px;z-index:9999;
+  max-width:min(92vw,460px);padding:11px 17px;border-radius:12px;font-size:14px;line-height:1.5;
+  background:#191C28;color:#E9EBF3;box-shadow:0 6px 30px rgba(0,0,0,.28);
+  opacity:0;transition:opacity .28s ease,transform .28s ease;pointer-events:none}
+#vertoast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+#vertoast b{color:#8FD8B4}
+#vertoast .m{font-family:'JetBrains Mono',monospace;font-size:12.5px;opacity:.75;display:block;margin-top:2px}
+@media (prefers-reduced-motion:reduce){#vertoast{transition:none}}
+</style>
+
 
 <div class="bar">
   <div class="in">
     <div class="bt">정처기 실전 모의고사<small id="barsub">100문항 · 150분</small></div>
     <a class="btn navlink" href="textbook.html">📘 교재</a>
+    <span class="verbadge" data-version-slot></span>
     <button class="btn hide" id="btheme" type="button">◐</button>
     <div class="timer hide" id="timer">150:00</div>
     <button class="btn hide" id="btsubmit" type="button">답안 제출</button>
@@ -1546,6 +1562,56 @@ document.querySelectorAll('.filters .btn').forEach(function(b){
   for (var i = 0; i < links.length; i++) {
     var h = links[i].getAttribute('href').replace(/^\.\//, '');
     if (MAP[h]) { links[i].setAttribute('href', MAP[h]); links[i].setAttribute('target', '_blank'); }
+  }
+})();
+</script>
+
+<script>
+/* ===== 판(버전) 표시 =====
+   올린 내용이 실제로 반영됐는지 열자마자 알 수 있게 한다.
+   지난번에 본 판과 다르면 '갱신됨' 을 띄운다. */
+var APP_VERSION = 'v2';
+var APP_BUILT   = '2026-08-20';
+(function(){
+  // 화면 곳곳의 판 자리를 채운다
+  var slots = document.querySelectorAll('[data-version-slot]');
+  for (var i = 0; i < slots.length; i++) {
+    slots[i].textContent = APP_VERSION + ' · ' + APP_BUILT;
+  }
+  // 지난번에 본 판과 비교
+  var KEY = 'jcg_seen_version', prev = null;
+  try { prev = localStorage.getItem(KEY); localStorage.setItem(KEY, APP_VERSION); } catch (e) {}
+
+  var msg;
+  if (prev && prev !== APP_VERSION) {
+    msg = '<b>새 판으로 갱신됐습니다</b> &nbsp;' + prev + ' → ' + APP_VERSION +
+          '<span class="m">' + APP_BUILT + '</span>';
+  } else if (!prev) {
+    msg = '정처기 학습 앱 <b>' + APP_VERSION + '</b><span class="m">' + APP_BUILT + '</span>';
+  } else {
+    msg = '정처기 학습 앱 ' + APP_VERSION + '<span class="m">' + APP_BUILT + ' · 최신판입니다</span>';
+  }
+  var t = document.createElement('div');
+  t.id = 'vertoast'; t.innerHTML = msg;
+  document.body.appendChild(t);
+  setTimeout(function(){ t.classList.add('on'); }, 250);
+  setTimeout(function(){ t.classList.remove('on'); }, 3600);
+
+  /* 새 파일이 내려와 준비되면 알려 준다 (깃허브에 올린 직후) */
+  if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+    navigator.serviceWorker.ready.then(function(reg){
+      reg.addEventListener('updatefound', function(){
+        var nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener('statechange', function(){
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+            t.innerHTML = '<b>새 판이 준비됐습니다</b><span class="m">화면을 새로 고치면 적용됩니다</span>';
+            t.classList.add('on');
+            setTimeout(function(){ t.classList.remove('on'); }, 6000);
+          }
+        });
+      });
+    }).catch(function(){});
   }
 })();
 </script>

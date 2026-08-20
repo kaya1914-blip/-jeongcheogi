@@ -74,8 +74,18 @@ git add -A && git commit -m "내용 수정" && git push
  why:"정답 근거", trap:"함정", coach:"강사 한마디"}
 ```
 
-> ⚠️ **내용을 고쳐 올린 뒤에는** `sw.js` 의 `VERSION` 값을 올려 주세요(`jcg-v1` → `jcg-v2`).
-> 그래야 이미 설치한 기기가 새 파일을 받아옵니다.
+### 판(버전) 올리기 — 고쳤으면 꼭 하세요
+
+```bash
+python tools/set_version.py        # 판을 1 올린다 (v2 → v3)
+python tools/set_version.py --show # 지금 판 보기
+```
+
+모든 파일(`index.html` · `textbook.html` · `exam.html` · `sw.js`)의 판을 한 번에 맞춰 줍니다.
+
+**왜 필요한가** — 판을 올려야 ⑴ 이미 설치한 폰이 새 파일을 받아오고,
+⑵ 앱을 열었을 때 **「새 판으로 갱신됐습니다 v2 → v3」** 알림이 떠서 반영 여부를 바로 알 수 있습니다.
+화면 위쪽에는 항상 `v3 · 2026-08-20` 처럼 판과 날짜가 보입니다.
 
 ### 인쇄용 PDF 만들기
 

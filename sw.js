@@ -1,7 +1,7 @@
 /* 정처기 학습 앱 — 오프라인 지원 서비스 워커
    교재/모의고사를 캐시해 두어 지하철·비행기에서도 열립니다.
    내용을 고쳐 올리면 VERSION 을 올려 주세요(그래야 새 파일을 받아옵니다). */
-const VERSION = 'jcg-v1';
+const VERSION = 'jcg-v2';
 const ASSETS = [
   './',
   './index.html',

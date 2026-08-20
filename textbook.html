@@ -287,7 +287,7 @@ footer{border-top:2px solid var(--line); margin-top:60px; padding:34px 0 80px; c
         </div>
         <div class="grp">
           <div class="glabel">실전 문제은행</div>
-          <a class="top" href="https://claude.ai/code/artifact/2e0fa859-3865-4d4a-afd7-43f7453c37b3" target="_blank" rel="noopener">✎ 실전 모의고사 100문항</a>
+          <a class="top" href="exam.html">✎ 실전 모의고사 100문항</a>
           <a class="top" href="#bank">기출문제 은행</a>
           <a class="sub" href="#bank-1">1과목 문제 (22)</a>
           <a class="sub" href="#bank-2">2과목 문제 (22)</a>
@@ -439,7 +439,7 @@ footer{border-top:2px solid var(--line); margin-top:60px; padding:34px 0 80px; c
       <p class="dim">웹에서는 왼쪽 목차로 어디든 바로 이동하고, 오른쪽 위 <kbd>◐ 화면 모드</kbd>로 밝게/어둡게 바꿀 수 있습니다. 인쇄(PDF)하면 목차는 숨고 본문만 깔끔하게 나옵니다.</p>
       <div class="card exam">
         <div class="ct"><span class="ic">✎</span>함께 쓰는 실전 모의고사 (별도 페이지)</div>
-        <p style="margin:6px 0 0"><b><a href="https://claude.ai/code/artifact/2e0fa859-3865-4d4a-afd7-43f7453c37b3" target="_blank" rel="noopener">→ 정처기 실전 모의고사 100문항 열기</a></b><br>
+        <p style="margin:6px 0 0"><b><a href="exam.html">→ 정처기 실전 모의고사 100문항 열기</a></b><br>
         실제 시험처럼 <b>150분 타이머</b>로 풀고 <b>과목별 점수·과락·합격 여부</b>가 자동으로 나옵니다. 문항마다 <b>정답 근거 · 함정 · 강사 한마디</b> 3단 해설이 붙어 있고, 채점 후 <b>틀린 문제만</b> 골라 볼 수 있습니다. 급할 땐 <b>학습 모드</b>로 한 문제씩 답을 확인하며 풀어도 됩니다. <span class="dim">로드맵 11~12주차에 쓰세요.</span></p>
       </div>
       <div class="card tip">
@@ -2335,6 +2335,23 @@ print(s[::<span class="num">-1</span>])</code></pre>
 (function(){
   if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
     try{ navigator.serviceWorker.register('sw.js'); }catch(e){}
+  }
+})();
+</script>
+
+<script>
+/* claude.ai 아티팩트로 열렸을 때는 옆 파일(exam.html 등)을 찾을 수 없으므로
+   같은 내용이 올라가 있는 아티팩트 주소로 바꿔 준다. 깃허브 페이지에서는 그대로 둔다. */
+(function(){
+  if (location.hostname.indexOf('claude') < 0) return;
+  var MAP = {
+    'exam.html'     : 'https://claude.ai/code/artifact/2e0fa859-3865-4d4a-afd7-43f7453c37b3',
+    'textbook.html' : 'https://claude.ai/code/artifact/12095e63-c629-46ba-9daf-3c4b2055ac75'
+  };
+  var links = document.querySelectorAll('a[href]');
+  for (var i = 0; i < links.length; i++) {
+    var h = links[i].getAttribute('href').replace(/^\.\//, '');
+    if (MAP[h]) { links[i].setAttribute('href', MAP[h]); links[i].setAttribute('target', '_blank'); }
   }
 })();
 </script>

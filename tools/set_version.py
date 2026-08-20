@@ -10,7 +10,6 @@
     sw.js                                    캐시 판 (이걸 올려야 폰이 새 파일을 받는다)
 """
 import io, os, re, sys, datetime
-sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES = ["index.html", "textbook.html", "exam.html"]

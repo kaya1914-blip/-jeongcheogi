@@ -10,7 +10,6 @@ icons/ 폴더에 아래 파일을 만든다.
 """
 import os, sys, math
 from PIL import Image, ImageDraw
-sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "icons")

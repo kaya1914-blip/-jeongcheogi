@@ -7,7 +7,6 @@
 모의고사는 JS 문항 데이터를 정적 HTML(문제+정답+3단 해설)로 뽑아 변환한다.
 """
 import io, os, re, subprocess, sys, tempfile
-sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 QT, BS = '"', chr(92)

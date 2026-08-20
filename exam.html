@@ -238,6 +238,30 @@ footer{text-align:center;color:var(--ink-3);font-size:13px;padding:40px 0 20px;b
 .installcard li{margin:3px 0}
 </style>
 <style>
+/* ===== 폰에서 보기 (앱) ===== */
+@media (max-width:620px){
+  /* 위쪽 띠가 두 줄로 넘치지 않게 압축 */
+  .bar .in{padding:7px 12px;gap:7px}
+  .bar .bt{font-size:13px;line-height:1.25}
+  .bar .bt small{font-size:10px}
+  .btn{padding:6px 10px;font-size:12.5px}
+  .navlink{padding:6px 9px}
+  .verbadge{font-size:10px;padding:1px 7px}
+  .timer{font-size:16px;padding:2px 9px}
+
+  /* 문항 이동 : 손가락으로 누르기 좋게 */
+  .grid{grid-template-columns:repeat(8,1fr);gap:5px}
+  .gq{padding:7px 0;font-size:11.5px}
+
+  .qcard{padding:16px 15px;border-radius:14px}
+  .qtext{font-size:16.5px}
+  .opt{padding:14px 14px}
+  pre{font-size:12.6px}
+  .blk{font-size:14.2px}
+}
+</style>
+
+<style>
 /* ===== 판 표시 ===== */
 .verbadge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.03em;
   color:#727892;background:rgba(127,132,155,.10);border:1px solid rgba(127,132,155,.28);
@@ -1570,8 +1594,8 @@ document.querySelectorAll('.filters .btn').forEach(function(b){
 /* ===== 판(버전) 표시 =====
    올린 내용이 실제로 반영됐는지 열자마자 알 수 있게 한다.
    지난번에 본 판과 다르면 '갱신됨' 을 띄운다. */
-var APP_VERSION = 'v2';
-var APP_BUILT   = '2026-08-20';
+var APP_VERSION = 'v5';
+var APP_BUILT = '2026-08-20';
 (function(){
   // 화면 곳곳의 판 자리를 채운다
   var slots = document.querySelectorAll('[data-version-slot]');

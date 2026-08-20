@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>정처기 필기 합격 · 나만의 교재</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="비전공자를 위한 정보처리기사 필기 교재와 실전 모의고사">
+<meta name="theme-color" content="#33509C">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="정처기">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#FBFBFD; --surface:#FFFFFF; --surface-2:#F4F5F9;
+  --ink:#191C2A; --ink-2:#454A60; --ink-3:#727892;
+  --line:#E4E6F0; --line-2:#D2D6E4;
+  --accent:#33509C; --accent-deep:#22366A; --accent-soft:#EAEEF9; --accent-ink:#2B437F;
+  --exam:#0C7A66; --exam-soft:#E2F4EF; --exam-line:#B4E0D5; --exam-ink:#0A5F50;
+  --shadow:0 1px 2px rgba(20,24,45,.05),0 8px 30px rgba(20,24,45,.06);
+  --shadow-sm:0 1px 2px rgba(20,24,45,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12141E; --surface:#191C28; --surface-2:#1F2331;
+    --ink:#E9EBF3; --ink-2:#B7BCD0; --ink-3:#878DA6;
+    --line:#2C3145; --line-2:#3A4059;
+    --accent:#8AA1E8; --accent-deep:#AEBEF0; --accent-soft:#20273F; --accent-ink:#A9BAF0;
+    --exam:#4FCFB4; --exam-soft:#122A26; --exam-line:#234A43; --exam-ink:#6FDBC5;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12141E; --surface:#191C28; --surface-2:#1F2331;
+  --ink:#E9EBF3; --ink-2:#B7BCD0; --ink-3:#878DA6;
+  --line:#2C3145; --line-2:#3A4059;
+  --accent:#8AA1E8; --accent-deep:#AEBEF0; --accent-soft:#20273F; --accent-ink:#A9BAF0;
+  --exam:#4FCFB4; --exam-soft:#122A26; --exam-line:#234A43; --exam-ink:#6FDBC5;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+ font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:'Noto Serif KR',serif;line-height:1.3;margin:0;text-wrap:balance}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:760px;margin:0 auto;padding:0 clamp(18px,5vw,26px) 70px}
+header{padding:clamp(46px,10vw,78px) 0 26px}
+.mk{width:56px;height:56px;border-radius:15px;background:linear-gradient(150deg,var(--accent),var(--accent-deep));
+ display:grid;place-items:center;color:#fff;font-family:'Noto Serif KR',serif;font-weight:700;font-size:26px;
+ box-shadow:var(--shadow);margin-bottom:20px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+ color:var(--accent);font-weight:600}
+h1{font-size:clamp(29px,6vw,42px);margin:12px 0 0}
+.lede{font-size:17px;color:var(--ink-2);margin:16px 0 0;max-width:56ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:9px 14px;
+ box-shadow:var(--shadow-sm);font-size:13px;color:var(--ink-3)}
+.fact b{font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--accent-ink);margin-right:6px}
+.cards{display:grid;gap:14px;margin:34px 0 0}
+.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:17px;
+ padding:24px 26px;box-shadow:var(--shadow-sm);transition:.15s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow)}
+.card .tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;font-weight:600;
+ border-radius:20px;padding:2px 10px;background:var(--accent-soft);color:var(--accent-ink);border:1px solid var(--line-2)}
+.card.b .tag{background:var(--exam-soft);color:var(--exam-ink);border-color:var(--exam-line)}
+.card h2{font-size:22px;margin:11px 0 6px}
+.card p{margin:0;color:var(--ink-2);font-size:15px}
+.card ul{margin:12px 0 0;padding-left:19px;color:var(--ink-3);font-size:14px}
+.card li{margin:2px 0}
+.card .go{display:inline-block;margin-top:15px;font-weight:700;color:var(--accent-ink);font-size:15px}
+.card.b .go{color:var(--exam-ink)}
+.note{background:var(--surface-2);border:1px solid var(--line);border-radius:13px;padding:16px 19px;
+ margin:30px 0 0;font-size:14.5px;color:var(--ink-2)}
+.note b{color:var(--ink)}
+.note ol{margin:9px 0 0;padding-left:20px}
+.note li{margin:3px 0}
+.dl{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.dl a{border:1px solid var(--line-2);background:var(--surface);border-radius:9px;padding:8px 13px;
+ font-size:13.5px;color:var(--ink-2);transition:.12s}
+.dl a:hover{border-color:var(--accent);color:var(--accent-ink)}
+footer{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);color:var(--ink-3);font-size:13px}
+.themebtn{position:fixed;top:14px;right:14px;border:1px solid var(--line-2);background:var(--surface);
+ color:var(--ink-2);border-radius:9px;padding:7px 11px;font-size:13px;cursor:pointer;font-family:inherit;
+ box-shadow:var(--shadow-sm);z-index:5}
+</style>
+</head>
+<body>
+<button class="themebtn" id="t" type="button">◐</button>
+<div class="wrap">
+  <header>
+    <div class="mk">정</div>
+    <div class="eyebrow">정보처리기사 · 필기</div>
+    <h1>비전공자를 위한<br>정처기 필기 합격 교재</h1>
+    <p class="lede">퇴근하고 저녁 6시에 펴서 원리까지 정독하고, 아침 9시 출근길엔 요약카드만 훑어도 복습이 되도록 짠 나만의 교재입니다. 목표는 하나 — <b>평균 60점을 넘겨 합격</b>.</p>
+    <div class="facts">
+      <div class="fact"><b>5</b>과목 100문항</div>
+      <div class="fact"><b>150</b>분 CBT</div>
+      <div class="fact"><b>60</b>점 합격 · <b>40</b>점 과락</div>
+    </div>
+  </header>
+
+  <div class="cards">
+    <a class="card b" href="exam.html">
+      <span class="tag">문제 풀기</span>
+      <h2>실전 모의고사 &amp; 약점 드릴</h2>
+      <p>실제 시험처럼 150분 안에 풀고, 끝나면 과목별 점수·과락·합격 여부가 바로 나옵니다.</p>
+      <ul>
+        <li>모의고사 <b>100문항</b> · 약점 집중 드릴 <b>6세트</b></li>
+        <li>문항마다 <b>정답 근거 · 함정 · 강사 한마디</b> 3단 해설</li>
+        <li>푼 내용 <b>자동 저장</b> — 이어풀기, 지난 응시 기록</li>
+      </ul>
+      <span class="go">시작하기 →</span>
+    </a>
+
+    <a class="card" href="textbook.html">
+      <span class="tag">개념 읽기</span>
+      <h2>필기 교재 (5과목 전체)</h2>
+      <p>원리부터 설명하는 본문과, 아침에 5분이면 훑는 복습 카드로 이루어져 있습니다.</p>
+      <ul>
+        <li>5과목 본문 + <b>아침 5분 복습 카드</b> 30여 장</li>
+        <li>문제은행 <b>110문항</b> (3단 해설)</li>
+        <li>3개월 로드맵 · 합격 후기 · 무료 기출 사이트 모음</li>
+      </ul>
+      <span class="go">교재 열기 →</span>
+    </a>
+  </div>
+
+  <div class="note">
+    <b>📱 폰에 앱으로 설치하기</b>
+    <ol>
+      <li><b>아이폰</b> — 사파리에서 이 페이지를 열고 아래 <b>공유(⬆️) → 「홈 화면에 추가」</b></li>
+      <li><b>안드로이드</b> — 크롬 오른쪽 위 <b>⋮ → 「앱 설치」</b> 또는 「홈 화면에 추가」</li>
+    </ol>
+    <p style="margin:10px 0 0">설치하면 「정」 아이콘이 생기고 주소창 없이 전체 화면으로 열립니다. 한 번 열어두면 <b>인터넷이 없어도</b> 교재와 문제를 볼 수 있습니다.</p>
+  </div>
+
+  <div class="note">
+    <b>📄 인쇄용 PDF</b>
+    <p style="margin:6px 0 0">종이로 보거나 태블릿에 넣어둘 때 쓰세요. 정답과 해설이 펼쳐진 상태로 들어 있습니다.</p>
+    <div class="dl">
+      <a href="정처기_필기_교재.pdf">교재 PDF</a>
+      <a href="정처기_실전모의고사_해설본.pdf">모의고사 해설본 PDF</a>
+    </div>
+    <p style="margin:9px 0 0;font-size:13px;color:var(--ink-3)">※ 저장소에 PDF가 없다면 <code>python tools/build.py</code> 로 만들 수 있습니다.</p>
+  </div>
+
+  <footer>
+    <p>공개된 출제기준과 표준 전산 지식을 바탕으로 새로 집필한 개인 학습 자료입니다.<br>
+    문제는 실제 시험지 복사본이 아닙니다 — 필기는 2022년부터 CBT라 문제가 공개되지 않습니다.<br>
+    시험일정·응시자격은 <b>큐넷(q-net.or.kr)</b>에서 최종 확인하세요.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var r=document.documentElement, b=document.getElementById('t');
+  b.onclick=function(){
+    var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    r.setAttribute('data-theme',cur==='dark'?'light':'dark');
+  };
+  // 오프라인 지원 (깃허브 페이지 등 http(s) 에서만 동작)
+  if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
+    try{ navigator.serviceWorker.register('sw.js'); }catch(e){}
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1923 @@
+<title>네트워크관리사 2급 모의고사</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#33509C">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="네트워크관리사 모의고사">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+:root{
+  --bg:#FBFBFD; --surface:#FFFFFF; --surface-2:#F4F5F9; --surface-3:#EDEFF6;
+  --ink:#191C2A; --ink-2:#454A60; --ink-3:#727892; --ink-4:#9AA0B6;
+  --line:#E4E6F0; --line-2:#D2D6E4;
+  --accent:#33509C; --accent-deep:#22366A; --accent-soft:#EAEEF9; --accent-ink:#2B437F;
+  --ok:#0C7A66; --ok-ink:#0A5F50; --ok-soft:#E2F4EF; --ok-line:#B4E0D5;
+  --bad:#B0322E; --bad-soft:#FBE9E7; --bad-line:#EEC5C1;
+  --flag:#B3620A; --flag-ink:#8A4A05; --flag-soft:#FBF1E1; --flag-line:#EAD2A6;
+  --code-bg:#20243A; --code-ink:#E7E9F5; --code-cmt:#8B92B8; --code-key:#9FB4F2; --code-str:#8FD1B0; --code-num:#E0A96B;
+  --shadow:0 1px 2px rgba(20,24,45,.05),0 8px 30px rgba(20,24,45,.06);
+  --shadow-sm:0 1px 2px rgba(20,24,45,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12141E; --surface:#191C28; --surface-2:#1F2331; --surface-3:#262B3C;
+    --ink:#E9EBF3; --ink-2:#B7BCD0; --ink-3:#878DA6; --ink-4:#666C86;
+    --line:#2C3145; --line-2:#3A4059;
+    --accent:#8AA1E8; --accent-deep:#AEBEF0; --accent-soft:#20273F; --accent-ink:#A9BAF0;
+    --ok:#4FCFB4; --ok-ink:#6FDBC5; --ok-soft:#122A26; --ok-line:#234A43;
+    --bad:#F0918B; --bad-soft:#2C1817; --bad-line:#4A2724;
+    --flag:#E0A458; --flag-ink:#EAB877; --flag-soft:#2A2113; --flag-line:#4A3A1C;
+    --code-bg:#0E1017; --code-ink:#E4E7F2; --code-cmt:#7C84A6; --code-key:#A9BCF5; --code-str:#8FD8B4; --code-num:#E8B27C;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12141E; --surface:#191C28; --surface-2:#1F2331; --surface-3:#262B3C;
+  --ink:#E9EBF3; --ink-2:#B7BCD0; --ink-3:#878DA6; --ink-4:#666C86;
+  --line:#2C3145; --line-2:#3A4059;
+  --accent:#8AA1E8; --accent-deep:#AEBEF0; --accent-soft:#20273F; --accent-ink:#A9BAF0;
+  --ok:#4FCFB4; --ok-ink:#6FDBC5; --ok-soft:#122A26; --ok-line:#234A43;
+  --bad:#F0918B; --bad-soft:#2C1817; --bad-line:#4A2724;
+  --flag:#E0A458; --flag-ink:#EAB877; --flag-soft:#2A2113; --flag-line:#4A3A1C;
+  --code-bg:#0E1017; --code-ink:#E4E7F2; --code-cmt:#7C84A6; --code-key:#A9BCF5; --code-str:#8FD8B4; --code-num:#E8B27C;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:16px;line-height:1.75;letter-spacing:-.003em;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Noto Serif KR',serif;line-height:1.3;text-wrap:balance;margin:0}
+button{font-family:inherit;cursor:pointer}
+.mono{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+.hide{display:none !important}
+
+/* ===== 상단 바 ===== */
+.bar{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--line);
+  box-shadow:var(--shadow-sm)}
+.bar .in{max-width:1180px;margin:0 auto;padding:10px clamp(14px,3vw,26px);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.bar .bt{font-family:'Noto Serif KR',serif;font-weight:700;font-size:15px;letter-spacing:-.02em;white-space:nowrap}
+.bar .bt small{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-3);font-weight:400;letter-spacing:.02em}
+.timer{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:600;color:var(--accent-ink);
+  background:var(--accent-soft);border:1px solid var(--line-2);border-radius:9px;padding:3px 13px;font-variant-numeric:tabular-nums}
+.timer.warn{color:var(--bad);background:var(--bad-soft);border-color:var(--bad-line)}
+.btn{border:1px solid var(--line-2);background:var(--surface-2);color:var(--ink-2);border-radius:9px;
+  padding:7px 14px;font-size:13.5px;font-weight:600;transition:.12s}
+.btn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.pri:hover{background:var(--accent-deep);border-color:var(--accent-deep);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.navlink{text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap}
+.progbar{width:100%;height:3px;background:var(--surface-3)}
+.progbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px,3vw,26px) 60px}
+
+/* ===== 시작 화면 ===== */
+.intro{max-width:720px;margin:0 auto;padding:52px 0}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.intro h1{font-size:clamp(28px,5vw,42px);margin:14px 0 0}
+.intro .lede{font-size:17.5px;color:var(--ink-2);margin:16px 0 0}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:26px 0}
+.spec{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;box-shadow:var(--shadow-sm)}
+.spec b{display:block;font-family:'JetBrains Mono',monospace;font-size:20px;color:var(--accent-ink);font-weight:600}
+.spec span{font-size:12px;color:var(--ink-3)}
+.note{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;
+  padding:15px 18px;margin:18px 0;font-size:15px;color:var(--ink-2)}
+.note b{color:var(--ink)}
+.note.warn{border-left-color:var(--flag);background:var(--flag-soft);border-color:var(--flag-line)}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 0}
+@media(max-width:620px){.modes{grid-template-columns:1fr}}
+.mode{text-align:left;background:var(--surface);border:1px solid var(--line-2);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow-sm);transition:.14s}
+.mode:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.mode b{display:block;font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.mode span{font-size:13.5px;color:var(--ink-3);line-height:1.6;display:block}
+
+/* ===== 시험 레이아웃 ===== */
+.exam{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:26px;align-items:start;padding-top:24px}
+@media(max-width:940px){.exam{grid-template-columns:1fr}}
+
+.qhead{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.pill{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.06em;
+  border-radius:20px;padding:3px 11px;background:var(--accent-soft);color:var(--accent-ink);border:1px solid var(--line-2)}
+.pill.sub{background:var(--surface-2);color:var(--ink-3)}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow)}
+@media(max-width:620px){.qcard{padding:18px 16px}}
+.qno{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#fff;background:var(--accent);
+  border-radius:7px;padding:2px 9px;margin-right:9px}
+.qtext{font-size:17.5px;font-weight:600;line-height:1.65;margin:0 0 4px}
+pre{background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:15px 17px;overflow-x:auto;
+  font-size:13.4px;line-height:1.6;margin:14px 0}
+pre code{font-family:'JetBrains Mono',monospace;white-space:pre}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);background:var(--surface-2);
+  border-radius:11px;padding:11px 15px;font-size:15.5px;color:var(--ink-2);text-align:left;width:100%;transition:.12s;line-height:1.6}
+.opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.opt .num{flex:none;font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--ink-4)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--accent)}
+.opt.sel .num{color:var(--accent)}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft);color:var(--ok-ink);font-weight:600}
+.opt.correct .num{color:var(--ok)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad);font-weight:600}
+.opt.wrong .num{color:var(--bad)}
+.opt:disabled{cursor:default}
+.nav{display:flex;gap:9px;align-items:center;margin-top:18px;flex-wrap:wrap}
+.nav .sp{margin-left:auto}
+.btn.flag{border-color:var(--flag-line);color:var(--flag-ink);background:var(--flag-soft)}
+.btn.flag.on{background:var(--flag);border-color:var(--flag);color:#fff}
+
+/* ===== 사이드 : 문항 그리드 ===== */
+.side{position:sticky;top:66px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow-sm)}
+@media(max-width:940px){.side{position:static}}
+.side h3{font-size:14px;margin-bottom:4px}
+.legend{display:flex;gap:11px;flex-wrap:wrap;font-size:11px;color:var(--ink-3);margin:8px 0 12px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}
+@media(max-width:940px){.grid{grid-template-columns:repeat(20,1fr)}}
+@media(max-width:620px){.grid{grid-template-columns:repeat(10,1fr)}}
+.gq{font-family:'JetBrains Mono',monospace;font-size:10.5px;border:1px solid var(--line-2);background:var(--surface-2);
+  color:var(--ink-3);border-radius:5px;padding:4px 0;transition:.1s}
+.gq:hover{border-color:var(--accent)}
+.gq.done{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.gq.flagged{background:var(--flag);border-color:var(--flag);color:#fff}
+.gq.cur{outline:2px solid var(--ink);outline-offset:1px}
+.gq.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.gq.no{background:var(--bad);border-color:var(--bad);color:#fff}
+.sidefoot{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+
+/* ===== 해설 ===== */
+.sol{margin-top:18px;border-top:1px dashed var(--line-2);padding-top:16px}
+.verdict{display:inline-flex;gap:7px;align-items:center;font-weight:700;font-size:15px;border-radius:9px;padding:5px 13px;margin-bottom:12px}
+.verdict.ok{background:var(--ok-soft);color:var(--ok-ink);border:1px solid var(--ok-line)}
+.verdict.no{background:var(--bad-soft);color:var(--bad);border:1px solid var(--bad-line)}
+.blk{margin:11px 0;font-size:15px;line-height:1.75;color:var(--ink-2)}
+.blk .lb{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;border-radius:5px;padding:1px 7px;margin-right:8px;vertical-align:1.5px}
+.blk.why .lb{background:var(--ok-soft);color:var(--ok-ink);border:1px solid var(--ok-line)}
+.blk.trap .lb{background:var(--bad-soft);color:var(--bad);border:1px solid var(--bad-line)}
+.blk.coach{background:var(--accent-soft);border:1px solid var(--line-2);border-radius:11px;padding:13px 16px}
+.blk.coach .lb{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.blk b{color:var(--ink);font-weight:700}
+.blk code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+
+/* ===== 결과 ===== */
+.result{max-width:820px;margin:0 auto;padding:40px 0}
+.verd{text-align:center;border-radius:18px;padding:30px 24px;margin-bottom:26px;border:1px solid}
+.verd.pass{background:var(--ok-soft);border-color:var(--ok-line)}
+.verd.fail{background:var(--bad-soft);border-color:var(--bad-line)}
+.verd .big{font-family:'Noto Serif KR',serif;font-size:clamp(32px,7vw,50px);font-weight:700;line-height:1.1}
+.verd.pass .big{color:var(--ok-ink)} .verd.fail .big{color:var(--bad)}
+.verd .sc{font-family:'JetBrains Mono',monospace;font-size:17px;margin-top:8px;color:var(--ink-2)}
+.verd .msg{font-size:15px;color:var(--ink-2);margin-top:12px;max-width:46ch;margin-inline:auto}
+table{border-collapse:collapse;width:100%;background:var(--surface);font-size:14.5px}
+.tbl{border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);margin:18px 0}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+thead th{background:var(--surface-3);font-weight:700;font-size:13.5px}
+tbody tr:last-child td{border-bottom:none}
+td.c,th.c{text-align:center}
+.meter{height:7px;border-radius:4px;background:var(--surface-3);overflow:hidden;min-width:90px}
+.meter i{display:block;height:100%;background:var(--ok)}
+.meter i.low{background:var(--bad)}
+.badge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;border-radius:20px;padding:2px 9px}
+.badge.ok{background:var(--ok-soft);color:var(--ok-ink);border:1px solid var(--ok-line)}
+.badge.no{background:var(--bad-soft);color:var(--bad);border:1px solid var(--bad-line)}
+.rev{margin-top:30px}
+.revq{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow-sm)}
+.revq.miss{border-left:3px solid var(--bad)}
+.revq.hit{border-left:3px solid var(--ok)}
+.filters{display:flex;gap:8px;margin:14px 0 16px;flex-wrap:wrap}
+footer{text-align:center;color:var(--ink-3);font-size:13px;padding:40px 0 20px;border-top:1px solid var(--line);margin-top:40px}
+.cmt{color:var(--code-cmt)} .key{color:var(--code-key)} .str{color:var(--code-str)} .num{color:var(--code-num)}
+
+/* ===== 폰(앱) 최적화 ===== */
+@media (max-width:620px){
+  body{font-size:15.5px}
+  .bar .in{padding:8px 12px;gap:9px}
+  .bar .bt{font-size:13.5px}
+  .timer{font-size:17px;padding:2px 10px}
+  .btn{padding:7px 11px;font-size:13px}
+  .wrap{padding:0 12px 40px}
+  .intro{padding:30px 0}
+  .qtext{font-size:16.5px}
+  /* 보기를 손가락으로 누르기 좋게 */
+  .opt{padding:13px 14px;font-size:15.5px}
+  .nav{position:sticky;bottom:0;background:var(--surface);padding:10px 0 calc(10px + env(safe-area-inset-bottom));
+    margin:14px -16px -18px;border-top:1px solid var(--line);z-index:10;padding-left:16px;padding-right:16px}
+  .exam{padding-top:14px}
+  .side{margin-top:6px}
+  .blk{font-size:14.5px}
+  .verd{padding:24px 16px}
+}
+/* 홈화면에서 실행할 때 하단 여백 */
+@supports(padding:env(safe-area-inset-bottom)){
+  body{padding-bottom:env(safe-area-inset-bottom)}
+}
+/* ===== 약점 드릴 목록 ===== */
+.drills{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:620px){.drills{grid-template-columns:1fr}}
+.drillbtn{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:13px;
+  padding:14px 16px;box-shadow:var(--shadow-sm);transition:.14s;position:relative}
+.drillbtn:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.drillbtn b{display:block;font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:3px;padding-right:52px}
+.drillbtn span{display:block;font-size:13px;color:var(--ink-3);line-height:1.55}
+.drillbtn em{position:absolute;top:14px;right:14px;font-style:normal;font-size:11px;font-weight:600;
+  color:var(--accent-ink);background:var(--accent-soft);border:1px solid var(--line-2);border-radius:20px;padding:1px 8px}
+
+.installcard{background:var(--accent-soft);border:1px solid var(--line-2);border-radius:12px;padding:14px 17px;margin:20px 0;font-size:14.5px;color:var(--ink-2)}
+.installcard b{color:var(--ink)}
+.installcard ol{margin:8px 0 0;padding-left:20px}
+.installcard li{margin:3px 0}
+.roundpick{margin:22px 0 8px}
+.rp-label{display:block;font-size:14px;font-weight:700;color:var(--ink-2);margin-bottom:9px}
+.rounds{display:inline-flex;gap:6px;background:var(--surface-2);padding:5px;border-radius:13px;border:1px solid var(--line);vertical-align:middle}
+.round{font-family:inherit;font-size:14.5px;font-weight:600;color:var(--ink-3);background:transparent;border:0;border-radius:9px;padding:8px 20px;cursor:pointer;transition:.14s}
+.round:hover{color:var(--ink)}
+.round.on{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm)}
+.rp-hint{display:inline-block;margin-left:12px;font-size:12.5px;color:var(--ink-3)}
+@media(max-width:520px){.rp-hint{display:block;margin:8px 0 0}}
+</style>
+<style>
+/* ===== 폰에서 보기 (앱) ===== */
+@media (max-width:620px){
+  /* 위쪽 띠가 두 줄로 넘치지 않게 압축 */
+  .bar .in{padding:7px 12px;gap:7px}
+  .bar .bt{font-size:13px;line-height:1.25}
+  .bar .bt small{font-size:10px}
+  .btn{padding:6px 10px;font-size:12.5px}
+  .navlink{padding:6px 9px}
+  .verbadge{font-size:10px;padding:1px 7px}
+  .timer{font-size:16px;padding:2px 9px}
+
+  /* 문항 이동 : 손가락으로 누르기 좋게 */
+  .grid{grid-template-columns:repeat(8,1fr);gap:5px}
+  .gq{padding:7px 0;font-size:11.5px}
+
+  .qcard{padding:16px 15px;border-radius:14px}
+  .qtext{font-size:16.5px}
+  .opt{padding:14px 14px}
+  pre{font-size:12.6px}
+  .blk{font-size:14.2px}
+}
+</style>
+
+<style>
+/* ===== 판 표시 ===== */
+.verbadge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.03em;
+  color:#727892;background:rgba(127,132,155,.10);border:1px solid rgba(127,132,155,.28);
+  border-radius:20px;padding:2px 9px;white-space:nowrap;vertical-align:middle}
+#vertoast{position:fixed;left:50%;transform:translateX(-50%) translateY(-14px);top:14px;z-index:9999;
+  max-width:min(92vw,460px);padding:11px 17px;border-radius:12px;font-size:14px;line-height:1.5;
+  background:#191C28;color:#E9EBF3;box-shadow:0 6px 30px rgba(0,0,0,.28);
+  opacity:0;transition:opacity .28s ease,transform .28s ease;pointer-events:none}
+#vertoast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+#vertoast b{color:#8FD8B4}
+#vertoast .m{font-family:'JetBrains Mono',monospace;font-size:12.5px;opacity:.75;display:block;margin-top:2px}
+@media (prefers-reduced-motion:reduce){#vertoast{transition:none}}
+</style>
+
+
+<div class="bar">
+  <div class="in">
+    <div class="bt">네트워크관리사 2급<small id="barsub">50문항 · 50분</small></div>
+    <a class="btn navlink" href="index.html">🏠 홈</a>
+    <a class="btn navlink" href="network.html">📘 교재</a>
+    <span class="verbadge" data-version-slot></span>
+    <button class="btn hide" id="btheme" type="button">◐</button>
+    <div class="timer hide" id="timer">50:00</div>
+    <button class="btn hide" id="btsubmit" type="button">답안 제출</button>
+  </div>
+  <div class="progbar"><i id="prog"></i></div>
+</div>
+
+<div class="wrap">
+  <!-- 시작 -->
+  <section id="screen-intro" class="intro">
+    <div class="eyebrow">실전 대비 · 1회분</div>
+    <h1>네트워크관리사 2급<br>실전 모의고사</h1>
+    <p class="lede">출제기준의 과목별 비중을 그대로 반영해 <b>100문항</b>을 설계했습니다. 실제 시험처럼 <b>50분</b> 안에 풀고, 끝나면 <b>과목별 점수·과락·합격 여부</b>가 바로 나옵니다.</p>
+    <div class="specs">
+      <div class="spec"><b>50</b><span>문항 (4과목)</span></div>
+      <div class="spec"><b>50</b><span>분</span></div>
+      <div class="spec"><b>60</b><span>점 이상 합격</span></div>
+      <div class="spec"><b>과락X</b><span>과목 최저점 없음</span></div>
+    </div>
+    <div class="note">
+      <b>해설이 이 모의고사의 핵심입니다.</b> 문항마다 ① 정답 근거 ② 오답이 왜 매력적인지(함정) ③ <b>실전에서 어떻게 판단할지</b>를 강사 관점으로 붙였습니다. 채점 후 <b>틀린 문제만</b> 골라 보는 기능도 있습니다.
+    </div>
+    <div class="note warn">
+      <b>이 문제는 실제 시험지 복사본이 아닙니다.</b> 이 문제는 공개 출제범위와 표준 지식으로 새로 만든 것입니다. 출제기준·빈출 개념·최근 경향(리눅스 명령어·포트 비중 강화 등)을 반영해 <b>같은 유형·난이도로 새로 출제</b>했습니다. 실제 복원 기출은 무료 CBT 사이트에서 병행하세요.
+    </div>
+    <div id="resume-box" class="hide"></div>
+    <div class="roundpick">
+      <span class="rp-label">모의고사 회차 선택</span>
+      <div class="rounds" id="round-sel">
+        <button class="round on" data-r="1" type="button">1회</button>
+        <button class="round" data-r="2" type="button">2회</button>
+        <button class="round" data-r="3" type="button">3회</button>
+      </div>
+      <span class="rp-hint">각 회 50문항 · 서로 다른 문제로 3회분</span>
+    </div>
+    <div class="modes">
+      <button class="mode" id="mode-real" type="button">
+        <b>⏱ 실전 모드</b>
+        <span>50분 타이머가 돌아갑니다. 제출 전까지 정답·해설이 보이지 않습니다. 실제 시험처럼 감을 잡을 때.</span>
+      </button>
+      <button class="mode" id="mode-study" type="button">
+        <b>📖 학습 모드</b>
+        <span>답을 고르면 <b>즉시</b> 정답과 해설이 열립니다. 타이머 없음. 개념을 익히며 풀 때.</span>
+      </button>
+    </div>
+    <h3 style="font-size:17px;margin:30px 0 4px">🎯 약점 집중 드릴</h3>
+    <p style="font-size:14px;color:var(--ink-3);margin:0 0 12px">시험에서 <b>서로 바꿔 내는 짝</b>만 모았습니다. 한 세트 5문항이라 출퇴근길에 한 세트씩 딱 좋습니다.</p>
+    <div id="drill-list" class="drills"></div>
+
+    <div id="hist-box"></div>
+    <div class="installcard" id="installcard">
+      <b>📱 폰 홈화면에 앱처럼 설치하기</b>
+      <div id="install-ios">
+        <ol>
+          <li><b>아이폰</b>: 사파리에서 이 페이지를 열고 아래 <b>공유(⬆️)</b> → <b>「홈 화면에 추가」</b></li>
+          <li><b>안드로이드</b>: 크롬 오른쪽 위 <b>⋮</b> → <b>「홈 화면에 추가」</b> 또는 「앱 설치」</li>
+        </ol>
+        <p style="margin:9px 0 0">추가하면 <b>「정」 아이콘</b>이 생기고, 주소창 없이 앱처럼 전체 화면으로 열립니다. 푼 내용도 그대로 이어집니다.</p>
+      </div>
+      <button class="btn pri hide" id="b-install" type="button" style="margin-top:10px">📲 앱으로 설치하기</button>
+    </div>
+    <p class="dim" id="save-note" style="font-size:13px;color:var(--ink-3);margin-top:18px"></p>
+  </section>
+
+  <!-- 시험 -->
+  <section id="screen-exam" class="exam hide">
+    <div>
+      <div class="qhead">
+        <span class="pill" id="p-sub">1과목</span>
+        <span class="pill sub" id="p-topic">개념</span>
+        <span class="pill sub" id="p-pos">1 / 100</span>
+      </div>
+      <div class="qcard">
+        <p class="qtext"><span class="qno" id="q-no">1</span><span id="q-text"></span></p>
+        <div id="q-code"></div>
+        <ul class="opts" id="q-opts"></ul>
+        <div id="q-sol"></div>
+        <div class="nav">
+          <button class="btn" id="b-prev" type="button">← 이전</button>
+          <button class="btn" id="b-next" type="button">다음 →</button>
+          <button class="btn flag sp" id="b-flag" type="button">🚩 나중에 다시</button>
+        </div>
+      </div>
+    </div>
+    <aside class="side">
+      <h3>문항 이동</h3>
+      <div class="legend">
+        <span><i style="background:var(--accent)"></i>푼 문제</span>
+        <span><i style="background:var(--flag)"></i>표시</span>
+        <span><i style="background:var(--surface-2);border:1px solid var(--line-2)"></i>미응답</span>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="sidefoot" id="sidefoot">응답 0 / 100</div>
+    </aside>
+  </section>
+
+  <!-- 결과 -->
+  <section id="screen-result" class="result hide">
+    <div class="verd" id="verd">
+      <div class="big" id="verd-big">합격</div>
+      <div class="sc" id="verd-sc"></div>
+      <div class="msg" id="verd-msg"></div>
+    </div>
+    <div class="tbl"><table>
+      <thead><tr><th>과목</th><th class="c">정답</th><th class="c">점수</th><th>득점률</th><th class="c">판정</th></tr></thead>
+      <tbody id="res-body"></tbody>
+    </table></div>
+    <div class="rev">
+      <h2 style="font-size:22px">문항별 해설</h2>
+      <div class="filters">
+        <button class="btn pri" data-f="wrong" type="button">틀린 문제만</button>
+        <button class="btn" data-f="all" type="button">전체 100문항</button>
+        <button class="btn" data-f="flag" type="button">🚩 표시한 문제</button>
+        <button class="btn" data-f="retry" type="button" id="b-retry">다시 풀기</button>
+      </div>
+      <div id="rev-list"></div>
+    </div>
+  </section>
+</div>
+<footer>네트워크관리사 2급 모의고사 · ICQA 기준 50문항 50분 · 총점 60점(과락 없음)</footer>
+
+<script>
+/* ============================================================
+   문항 데이터
+   a = 정답 인덱스(0~3) / why=근거 / trap=오답·함정 / coach=강사 관점
+   ============================================================ */
+var EXAM = [
+{s:"1과목 네트워크 일반", items:[
+ {t:"전송방향", q:"무전기처럼 양방향 통신이 가능하지만 동시에 송·수신할 수 없는 방식은?",
+  o:["단방향(Simplex)","다중화","전이중(Full Duplex)","반이중(Half Duplex)"], a:3,
+  why:"반이중은 양방향이되 <b>번갈아</b> 송수신합니다. 워키토키가 대표 예입니다.",
+  trap:"전이중과 헷갈립니다. 전이중은 전화처럼 <b>동시</b> 송수신입니다.",
+  coach:"'동시 가능하면 전이중, 번갈아면 반이중, 한쪽만이면 단방향'. 예시(무전기/전화/방송)를 짝지어 두면 안 틀립니다."},
+ {t:"오류제어", q:"오류를 검출할 뿐 아니라 <b>정정</b>까지 할 수 있는 것은?",
+  o:["패리티 검사","CRC","해밍 코드","체크섬"], a:2,
+  why:"해밍 코드는 오류 위치를 찾아 <b>정정</b>합니다. 나머지는 검출만 합니다.",
+  trap:"CRC가 강력해서 정정도 할 것 같지만 CRC는 <b>검출 전용</b>입니다.",
+  coach:"'정정'이라는 단어가 보이면 해밍 코드. 패리티·CRC·체크섬은 전부 검출까지만."},
+ {t:"OSI", q:"OSI 7계층에서 라우터가 동작하며 IP 주소로 경로를 정하는 계층은?",
+  o:["데이터링크 계층","전송 계층","네트워크 계층","세션 계층"], a:2,
+  why:"IP·라우팅·라우터는 <b>네트워크 계층(3계층)</b>입니다. PDU는 패킷.",
+  trap:"데이터링크(2계층)와 헷갈립니다. 그쪽은 MAC 주소·스위치·프레임입니다.",
+  coach:"주소로 구분 — <b>IP면 3계층, MAC이면 2계층</b>. 장비도 라우터=3, 스위치=2."},
+ {t:"OSI PDU", q:"OSI 계층별 데이터 단위(PDU)를 1계층부터 바르게 나열한 것은?",
+  o:["비트 → 프레임 → 패킷 → 세그먼트","프레임 → 비트 → 패킷 → 세그먼트","비트 → 패킷 → 프레임 → 세그먼트","세그먼트 → 패킷 → 프레임 → 비트"], a:0,
+  why:"물리=비트, 데이터링크=프레임, 네트워크=패킷, 전송=세그먼트 순입니다.",
+  trap:"패킷과 프레임의 순서를 바꾼 보기가 함정입니다. 프레임(2)이 패킷(3)보다 아래.",
+  coach:"'비·프·패·세'로 외우세요. 계층 순서(물데네전)와 짝을 맞추면 자동으로 나옵니다."},
+ {t:"토폴로지", q:"중앙 장비에 모든 노드가 연결되어 관리가 쉽지만 중앙이 고장 나면 전체가 마비되는 구성은?",
+  o:["버스형","링형","성형(Star)","망형(Mesh)"], a:2,
+  why:"성형은 중앙 집중이라 관리가 쉽고, 중앙 장비가 <b>단일 장애점</b>입니다.",
+  trap:"버스형은 중앙 장비가 없고 <b>회선</b>을 공유합니다. '중앙'이 있으면 성형.",
+  coach:"고장 시나리오로 외우세요 — 성형은 중앙 죽으면 끝, 망형은 하나 죽어도 우회."},
+ {t:"토폴로지", q:"노드 6개를 망형(Mesh)으로 완전 연결할 때 필요한 회선 수는?",
+  o:["15","12","30","36"], a:0,
+  why:"n(n−1)/2 = 6×5/2 = <b>15</b>개입니다.",
+  trap:"n(n−1)=30으로 계산하면 틀립니다. 회선은 양방향 하나로 세어 2로 나눕니다.",
+  coach:"이 공식은 무방향 그래프 최대 간선과 같습니다. n(n−1)/2 하나로 여러 문제를 잡습니다."},
+ {t:"매체접근", q:"무선 LAN(IEEE 802.11)에서 사용하는 매체 접근 제어 방식은?",
+  o:["CSMA/CD","토큰 버스","토큰 링","CSMA/CA"], a:3,
+  why:"무선은 충돌을 감지할 수 없어 미리 <b>회피(CA)</b>합니다.",
+  trap:"유선 이더넷의 CSMA/<b>CD</b>와 한 글자 차이라 자주 바뀌어 나옵니다.",
+  coach:"유선=CD(Detection), 무선=CA(Avoidance). '무선은 못 보니까 피한다'로 기억."},
+ {t:"IEEE802", q:"IEEE 802.3이 규정하는 기술은?",
+  o:["토큰 링","무선랜","이더넷(CSMA/CD)","블루투스"], a:2,
+  why:"802.3 = 이더넷(CSMA/CD). 유선 LAN의 표준입니다.",
+  trap:"802.5(토큰링)·802.11(무선랜)·802.15(블루투스)와 번호를 섞어 냅니다.",
+  coach:"802.3 이더넷 · 802.5 토큰링 · 802.11 무선랜 · 802.15 블루투스, 네 개만 확실히."}
+]},
+{s:"2과목 TCP/IP", items:[
+ {t:"계층", q:"TCP/IP에서 전송 계층에 속하는 프로토콜로만 묶인 것은?",
+  o:["TCP, UDP","IP, ICMP","ARP, RARP","HTTP, FTP"], a:0,
+  why:"전송 계층은 TCP·UDP뿐입니다. IP·ICMP·ARP는 인터넷 계층입니다.",
+  trap:"ARP를 전송 계층으로 착각하기 쉽습니다. ARP는 <b>인터넷 계층</b>입니다.",
+  coach:"전송 계층=TCP·UDP 딱 둘. 나머지 IP·ICMP·IGMP·ARP·RARP는 인터넷 계층으로 몰아 외우세요."},
+ {t:"IP클래스", q:"IP 주소 200.168.30.1 은 어느 클래스인가?",
+  o:["A 클래스","B 클래스","C 클래스","D 클래스"], a:2,
+  why:"첫 옥텟 200은 192~223 범위이므로 <b>C 클래스</b>입니다.",
+  trap:"숫자가 커서 D일 것 같지만 D는 224~239입니다.",
+  coach:"경계 128·192·224만 외우면 첫 숫자만 보고 3초에 답합니다."},
+ {t:"IP클래스", q:"멀티캐스트(Multicast)에 사용되는 IP 클래스는?",
+  o:["A","B","C","D"], a:3,
+  why:"D 클래스(224~239)가 멀티캐스트 전용입니다.",
+  trap:"E 클래스(240~255)는 연구·예약용으로 실제 통신에 안 씁니다.",
+  coach:"A/B/C는 일반 호스트, D는 멀티캐스트, E는 예약. 순서대로 기억."},
+ {t:"사설IP", q:"다음 중 사설(Private) IP 대역이 아닌 것은?",
+  o:["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16","8.8.8.8"], a:3,
+  why:"8.8.8.8은 공인 IP(구글 DNS)입니다. 사설은 10 / 172.16~31 / 192.168.",
+  trap:"172는 172.16~31.0.0만 사설입니다. 172.32 이상은 공인.",
+  coach:"사설 3대역 <b>10 · 172.16~31 · 192.168</b>. 127.0.0.1은 루프백으로 또 다른 특수 주소."},
+ {t:"서브넷", q:"서브넷마스크가 /27일 때 서브넷당 사용 가능한 호스트 수는?",
+  o:["30","14","62","126"], a:0,
+  why:"호스트 비트 = 32−27 = 5개 → 2⁵−2 = <b>30개</b>입니다.",
+  trap:"−2(네트워크·브로드캐스트)를 잊으면 32가 됩니다.",
+  coach:"/24=254 /25=126 /26=62 /27=30 /28=14. 통째로 외우면 계산 없이 즉답."},
+ {t:"서브넷", q:"255.255.255.192 를 프리픽스(CIDR)로 나타내면?",
+  o:["/24","/25","/26","/27"], a:2,
+  why:"192=11000000, 앞 2비트가 켜져 24+2 = <b>/26</b>입니다.",
+  trap:"128=/25, 192=/26, 224=/27. 뒷자리 값과 프리픽스를 짝지어야 합니다.",
+  coach:"뒷자리 128·192·224·240·248·252 = /25~/30. 이 사다리만 외우면 양방향 변환 끝."},
+ {t:"서브넷", q:"192.168.10.0/26 네트워크를 나눌 때 만들어지는 서브넷의 네트워크 주소가 아닌 것은?",
+  o:["192.168.10.0","192.168.10.64","192.168.10.128","192.168.10.100"], a:3,
+  why:"/26은 64칸 단위라 경계가 .0/.64/.128/.192입니다. .100은 서브넷 내부 호스트 주소입니다.",
+  trap:".100이 그럴듯해 보이지만 네트워크 주소는 64의 배수여야 합니다.",
+  coach:"블록 크기 = 256−192 = 64. 네트워크 주소는 그 배수(0,64,128,192)만 가능."},
+ {t:"TCP", q:"TCP가 연결을 설정하는 3단계 과정의 순서로 옳은 것은?",
+  o:["SYN → ACK → SYN","SYN/ACK → SYN → ACK","ACK → SYN → SYN/ACK","SYN → SYN/ACK → ACK"], a:3,
+  why:"3-way handshake는 <b>SYN → SYN/ACK → ACK</b> 순입니다.",
+  trap:"순서를 뒤섞은 보기가 함정입니다. 요청(SYN)→응답(SYN/ACK)→확인(ACK)이 자연스러운 흐름.",
+  coach:"'노크 → 대답 → 들어감'으로 기억. UDP는 이 과정이 없어 빠릅니다."},
+ {t:"포트", q:"HTTP·DNS·SMTP의 기본 포트 번호를 바르게 짝지은 것은?",
+  o:["80 · 53 · 25","443 · 53 · 110","80 · 21 · 25","8080 · 53 · 143"], a:0,
+  why:"HTTP=80, DNS=53, SMTP=25입니다.",
+  trap:"443(HTTPS)·110(POP3)·21(FTP)와 섞어 냅니다.",
+  coach:"21 FTP · 22 SSH · 23 Telnet · 25 SMTP · 53 DNS · 80 HTTP · 110 POP3 · 443 HTTPS. 표로 통암기."},
+ {t:"UDP", q:"UDP에 대한 설명으로 옳은 것은?",
+  o:["연결형이며 재전송을 보장한다","3-way handshake로 연결을 맺는다","비연결형이며 속도가 빠르다","헤더가 TCP보다 크다"], a:2,
+  why:"UDP는 비연결형이라 신뢰성 처리가 없어 <b>빠릅니다</b>. DNS·스트리밍에 씁니다.",
+  trap:"①②④는 모두 TCP의 특징입니다. TCP/UDP를 바꿔 서술하는 것이 공식.",
+  coach:"UDP=빠르지만 확실하지 않음, TCP=확실하지만 느림. 헤더도 UDP(8)＜TCP(20)."},
+ {t:"프로토콜", q:"IP 주소를 MAC 주소로 변환하는 프로토콜은?",
+  o:["ARP","RARP","ICMP","DHCP"], a:0,
+  why:"ARP = IP→MAC. 반대(MAC→IP)는 RARP입니다.",
+  trap:"RARP와 방향을 반대로 외우면 걸립니다.",
+  coach:"ARP는 Address Resolution, 'IP를 MAC으로 풀어준다'. R이 붙으면 Reverse(반대)."},
+ {t:"프로토콜", q:"ping 명령이 사용하며, 오류 보고와 네트워크 진단을 담당하는 프로토콜은?",
+  o:["ICMP","IGMP","SNMP","SMTP"], a:0,
+  why:"ping·traceroute는 <b>ICMP</b>를 사용합니다.",
+  trap:"IGMP(멀티캐스트 그룹)·SNMP(장비 관리)와 약어가 비슷해 헷갈립니다.",
+  coach:"인터넷 안 될 때 치는 ping이 ICMP. SNMP는 장비 모니터링, IGMP는 멀티캐스트."},
+ {t:"프로토콜", q:"단말에 IP 주소를 자동으로 할당(임대)하는 프로토콜은?",
+  o:["DNS","ARP","NAT","DHCP"], a:3,
+  why:"DHCP가 IP를 자동 할당합니다. 공유기가 하는 일이 이것입니다.",
+  trap:"DNS(도메인→IP)와 헷갈립니다. 주소를 '할당'하면 DHCP, '변환'하면 DNS.",
+  coach:"DHCP=자동 할당, DNS=이름 변환, NAT=사설↔공인 변환. '할당/변환' 단어로 구분."},
+ {t:"라우팅", q:"홉(hop) 수를 기준으로 경로를 정하며 최대 15홉으로 제한되는 라우팅 프로토콜은?",
+  o:["OSPF","RIP","BGP","STP"], a:1,
+  why:"RIP는 거리 벡터 방식으로 <b>홉 수</b>를 기준으로 하고 최대 15홉입니다.",
+  trap:"OSPF는 비용(대역폭) 기준, BGP는 AS 간. STP는 라우팅이 아니라 스위치 루프 방지.",
+  coach:"RIP=홉·소규모, OSPF=비용·대규모, BGP=인터넷 AS 간. 규모 순으로 커집니다."},
+ {t:"IPv6", q:"IPv6 주소의 길이는?",
+  o:["32비트","64비트","128비트","256비트"], a:2,
+  why:"IPv6는 128비트(IPv4는 32비트)입니다.",
+  trap:"64비트로 착각하기 쉽습니다. 4배 길이(32→128)입니다.",
+  coach:"'4는 32, 6은 128'. IPv6는 브로드캐스트가 없고 애니캐스트가 있습니다."}
+]},
+{s:"3과목 NOS", items:[
+ {t:"Windows", q:"Windows에서 사용자·컴퓨터를 도메인으로 중앙 관리하는 서비스는?",
+  o:["IIS","Active Directory","이벤트 뷰어","레지스트리"], a:1,
+  why:"Active Directory(AD)가 도메인 기반으로 계정·정책을 중앙 관리합니다.",
+  trap:"IIS는 웹 서버 역할이라 성격이 다릅니다.",
+  coach:"AD=중앙 통합 관리(도메인), IIS=웹서버, 이벤트뷰어=로그. 역할별로 구분."},
+ {t:"Windows", q:"NTFS 권한과 공유 권한이 함께 적용될 때 최종 권한은?",
+  o:["더 관대한 쪽","더 엄격한(제한적인) 쪽","공유 권한 우선","NTFS 권한 우선"], a:1,
+  why:"두 권한이 겹치면 <b>더 제한적인(엄격한) 쪽</b>이 최종 적용됩니다.",
+  trap:"'우선순위가 있다'고 착각하기 쉽지만 규칙은 '더 엄격한 쪽'입니다.",
+  coach:"보안은 항상 안전한 쪽으로 — 둘 중 더 막는 권한이 이깁니다."},
+ {t:"런레벨", q:"리눅스 런레벨 중 GUI 다중 사용자 모드에 해당하는 것은?",
+  o:["0","1","3","5"], a:3,
+  why:"5 = GUI 다중 사용자입니다. 3은 텍스트 다중 사용자.",
+  trap:"0(종료)·6(재부팅)을 기본값으로 두면 안 되는 것도 함께 나옵니다.",
+  coach:"0 종료·1 복구·3 텍스트·5 GUI·6 재부팅. 3과 5(텍스트/GUI)가 핵심."},
+ {t:"디렉토리", q:"리눅스에서 각종 설정 파일이 저장되는 디렉토리는?",
+  o:["/var","/etc","/home","/proc"], a:1,
+  why:"/etc에 passwd·hosts 등 설정 파일이 있습니다.",
+  trap:"/var(로그)·/proc(커널정보)와 헷갈립니다.",
+  coach:"/etc=설정, /var=로그, /home=사용자, /proc=커널정보. 네 개만 확실히."},
+ {t:"명령어", q:"파일 안에서 특정 문자열을 검색하는 리눅스 명령은?",
+  o:["find","grep","cat","ls"], a:1,
+  why:"grep은 파일 <b>내용</b>에서 문자열을 찾습니다.",
+  trap:"find는 파일 <b>이름</b>을 찾는 것으로 대상이 다릅니다.",
+  coach:"grep=내용 검색, find=파일 찾기. '내용 안이면 grep'."},
+ {t:"명령어", q:"실행 중인 프로세스를 종료하는 명령은?",
+  o:["ps","top","kill","cron"], a:2,
+  why:"kill이 프로세스를 종료합니다. ps는 목록, top은 실시간 모니터.",
+  trap:"ps(조회)와 kill(종료)의 역할을 바꾸지 마세요.",
+  coach:"ps로 PID 확인 → kill로 종료. cron은 예약 실행으로 별개."},
+ {t:"명령어", q:"현재 네트워크 연결 상태와 열린 포트를 확인하는 명령은?",
+  o:["ifconfig","netstat","ping","route"], a:1,
+  why:"netstat이 연결 상태·포트를 보여 줍니다.",
+  trap:"ifconfig(인터페이스 설정)·route(라우팅 테이블)와 용도가 다릅니다.",
+  coach:"netstat=연결/포트, ifconfig=주소 설정, ping=도달 확인, route=경로표."},
+ {t:"명령어", q:"여러 파일을 하나로 묶는 리눅스 명령은?",
+  o:["tar","chmod","mount","grep"], a:0,
+  why:"tar가 파일을 하나로 묶습니다(gzip으로 압축까지).",
+  trap:"mount(파일시스템 연결)·chmod(권한)와 기능이 전혀 다릅니다.",
+  coach:"tar=묶기, gzip=압축, mount=연결, chmod=권한. 동사로 구분."},
+ {t:"권한", q:"권한이 rwxr-xr-- 일 때 chmod 8진수 값은?",
+  o:["744","754","755","764"], a:1,
+  why:"rwx=7, r-x=5, r--=4 → <b>754</b>입니다.",
+  trap:"755와 헷갈립니다. 마지막이 r--(4)인지 r-x(5)인지 확인.",
+  coach:"r=4 w=2 x=1을 세 칸씩 더합니다. 755·644·700 조합은 통째로 외우면 빠름."},
+ {t:"권한", q:"리눅스에서 사용자 계정 정보가 저장되는 파일은?",
+  o:["/etc/shadow","/etc/passwd","/etc/hosts","/etc/group"], a:1,
+  why:"/etc/passwd에 계정 정보가, 암호는 /etc/shadow에 저장됩니다.",
+  trap:"암호가 passwd에 있을 것 같지만 암호는 shadow에 분리 저장됩니다.",
+  coach:"계정=passwd, 암호=shadow, 그룹=group, 이름-IP=hosts."},
+ {t:"사용자", q:"리눅스에서 새 사용자를 추가하는 명령은?",
+  o:["passwd","useradd","usermod","su"], a:1,
+  why:"useradd가 사용자를 추가합니다. passwd는 비밀번호 설정.",
+  trap:"su는 다른 사용자로 전환(권한 상승)이라 추가와 다릅니다.",
+  coach:"useradd(추가)·passwd(비번)·userdel(삭제)·su/sudo(권한). 흐름으로 기억."},
+ {t:"명령어", q:"디스크 사용량(남은 용량)을 확인하는 명령은?",
+  o:["df","ps","kill","cron"], a:0,
+  why:"df가 파일시스템 디스크 사용량을 보여 줍니다(du는 디렉토리별).",
+  trap:"df와 du를 헷갈립니다 — df는 전체, du는 특정 디렉토리 사용량.",
+  coach:"df=Disk Free(전체), du=Disk Usage(디렉토리별)."},
+ {t:"명령어", q:"리눅스에서 작업을 정해진 시간에 자동 실행하도록 예약하는 것은?",
+  o:["cron","kill","mount","tar"], a:0,
+  why:"cron이 스케줄 기반 자동 실행을 담당합니다(crontab으로 등록).",
+  trap:"일회성 예약은 at, 반복 예약은 cron으로 구분되기도 합니다.",
+  coach:"'예약·주기적 실행'이면 cron. 로그는 /var에 쌓입니다."}
+]},
+{s:"4과목 네트워크 운용기기", items:[
+ {t:"케이블", q:"PC와 PC를 랜케이블로 직접 연결할 때 사용하는 케이블은?",
+  o:["다이렉트 케이블","크로스 케이블","광케이블","시리얼 케이블"], a:1,
+  why:"같은 종류의 장비(PC↔PC, 스위치↔스위치)는 크로스 케이블로 연결합니다.",
+  trap:"PC↔스위치처럼 <b>다른 장비</b>는 다이렉트입니다. 방향을 반대로 외우면 걸립니다.",
+  coach:"'같은 장비=크로스, 다른 장비=다이렉트'. 요즘은 자동 감지(Auto MDI-X)도 있음."},
+ {t:"케이블", q:"UTP 케이블에 사용하는 커넥터는?",
+  o:["BNC","RJ-45","RJ-11","SC"], a:1,
+  why:"UTP(랜케이블)는 8핀 <b>RJ-45</b> 커넥터를 씁니다.",
+  trap:"RJ-11(전화)·BNC(동축)·SC(광)와 헷갈립니다.",
+  coach:"랜=RJ45(8핀), 전화=RJ11(4핀), 동축=BNC, 광=SC/LC."},
+ {t:"케이블", q:"장거리 전송에 유리하며 코어가 얇고 레이저를 사용하는 광케이블은?",
+  o:["멀티모드","싱글모드","크로스","STP"], a:1,
+  why:"싱글모드는 코어가 얇아 <b>장거리·고속</b>에 유리합니다.",
+  trap:"멀티모드(코어 굵음·단거리·LED)와 반대입니다.",
+  coach:"싱글=장거리(레이저), 멀티=단거리(LED). '싱글이 멀리 간다'."},
+ {t:"케이블", q:"UTP Cat6 케이블이 지원하는 최대 전송 속도에 가장 가까운 것은?",
+  o:["10Mbps","100Mbps","1Gbps","10Gbps"], a:3,
+  why:"Cat6는 최대 10Gbps(단거리)를 지원합니다. Cat5e는 1Gbps.",
+  trap:"Cat5(100M)·Cat5e(1G)와 헷갈립니다.",
+  coach:"Cat5=100M, Cat5e=1G, Cat6=10G. 한 단계씩 10배."},
+ {t:"장비", q:"MAC 주소를 학습하여 목적지 포트로만 프레임을 전달하는 2계층 장비는?",
+  o:["허브","스위치","라우터","리피터"], a:1,
+  why:"스위치는 MAC 테이블을 학습해 <b>목적지 포트로만</b> 보냅니다.",
+  trap:"허브는 <b>모든 포트</b>로 보냅니다(충돌 도메인 공유). 스위치가 이를 개선.",
+  coach:"허브=무조건 다 뿌림(1계층), 스위치=필요한 포트만(2계층)."},
+ {t:"장비", q:"서로 다른 네트워크를 IP 기준으로 연결하며 경로를 선택하는 3계층 장비는?",
+  o:["스위치","브리지","라우터","게이트웨이"], a:2,
+  why:"라우터가 IP 기준으로 경로를 정해 다른 네트워크를 연결합니다.",
+  trap:"게이트웨이는 <b>프로토콜 변환</b>이 주 역할이라 초점이 다릅니다.",
+  coach:"IP 경로=라우터(3계층), 프로토콜 변환=게이트웨이."},
+ {t:"장비", q:"신호를 증폭·재생하여 전송 거리를 늘리는 1계층 장비는?",
+  o:["리피터","스위치","라우터","NIC"], a:0,
+  why:"리피터는 물리 계층에서 신호를 증폭·재생합니다.",
+  trap:"허브도 1계층이지만 '증폭·재생'은 리피터의 정의입니다.",
+  coach:"1계층=허브·리피터, 2계층=스위치·브리지, 3계층=라우터."},
+ {t:"장비", q:"서로 다른 프로토콜을 사용하는 네트워크를 연결하며 프로토콜을 변환하는 장비는?",
+  o:["리피터","브리지","게이트웨이","허브"], a:2,
+  why:"게이트웨이가 서로 다른 프로토콜 간 변환을 담당합니다.",
+  trap:"브리지·스위치는 같은 프로토콜 내에서 동작합니다.",
+  coach:"'프로토콜 변환'이라는 말이 나오면 게이트웨이."},
+ {t:"VLAN", q:"하나의 스위치를 논리적으로 여러 개의 네트워크로 분리하는 기술은?",
+  o:["VLAN","STP","NAT","VPN"], a:0,
+  why:"VLAN은 물리적으로 하나인 스위치를 <b>논리적 네트워크</b>로 나눠 브로드캐스트 도메인을 분리합니다.",
+  trap:"VPN(가상 전용선)·NAT(주소 변환)와 개념이 다릅니다.",
+  coach:"VLAN=스위치 논리 분할(802.1Q), VPN=암호화 터널, NAT=주소 변환."},
+ {t:"STP", q:"스위치 네트워크에서 루프로 인한 브로드캐스트 폭주를 막는 프로토콜은?",
+  o:["RIP","STP","OSPF","ARP"], a:1,
+  why:"STP(Spanning Tree Protocol, 802.1D)가 루프를 차단합니다.",
+  trap:"RIP·OSPF는 라우팅 프로토콜이라 계층·목적이 다릅니다.",
+  coach:"'스위치 루프 방지'면 STP. 라우팅과 헷갈리지 마세요."},
+ {t:"라우터", q:"Cisco 라우터에서 특권(관리자) 모드로 진입하는 명령은?",
+  o:["enable","configure terminal","show run","exit"], a:0,
+  why:"enable로 특권 모드에 들어간 뒤 configure terminal로 설정 모드로 갑니다.",
+  trap:"configure terminal은 특권 모드 <b>다음</b> 단계(전역 설정)입니다.",
+  coach:"enable → configure terminal → 설정 → copy로 저장. 순서로 기억."},
+ {t:"무선", q:"현재 널리 권장되는 무선 LAN 보안 규격은?",
+  o:["WEP","WPA","WPA2","없음"], a:2,
+  why:"WPA2(AES 기반)가 널리 권장됩니다. WEP은 취약해 사용하지 않습니다.",
+  trap:"WEP이 가장 익숙해 고르기 쉽지만 <b>취약</b>합니다.",
+  coach:"보안 강도: WEP＜WPA＜WPA2＜WPA3. WEP은 절대 쓰지 않는 것으로."},
+ {t:"무선", q:"IEEE 802.11n 무선랜이 사용하는 주파수 대역은?",
+  o:["2.4GHz 전용","5GHz 전용","2.4GHz와 5GHz","900MHz"], a:2,
+  why:"802.11n은 2.4GHz와 5GHz를 모두 사용합니다.",
+  trap:"11b/g는 2.4GHz 전용, 11ac는 5GHz 전용. n만 양쪽입니다.",
+  coach:"b/g=2.4, n=둘 다, ac=5. n이 다리 역할."},
+ {t:"RAID", q:"두 개 이상의 디스크에 같은 데이터를 복제(미러링)하여 안전성을 높이는 RAID는?",
+  o:["RAID 0","RAID 1","RAID 5","RAID 6"], a:1,
+  why:"RAID 1이 미러링(복제)으로, 하나가 고장 나도 데이터를 보존합니다(용량 절반).",
+  trap:"RAID 0(스트라이핑)은 속도만 얻고 하나 죽으면 전부 잃습니다.",
+  coach:"0=속도, 1=미러(복제), 5=패리티 분산. '미러'면 1."}
+]}
+];
+
+var EXAM2 = [
+{s:"1과목 네트워크 일반", items:[
+ {t:"전송방식", q:"데이터를 정해진 크기의 블록으로 나누고, 각 블록 앞뒤에 시작·끝 비트를 붙여 보내는 전송 방식은?",
+  o:["비동기 전송","동기 전송","병렬 전송","아날로그 전송"], a:0,
+  why:"비동기(Asynchronous) 전송은 문자마다 <b>시작비트·정지비트</b>를 붙여 보냅니다. 저속·간헐적 통신에 적합합니다.",
+  trap:"동기 전송은 블록 앞에 <b>동기 문자(SYN)</b>를 붙여 한 덩어리로 보내는 방식이라 다릅니다.",
+  coach:"'문자마다 시작·정지비트'면 비동기, '블록 앞에 SYN 붙여 한 번에'면 동기. 속도는 동기가 빠릅니다."},
+ {t:"오류제어", q:"수신 측이 오류를 검출하면 송신 측에 재전송을 요구하는 오류 제어 방식은?",
+  o:["FEC(전진 오류정정)","해밍 코드","패리티 비트","ARQ(자동 반복요청)"], a:3,
+  why:"ARQ는 오류를 <b>검출 후 재전송</b>으로 바로잡습니다. Stop-and-Wait·Go-Back-N·SR 등이 있습니다.",
+  trap:"FEC·해밍 코드는 재전송 없이 <b>수신 측이 스스로 정정</b>하는 방식이라 반대 개념입니다.",
+  coach:"'재전송 요구'는 ARQ, '스스로 정정'은 FEC. 위성처럼 재전송 비용이 크면 FEC를 씁니다."},
+ {t:"교환방식", q:"전송 전에 통신 경로를 미리 설정하고, 통신이 끝날 때까지 그 회선을 독점하는 교환 방식은?",
+  o:["패킷 교환","메시지 교환","회선 교환","셀 교환"], a:2,
+  why:"회선 교환(Circuit Switching)은 <b>전용 경로를 미리 확보</b>합니다. 전화망이 대표 예로, 지연이 일정합니다.",
+  trap:"패킷 교환은 경로를 미리 잡지 않고 패킷마다 나눠 보내 회선을 <b>공유</b>합니다.",
+  coach:"'경로 독점·전화'면 회선 교환, '나눠 보내 공유·인터넷'이면 패킷 교환. 효율은 패킷이 높습니다."},
+ {t:"OSI계층", q:"OSI 7계층에서 <b>암호화·압축</b>과 데이터 표현 형식 변환을 담당하는 계층은?",
+  o:["세션 계층","응용 계층","전송 계층","표현 계층"], a:3,
+  why:"표현(Presentation) 계층이 <b>암호화·압축·코드 변환</b>을 맡습니다. 6계층입니다.",
+  trap:"세션 계층(5)은 대화(세션)의 설정·동기화를 맡고, 암호화는 하지 않습니다.",
+  coach:"6계층 표현=암호화·압축. 5계층 세션=대화 관리·동기점. '번역가'가 표현 계층이라고 기억하세요."},
+ {t:"프로토콜3요소", q:"프로토콜의 3요소 중 데이터의 형식·부호화·신호 레벨을 규정하는 것은?",
+  o:["의미(Semantics)","순서(Timing)","구문(Syntax)","캡슐화"], a:2,
+  why:"구문(Syntax)은 데이터의 <b>형식·구조·부호화</b>를 규정합니다.",
+  trap:"의미(Semantics)는 각 비트가 무엇을 뜻하는지(제어 정보·오류 처리)를 정하는 것으로 다릅니다.",
+  coach:"3요소 — 구문(형식)·의미(뜻)·순서(타이밍). '형식'이 나오면 구문입니다."},
+ {t:"신뢰도", q:"장애 발생 시에도 시스템 일부가 기능을 유지하도록 설계하는 개념은?",
+  o:["Fault Tolerance","Fail Safe","Deadlock","Handshaking"], a:0,
+  why:"Fault Tolerance(결함 감내)는 일부 고장에도 <b>전체 기능을 지속</b>하도록 이중화한 설계입니다.",
+  trap:"Fail Safe는 고장 시 <b>안전한 상태로 정지</b>하는 것으로, 계속 동작시키는 것과 다릅니다.",
+  coach:"'고장 나도 계속'이면 결함 감내, '고장 나면 안전하게 멈춤'이면 페일 세이프."},
+ {t:"다중화", q:"하나의 전송로를 여러 주파수 대역으로 나눠 동시에 여러 신호를 보내는 다중화 방식은?",
+  o:["TDM(시분할)","CDM(코드분할)","PCM","FDM(주파수분할)"], a:3,
+  why:"FDM은 대역폭을 <b>주파수로 분할</b>해 각 채널에 배정합니다. 아날로그 신호에 적합합니다.",
+  trap:"TDM은 같은 주파수를 <b>시간 슬롯</b>으로 나눠 쓰는 방식이라 다릅니다.",
+  coach:"주파수로 나누면 FDM, 시간으로 나누면 TDM. 라디오 방송이 FDM의 예입니다."},
+ {t:"단위", q:"통신 속도 단위 중 초당 <b>신호 변화(심볼) 횟수</b>를 나타내는 것은?",
+  o:["Baud","bps","Hz","dBm"], a:0,
+  why:"Baud(보)는 초당 <b>신호 변화 수</b>입니다. 한 신호가 여러 비트를 나르면 bps는 Baud보다 커집니다.",
+  trap:"bps는 초당 비트 수라 값이 다를 수 있습니다. 한 심볼이 2비트면 bps=2×Baud입니다.",
+  coach:"Baud=심볼/초, bps=비트/초. 1심볼=1비트일 때만 두 값이 같습니다."}
+]},
+{s:"2과목 TCP/IP", items:[
+ {t:"포트", q:"이메일을 메일 서버로 <b>보낼 때</b> 사용하는 프로토콜과 포트로 옳은 것은?",
+  o:["SMTP / 25","POP3 / 110","IMAP / 143","SNMP / 161"], a:0,
+  why:"메일 <b>발신</b>은 SMTP(25번)입니다. 수신은 POP3(110)·IMAP(143)입니다.",
+  trap:"POP3(110)·IMAP(143)은 <b>받을 때</b> 쓰는 프로토콜이라 방향이 반대입니다.",
+  coach:"보낼 때 SMTP(25), 받을 때 POP3(110)/IMAP(143). SNMP(161)은 장비 관리라 무관합니다."},
+ {t:"포트", q:"다음 중 포트 번호와 프로토콜의 연결이 <b>잘못된</b> 것은?",
+  o:["22 - SSH","80 - HTTPS","53 - DNS","69 - TFTP"], a:1,
+  why:"80번은 <b>HTTP</b>입니다. HTTPS는 443번입니다.",
+  trap:"80과 443을 헷갈리기 쉽습니다. 암호화(S)가 붙은 HTTPS가 443입니다.",
+  coach:"HTTP=80, HTTPS=443. 22 SSH·53 DNS·69 TFTP는 모두 맞습니다."},
+ {t:"프로토콜", q:"IP 주소를 이용해 대응하는 MAC 주소를 알아내는 프로토콜은?",
+  o:["RARP","ICMP","ARP","IGMP"], a:2,
+  why:"ARP는 <b>IP → MAC</b> 변환입니다. 통신 직전 상대의 물리 주소를 알아냅니다.",
+  trap:"RARP는 <b>MAC → IP</b>로 방향이 반대입니다(디스크리스 부팅에서 자기 IP 획득).",
+  coach:"ARP=IP로 MAC 찾기(정방향), RARP=MAC으로 IP 찾기(역방향). 'A'가 정방향입니다."},
+ {t:"프로토콜", q:"ping·traceroute의 동작 기반이 되며, 오류 보고와 도달 가능성 진단에 쓰이는 프로토콜은?",
+  o:["SNMP","SMTP","ICMP","ARP"], a:2,
+  why:"ICMP는 <b>오류 보고·진단</b> 프로토콜로, ping(Echo)·목적지 도달불가 메시지를 전달합니다.",
+  trap:"SNMP는 장비 상태를 관리하는 프로토콜이라 진단 도구인 ping과는 목적이 다릅니다.",
+  coach:"ping·traceroute를 보면 ICMP. '오류/진단'은 ICMP 고정 키워드입니다."},
+ {t:"IP클래스", q:"IP 주소 172.20.5.10이 속한 클래스와 기본 서브넷 마스크는?",
+  o:["A클래스 / 255.0.0.0","C클래스 / 255.255.255.0","B클래스 / 255.255.0.0","D클래스 / 없음"], a:2,
+  why:"첫 옥텟 172는 128~191 범위이므로 <b>B클래스</b>, 기본 마스크는 255.255.0.0입니다.",
+  trap:"172로 시작해 사설 대역이지만 클래스를 묻는 문제입니다. 128~191은 B클래스입니다.",
+  coach:"A 1~126 / B 128~191 / C 192~223. 기본 마스크는 각각 /8·/16·/24."},
+ {t:"사설IP", q:"다음 중 사설(Private) IP 대역이 <b>아닌</b> 것은?",
+  o:["200.1.1.0 ~ 200.1.1.255","10.0.0.0 ~ 10.255.255.255","172.16.0.0 ~ 172.31.255.255","192.168.0.0 ~ 192.168.255.255"], a:0,
+  why:"200.x는 <b>공인 IP</b>입니다. 사설 대역은 10/8, 172.16~31, 192.168/16 세 가지뿐입니다.",
+  trap:"172는 16~31 범위만 사설입니다. 200.1.1.0은 어느 사설 대역에도 없습니다.",
+  coach:"사설 3대역만 외우면 됩니다: 10 / 172.16~31 / 192.168. 나머지는 전부 공인."},
+ {t:"서브넷", q:"C클래스 한 개(255.255.255.0)를 서브넷 마스크 255.255.255.192로 나눌 때, 서브넷당 사용 가능한 호스트 수는?",
+  o:["62개","30개","126개","14개"], a:0,
+  why:"/26(192)은 호스트 비트가 6개 → 2^6−2 = <b>62개</b>입니다.",
+  trap:"192를 /25(128)로 착각하면 126개로 잘못 답합니다. 192는 /26입니다.",
+  coach:"마스크 192=/26. 2^(32−26)−2=62. 128=/25→126, 224=/27→30을 함께 외우세요."},
+ {t:"서브넷", q:"192.168.1.0/24 네트워크를 4개의 서브넷으로 나누려면 필요한 서브넷 마스크는?",
+  o:["255.255.255.128","255.255.255.224","255.255.255.192","255.255.255.240"], a:2,
+  why:"4개 서브넷 = 2비트 차용(2^2=4) → /24+2=/26 → 마스크 <b>255.255.255.192</b>입니다.",
+  trap:"224(/27)는 8개, 128(/25)은 2개 서브넷이라 개수가 맞지 않습니다.",
+  coach:"서브넷 개수 N을 만들 비트 수 = log2(N). 4개→2비트→/26→192."},
+ {t:"IPv6", q:"IPv6 주소 체계에 대한 설명으로 옳은 것은?",
+  o:["32비트 주소를 사용한다","브로드캐스트를 지원한다","클래스 A/B/C로 나뉜다","128비트이며 콜론(:)으로 8부분을 구분한다"], a:3,
+  why:"IPv6는 <b>128비트</b>이며 16비트씩 8그룹을 <b>콜론(:)</b>으로 구분합니다.",
+  trap:"IPv6는 <b>브로드캐스트를 없애고</b> 멀티캐스트·애니캐스트로 대체했습니다.",
+  coach:"IPv6=128비트·콜론 8그룹·브로드캐스트 없음. 32비트·점(.)은 IPv4입니다."},
+ {t:"TCP", q:"TCP가 연결을 수립할 때 주고받는 3단계 핸드셰이크의 순서로 옳은 것은?",
+  o:["SYN → SYN+ACK → ACK","SYN → ACK → SYN","ACK → SYN → FIN","SYN → FIN → ACK"], a:0,
+  why:"3-way 핸드셰이크는 <b>SYN → SYN+ACK → ACK</b> 순입니다.",
+  trap:"연결 <b>종료</b>는 FIN을 쓰는 4-way 과정이라, 수립과 헷갈리면 안 됩니다.",
+  coach:"수립=SYN/SYN+ACK/ACK(3단계), 종료=FIN 오가는 4단계. 'SYN으로 열고 FIN으로 닫는다'."},
+ {t:"TCP/UDP", q:"실시간 스트리밍·DNS 조회처럼 속도를 우선하고 재전송·순서보장이 없는 전송 계층 프로토콜은?",
+  o:["TCP","UDP","IP","HTTP"], a:1,
+  why:"UDP는 <b>비연결·비신뢰</b>지만 오버헤드가 적어 실시간·DNS에 씁니다.",
+  trap:"TCP는 신뢰성은 높지만 핸드셰이크·재전송 때문에 실시간에는 무겁습니다.",
+  coach:"'빠르게·실시간·DNS'면 UDP, '정확하게·파일전송'이면 TCP."},
+ {t:"DNS", q:"도메인 이름에 대응하는 IPv4 주소를 저장하는 DNS 레코드 유형은?",
+  o:["MX","CNAME","PTR","A"], a:3,
+  why:"A 레코드는 도메인 → <b>IPv4 주소</b> 매핑입니다.",
+  trap:"MX는 메일 서버, CNAME은 별칭, PTR은 역방향(IP→이름)이라 각각 다릅니다.",
+  coach:"A=IPv4, AAAA=IPv6, MX=메일, CNAME=별칭, PTR=역조회. 'A는 Address'."},
+ {t:"DHCP", q:"DHCP가 클라이언트에 IP를 자동 할당하는 4단계 과정의 순서로 옳은 것은?",
+  o:["Offer → Discover → Ack → Request","Request → Offer → Discover → Ack","Discover → Request → Offer → Ack","Discover → Offer → Request → Ack"], a:3,
+  why:"DHCP는 <b>DORA</b> — Discover→Offer→Request→Ack 순입니다.",
+  trap:"Offer와 Request의 순서를 바꾸면 틀립니다. 서버가 Offer, 클라이언트가 Request입니다.",
+  coach:"DORA로 외우세요. 클라이언트가 찾고(D), 서버가 제안(O), 클라이언트가 요청(R), 서버가 확정(A)."},
+ {t:"NAT", q:"사설 IP를 공인 IP로 변환해 인터넷에 접속하게 해 주는 기술은?",
+  o:["VPN","VLAN","NAT","DHCP"], a:2,
+  why:"NAT은 <b>사설↔공인 IP 변환</b>으로 IP 부족을 완화하고 내부망을 숨깁니다.",
+  trap:"DHCP는 IP를 '할당'할 뿐 '변환'하지 않습니다. 변환은 NAT입니다.",
+  coach:"'사설↔공인 변환'은 NAT. 여러 사설이 한 공인을 공유하는 건 PAT(NAT의 일종)."},
+ {t:"응용프로토콜", q:"네트워크 장비의 상태를 원격으로 감시·관리하기 위한 표준 프로토콜은?",
+  o:["SMTP","SNMP","FTP","Telnet"], a:1,
+  why:"SNMP(161)는 <b>장비 감시·관리</b> 표준입니다. Manager–Agent 구조로 동작합니다.",
+  trap:"SMTP(메일)와 이름이 비슷해 헷갈립니다. 관리(Management)의 M이 SNMP입니다.",
+  coach:"SNMP=Simple Network Management Protocol. '장비 관리'면 SNMP 고정."}
+]},
+{s:"3과목 NOS", items:[
+ {t:"리눅스명령", q:"리눅스에서 현재 작업 중인 디렉토리의 <b>절대 경로</b>를 출력하는 명령은?",
+  o:["ls","cd","dir","pwd"], a:3,
+  why:"pwd(print working directory)는 현재 위치의 <b>절대 경로</b>를 보여 줍니다.",
+  trap:"ls는 목록 출력, cd는 이동입니다. dir은 리눅스 기본 명령이 아닙니다.",
+  coach:"'지금 내가 어디에 있지?'는 pwd. 이동은 cd, 목록은 ls."},
+ {t:"리눅스명령", q:"파일의 접근 권한을 <b>소유자=읽기·쓰기·실행, 그룹·기타=읽기</b>로 설정하는 명령은?",
+  o:["chmod 755 file","chmod 644 file","chmod 777 file","chmod 744 file"], a:3,
+  why:"rwx(7) r--(4) r--(4) = <b>744</b>입니다. 소유자 7, 그룹 4, 기타 4.",
+  trap:"755는 그룹·기타가 r-x(5)라 실행 권한이 더 붙습니다. 744가 정답입니다.",
+  coach:"r=4·w=2·x=1을 더합니다. rwx=7, r--=4. 자리는 소유자·그룹·기타 순."},
+ {t:"리눅스명령", q:"실행 중인 프로세스를 <b>실시간</b>으로 CPU·메모리 사용률과 함께 모니터링하는 명령은?",
+  o:["ps","kill","top","jobs"], a:2,
+  why:"top은 프로세스를 <b>실시간 갱신</b>하며 자원 사용률을 보여 줍니다.",
+  trap:"ps는 실행 시점의 <b>스냅샷</b>만 한 번 출력합니다. 실시간은 top입니다.",
+  coach:"한 번 찍기=ps, 실시간 갱신=top. 종료는 kill."},
+ {t:"리눅스명령", q:"특정 프로세스를 강제로 종료할 때, PID 1234에 대해 사용하는 명령으로 옳은 것은?",
+  o:["stop 1234","kill -9 1234","end 1234","close 1234"], a:1,
+  why:"kill -9(SIGKILL)는 프로세스를 <b>강제 종료</b>합니다. PID를 인자로 줍니다.",
+  trap:"stop·end·close는 리눅스 프로세스 종료 명령이 아닙니다.",
+  coach:"kill PID로 정상 종료, 안 죽으면 kill -9 PID로 강제 종료. -9가 SIGKILL."},
+ {t:"리눅스명령", q:"파일 안에서 특정 문자열이 포함된 행만 골라 출력하는 명령은?",
+  o:["find","grep","sort","wc"], a:1,
+  why:"grep은 파일 <b>내용에서 패턴</b>을 검색해 일치하는 행을 출력합니다.",
+  trap:"find는 파일 <b>이름·위치</b>를 찾는 것이라 내용 검색과 다릅니다.",
+  coach:"내용 검색=grep, 파일 찾기=find. 'g'로 시작하는 grep이 글자 찾기."},
+ {t:"리눅스명령", q:"여러 파일을 하나로 묶기만 하고 압축은 하지 않는(아카이브) 명령은?",
+  o:["tar","gzip","zip","compress"], a:0,
+  why:"tar는 여러 파일을 하나로 <b>묶는</b> 아카이브 도구입니다. 압축은 gzip과 함께(tar -z) 합니다.",
+  trap:"gzip은 <b>압축</b> 전용입니다. 순수 아카이브는 tar입니다.",
+  coach:"묶기=tar, 압축=gzip. tar -zcvf 하면 묶고 압축까지 한 번에."},
+ {t:"리눅스명령", q:"리눅스에서 사용자 계정 정보가 저장되며, 암호화된 비밀번호는 별도 파일로 분리 보관될 때 그 <b>비밀번호</b> 파일은?",
+  o:["/etc/passwd","/etc/shadow","/etc/group","/etc/hosts"], a:1,
+  why:"암호화된 비밀번호는 <b>/etc/shadow</b>에 저장하며 root만 읽을 수 있습니다.",
+  trap:"/etc/passwd에는 계정 정보가 있지만 실제 암호는 shadow로 분리됐습니다.",
+  coach:"계정=/etc/passwd, 암호=/etc/shadow, 그룹=/etc/group. 'shadow에 그림자처럼 숨긴 암호'."},
+ {t:"리눅스권한", q:"파일 권한이 <b>-rwxr-xr-x</b> 일 때 8진수 표기로 옳은 것은?",
+  o:["755","644","777","711"], a:0,
+  why:"rwx(7) r-x(5) r-x(5) = <b>755</b>입니다. 실행 파일·디렉토리의 전형적 권한입니다.",
+  trap:"644는 rw-r--r--(실행권한 없음)이라 다릅니다.",
+  coach:"기호를 3자리씩 끊어 r4·w2·x1로 더하기. rwx=7, r-x=5 → 755."},
+ {t:"리눅스명령", q:"디스크 파티션별 사용량과 남은 용량을 확인하는 명령은?",
+  o:["du","free","top","df"], a:3,
+  why:"df(disk free)는 <b>파일시스템(파티션)별</b> 전체·사용·잔여 용량을 보여 줍니다.",
+  trap:"du는 <b>디렉토리·파일별</b> 사용량이라 대상이 다릅니다.",
+  coach:"파티션 전체=df, 폴더별 세부=du. free는 메모리 용량."},
+ {t:"윈도우서버", q:"Windows Server에서 사용자·컴퓨터·자원을 중앙에서 통합 관리하는 디렉토리 서비스는?",
+  o:["Active Directory","DNS","IIS","DHCP"], a:0,
+  why:"Active Directory(AD)는 계정·정책·자원을 <b>중앙 관리</b>하는 디렉토리 서비스입니다.",
+  trap:"IIS는 웹 서버, DNS는 이름 해석 서비스라 역할이 다릅니다.",
+  coach:"'중앙에서 사용자·자원 통합 관리'는 AD. 도메인 컨트롤러가 AD를 운영합니다."},
+ {t:"윈도우", q:"Windows에서 IP 설정을 확인하고 DHCP 주소를 갱신할 때 사용하는 명령은?",
+  o:["ifconfig","netsh only","ipconfig","ping"], a:2,
+  why:"Windows는 <b>ipconfig</b>로 IP를 확인하고 /release·/renew로 DHCP를 갱신합니다.",
+  trap:"ifconfig는 <b>리눅스/유닉스</b> 명령입니다. Windows는 ipconfig입니다.",
+  coach:"Windows=ipconfig, Linux=ifconfig(또는 ip). OS를 먼저 보세요."},
+ {t:"파일시스템", q:"다음 중 Windows 계열에서 사용하는 파일시스템은?",
+  o:["ext4","XFS","Btrfs","NTFS"], a:3,
+  why:"NTFS는 Windows의 기본 파일시스템으로 권한·저널링을 지원합니다.",
+  trap:"ext4·XFS·Btrfs는 모두 <b>리눅스</b>용 파일시스템입니다.",
+  coach:"Windows=NTFS/FAT32, Linux=ext4/XFS. NTFS의 T가 Windows 진영."},
+ {t:"리눅스부팅", q:"리눅스 런레벨 중 다중 사용자 <b>그래픽(GUI)</b> 모드에 해당하는 것은?",
+  o:["런레벨 0","런레벨 5","런레벨 3","런레벨 6"], a:1,
+  why:"런레벨 5는 <b>다중 사용자 + GUI</b> 모드입니다.",
+  trap:"런레벨 3은 GUI 없는 <b>텍스트</b> 다중 사용자 모드라 다릅니다.",
+  coach:"0 종료 · 1 단일 · 3 텍스트 · 5 GUI · 6 재부팅. 'GUI는 5'."}
+]},
+{s:"4과목 네트워크 운용기기", items:[
+ {t:"장비계층", q:"OSI 3계층에서 동작하며 서로 다른 네트워크 간 <b>경로를 선택</b>해 패킷을 전달하는 장비는?",
+  o:["스위치","브리지","라우터","리피터"], a:2,
+  why:"라우터는 <b>3계층</b> 장비로 IP를 보고 최적 경로로 패킷을 라우팅합니다.",
+  trap:"스위치·브리지는 2계층(MAC), 리피터는 1계층이라 경로 선택을 못 합니다.",
+  coach:"경로 선택·IP·3계층=라우터. 브로드캐스트 도메인을 나누는 것도 라우터."},
+ {t:"장비계층", q:"MAC 주소 테이블을 학습해 목적지 포트로만 프레임을 전달하는 2계층 장비는?",
+  o:["허브","스위치","라우터","게이트웨이"], a:1,
+  why:"스위치는 <b>MAC 주소 학습</b> 후 해당 포트로만 전달해 콜리전 도메인을 나눕니다.",
+  trap:"허브는 모든 포트로 무조건 <b>플러딩</b>해 충돌이 잦습니다.",
+  coach:"스위치=목적지 포트만(똑똑), 허브=전 포트 뿌림(단순). 스위치가 2계층의 주역."},
+ {t:"케이블", q:"같은 종류의 장비(스위치–스위치, PC–PC)를 직접 연결할 때 쓰는 UTP 케이블은?",
+  o:["크로스 케이블","다이렉트 케이블","롤오버 케이블","광케이블"], a:0,
+  why:"같은 계층·같은 종류 장비끼리는 송수신 선을 교차한 <b>크로스 케이블</b>로 연결합니다.",
+  trap:"PC–스위치처럼 다른 종류는 다이렉트(스트레이트)를 씁니다. 방향이 반대입니다.",
+  coach:"같은 장비=크로스, 다른 장비=다이렉트. 요즘은 Auto-MDIX로 자동 인식되기도 합니다."},
+ {t:"케이블배열", q:"UTP 다이렉트 케이블을 만들 때 양쪽 커넥터에 동일하게 적용하는 표준 배열은?",
+  o:["한쪽 T568A, 다른 쪽 T568B","양쪽 모두 T568B","양쪽 모두 반대로","무작위 배열"], a:1,
+  why:"다이렉트는 양쪽을 <b>같은 배열(보통 T568B)</b>로 제작합니다.",
+  trap:"한쪽 A·다른 쪽 B로 만들면 <b>크로스</b> 케이블이 됩니다.",
+  coach:"양쪽 같은 배열=다이렉트, 한쪽만 다르게(A-B)=크로스. 실기 단골입니다."},
+ {t:"광케이블", q:"장거리 전송에 유리하며 코어 지름이 얇아 단일 경로로 빛을 전달하는 광섬유는?",
+  o:["멀티모드","싱글모드","UTP","동축"], a:1,
+  why:"싱글모드는 코어가 얇아 <b>장거리·고속</b>에 유리합니다.",
+  trap:"멀티모드는 코어가 굵어 여러 경로로 전달되며 <b>단거리</b>에 적합합니다.",
+  coach:"싱글=장거리(얇다), 멀티=단거리(굵다). '싱글이 멀리 간다'."},
+ {t:"RAID", q:"두 개의 디스크에 같은 데이터를 동시에 저장해 하나가 고장나도 복구 가능한 RAID 방식은?",
+  o:["RAID 0","RAID 5","RAID 6","RAID 1"], a:3,
+  why:"RAID 1(미러링)은 <b>같은 데이터를 복제</b>해 안정성을 확보합니다.",
+  trap:"RAID 0(스트라이핑)은 속도만 높이고 <b>중복 저장이 없어</b> 하나 고장 시 전부 손실됩니다.",
+  coach:"0=속도(위험), 1=미러(안전), 5=패리티 분산(안전+효율). '1은 하나 더 복사'."},
+ {t:"RAID", q:"최소 3개 디스크에 데이터와 <b>패리티</b>를 분산 저장해, 한 디스크 고장 시 복구가 가능한 RAID는?",
+  o:["RAID 0","RAID 1","RAID 5","RAID 10"], a:2,
+  why:"RAID 5는 <b>패리티를 여러 디스크에 분산</b>해 용량 효율과 안정성을 함께 얻습니다.",
+  trap:"RAID 1은 통째로 복제라 용량 효율이 낮습니다. 패리티 분산은 5입니다.",
+  coach:"패리티 분산·최소 3개=RAID 5. '5는 패리티 파이브'."},
+ {t:"무선", q:"현재 널리 쓰이는 무선랜 보안 방식 중 가장 안전하며, 취약한 WEP를 대체한 것은?",
+  o:["WEP","MAC 필터링","WPA2","SSID 숨김"], a:2,
+  why:"WPA2는 AES 기반으로 <b>WEP의 취약점을 대체</b>한 표준입니다.",
+  trap:"WEP는 RC4 기반으로 쉽게 뚫려 더 이상 안전하지 않습니다.",
+  coach:"보안 세기: WEP < WPA < WPA2 < WPA3. 시험 정답은 대개 WPA2."},
+ {t:"라우팅", q:"홉(Hop) 수를 기준으로 경로를 정하며 최대 15홉으로 제한되는 라우팅 프로토콜은?",
+  o:["RIP","OSPF","BGP","EIGRP"], a:0,
+  why:"RIP은 <b>홉 수(거리 벡터)</b> 기준이며 최대 15홉, 16홉은 도달 불가로 봅니다.",
+  trap:"OSPF는 <b>비용(대역폭)</b> 기반 링크 상태 프로토콜이라 기준이 다릅니다.",
+  coach:"RIP=홉·소규모·15한계, OSPF=비용·대규모. 'RIP은 홉만 센다'."},
+ {t:"라우팅", q:"인터넷에서 자율 시스템(AS) 간 경로를 교환하는 <b>외부</b> 라우팅 프로토콜은?",
+  o:["RIP","OSPF","ICMP","BGP"], a:3,
+  why:"BGP는 <b>AS 간(외부)</b> 라우팅 프로토콜로 인터넷 백본을 이룹니다.",
+  trap:"RIP·OSPF는 하나의 AS <b>내부</b>에서 도는 IGP라 범위가 다릅니다.",
+  coach:"AS 간=BGP(외부), AS 내=RIP·OSPF(내부). 'BGP가 인터넷을 잇는다'."},
+ {t:"스위칭", q:"스위치에서 물리적으로 같은 장비에 연결돼 있어도 논리적으로 브로드캐스트 도메인을 나누는 기술은?",
+  o:["VPN","VLAN","NAT","STP"], a:1,
+  why:"VLAN은 <b>논리적으로 망을 분할</b>해 브로드캐스트 도메인을 나눕니다.",
+  trap:"STP는 스위치 루프를 막는 기술로 도메인 분할과 목적이 다릅니다.",
+  coach:"'논리적 망 분할·브로드캐스트 도메인'은 VLAN. 포트를 그룹으로 묶는 것."},
+ {t:"스위칭", q:"스위치가 이중화된 경로에서 브리지 루프가 생기는 것을 방지하는 프로토콜은?",
+  o:["VTP","STP","DHCP","ARP"], a:1,
+  why:"STP(802.1D)는 <b>루프를 차단</b>하기 위해 일부 포트를 블로킹 상태로 둡니다.",
+  trap:"VLAN 정보를 동기화하는 VTP와 이름이 비슷해 헷갈립니다. 루프 방지는 STP입니다.",
+  coach:"'루프 방지'는 STP 고정. Spanning Tree가 나무처럼 하나의 경로만 남깁니다."},
+ {t:"게이트웨이", q:"서로 다른 프로토콜을 사용하는 네트워크를 상호 연결하기 위해 프로토콜을 변환하는 장비는?",
+  o:["리피터","게이트웨이","허브","브리지"], a:1,
+  why:"게이트웨이는 <b>프로토콜 변환</b>으로 이기종 네트워크를 잇습니다. 최상위 계층까지 관여합니다.",
+  trap:"브리지·허브·리피터는 단순 중계·증폭 장비라 프로토콜 변환을 못 합니다.",
+  coach:"'프로토콜 변환·이기종 연결'은 게이트웨이 고정 키워드."},
+ {t:"전원", q:"정전 시 서버·네트워크 장비에 일시적으로 전원을 공급해 안전하게 종료할 시간을 벌어 주는 장치는?",
+  o:["UPS","AVR","SMPS","PDU"], a:0,
+  why:"UPS(무정전 전원장치)는 정전 시 <b>배터리로 전원을 유지</b>해 데이터 손실을 막습니다.",
+  trap:"AVR은 전압을 안정화할 뿐 정전 시 전원 공급은 하지 못합니다.",
+  coach:"'정전 대비 배터리'는 UPS. 서버실 필수 장비입니다."}
+]}
+];
+
+var EXAM3 = [
+{s:"1과목 네트워크 일반", items:[
+ {t:"통신방식", q:"전화 통화처럼 양쪽이 <b>동시에</b> 송신과 수신을 할 수 있는 전송 방식은?",
+  o:["전이중","단방향","반이중","브로드캐스트"], a:0,
+  why:"전이중(Full Duplex)은 양방향 <b>동시</b> 송수신이 가능합니다. 전화가 대표 예입니다.",
+  trap:"반이중은 양방향이되 <b>번갈아</b>(무전기) 하는 방식이라 동시성이 없습니다.",
+  coach:"동시 가능=전이중, 번갈아=반이중, 한쪽만=단방향. 전화·무전기·방송으로 짝지으세요."},
+ {t:"OSI", q:"OSI 7계층 중 종단 간 <b>흐름 제어와 오류 복구</b>를 담당하고 TCP·UDP가 동작하는 계층은?",
+  o:["전송 계층","네트워크 계층","세션 계층","데이터링크 계층"], a:0,
+  why:"전송(Transport) 계층(4)이 <b>종단 간 신뢰성·흐름 제어</b>를 담당하며 TCP·UDP가 여기 있습니다.",
+  trap:"네트워크(3)는 경로 선택(IP)이라 역할이 다릅니다.",
+  coach:"TCP/UDP·포트·세그먼트=4계층 전송. IP·라우팅·패킷=3계층 네트워크."},
+ {t:"OSI PDU", q:"데이터링크 계층에서 다루는 데이터 단위(PDU)는?",
+  o:["프레임","비트","패킷","세그먼트"], a:0,
+  why:"데이터링크(2)의 PDU는 <b>프레임</b>입니다.",
+  trap:"패킷은 네트워크(3), 세그먼트는 전송(4)이라 계층이 다릅니다.",
+  coach:"1비트·2프레임·3패킷·4세그먼트. '비·프·패·세' 순서로 외우세요."},
+ {t:"오류검출", q:"다항식 연산으로 블록 단위 오류를 검출하며 신뢰성이 높아 이더넷에서 쓰는 방식은?",
+  o:["CRC","패리티 검사","해밍 코드","블록 합"], a:0,
+  why:"CRC(순환 중복 검사)는 다항식 기반으로 <b>검출력이 높아</b> 이더넷·저장장치에 씁니다.",
+  trap:"해밍 코드는 검출을 넘어 <b>정정</b>까지 하지만 오버헤드가 커 이더넷 프레임 검사에는 CRC를 씁니다.",
+  coach:"이더넷 프레임 끝의 FCS가 바로 CRC입니다. '검출=CRC/패리티, 정정=해밍'."},
+ {t:"교환방식", q:"데이터를 일정 크기로 나눠 각기 다른 경로로 보낼 수 있고, 회선을 여럿이 공유하는 방식은?",
+  o:["회선 교환","패킷 교환","시분할 교환","공간 분할"], a:1,
+  why:"패킷 교환은 데이터를 <b>패킷으로 분할</b>해 경로를 공유하며 보냅니다. 인터넷의 기반입니다.",
+  trap:"회선 교환은 전용 경로를 독점(전화)해 공유하지 않습니다.",
+  coach:"'나눠 보내 공유'는 패킷 교환, '경로 독점'은 회선 교환."},
+ {t:"토폴로지", q:"중앙의 허브·스위치에 모든 노드가 개별 연결되어, 한 노드 장애가 전체에 영향을 주지 않는 구성은?",
+  o:["버스형","링형","메시형","성형(Star)"], a:3,
+  why:"성형(Star)은 중앙 장비에 각 노드가 직접 연결돼 <b>한 노드 고장이 전체에 파급되지 않습니다</b>. 다만 중앙 장비가 단일 장애점입니다.",
+  trap:"버스형은 하나의 간선을 공유해 간선 장애 시 전체가 멈춥니다.",
+  coach:"오늘날 LAN 대부분이 스위치 중심의 성형입니다. 약점은 '중앙 장비 고장'."},
+ {t:"프로토콜요소", q:"프로토콜 3요소 중 통신 <b>속도·순서(타이밍)</b>를 규정하는 것은?",
+  o:["순서(Timing)","구문","의미","캡슐화"], a:0,
+  why:"순서(Timing)는 전송 <b>속도와 메시지 순서</b>를 규정합니다.",
+  trap:"구문은 형식, 의미는 각 비트의 뜻이라 각각 다릅니다.",
+  coach:"구문(형식)·의미(뜻)·순서(타이밍). '언제·얼마나 빨리'는 순서입니다."},
+ {t:"대역폭", q:"1초에 8,000,000비트를 전송할 수 있는 회선의 속도를 바르게 표기한 것은?",
+  o:["8 Mbps","8 Kbps","8 Gbps","800 bps"], a:0,
+  why:"8,000,000 bps = 8×10^6 = <b>8 Mbps</b>입니다.",
+  trap:"K(10^3)·M(10^6)·G(10^9)의 자리를 헷갈리면 틀립니다.",
+  coach:"0이 6개면 Mega. 8,000,000 → 8 Mbps. K=천, M=백만, G=십억."}
+]},
+{s:"2과목 TCP/IP", items:[
+ {t:"포트", q:"원격지 장비에 <b>암호화된</b> 안전한 접속을 제공하는 프로토콜과 포트는?",
+  o:["SSH / 22","Telnet / 23","FTP / 21","HTTP / 80"], a:0,
+  why:"SSH(22)는 <b>암호화 원격 접속</b>을 제공해 Telnet을 대체했습니다.",
+  trap:"Telnet(23)은 평문 전송이라 보안에 취약합니다. 암호화면 SSH입니다.",
+  coach:"원격접속 암호화=SSH(22), 평문=Telnet(23). 실무는 SSH만 씁니다."},
+ {t:"포트", q:"웹(HTTPS) 통신에 사용하는 기본 포트 번호는?",
+  o:["80","443","8080","21"], a:1,
+  why:"HTTPS는 <b>443</b>번을 씁니다. TLS로 암호화된 웹 트래픽입니다.",
+  trap:"80은 평문 HTTP입니다. 8080은 대체·프록시용 비표준 포트입니다.",
+  coach:"HTTP=80, HTTPS=443. 자물쇠(https)가 443."},
+ {t:"프로토콜", q:"수신 호스트가 없는 IP나 도달 불가능한 목적지에 대해 <b>오류 메시지</b>를 돌려보내는 프로토콜은?",
+  o:["ARP","ICMP","TCP","UDP"], a:1,
+  why:"ICMP는 'Destination Unreachable' 등 <b>오류·상태 메시지</b>를 전달합니다.",
+  trap:"ARP는 주소 변환용이라 오류 보고와 무관합니다.",
+  coach:"오류 보고·ping은 ICMP. 3계층에서 IP를 돕는 보조 프로토콜입니다."},
+ {t:"프로토콜", q:"IP 주소가 이미 정해진 상태에서 물리(MAC) 주소를 알아내기 위해 브로드캐스트로 질의하는 프로토콜은?",
+  o:["RARP","DNS","ARP","DHCP"], a:2,
+  why:"ARP는 <b>IP→MAC</b>을 브로드캐스트 질의로 알아냅니다.",
+  trap:"DNS는 도메인→IP, DHCP는 IP 할당이라 목적이 다릅니다.",
+  coach:"같은 LAN에서 상대 MAC이 필요할 때 ARP. 'IP는 아는데 MAC을 모를 때'."},
+ {t:"IP클래스", q:"멀티캐스트 전용으로 사용하며 224.0.0.0 ~ 239.255.255.255 범위를 갖는 IP 클래스는?",
+  o:["B클래스","C클래스","D클래스","E클래스"], a:2,
+  why:"D클래스(224~239)는 <b>멀티캐스트</b> 전용입니다.",
+  trap:"E클래스(240~255)는 실험·연구용으로 일반 통신에 쓰지 않습니다.",
+  coach:"A~C 일반, D 멀티캐스트, E 실험. '224 보이면 D=멀티캐스트'."},
+ {t:"서브넷", q:"서브넷 마스크가 /27일 때 한 서브넷에서 실제 사용 가능한 호스트 수는?",
+  o:["14개","30개","62개","6개"], a:1,
+  why:"/27은 호스트 비트 5개 → 2^5−2 = <b>30개</b>입니다.",
+  trap:"네트워크·브로드캐스트 주소 2개를 빼야 합니다. 2^5=32가 아니라 30입니다.",
+  coach:"/27→30, /28→14, /29→6, /30→2. '2의 (32−prefix)승 −2'."},
+ {t:"서브넷", q:"192.168.10.0/24를 서브넷 마스크 /28로 나눌 때 만들어지는 서브넷의 개수는?",
+  o:["8개","4개","16개","32개"], a:2,
+  why:"/24→/28은 <b>4비트 차용</b> → 2^4 = <b>16개</b> 서브넷입니다.",
+  trap:"호스트 수(14)와 서브넷 수(16)를 혼동하기 쉽습니다. 질문은 개수입니다.",
+  coach:"서브넷 개수=2^(차용 비트). /24→/28은 4비트→16개."},
+ {t:"IPv6", q:"IPv6 주소 표기에서 연속된 0 그룹을 <b>한 번</b> 생략해 '::'로 축약할 수 있다. 이때 지켜야 할 규칙은?",
+  o:["'::'는 주소 안에 여러 번 쓸 수 있다","'::'는 한 번만 사용할 수 있다","각 그룹은 8자리여야 한다","콜론 대신 점을 쓴다"], a:1,
+  why:"'::'(연속 0 축약)는 모호함을 막기 위해 주소당 <b>단 한 번만</b> 사용합니다.",
+  trap:"여러 번 쓰면 0의 개수를 복원할 수 없어 규칙 위반입니다.",
+  coach:"IPv6 축약: 앞 0 생략 + 연속 0 그룹은 '::'로 딱 한 번."},
+ {t:"TCP헤더", q:"TCP는 제공하지만 UDP는 제공하지 <b>않는</b> 기능은?",
+  o:["포트 번호","체크섬","캡슐화","순서 보장·재전송"], a:3,
+  why:"TCP는 <b>순서 보장·흐름 제어·재전송</b>을 제공하지만 UDP는 없습니다.",
+  trap:"포트·체크섬은 둘 다 있습니다. 차이는 '신뢰성' 기능입니다.",
+  coach:"TCP만의 것 = 연결·순서·재전송·흐름제어. UDP는 그게 없어 빠릅니다."},
+ {t:"DNS", q:"메일을 받을 도메인의 <b>메일 서버</b>를 지정하는 DNS 레코드는?",
+  o:["A","NS","TXT","MX"], a:3,
+  why:"MX(Mail eXchanger) 레코드가 도메인의 <b>메일 서버</b>를 지정합니다.",
+  trap:"A는 주소, NS는 네임서버, TXT는 텍스트 정보라 각각 다릅니다.",
+  coach:"메일=MX, 주소=A, 네임서버=NS. 'MX의 M은 Mail'."},
+ {t:"DHCP", q:"DHCP에서 클라이언트가 IP를 요청하기 위해 가장 먼저 보내는 메시지는?",
+  o:["DHCP Offer","DHCP Request","DHCP Ack","DHCP Discover"], a:3,
+  why:"클라이언트가 <b>DHCP Discover</b>를 브로드캐스트해 서버를 찾는 것이 첫 단계입니다.",
+  trap:"Offer는 서버가 응답하는 두 번째 단계입니다. 시작은 클라이언트의 Discover.",
+  coach:"DORA: Discover(찾기)→Offer→Request→Ack. 첫 글자 D부터 시작."},
+ {t:"응용프로토콜", q:"파일을 전송할 때 인증 없이 UDP 기반으로 간단히 동작해 부팅·펌웨어 전송에 쓰는 프로토콜은?",
+  o:["FTP","SFTP","HTTP","TFTP"], a:3,
+  why:"TFTP(69)는 <b>UDP 기반의 경량 파일 전송</b>으로 부팅·펌웨어 배포에 씁니다.",
+  trap:"FTP(20/21)는 TCP 기반이며 인증·디렉토리 기능이 있어 더 무겁습니다.",
+  coach:"TFTP=Trivial(간단)·UDP·69, FTP=TCP·인증·20/21."},
+ {t:"프로토콜", q:"네트워크 장비의 시각을 표준 시간에 맞춰 동기화하는 프로토콜은?",
+  o:["SNMP","NTP","SMTP","NNTP"], a:1,
+  why:"NTP(Network Time Protocol)는 장비 <b>시각 동기화</b>를 담당합니다(123번).",
+  trap:"SNMP는 장비 관리, SMTP는 메일 발신이라 목적이 다릅니다.",
+  coach:"'시간 동기화'는 NTP. Time의 T가 NTP에 들어 있습니다."},
+ {t:"NAT", q:"하나의 공인 IP에 <b>포트 번호</b>를 달리해 여러 사설 호스트가 동시에 인터넷을 쓰게 하는 기술은?",
+  o:["정적 NAT","VLAN","프록시","PAT(NAT 오버로드)"], a:3,
+  why:"PAT은 포트로 세션을 구분해 <b>여러 사설 IP가 하나의 공인 IP를 공유</b>합니다.",
+  trap:"정적 NAT은 1:1 매핑이라 공유가 안 됩니다. 다대일 공유는 PAT입니다.",
+  coach:"1:1=정적 NAT, 다:1(포트로 구분)=PAT. 가정용 공유기가 PAT입니다."},
+ {t:"특수IP", q:"자기 자신을 가리키는 루프백(loopback) 주소로 옳은 것은?",
+  o:["127.0.0.1","0.0.0.0","255.255.255.255","192.168.0.1"], a:0,
+  why:"127.0.0.1은 <b>자기 자신(루프백)</b>을 가리키며 네트워크 스택 점검에 씁니다.",
+  trap:"255.255.255.255는 제한적 브로드캐스트, 0.0.0.0은 미지정 주소라 다릅니다.",
+  coach:"루프백=127.0.0.1(127.0.0.0/8 대역 전체). ping 127.0.0.1로 내 TCP/IP 정상 여부 확인."}
+]},
+{s:"3과목 NOS", items:[
+ {t:"리눅스명령", q:"리눅스에서 파일이나 디렉토리를 다른 위치로 <b>이동</b>하거나 이름을 바꾸는 명령은?",
+  o:["cp","rm","mv","ln"], a:2,
+  why:"mv(move)는 파일 <b>이동·이름 변경</b>을 모두 수행합니다.",
+  trap:"cp는 복사(원본 유지), rm은 삭제입니다. 이동은 mv입니다.",
+  coach:"cp 복사·mv 이동/이름변경·rm 삭제·ln 링크. '이름 바꾸기도 mv'."},
+ {t:"리눅스명령", q:"파일의 <b>소유자와 그룹</b>을 변경하는 명령은?",
+  o:["chmod","chgrp","chown","umask"], a:2,
+  why:"chown은 파일의 <b>소유자(및 그룹)</b>를 변경합니다. chown user:group file 형식입니다.",
+  trap:"chmod는 '권한'을 바꾸는 것이라 '소유자'와 다릅니다.",
+  coach:"소유자=chown, 권한=chmod, 그룹만=chgrp. 'own=소유자'."},
+ {t:"리눅스명령", q:"디렉토리 <b>/data</b> 아래에서 이름이 'log'로 끝나는 파일을 찾는 명령으로 옳은 것은?",
+  o:["grep log /data","find /data -name '*log'","ls -l log","cat /data/log"], a:1,
+  why:"find는 <b>경로·이름 조건</b>으로 파일을 찾습니다. -name '*log'로 패턴 매칭합니다.",
+  trap:"grep은 파일 '내용'을 검색하는 명령이라 이름 찾기와 다릅니다.",
+  coach:"이름·위치로 찾기=find, 내용으로 찾기=grep."},
+ {t:"리눅스명령", q:"현재 시스템에 접속해 있는 <b>사용자 목록</b>을 확인하는 명령은?",
+  o:["pwd","whoami","id","who"], a:3,
+  why:"who는 현재 <b>로그인한 사용자 목록</b>을 보여 줍니다.",
+  trap:"whoami는 '나 자신'의 계정만, id는 사용자 UID·GID를 보여 줍니다.",
+  coach:"전체 접속자=who, 나 자신=whoami, UID/GID=id."},
+ {t:"리눅스명령", q:"파일의 내용을 화면에 출력하되, 긴 파일을 <b>한 화면씩</b> 끊어서 보는 명령은?",
+  o:["more","cat","touch","echo"], a:0,
+  why:"more(또는 less)는 긴 내용을 <b>페이지 단위</b>로 끊어 보여 줍니다.",
+  trap:"cat은 전체를 한 번에 쏟아내 긴 파일에는 불편합니다.",
+  coach:"전체 출력=cat, 페이지 단위=more/less. 뒤로도 보려면 less."},
+ {t:"리눅스명령", q:"파일의 접근 권한을 <b>소유자만 모든 권한, 그룹·기타는 권한 없음</b>으로 설정하는 명령은?",
+  o:["chmod 755 file","chmod 644 file","chmod 600 file","chmod 700 file"], a:3,
+  why:"rwx(7) ---(0) ---(0) = <b>700</b>입니다. 소유자 전용 실행 파일에 씁니다.",
+  trap:"600은 소유자에 실행(x) 권한이 없는 rw-이라 다릅니다.",
+  coach:"700=소유자 전용 rwx, 600=소유자 rw만. 0은 권한 없음."},
+ {t:"리눅스명령", q:"프로세스 목록을 한 번 출력할 때, 다른 사용자 프로세스까지 상세히 보기 위해 흔히 쓰는 옵션 조합은?",
+  o:["ls -al","ps -ef","df -h","top -b"], a:1,
+  why:"ps -ef(또는 ps aux)는 <b>모든 사용자의 프로세스</b>를 상세히 한 번 출력합니다.",
+  trap:"top은 실시간 모니터라 '한 번 출력'과 다릅니다.",
+  coach:"스냅샷 상세=ps -ef / ps aux, 실시간=top."},
+ {t:"리눅스명령", q:"작업을 정해진 시간에 <b>주기적으로 자동 실행</b>하도록 예약하는 리눅스 기능은?",
+  o:["kill","mount","cron","alias"], a:2,
+  why:"cron은 crontab에 등록한 작업을 <b>주기적으로 자동 실행</b>합니다.",
+  trap:"mount는 파일시스템 연결, alias는 명령 별칭이라 예약과 무관합니다.",
+  coach:"'정해진 시각 반복 실행'은 cron. crontab -e로 편집합니다."},
+ {t:"리눅스명령", q:"외부 저장장치나 파티션을 디렉토리 트리에 연결해 사용할 수 있게 하는 명령은?",
+  o:["df","fdisk","mount","ls"], a:2,
+  why:"mount는 파일시스템(파티션·USB 등)을 <b>특정 디렉토리에 연결</b>합니다.",
+  trap:"fdisk는 파티션을 나누는 도구, df는 사용량 확인이라 목적이 다릅니다.",
+  coach:"장치 연결=mount, 해제=umount, 파티션 관리=fdisk."},
+ {t:"리눅스권한", q:"umask 값이 <b>022</b>일 때 새로 만드는 <b>파일</b>의 기본 권한은?(파일 기본 666 기준)",
+  o:["755","666","600","644"], a:3,
+  why:"파일 기본 666에서 umask 022를 빼면 <b>644</b>(rw-r--r--)입니다.",
+  trap:"755는 디렉토리(기본 777−022)의 값입니다. 파일은 666 기준이라 644입니다.",
+  coach:"파일=666−umask, 디렉토리=777−umask. umask 022→파일 644·디렉토리 755."},
+ {t:"윈도우서버", q:"Windows Server에서 웹 사이트를 게시·운영하는 데 사용하는 서버 역할은?",
+  o:["Active Directory","IIS","Hyper-V","DHCP"], a:1,
+  why:"IIS(Internet Information Services)는 Windows의 <b>웹 서버</b> 역할입니다.",
+  trap:"Active Directory는 디렉토리 서비스, Hyper-V는 가상화라 역할이 다릅니다.",
+  coach:"Windows 웹서버=IIS, 리눅스 웹서버=Apache/Nginx."},
+ {t:"윈도우", q:"Windows에서 목적지까지 거쳐 가는 라우터 경로를 추적하는 명령은?",
+  o:["tracert","ping","nslookup","arp"], a:0,
+  why:"tracert(Windows)는 목적지까지 <b>거치는 라우터(홉) 경로</b>를 추적합니다.",
+  trap:"리눅스에서는 같은 기능을 traceroute로 부릅니다. Windows는 tracert입니다.",
+  coach:"경로 추적: Windows=tracert, Linux=traceroute. 도달 확인만은 ping."},
+ {t:"권한개념", q:"리눅스에서 일반 사용자가 관리자(root) 권한으로 특정 명령을 <b>일시적으로</b> 실행하게 해 주는 명령은?",
+  o:["su","sudo","passwd","chmod"], a:1,
+  why:"sudo는 지정한 명령을 <b>일시적으로 root 권한</b>으로 실행합니다(허가된 사용자).",
+  trap:"su는 아예 사용자를 root로 <b>전환</b>합니다. 한 명령만 올리는 것은 sudo입니다.",
+  coach:"한 명령만 관리자=sudo, 계정 자체 전환=su. 'sudo=super user do'."}
+]},
+{s:"4과목 네트워크 운용기기", items:[
+ {t:"장비계층", q:"입력 신호를 단순히 <b>증폭·재생</b>해 전송 거리를 늘리는 1계층 장비는?",
+  o:["스위치","라우터","리피터","게이트웨이"], a:2,
+  why:"리피터는 <b>신호 증폭·재생</b>만 하는 1계층(물리) 장비입니다.",
+  trap:"스위치·라우터는 주소를 보고 판단하는 상위 계층 장비라 다릅니다.",
+  coach:"1계층 리피터·허브(단순 증폭/분배), 2계층 스위치, 3계층 라우터."},
+ {t:"장비", q:"허브 중 들어온 신호를 <b>증폭</b>해 내보내 전송 거리를 늘려 주는 유형은?",
+  o:["리피터 허브","더미 허브","스위칭 허브","인텔리전트 허브"], a:0,
+  why:"리피터 허브는 신호를 <b>증폭·재생</b>해 거리를 확장합니다.",
+  trap:"더미 허브는 단순 분배만 하고 증폭 기능이 없습니다.",
+  coach:"신호 증폭이 붙으면 리피터 허브. 스위칭 허브는 MAC 기반 전달(사실상 스위치)."},
+ {t:"케이블", q:"PC와 스위치를 연결할 때 사용하는 UTP 케이블 종류는?",
+  o:["다이렉트(스트레이트) 케이블","크로스 케이블","롤오버 케이블","시리얼 케이블"], a:0,
+  why:"PC–스위치는 <b>서로 다른 종류</b> 장비라 다이렉트(스트레이트) 케이블을 씁니다.",
+  trap:"크로스는 같은 종류(스위치–스위치, PC–PC)에 씁니다.",
+  coach:"다른 장비=다이렉트, 같은 장비=크로스. PC-스위치는 다이렉트."},
+ {t:"케이블", q:"라우터·스위치의 콘솔 포트에 접속해 설정하기 위해 PC와 연결할 때 쓰는 케이블은?",
+  o:["크로스 케이블","롤오버(콘솔) 케이블","광케이블","다이렉트 케이블"], a:1,
+  why:"콘솔 접속은 <b>롤오버(콘솔) 케이블</b>로 장비의 콘솔 포트와 PC 시리얼/USB를 잇습니다.",
+  trap:"데이터 통신용 크로스·다이렉트와 용도가 전혀 다릅니다.",
+  coach:"장비 최초 설정(콘솔 접속)=롤오버 케이블. 실기·현장에서 자주 씁니다."},
+ {t:"커넥터", q:"UTP 케이블에 사용하는 8핀 커넥터의 규격 명칭은?",
+  o:["RJ-11","BNC","RJ-45","SC"], a:2,
+  why:"UTP는 8핀 <b>RJ-45</b> 커넥터를 씁니다.",
+  trap:"RJ-11은 4핀(전화선), BNC는 동축, SC는 광커넥터라 다릅니다.",
+  coach:"랜선=RJ-45(8핀), 전화선=RJ-11(4핀). 광은 SC/LC."},
+ {t:"광케이블", q:"코어 지름이 굵어 여러 경로로 빛이 전달되며 근거리(건물 내)에서 주로 쓰는 광섬유는?",
+  o:["싱글모드","멀티모드","UTP","STP"], a:1,
+  why:"멀티모드는 코어가 굵어 <b>근거리·건물 내</b> 배선에 씁니다.",
+  trap:"싱글모드는 얇은 코어로 장거리(도시 간)에 씁니다.",
+  coach:"멀티=근거리(굵다), 싱글=장거리(얇다)."},
+ {t:"RAID", q:"디스크 두 대 이상에 데이터를 <b>분산 저장(스트라이핑)</b>해 속도를 높이지만, 한 대만 고장나도 전체 데이터를 잃는 방식은?",
+  o:["RAID 1","RAID 5","RAID 0","RAID 6"], a:2,
+  why:"RAID 0은 <b>스트라이핑</b>으로 속도는 빠르나 중복이 없어 한 대 고장 시 전부 손실됩니다.",
+  trap:"RAID 1은 미러링이라 한 대 고장에도 안전합니다. 위험한 건 0입니다.",
+  coach:"0=속도만(위험), 1=미러(안전), 5=패리티(안전+효율). '0은 백업 제로'."},
+ {t:"무선", q:"무선랜(Wi-Fi)에서 하나의 AP가 관리하는 서비스 영역을 식별하는 이름은?",
+  o:["MAC","IP","SSID","VLAN"], a:2,
+  why:"SSID는 무선 네트워크(서비스 영역)를 구분하는 <b>이름(식별자)</b>입니다.",
+  trap:"MAC은 장비 물리주소, VLAN은 유선 논리분할이라 다릅니다.",
+  coach:"Wi-Fi 이름=SSID. 접속할 때 목록에 뜨는 그 이름입니다."},
+ {t:"무선표준", q:"2.4GHz와 5GHz를 함께 지원하며 MIMO를 도입한 무선랜 표준은?",
+  o:["802.11b","802.11n","802.11g","802.11a"], a:1,
+  why:"802.11n은 <b>2.4/5GHz 동시 지원·MIMO</b>로 속도를 크게 높였습니다.",
+  trap:"11b/g는 2.4GHz 전용, 11a는 5GHz 전용입니다. 둘 다면 11n입니다.",
+  coach:"11n=2.4/5GHz·MIMO, 11ac/ax는 그 이후 세대(5GHz 중심)."},
+ {t:"라우팅", q:"대규모 네트워크에서 <b>링크 상태(비용)</b>를 기반으로 최단 경로를 계산하는 내부 라우팅 프로토콜은?",
+  o:["RIP","BGP","ARP","OSPF"], a:3,
+  why:"OSPF는 <b>링크 상태·비용 기반</b>으로 대규모 내부망에 적합합니다.",
+  trap:"RIP은 홉 수 기반의 소규모용이라 대규모에는 부적합합니다.",
+  coach:"소규모·홉=RIP, 대규모·비용=OSPF, AS간=BGP."},
+ {t:"스위칭", q:"프레임의 목적지 MAC이 테이블에 없을 때, 스위치가 해당 프레임을 처리하는 방식은?",
+  o:["폐기한다","라우팅한다","암호화한다","모든 포트로 플러딩한다"], a:3,
+  why:"목적지 MAC을 모르면 스위치는 <b>수신 포트를 제외한 전 포트로 플러딩</b>해 학습합니다.",
+  trap:"폐기하지 않습니다. 알 때까지 뿌린 뒤 응답으로 MAC을 학습합니다.",
+  coach:"알면 해당 포트로, 모르면 플러딩. 이후 MAC 테이블에 학습해 다음엔 정확히 전달."},
+ {t:"장비", q:"여러 대의 실제 서버로 들어오는 요청을 나눠 분산시켜 부하를 고르게 하는 장비·기술은?",
+  o:["리피터","모뎀","방화벽","로드 밸런서"], a:3,
+  why:"로드 밸런서는 요청을 여러 서버로 <b>분산</b>해 부하를 균등하게 합니다.",
+  trap:"방화벽은 접근 통제, 모뎀은 신호 변환이라 역할이 다릅니다.",
+  coach:"'부하 분산'은 로드 밸런서. 대량 트래픽 서비스의 앞단에 둡니다."},
+ {t:"보안장비", q:"내부망과 외부망 사이에서 정해진 규칙에 따라 트래픽을 <b>허용·차단</b>하는 보안 장비는?",
+  o:["스위치","허브","방화벽","리피터"], a:2,
+  why:"방화벽(Firewall)은 규칙(정책)에 따라 트래픽을 <b>허용·차단</b>합니다.",
+  trap:"스위치·허브는 전달 장비라 접근 통제 기능이 없습니다.",
+  coach:"'허용/차단·접근 통제'는 방화벽. 침입 탐지는 IDS/IPS."},
+ {t:"변환장비", q:"디지털 신호를 아날로그 회선(전화선 등)으로 보내기 위해 신호를 <b>변조·복조</b>하는 장비는?",
+  o:["모뎀","라우터","스위치","게이트웨이"], a:0,
+  why:"모뎀은 디지털↔아날로그 <b>변조(Modulation)·복조(Demodulation)</b>를 수행합니다.",
+  trap:"라우터·스위치는 디지털 패킷을 다루는 장비라 변복조와 다릅니다.",
+  coach:"'변조·복조'는 모뎀. 이름 자체가 MOdulator-DEModulator입니다."}
+]}
+];
+
+var DRILL = [
+{s:"① 헷갈리는 짝 · 계층과 장비", d:"1·4과목이 이어지는 핵심. 장비의 동작 계층을 확실히.", items:[
+ {t:"장비계층", q:"다음 중 데이터링크(2)계층 장비로만 묶인 것은?",
+  o:["허브, 리피터","스위치, 브리지","라우터, 게이트웨이","NIC, 허브"], a:1,
+  why:"스위치·브리지가 2계층입니다. 허브·리피터=1계층, 라우터=3계층.",
+  trap:"허브(1)를 스위치(2)와 같은 급으로 착각하기 쉽습니다.",
+  coach:"1 허브·리피터 / 2 스위치·브리지 / 3 라우터. 이 표는 1과목 OSI와 완전히 같습니다."},
+ {t:"PDU", q:"네트워크 계층의 데이터 단위(PDU)는?",
+  o:["프레임","패킷","세그먼트","비트"], a:1,
+  why:"네트워크(3)=패킷. 전송(4)=세그먼트, 데이터링크(2)=프레임.",
+  trap:"세그먼트(4계층)와 헷갈립니다.",
+  coach:"비·프·패·세(1→4). 계층 번호와 짝을 맞추세요."},
+ {t:"주소", q:"48비트로 표현되며 데이터링크 계층에서 사용하는 물리 주소는?",
+  o:["IP 주소","MAC 주소","포트 번호","도메인"], a:1,
+  why:"MAC 주소는 48비트 물리 주소로 2계층에서 사용합니다.",
+  trap:"IP(논리 주소·3계층)와 혼동하기 쉽습니다.",
+  coach:"MAC=물리·48비트·2계층, IP=논리·32비트·3계층."},
+ {t:"CSMA", q:"유선 이더넷에서 충돌을 감지하고 재전송하는 방식은?",
+  o:["CSMA/CA","CSMA/CD","토큰 패싱","폴링"], a:1,
+  why:"유선 이더넷=CSMA/CD(충돌 감지). 무선=CSMA/CA(회피).",
+  trap:"CA와 CD를 반대로 외우면 걸립니다.",
+  coach:"CD=Detection(유선), CA=Avoidance(무선)."},
+ {t:"게이트웨이", q:"서로 다른 프로토콜 체계를 변환해 연결하는 장비는?",
+  o:["스위치","게이트웨이","리피터","브리지"], a:1,
+  why:"게이트웨이가 프로토콜 변환을 담당합니다.",
+  trap:"'연결'이라는 말만 보고 스위치/브리지를 고르면 안 됩니다.",
+  coach:"'프로토콜 변환'=게이트웨이 고정 키워드."}
+]},
+{s:"② 헷갈리는 짝 · 프로토콜", d:"2과목 최다. ARP/RARP·ICMP·DHCP·DNS를 방향으로 구분.", items:[
+ {t:"ARP", q:"MAC 주소를 IP 주소로 변환하는(역방향) 프로토콜은?",
+  o:["ARP","RARP","ICMP","IGMP"], a:1,
+  why:"RARP가 MAC→IP(역방향)입니다. ARP는 IP→MAC.",
+  trap:"방향을 반대로 외우면 ARP를 고릅니다.",
+  coach:"R=Reverse(반대). RARP는 ARP의 역방향."},
+ {t:"포트", q:"SSH와 Telnet의 기본 포트 번호를 바르게 짝지은 것은?",
+  o:["22 · 23","23 · 22","21 · 22","22 · 25"], a:0,
+  why:"SSH=22, Telnet=23입니다.",
+  trap:"연달아 있는 21(FTP)·22·23을 섞어 냅니다.",
+  coach:"21 FTP · 22 SSH · 23 Telnet 순서대로 붙어 있습니다."},
+ {t:"DHCP", q:"클라이언트가 부팅 시 IP 주소를 자동으로 받아오는 프로토콜은?",
+  o:["DNS","DHCP","NAT","SNMP"], a:1,
+  why:"DHCP가 IP를 자동 할당합니다.",
+  trap:"DNS(이름 변환)와 헷갈립니다.",
+  coach:"'자동 할당'=DHCP, '이름→IP'=DNS."},
+ {t:"SNMP", q:"네트워크 장비의 상태를 원격으로 감시·관리하는 프로토콜은?",
+  o:["SMTP","SNMP","ICMP","FTP"], a:1,
+  why:"SNMP(Simple Network Management Protocol)가 장비 관리·모니터링용입니다.",
+  trap:"SMTP(메일)와 한 글자 차이라 헷갈립니다.",
+  coach:"SN<b>M</b>P의 M=Management(관리). SMTP는 Mail."},
+ {t:"NAT", q:"사설 IP를 공인 IP로 변환하여 인터넷에 연결하는 기술은?",
+  o:["NAT","VPN","VLAN","DNS"], a:0,
+  why:"NAT가 사설↔공인 IP 변환을 담당합니다(공유기의 핵심 기능).",
+  trap:"VPN(암호화 터널)과 목적이 다릅니다.",
+  coach:"NAT=주소 변환, VPN=암호화 전용선, VLAN=스위치 분할."}
+]},
+{s:"③ 계산 집중 · 서브넷", d:"매 회차 나오는 계산. 공식만 손에 익히면 무조건 득점.", items:[
+ {t:"서브넷", q:"/28 서브넷의 사용 가능한 호스트 수는?",
+  o:["6","14","30","62"], a:1,
+  why:"2^(32−28)−2 = 16−2 = <b>14</b>개입니다.",
+  trap:"−2를 잊으면 16이 됩니다.",
+  coach:"/28=14 통째로 외우면 즉답. 한 단계 내려가면 절반."},
+ {t:"서브넷", q:"255.255.255.240 을 프리픽스로 나타내면?",
+  o:["/26","/27","/28","/29"], a:2,
+  why:"240=11110000, 앞 4비트 → 24+4 = <b>/28</b>입니다.",
+  trap:"224=/27, 240=/28, 248=/29를 헷갈립니다.",
+  coach:"뒷자리 사다리 128·192·224·240·248·252 = /25~/30."},
+ {t:"서브넷", q:"C클래스 한 개를 4개의 서브넷으로 나눌 때 필요한 서브넷마스크는?",
+  o:["/25","/26","/27","/28"], a:1,
+  why:"4개 = 2² 이므로 2비트를 빌립니다 → 24+2 = <b>/26</b>.",
+  trap:"서브넷 개수(4)와 프리픽스를 바로 연결해야 합니다. 2²=4.",
+  coach:"서브넷 개수 = 2^(빌린 비트). 4개면 2비트, 8개면 3비트."},
+ {t:"호스트", q:"192.168.1.0/24 네트워크에서 사용 가능한 호스트 수는?",
+  o:["254","255","256","253"], a:0,
+  why:"2⁸−2 = 256−2 = <b>254</b>개(네트워크·브로드캐스트 제외).",
+  trap:"256(전체)이나 255를 고르면 −2를 안 한 것입니다.",
+  coach:"/24=254 기준값. 여기서 프리픽스 늘 때마다 절반."},
+ {t:"클래스", q:"기본 서브넷마스크가 255.255.0.0 인 IP 클래스는?",
+  o:["A","B","C","D"], a:1,
+  why:"B 클래스 기본 마스크가 /16 = 255.255.0.0입니다.",
+  trap:"A=/8(255.0.0.0), C=/24(255.255.255.0)와 헷갈립니다.",
+  coach:"A=/8, B=/16, C=/24. 8씩 늘어납니다."}
+]},
+{s:"④ 헷갈리는 짝 · 명령어와 권한", d:"3과목 득점처. 리눅스 명령·권한 계산.", items:[
+ {t:"권한", q:"권한이 rw-r--r-- 인 파일의 chmod 8진수 값은?",
+  o:["644","666","755","640"], a:0,
+  why:"rw-=6, r--=4, r--=4 → <b>644</b>. 일반 문서 파일의 기본 권한.",
+  trap:"755(실행 파일)와 헷갈립니다. 실행(x) 비트가 없으면 4·6만 나옵니다.",
+  coach:"644=일반 파일, 755=실행/디렉토리, 700=소유자 전용."},
+ {t:"명령어", q:"파일이나 디렉토리의 소유자를 변경하는 명령은?",
+  o:["chmod","chown","chgrp","umask"], a:1,
+  why:"chown이 소유자를 바꿉니다. chmod는 권한, chgrp는 그룹.",
+  trap:"chmod(권한)와 chown(소유자)을 헷갈립니다.",
+  coach:"chmod=mode(권한), chown=owner(소유자), chgrp=group."},
+ {t:"명령어", q:"현재 디렉토리의 파일 목록을 자세히(권한 포함) 보는 명령은?",
+  o:["ls -l","cat","pwd","cd"], a:0,
+  why:"ls -l이 권한·소유자·크기까지 상세 목록을 보여 줍니다.",
+  trap:"pwd(현재 위치)·cd(이동)와 용도가 다릅니다.",
+  coach:"ls=목록, -l=자세히. pwd=위치 확인, cd=이동."},
+ {t:"디렉토리", q:"로그 파일과 메일 등 가변 데이터가 저장되는 디렉토리는?",
+  o:["/etc","/var","/bin","/dev"], a:1,
+  why:"/var에 로그(/var/log)·메일 등 변하는 데이터가 쌓입니다.",
+  trap:"/etc(설정)와 헷갈립니다.",
+  coach:"/var=변하는 것(로그), /etc=설정, /bin=명령어."},
+ {t:"런레벨", q:"리눅스에서 시스템을 재부팅하는 런레벨은?",
+  o:["0","1","5","6"], a:3,
+  why:"런레벨 6이 재부팅입니다. 0은 종료.",
+  trap:"0(종료)과 6(재부팅)을 바꾸면 걸립니다.",
+  coach:"0=끄기, 6=다시 켜기(재부팅). 기본값으로 두면 안 되는 두 값."}
+]}
+,{s:"⑤ 리눅스 명령어 집중 I · 파일·프로세스", d:"실제 시험 최다 출제(리눅스가 1위). 파일 조작·프로세스 명령.", items:[
+ {t:"명령어", q:"현재 작업 중인 디렉토리의 경로를 출력하는 명령은?",
+  o:["pwd","cd","ls","dir"], a:0,
+  why:"pwd(print working directory)가 현재 위치를 출력합니다.",
+  trap:"cd는 이동, ls는 목록으로 목적이 다릅니다.",
+  coach:"pwd=현재 위치, cd=이동, ls=목록. 셋을 한 세트로 묶으세요."},
+ {t:"명령어", q:"파일의 내용을 화면에 출력하는 명령이 아닌 것은?",
+  o:["cat","more","less","chmod"], a:3,
+  why:"chmod는 권한을 바꾸는 명령입니다. cat·more·less는 내용 출력.",
+  trap:"내용 보기 명령이 여러 개라 하나만 알면 헷갈립니다.",
+  coach:"cat=전체, more/less=페이지 단위. chmod는 권한이라 성격이 다릅니다."},
+ {t:"명령어", q:"디렉토리를 새로 만드는 명령은?",
+  o:["mkdir","rmdir","touch","cp"], a:0,
+  why:"mkdir이 디렉토리를 생성합니다. rmdir은 삭제, touch는 빈 파일 생성.",
+  trap:"touch(파일 생성)와 mkdir(디렉토리 생성)을 헷갈립니다.",
+  coach:"mkdir=디렉토리 만들기, touch=빈 파일 만들기, rmdir=디렉토리 지우기."},
+ {t:"명령어", q:"실행 중인 프로세스를 확인하는 명령은?",
+  o:["kill","top","ps","cron"], a:2,
+  why:"ps가 현재 프로세스 목록을 보여 줍니다(ps -ef 등).",
+  trap:"top(실시간 모니터)과 ps(스냅샷)를 구분하세요.",
+  coach:"ps=목록 확인 → kill=종료. top은 실시간, cron은 예약."},
+ {t:"명령어", q:"파일이나 디렉토리를 삭제하는 명령은?",
+  o:["rm","mv","cp","ln"], a:0,
+  why:"rm이 삭제합니다. 디렉토리는 rm -r로 재귀 삭제.",
+  trap:"mv(이동)·cp(복사)와 헷갈립니다.",
+  coach:"cp=복사, mv=이동/이름변경, rm=삭제, ln=링크."}
+]}
+,{s:"⑥ 리눅스 집중 II · 권한·사용자·네트워크", d:"권한 계산과 네트워크 진단 명령. 여기서 점수를 법니다.", items:[
+ {t:"권한", q:"chmod 700 파일에 부여된 권한을 문자로 나타내면?",
+  o:["rw-------","rwxrwxrwx","rwxr-xr-x","rwx------"], a:3,
+  why:"7=rwx, 0=---, 0=--- → rwx------. 소유자만 모든 권한.",
+  trap:"700을 rw-------(600)로 착각하기 쉽습니다. 7에는 x(1)가 포함.",
+  coach:"7=4+2+1=rwx, 6=rw-, 5=r-x, 4=r--. 700=소유자 전용."},
+ {t:"권한", q:"소유자·그룹은 읽고 쓰되 기타는 접근 불가로 만들려면 chmod 값은?",
+  o:["660","644","640","666"], a:0,
+  why:"rw-(6) rw-(6) ---(0) → 660입니다.",
+  trap:"644는 그룹·기타가 읽기만 가능한 값이라 다릅니다.",
+  coach:"각 자리를 rwx=421 조합으로. 쓰기 필요=+2, 접근 불가=0."},
+ {t:"명령어", q:"파일의 소유 그룹을 변경하는 명령은?",
+  o:["chmod","chown","chgrp","umask"], a:2,
+  why:"chgrp가 그룹을 바꿉니다. chown은 소유자(user), chmod는 권한.",
+  trap:"chown으로도 그룹 변경이 가능하지만 '그룹만' 바꾸는 전용은 chgrp.",
+  coach:"chmod=권한, chown=소유자, chgrp=그룹, umask=기본권한 마스크."},
+ {t:"네트워크", q:"목적지 호스트까지의 경로(거쳐가는 라우터)를 추적하는 명령은?",
+  o:["ping","netstat","traceroute","ifconfig"], a:2,
+  why:"traceroute(윈도우는 tracert)가 경유 라우터를 순서대로 보여 줍니다.",
+  trap:"ping은 도달 여부만, netstat은 연결 상태로 목적이 다릅니다.",
+  coach:"ping=도달 확인, traceroute=경로 추적, netstat=연결/포트, route=경로표."},
+ {t:"네트워크", q:"도메인 이름의 IP 주소를 조회하는 명령은?",
+  o:["nslookup","ifconfig","df","kill"], a:0,
+  why:"nslookup(또는 dig)이 DNS에 질의해 IP를 조회합니다.",
+  trap:"ifconfig(내 인터페이스 설정)와 헷갈립니다.",
+  coach:"nslookup/dig=DNS 조회, ifconfig=내 주소 설정, ping=도달 확인."}
+]}
+,{s:"⑦ TCP·UDP·포트 집중", d:"2위 출제 영역. 포트번호는 통암기가 답.", items:[
+ {t:"포트", q:"SMTP(메일 발신)의 기본 포트 번호는?",
+  o:["21","143","110","25"], a:3,
+  why:"SMTP=25. 발신용입니다. 수신은 POP3(110)·IMAP(143).",
+  trap:"110(POP3)·143(IMAP)은 수신용이라 방향이 다릅니다.",
+  coach:"발신=SMTP(25), 수신=POP3(110)/IMAP(143). '보내기 25'."},
+ {t:"포트", q:"HTTPS가 사용하는 기본 포트 번호는?",
+  o:["443","80","8080","22"], a:0,
+  why:"HTTPS=443(HTTP 80의 보안 버전).",
+  trap:"80(HTTP)과 443(HTTPS)을 헷갈립니다.",
+  coach:"HTTP 80, HTTPS 443. 's'가 붙으면 443."},
+ {t:"TCP", q:"TCP의 특징으로 옳지 않은 것은?",
+  o:["연결형 프로토콜이다","데이터 순서를 보장한다","3-way handshake로 연결한다","비연결형이라 속도가 빠르다"], a:3,
+  why:"비연결·빠름은 UDP의 특징입니다. TCP는 연결형·신뢰성 중심.",
+  trap:"TCP/UDP 특성을 바꿔 서술하는 전형적 함정.",
+  coach:"TCP=연결·신뢰·느림, UDP=비연결·빠름. 정반대로 외우면 걸립니다."},
+ {t:"UDP", q:"다음 중 UDP를 주로 사용하는 서비스는?",
+  o:["웹(HTTP)","이메일(SMTP)","파일 전송(FTP)","DNS 질의"], a:3,
+  why:"DNS 질의는 빠른 응답이 중요해 UDP(53)를 씁니다(영역 전송은 TCP).",
+  trap:"HTTP·SMTP·FTP는 신뢰성이 중요해 TCP를 씁니다.",
+  coach:"'빠르고 조금 끊겨도 되는 것'=UDP(DNS·스트리밍·VoIP)."},
+ {t:"핸드셰이크", q:"TCP 3-way handshake의 첫 단계에서 보내는 세그먼트는?",
+  o:["ACK","FIN","SYN","RST"], a:2,
+  why:"연결 요청은 SYN으로 시작합니다(SYN→SYN/ACK→ACK).",
+  trap:"FIN은 연결 종료, RST는 강제 리셋으로 단계가 다릅니다.",
+  coach:"시작=SYN(노크), 종료=FIN. '연결 요청이면 SYN'."}
+]}
+,{s:"⑧ DNS·DHCP·NAT·원격접속", d:"3위 출제. 프로토콜의 역할을 방향으로 구분.", items:[
+ {t:"DNS", q:"DNS의 주된 기능은?",
+  o:["IP를 MAC으로 변환","패킷 오류를 보고","IP를 자동 할당","도메인 이름을 IP로 변환"], a:3,
+  why:"DNS는 사람이 읽는 도메인(www...)을 IP로 변환합니다.",
+  trap:"IP 자동 할당(DHCP)·IP→MAC(ARP)과 헷갈립니다.",
+  coach:"DNS=이름 변환, DHCP=주소 할당, ARP=IP→MAC."},
+ {t:"DNS", q:"DNS 레코드의 TTL(Time To Live)이 의미하는 것은?",
+  o:["레코드를 캐시에 보관하는 시간","패킷의 최대 홉 수","도메인 만료일","연결 유지 시간"], a:0,
+  why:"DNS의 TTL은 해당 레코드를 캐시에 유지하는 시간(초)입니다. 지나면 다시 질의.",
+  trap:"IP 헤더의 TTL(홉 수 제한)과 이름은 같지만 의미가 다릅니다.",
+  coach:"DNS TTL=캐시 유지 시간. 변경 후 TTL만큼은 옛 값이 남습니다."},
+ {t:"DHCP", q:"DHCP가 클라이언트에 IP를 할당하는 과정의 순서로 옳은 것은?",
+  o:["Discover → Offer → Request → Ack","Offer → Discover → Ack → Request","Request → Ack → Discover → Offer","Ack → Offer → Request → Discover"], a:0,
+  why:"DHCP는 DORA — Discover→Offer→Request→Ack 순입니다.",
+  trap:"순서를 뒤섞은 보기가 함정입니다.",
+  coach:"'DORA'로 외우세요. 요청(Discover)→제안(Offer)→요구(Request)→확인(Ack)."},
+ {t:"NAT", q:"사설 IP를 공인 IP로 변환해 여러 기기가 하나의 공인 IP로 인터넷에 접속하게 하는 기술은?",
+  o:["NAT","VPN","DNS","ARP"], a:0,
+  why:"NAT가 사설↔공인 변환을 담당합니다. 공유기의 핵심 기능.",
+  trap:"VPN(암호화 터널)과 목적이 다릅니다.",
+  coach:"'사설↔공인 변환'=NAT. 주소 절약 + 내부 은닉 효과."},
+ {t:"원격접속", q:"원격 호스트에 접속할 때 암호화하여 안전하게 접속하는 프로토콜은?",
+  o:["Telnet","FTP","SSH","HTTP"], a:2,
+  why:"SSH(22)는 통신을 암호화합니다. Telnet(23)은 평문이라 위험합니다.",
+  trap:"Telnet이 익숙해 고르기 쉽지만 평문 전송이라 취약합니다.",
+  coach:"암호화 원격접속=SSH, 평문=Telnet. 실무는 무조건 SSH."}
+]}
+,{s:"⑨ 응용 프로토콜·이메일", d:"프로토콜 이름-역할 매칭. 파일 전송과 메일 위주.", items:[
+ {t:"FTP", q:"FTP와 TFTP의 차이로 옳은 것은?",
+  o:["FTP는 UDP, TFTP는 TCP를 쓴다","FTP는 포트가 없다","둘 다 암호화 전송이다","TFTP는 인증이 없고 간단하며 UDP(69)를 쓴다"], a:3,
+  why:"TFTP는 인증 없이 간단하게 UDP 69로 전송합니다. FTP는 TCP 20·21, 인증 있음.",
+  trap:"FTP/TFTP의 프로토콜(TCP/UDP)을 바꿔 서술하는 함정.",
+  coach:"FTP=TCP·인증O·20/21, TFTP=UDP·인증X·69·간단."},
+ {t:"이메일", q:"메일을 보낼 때(발신) 사용하는 프로토콜은?",
+  o:["POP3","IMAP","SMTP","SNMP"], a:2,
+  why:"발신=SMTP(25). 수신은 POP3(110)나 IMAP(143).",
+  trap:"SNMP(장비 관리)와 SMTP(메일)를 헷갈립니다.",
+  coach:"보내기=SMTP, 받기=POP3/IMAP. SN'M'P는 Management."},
+ {t:"이메일", q:"메일을 서버에 남겨두고 여러 기기에서 동기화하여 읽기에 적합한 수신 프로토콜은?",
+  o:["IMAP","POP3","SMTP","FTP"], a:0,
+  why:"IMAP은 서버에 메일을 두고 동기화합니다. POP3는 내려받고 서버에서 삭제(기본).",
+  trap:"POP3와 IMAP의 동작 차이를 물어봅니다.",
+  coach:"IMAP=서버 보관·동기화(여러 기기), POP3=내려받기. 스마트폰 시대엔 IMAP."},
+ {t:"관리", q:"네트워크 장비의 상태를 원격에서 감시·관리하는 프로토콜은?",
+  o:["SMTP","ICMP","SNMP","DHCP"], a:2,
+  why:"SNMP(161)가 장비 모니터링·관리용입니다.",
+  trap:"SMTP(메일)와 한 글자 차이라 자주 바뀝니다.",
+  coach:"SN'M'P=Network Management. 장비 상태 감시."},
+ {t:"파일공유", q:"Windows 네트워크에서 파일·프린터를 공유할 때 사용하는 프로토콜은?",
+  o:["NFS","SMB(CIFS)","SMTP","SSH"], a:1,
+  why:"SMB/CIFS가 Windows 파일·프린터 공유 프로토콜입니다(리눅스는 NFS).",
+  trap:"NFS(유닉스/리눅스 공유)와 헷갈립니다.",
+  coach:"Windows 공유=SMB, 유닉스 공유=NFS."}
+]}
+,{s:"⑩ 장비·케이블 집중", d:"운용기기. 장비의 동작 계층과 케이블 종류.", items:[
+ {t:"장비", q:"콜리전 도메인(충돌 영역)을 나누지 못하고 모든 포트로 신호를 내보내는 1계층 장비는?",
+  o:["스위치","허브","라우터","브리지"], a:1,
+  why:"허브는 받은 신호를 모든 포트로 내보내 충돌 영역을 공유합니다(1계층).",
+  trap:"스위치는 포트별로 충돌 영역을 나눕니다(2계층). 허브와 반대.",
+  coach:"허브=무조건 다 뿌림(1계층), 스위치=필요한 포트만·충돌 분리(2계층)."},
+ {t:"장비", q:"브로드캐스트 도메인을 나눌 수 있는 장비는?",
+  o:["허브","리피터","라우터","리피터 허브"], a:2,
+  why:"라우터(3계층)가 브로드캐스트 도메인을 분리합니다. 스위치는 콜리전만 분리.",
+  trap:"스위치가 다 나눌 것 같지만 브로드캐스트는 라우터(또는 VLAN)가 분리.",
+  coach:"콜리전 도메인=스위치가 분리, 브로드캐스트 도메인=라우터/VLAN이 분리."},
+ {t:"케이블", q:"스위치와 라우터(서로 다른 장비)를 연결할 때 일반적으로 쓰는 케이블은?",
+  o:["크로스 케이블","다이렉트 케이블","광점퍼","시리얼"], a:1,
+  why:"서로 다른 장비는 다이렉트(스트레이트) 케이블로 연결합니다.",
+  trap:"같은 장비(PC↔PC, 스위치↔스위치)는 크로스입니다. 방향 주의.",
+  coach:"다른 장비=다이렉트, 같은 장비=크로스. (요즘은 Auto MDI-X로 자동)"},
+ {t:"케이블", q:"UTP 케이블의 T568B 배열에서 첫 번째 핀의 색상은?",
+  o:["주황","흰주황","녹색","파랑"], a:1,
+  why:"T568B는 흰주황-주황-흰녹-파랑-흰파랑-녹-흰갈-갈 순으로, 1번은 흰주황입니다.",
+  trap:"T568A는 1번이 흰녹색이라 배열이 다릅니다.",
+  coach:"568B: 흰주-주-흰녹-파-흰파-녹-흰갈-갈. 실기에서도 나오니 통암기."},
+ {t:"광", q:"코어 지름이 크고 LED 광원을 사용하며 단거리에 적합한 광케이블은?",
+  o:["싱글모드","멀티모드","UTP","STP"], a:1,
+  why:"멀티모드는 코어가 굵고 LED를 써 단거리에 적합합니다. 싱글모드는 장거리(레이저).",
+  trap:"싱글/멀티의 거리 특성을 바꿔 외우면 걸립니다.",
+  coach:"싱글=장거리(얇은 코어·레이저), 멀티=단거리(굵은 코어·LED)."}
+]}
+];
+
+/* ============================================================
+   앱 로직
+   ============================================================ */
+(function(){
+var Q=[], state={}, mode='real', started=0, timerId=null, remain=50*60, submitted=false, cur=0, filter='wrong';
+var $=function(id){return document.getElementById(id)};
+
+/* ---------- 저장 (브라우저에 보관) ---------- */
+var KEY='nw2_mock_progress_v1', HKEY='nw2_mock_history_v1', canSave=true;
+function store(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); return true; }catch(e){ canSave=false; return false; } }
+function load(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):null; }catch(e){ canSave=false; return null; } }
+function drop(k){ try{ localStorage.removeItem(k); }catch(e){} }
+(function probe(){ try{ localStorage.setItem('__t','1'); localStorage.removeItem('__t'); }catch(e){ canSave=false; } })();
+
+function saveProgress(){
+  if(!canSave||submitted) return;
+  store(KEY,{mode:mode,state:state,cur:cur,remain:remain,ts:Date.now(),setKey:setKey});
+}
+function saveResult(rec){
+  if(!canSave) return;
+  var h=load(HKEY)||[]; h.unshift(rec); if(h.length>10) h=h.slice(0,10); store(HKEY,h);
+}
+function fmtDate(ts){
+  var d=new Date(ts);
+  return d.getFullYear()+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+('0'+d.getDate()).slice(-2)+' '+
+         ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+}
+
+// 현재 풀고 있는 문제집 (모의고사 전체 또는 드릴 한 세트)
+var SECTIONS = EXAM;
+function buildQ(sections){
+  Q=[];
+  sections.forEach(function(sec,si){
+    sec.items.forEach(function(it){
+      Q.push({sub:sec.s, si:si, t:it.t, q:it.q, code:it.code, o:it.o, a:it.a,
+              why:it.why, trap:it.trap, coach:it.coach});
+    });
+  });
+}
+buildQ(EXAM);
+$('barsub').textContent = Q.length+'문항 · 50분';
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// ---- 저장된 진행/기록 표시
+function showIntroExtras(){
+  var note=$('save-note');
+  note.innerHTML = canSave
+    ? '💾 푼 내용은 <b>이 브라우저에 자동 저장</b>됩니다. 창을 닫았다 열어도 이어서 풀 수 있어요.'
+    : '⚠️ 이 화면에서는 자동 저장이 차단되어 있습니다. 저장이 필요하면 바탕화면의 <b>네트워크관리사_모의고사.html</b> 파일을 직접 열어 주세요.';
+  var p=load(KEY), box=$('resume-box');
+  if(p && p.state){
+    var n=0; for(var k in p.state) if(p.state[k].pick!=null) n++;
+    box.className='note';
+    box.innerHTML='<b>이어서 풀 수 있습니다.</b> '+fmtDate(p.ts)+'에 '+(p.mode==='real'?'실전':'학습')+' 모드로 <b>'+n+'문항</b>까지 푸셨어요.'+
+      '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">'+
+      '<button class="btn pri" id="b-resume" type="button">이어서 풀기</button>'+
+      '<button class="btn" id="b-fresh" type="button">처음부터 새로</button></div>';
+    box.classList.remove('hide');
+    $('b-resume').onclick=function(){ resume(p); };
+    $('b-fresh').onclick=function(){ drop(KEY); box.classList.add('hide'); };
+  }
+  var h=load(HKEY);
+  if(h && h.length){
+    var rows=h.map(function(r){
+      return '<tr><td class="mono" style="font-size:13px">'+fmtDate(r.ts)+'</td>'+
+        '<td class="c mono"><b>'+r.avg+'</b>점</td>'+
+        '<td class="c mono">'+r.total+'/50</td>'+
+        '<td class="c"><span class="badge '+(r.pass?'ok':'no')+'">'+(r.pass?'합격':'불합격')+'</span></td></tr>';
+    }).join('');
+    $('hist-box').innerHTML='<h3 style="font-size:16px;margin:26px 0 8px">지난 응시 기록</h3>'+
+      '<div class="tbl"><table><thead><tr><th>응시일</th><th class="c">평균</th><th class="c">정답</th><th class="c">판정</th></tr></thead>'+
+      '<tbody>'+rows+'</tbody></table></div>';
+  }
+}
+showIntroExtras();
+
+function resume(p){
+  mode=p.mode; state=p.state||{}; cur=p.cur||0; remain=(p.remain!=null?p.remain:50*60);
+  submitted=false; started=Date.now();
+  setKey=p.setKey||'m1'; SECTIONS=sectionsOf(setKey); buildQ(SECTIONS);
+  $('barsub').textContent=Q.length+'문항'+(p.mode==='real'?' · 50분':'');
+  $('screen-intro').classList.add('hide');
+  $('screen-result').classList.add('hide');
+  $('screen-exam').classList.remove('hide');
+  $('btsubmit').classList.remove('hide');
+  $('btheme').classList.remove('hide');
+  if(mode==='real'){ $('timer').classList.remove('hide'); tick(); timerId=setInterval(tick,1000); }
+  buildGrid(); render(); window.scrollTo(0,0);
+}
+
+// ---- 뒤로가기로 앱이 닫히지 않게 (설치형 앱은 되돌아갈 기록이 없다)
+function backToIntro(){
+  if(timerId){ clearInterval(timerId); timerId=null; }
+  saveProgress();                       // 풀던 내용은 남겨 둔다
+  $('screen-exam').classList.add('hide');
+  $('screen-result').classList.add('hide');
+  $('screen-intro').classList.remove('hide');
+  $('btsubmit').classList.add('hide');
+  $('timer').classList.add('hide');
+  showIntroExtras();                    // 이어풀기 안내를 새로 그린다
+  window.scrollTo(0,0);
+}
+function pushGuard(){ try{ history.pushState({jcg:1}, ''); }catch(e){} }
+pushGuard();                            // 첫 방어막
+window.addEventListener('popstate', function(){
+  var onExam   = !$('screen-exam').classList.contains('hide');
+  var onResult = !$('screen-result').classList.contains('hide');
+  if(onExam || onResult){
+    backToIntro();
+    pushGuard();                        // 다음 뒤로가기도 받아낸다
+  }
+  // 시작 화면에서 한 번 더 누르면 그때는 앱이 닫히도록 둔다
+});
+
+// ---- 시작
+var setKey='m1';
+function setKeyOf(sec){ if(sec===EXAM)return 'm1'; if(sec===EXAM2)return 'm2'; if(sec===EXAM3)return 'm3'; if(sec.length===1){var i=DRILL.indexOf(sec[0]); if(i>=0)return 'd'+i;} return 'm1'; }
+function sectionsOf(k){ if(k==='m2')return EXAM2; if(k==='m3')return EXAM3; if(k&&k.charAt(0)==='d'){var i=parseInt(k.slice(1),10); if(DRILL[i])return [DRILL[i]];} return EXAM; }
+function start(m, sections){
+  mode=m; started=Date.now(); submitted=false; cur=0; state={};
+  drop(KEY);
+  SECTIONS = sections || EXAM;
+  setKey = setKeyOf(SECTIONS);
+  buildQ(SECTIONS);
+  $('barsub').textContent = Q.length+'문항'+(m==='real'?' · 50분':'');
+  $('screen-intro').classList.add('hide');
+  $('screen-result').classList.add('hide');
+  $('screen-exam').classList.remove('hide');
+  $('btsubmit').classList.remove('hide');
+  $('btheme').classList.remove('hide');
+  if(m==='real'){ $('timer').classList.remove('hide'); remain=50*60; tick(); timerId=setInterval(tick,1000); }
+  else { $('timer').classList.add('hide'); }
+  buildGrid(); render(); pushGuard();
+  window.scrollTo(0,0);
+}
+var ROUNDS=[EXAM,EXAM2,EXAM3];
+var CURRENT_EXAM=EXAM;
+(function(){
+  var sel=$('round-sel'); if(!sel) return;
+  var bs=sel.querySelectorAll('.round');
+  for(var i=0;i<bs.length;i++){ (function(b){
+    b.onclick=function(){
+      for(var j=0;j<bs.length;j++) bs[j].classList.remove('on');
+      b.classList.add('on');
+      CURRENT_EXAM=ROUNDS[parseInt(b.getAttribute('data-r'),10)-1]||EXAM;
+    };
+  })(bs[i]); }
+})();
+$('mode-real').onclick=function(){start('real', CURRENT_EXAM)};
+$('mode-study').onclick=function(){start('study', CURRENT_EXAM)};
+
+// ---- 약점 드릴 목록 그리기
+(function(){
+  var box=$('drill-list');
+  DRILL.forEach(function(set,i){
+    var b=document.createElement('button');
+    b.type='button'; b.className='drillbtn';
+    b.innerHTML='<b>'+set.s+'</b><span>'+set.d+'</span>'+
+                '<em class="mono">'+set.items.length+'문항</em>';
+    b.onclick=function(){ start('study',[set]); };
+    box.appendChild(b);
+  });
+})();
+
+function tick(){
+  var m=Math.floor(remain/60), s=remain%60;
+  $('timer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  if(remain<=600) $('timer').classList.add('warn');
+  if(remain<=0){ clearInterval(timerId); alert('시험 시간이 종료되었습니다. 답안을 제출합니다.'); submit(); return; }
+  remain--;
+  if(remain%15===0) saveProgress();   // 15초마다 남은 시간까지 저장
+}
+
+// ---- 문항 그리드
+function buildGrid(){
+  var g=$('grid'); g.innerHTML='';
+  Q.forEach(function(q,i){
+    var b=document.createElement('button'); b.type='button'; b.className='gq'; b.textContent=i+1;
+    b.onclick=function(){ cur=i; render(); window.scrollTo({top:0,behavior:'smooth'}); };
+    g.appendChild(b);
+  });
+  paintGrid();
+}
+function paintGrid(){
+  var kids=$('grid').children, n=0;
+  for(var i=0;i<Q.length;i++){
+    var c='gq', st=state[i]||{};
+    if(submitted){ if(st.pick!=null){ c+= (st.pick===Q[i].a?' ok':' no'); } else { c+=' no'; } }
+    else { if(st.flag) c+=' flagged'; else if(st.pick!=null) c+=' done'; }
+    if(i===cur) c+=' cur';
+    kids[i].className=c;
+    if(st.pick!=null) n++;
+  }
+  $('sidefoot').textContent='응답 '+n+' / '+Q.length;
+  $('prog').style.width=(n/Q.length*100)+'%';
+}
+
+// ---- 렌더
+function render(){
+  var q=Q[cur], st=state[cur]||{};
+  $('p-sub').textContent=q.sub;
+  $('p-topic').textContent=q.t;
+  $('p-pos').textContent=(cur+1)+' / '+Q.length;
+  $('q-no').textContent=cur+1;
+  $('q-text').innerHTML=q.q;
+  $('q-code').innerHTML = q.code ? '<pre><code>'+q.code+'</code></pre>' : '';
+  var reveal = submitted || (mode==='study' && st.pick!=null);
+  var ul=$('q-opts'); ul.innerHTML='';
+  q.o.forEach(function(txt,i){
+    var li=document.createElement('li');
+    var b=document.createElement('button'); b.type='button'; b.className='opt';
+    if(reveal){
+      if(i===q.a) b.className+=' correct';
+      else if(st.pick===i) b.className+=' wrong';
+      b.disabled=true;
+    } else if(st.pick===i) b.className+=' sel';
+    b.innerHTML='<span class="num">'+['①','②','③','④'][i]+'</span><span>'+txt+'</span>';
+    b.onclick=function(){ pick(i); };
+    li.appendChild(b); ul.appendChild(li);
+  });
+  $('q-sol').innerHTML = reveal ? solHTML(q, st.pick) : '';
+  $('b-flag').className='btn flag sp'+(st.flag?' on':'');
+  $('b-prev').disabled = (cur===0);
+  $('b-next').disabled = (cur===Q.length-1);
+  paintGrid();
+}
+function solHTML(q,pick){
+  var ok = pick===q.a;
+  var h='<div class="sol">';
+  h+='<div class="verdict '+(ok?'ok':'no')+'">'+(ok?'✓ 정답':'✗ 오답')+' &nbsp;·&nbsp; 정답 '+['①','②','③','④'][q.a]+'</div>';
+  h+='<div class="blk why"><span class="lb">정답 근거</span>'+q.why+'</div>';
+  if(q.trap) h+='<div class="blk trap"><span class="lb">함정</span>'+q.trap+'</div>';
+  if(q.coach) h+='<div class="blk coach"><span class="lb">강사 한마디</span>'+q.coach+'</div>';
+  return h+'</div>';
+}
+function pick(i){
+  if(submitted) return;
+  var st=state[cur]||(state[cur]={}); st.pick=i;
+  render(); saveProgress();
+}
+$('b-prev').onclick=function(){ if(cur>0){cur--;render();saveProgress();window.scrollTo(0,0);} };
+$('b-next').onclick=function(){ if(cur<Q.length-1){cur++;render();saveProgress();window.scrollTo(0,0);} };
+$('b-flag').onclick=function(){ var st=state[cur]||(state[cur]={}); st.flag=!st.flag; render(); saveProgress(); };
+document.addEventListener('keydown',function(e){
+  if($('screen-exam').classList.contains('hide')) return;
+  if(e.key==='ArrowLeft') $('b-prev').click();
+  if(e.key==='ArrowRight') $('b-next').click();
+  if(['1','2','3','4'].indexOf(e.key)>=0) pick(parseInt(e.key,10)-1);
+});
+$('btheme').onclick=function(){
+  var r=document.documentElement;
+  var curT=r.getAttribute('data-theme')|| (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  r.setAttribute('data-theme', curT==='dark'?'light':'dark');
+};
+
+// ---- 제출·채점
+$('btsubmit').onclick=function(){
+  var n=0; for(var k in state) if(state[k].pick!=null) n++;
+  var left=Q.length-n;
+  if(left>0 && !confirm('아직 '+left+'문항이 비어 있습니다. 그래도 제출할까요?\n(빈 문항은 오답 처리됩니다)')) return;
+  submit();
+};
+function submit(){
+  submitted=true; if(timerId) clearInterval(timerId); drop(KEY);
+  $('timer').classList.add('hide'); $('btsubmit').classList.add('hide');
+  $('screen-exam').classList.add('hide'); $('screen-result').classList.remove('hide');
+  score(); window.scrollTo(0,0);
+}
+function score(){
+  var byS={}, total=0;
+  SECTIONS.forEach(function(sec){ byS[sec.s]={right:0,total:0}; });
+  Q.forEach(function(q,i){
+    byS[q.sub].total++;
+    var st=state[i]||{};
+    if(st.pick===q.a){ byS[q.sub].right++; total++; }
+  });
+  var tb=$('res-body'); tb.innerHTML=''; var fail=false, sum=0, cnt=0;
+  SECTIONS.forEach(function(sec){
+    var r=byS[sec.s], pts=Math.round(r.right/r.total*100);
+    sum+=pts; cnt++;
+    var bad = pts<40; if(bad) fail=true;
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><b>'+sec.s+'</b></td>'+
+      '<td class="c mono">'+r.right+' / '+r.total+'</td>'+
+      '<td class="c mono"><b>'+pts+'</b></td>'+
+      '<td><div class="meter"><i class="'+(bad?'low':'')+'" style="width:'+pts+'%"></i></div></td>'+
+      '<td class="c"><span class="badge '+(bad?'no':'ok')+'">'+(bad?'과락':'통과')+'</span></td>';
+    tb.appendChild(tr);
+  });
+  var avg=Math.round(sum/cnt);
+  var isFull = (SECTIONS.length>1);
+  var pass = isFull ? (avg>=60 && !fail) : (avg>=80);
+  var v=$('verd'); v.className='verd '+(pass?'pass':'fail');
+  var msg;
+  if(isFull){
+    $('verd-big').textContent = pass?'합격':'불합격';
+    $('verd-sc').textContent = '평균 '+avg+'점 · 총 '+total+' / '+Q.length+'문항';
+    if(pass) msg='축하합니다. 이 점수대면 실제 시험에서도 충분합니다. 틀린 문제 해설만 훑고 다음 회독으로 넘어가세요.';
+    else if(fail && avg>=60) msg='평균은 넘겼지만 과락 과목이 있습니다. 평균보다 과락 과목을 먼저 잡아야 합니다 — 그 과목에서 8문항만 확보하면 합격입니다.';
+    else if(avg>=50) msg='합격선이 눈앞입니다. 틀린 문제의 「강사 한마디」만 정독해도 다음 회에 10점은 오릅니다.';
+    else msg='아직 개념이 덜 잡힌 상태입니다. 채점표에서 가장 낮은 과목부터 교재 본문으로 돌아가 다시 보세요. 지금 점수는 신경 쓰지 않아도 됩니다.';
+    saveResult({ts:Date.now(), avg:avg, total:total, pass:pass});
+  } else {
+    $('verd-big').textContent = pass?'통과':'복습 필요';
+    $('verd-sc').textContent = total+' / '+Q.length+'문항 정답 · '+avg+'점';
+    msg = pass ? '이 짝은 이제 헷갈리지 않으시겠네요. 다른 드릴 세트로 넘어가세요.'
+               : '이 부분이 아직 흔들립니다. 틀린 문제의 「강사 한마디」를 읽고 바로 한 번 더 푸세요 — 헷갈리는 짝은 붙여서 외워야 잡힙니다.';
+  }
+  $('verd-msg').textContent=msg;
+  renderReview();
+}
+
+// ---- 리뷰
+function renderReview(){
+  var box=$('rev-list'); box.innerHTML='';
+  var list=[];
+  Q.forEach(function(q,i){
+    var st=state[i]||{};
+    var wrong = st.pick!==q.a;
+    if(filter==='wrong' && !wrong) return;
+    if(filter==='flag' && !st.flag) return;
+    list.push(i);
+  });
+  if(!list.length){ box.innerHTML='<div class="note">해당하는 문항이 없습니다. 훌륭합니다!</div>'; return; }
+  list.forEach(function(i){
+    var q=Q[i], st=state[i]||{}, ok=(st.pick===q.a);
+    var d=document.createElement('div'); d.className='revq '+(ok?'hit':'miss');
+    var opts=q.o.map(function(t,k){
+      var mark = k===q.a?'✓':(st.pick===k?'✗':'&nbsp;');
+      var col = k===q.a?'var(--ok-ink)':(st.pick===k?'var(--bad)':'var(--ink-3)');
+      var w = (k===q.a||st.pick===k)?'600':'400';
+      return '<li style="color:'+col+';font-weight:'+w+'">'+mark+' '+['①','②','③','④'][k]+' '+t+'</li>';
+    }).join('');
+    d.innerHTML='<div class="qhead"><span class="pill">'+q.sub+'</span><span class="pill sub">'+q.t+'</span>'+
+      '<span class="pill sub">'+(st.pick==null?'미응답':(ok?'정답':'오답'))+'</span></div>'+
+      '<p class="qtext"><span class="qno">'+(i+1)+'</span>'+q.q+'</p>'+
+      (q.code?'<pre><code>'+q.code+'</code></pre>':'')+
+      '<ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;line-height:1.9">'+opts+'</ul>'+
+      solHTML(q, st.pick).replace('<div class="sol">','<div class="sol" style="border-top:1px dashed var(--line-2)">');
+    box.appendChild(d);
+  });
+}
+/* ---------- 설치(홈화면 추가) 지원 ---------- */
+(function(){
+  var deferred=null, btn=$('b-install');
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault(); deferred=e;
+    btn.classList.remove('hide');
+    $('install-ios').style.display='none';
+  });
+  btn.onclick=function(){
+    if(!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function(){ deferred=null; btn.classList.add('hide'); });
+  };
+  // 이미 홈화면에서 실행 중이면 안내를 감춘다
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if(standalone) $('installcard').classList.add('hide');
+})();
+
+document.querySelectorAll('.filters .btn').forEach(function(b){
+  b.onclick=function(){
+    if(b.id==='b-retry'){ location.reload(); return; }
+    filter=b.getAttribute('data-f');
+    document.querySelectorAll('.filters .btn').forEach(function(x){ if(x.id!=='b-retry') x.className='btn'; });
+    b.className='btn pri';
+    renderReview();
+  };
+});
+})();
+</script>
+
+<script>
+/* 오프라인 지원 · 홈화면 설치 (http(s) 에서만 동작, 아티팩트에서는 조용히 건너뜀) */
+(function(){
+  if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
+    try{ navigator.serviceWorker.register('sw.js'); }catch(e){}
+  }
+})();
+</script>
+
+<script>
+/* claude.ai 아티팩트로 열렸을 때는 옆 파일(exam.html 등)을 찾을 수 없으므로
+   같은 내용이 올라가 있는 아티팩트 주소로 바꿔 준다. 깃허브 페이지에서는 그대로 둔다. */
+(function(){
+  if (location.hostname.indexOf('claude') < 0) return;
+  var MAP = {
+    'network.html' : 'https://claude.ai/code/artifact/9768cb37-5faf-4d6a-a6f8-075603101dbc',
+    'index.html' : 'https://claude.ai/code/artifact/28a5565f-1a23-4dfb-bb3a-3918edfc3af9'
+  };
+  var links = document.querySelectorAll('a[href]');
+  for (var i = 0; i < links.length; i++) {
+    var h = links[i].getAttribute('href').replace(/^\.\//, '');
+    if (MAP[h]) { links[i].setAttribute('href', MAP[h]); links[i].setAttribute('target', '_blank'); }
+  }
+})();
+</script>
+
+<script>
+/* ===== 판(버전) 표시 =====
+   올린 내용이 실제로 반영됐는지 열자마자 알 수 있게 한다.
+   지난번에 본 판과 다르면 '갱신됨' 을 띄운다. */
+var APP_VERSION = 'v4';
+var APP_BUILT = '2026-08-21';
+(function(){
+  // 화면 곳곳의 판 자리를 채운다
+  var slots = document.querySelectorAll('[data-version-slot]');
+  for (var i = 0; i < slots.length; i++) {
+    slots[i].textContent = APP_VERSION + ' · ' + APP_BUILT;
+  }
+  // 지난번에 본 판과 비교
+  var KEY = 'nw2_seen_version', prev = null;
+  try { prev = localStorage.getItem(KEY); localStorage.setItem(KEY, APP_VERSION); } catch (e) {}
+
+  var msg;
+  if (prev && prev !== APP_VERSION) {
+    msg = '<b>새 판으로 갱신됐습니다</b> &nbsp;' + prev + ' → ' + APP_VERSION +
+          '<span class="m">' + APP_BUILT + '</span>';
+  } else if (!prev) {
+    msg = '네트워크관리사 학습 앱 <b>' + APP_VERSION + '</b><span class="m">' + APP_BUILT + '</span>';
+  } else {
+    msg = '네트워크관리사 학습 앱 ' + APP_VERSION + '<span class="m">' + APP_BUILT + ' · 최신판입니다</span>';
+  }
+  var t = document.createElement('div');
+  t.id = 'vertoast'; t.innerHTML = msg;
+  document.body.appendChild(t);
+  setTimeout(function(){ t.classList.add('on'); }, 250);
+  setTimeout(function(){ t.classList.remove('on'); }, 3600);
+
+  /* 새 파일이 내려와 준비되면 알려 준다 (깃허브에 올린 직후) */
+  if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+    navigator.serviceWorker.ready.then(function(reg){
+      reg.addEventListener('updatefound', function(){
+        var nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener('statechange', function(){
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+            t.innerHTML = '<b>새 판이 준비됐습니다</b><span class="m">화면을 새로 고치면 적용됩니다</span>';
+            t.classList.add('on');
+            setTimeout(function(){ t.classList.remove('on'); }, 6000);
+          }
+        });
+      });
+    }).catch(function(){});
+  }
+})();
+</script>

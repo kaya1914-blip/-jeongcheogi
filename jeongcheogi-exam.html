@@ -1,0 +1,1811 @@
+<title>정처기 실전 모의고사</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#33509C">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="정처기 모의고사">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+:root{
+  --bg:#FBFBFD; --surface:#FFFFFF; --surface-2:#F4F5F9; --surface-3:#EDEFF6;
+  --ink:#191C2A; --ink-2:#454A60; --ink-3:#727892; --ink-4:#9AA0B6;
+  --line:#E4E6F0; --line-2:#D2D6E4;
+  --accent:#33509C; --accent-deep:#22366A; --accent-soft:#EAEEF9; --accent-ink:#2B437F;
+  --ok:#0C7A66; --ok-ink:#0A5F50; --ok-soft:#E2F4EF; --ok-line:#B4E0D5;
+  --bad:#B0322E; --bad-soft:#FBE9E7; --bad-line:#EEC5C1;
+  --flag:#B3620A; --flag-ink:#8A4A05; --flag-soft:#FBF1E1; --flag-line:#EAD2A6;
+  --code-bg:#20243A; --code-ink:#E7E9F5; --code-cmt:#8B92B8; --code-key:#9FB4F2; --code-str:#8FD1B0; --code-num:#E0A96B;
+  --shadow:0 1px 2px rgba(20,24,45,.05),0 8px 30px rgba(20,24,45,.06);
+  --shadow-sm:0 1px 2px rgba(20,24,45,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12141E; --surface:#191C28; --surface-2:#1F2331; --surface-3:#262B3C;
+    --ink:#E9EBF3; --ink-2:#B7BCD0; --ink-3:#878DA6; --ink-4:#666C86;
+    --line:#2C3145; --line-2:#3A4059;
+    --accent:#8AA1E8; --accent-deep:#AEBEF0; --accent-soft:#20273F; --accent-ink:#A9BAF0;
+    --ok:#4FCFB4; --ok-ink:#6FDBC5; --ok-soft:#122A26; --ok-line:#234A43;
+    --bad:#F0918B; --bad-soft:#2C1817; --bad-line:#4A2724;
+    --flag:#E0A458; --flag-ink:#EAB877; --flag-soft:#2A2113; --flag-line:#4A3A1C;
+    --code-bg:#0E1017; --code-ink:#E4E7F2; --code-cmt:#7C84A6; --code-key:#A9BCF5; --code-str:#8FD8B4; --code-num:#E8B27C;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12141E; --surface:#191C28; --surface-2:#1F2331; --surface-3:#262B3C;
+  --ink:#E9EBF3; --ink-2:#B7BCD0; --ink-3:#878DA6; --ink-4:#666C86;
+  --line:#2C3145; --line-2:#3A4059;
+  --accent:#8AA1E8; --accent-deep:#AEBEF0; --accent-soft:#20273F; --accent-ink:#A9BAF0;
+  --ok:#4FCFB4; --ok-ink:#6FDBC5; --ok-soft:#122A26; --ok-line:#234A43;
+  --bad:#F0918B; --bad-soft:#2C1817; --bad-line:#4A2724;
+  --flag:#E0A458; --flag-ink:#EAB877; --flag-soft:#2A2113; --flag-line:#4A3A1C;
+  --code-bg:#0E1017; --code-ink:#E4E7F2; --code-cmt:#7C84A6; --code-key:#A9BCF5; --code-str:#8FD8B4; --code-num:#E8B27C;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:16px;line-height:1.75;letter-spacing:-.003em;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Noto Serif KR',serif;line-height:1.3;text-wrap:balance;margin:0}
+button{font-family:inherit;cursor:pointer}
+.mono{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+.hide{display:none !important}
+
+/* ===== 상단 바 ===== */
+.bar{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--line);
+  box-shadow:var(--shadow-sm)}
+.bar .in{max-width:1180px;margin:0 auto;padding:10px clamp(14px,3vw,26px);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.bar .bt{font-family:'Noto Serif KR',serif;font-weight:700;font-size:15px;letter-spacing:-.02em;white-space:nowrap}
+.bar .bt small{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-3);font-weight:400;letter-spacing:.02em}
+.timer{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:600;color:var(--accent-ink);
+  background:var(--accent-soft);border:1px solid var(--line-2);border-radius:9px;padding:3px 13px;font-variant-numeric:tabular-nums}
+.timer.warn{color:var(--bad);background:var(--bad-soft);border-color:var(--bad-line)}
+.btn{border:1px solid var(--line-2);background:var(--surface-2);color:var(--ink-2);border-radius:9px;
+  padding:7px 14px;font-size:13.5px;font-weight:600;transition:.12s}
+.btn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.pri:hover{background:var(--accent-deep);border-color:var(--accent-deep);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.navlink{text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap}
+.progbar{width:100%;height:3px;background:var(--surface-3)}
+.progbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px,3vw,26px) 60px}
+
+/* ===== 시작 화면 ===== */
+.intro{max-width:720px;margin:0 auto;padding:52px 0}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.intro h1{font-size:clamp(28px,5vw,42px);margin:14px 0 0}
+.intro .lede{font-size:17.5px;color:var(--ink-2);margin:16px 0 0}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:26px 0}
+.spec{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;box-shadow:var(--shadow-sm)}
+.spec b{display:block;font-family:'JetBrains Mono',monospace;font-size:20px;color:var(--accent-ink);font-weight:600}
+.spec span{font-size:12px;color:var(--ink-3)}
+.note{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;
+  padding:15px 18px;margin:18px 0;font-size:15px;color:var(--ink-2)}
+.note b{color:var(--ink)}
+.note.warn{border-left-color:var(--flag);background:var(--flag-soft);border-color:var(--flag-line)}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 0}
+@media(max-width:620px){.modes{grid-template-columns:1fr}}
+.mode{text-align:left;background:var(--surface);border:1px solid var(--line-2);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow-sm);transition:.14s}
+.mode:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.mode b{display:block;font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.mode span{font-size:13.5px;color:var(--ink-3);line-height:1.6;display:block}
+
+/* ===== 시험 레이아웃 ===== */
+.exam{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:26px;align-items:start;padding-top:24px}
+@media(max-width:940px){.exam{grid-template-columns:1fr}}
+
+.qhead{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.pill{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.06em;
+  border-radius:20px;padding:3px 11px;background:var(--accent-soft);color:var(--accent-ink);border:1px solid var(--line-2)}
+.pill.sub{background:var(--surface-2);color:var(--ink-3)}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow)}
+@media(max-width:620px){.qcard{padding:18px 16px}}
+.qno{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#fff;background:var(--accent);
+  border-radius:7px;padding:2px 9px;margin-right:9px}
+.qtext{font-size:17.5px;font-weight:600;line-height:1.65;margin:0 0 4px}
+pre{background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:15px 17px;overflow-x:auto;
+  font-size:13.4px;line-height:1.6;margin:14px 0}
+pre code{font-family:'JetBrains Mono',monospace;white-space:pre}
+.opts{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);background:var(--surface-2);
+  border-radius:11px;padding:11px 15px;font-size:15.5px;color:var(--ink-2);text-align:left;width:100%;transition:.12s;line-height:1.6}
+.opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.opt .num{flex:none;font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--ink-4)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--accent)}
+.opt.sel .num{color:var(--accent)}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft);color:var(--ok-ink);font-weight:600}
+.opt.correct .num{color:var(--ok)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad);font-weight:600}
+.opt.wrong .num{color:var(--bad)}
+.opt:disabled{cursor:default}
+.nav{display:flex;gap:9px;align-items:center;margin-top:18px;flex-wrap:wrap}
+.nav .sp{margin-left:auto}
+.btn.flag{border-color:var(--flag-line);color:var(--flag-ink);background:var(--flag-soft)}
+.btn.flag.on{background:var(--flag);border-color:var(--flag);color:#fff}
+
+/* ===== 사이드 : 문항 그리드 ===== */
+.side{position:sticky;top:66px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow-sm)}
+@media(max-width:940px){.side{position:static}}
+.side h3{font-size:14px;margin-bottom:4px}
+.legend{display:flex;gap:11px;flex-wrap:wrap;font-size:11px;color:var(--ink-3);margin:8px 0 12px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}
+@media(max-width:940px){.grid{grid-template-columns:repeat(20,1fr)}}
+@media(max-width:620px){.grid{grid-template-columns:repeat(10,1fr)}}
+.gq{font-family:'JetBrains Mono',monospace;font-size:10.5px;border:1px solid var(--line-2);background:var(--surface-2);
+  color:var(--ink-3);border-radius:5px;padding:4px 0;transition:.1s}
+.gq:hover{border-color:var(--accent)}
+.gq.done{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.gq.flagged{background:var(--flag);border-color:var(--flag);color:#fff}
+.gq.cur{outline:2px solid var(--ink);outline-offset:1px}
+.gq.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.gq.no{background:var(--bad);border-color:var(--bad);color:#fff}
+.sidefoot{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+
+/* ===== 해설 ===== */
+.sol{margin-top:18px;border-top:1px dashed var(--line-2);padding-top:16px}
+.verdict{display:inline-flex;gap:7px;align-items:center;font-weight:700;font-size:15px;border-radius:9px;padding:5px 13px;margin-bottom:12px}
+.verdict.ok{background:var(--ok-soft);color:var(--ok-ink);border:1px solid var(--ok-line)}
+.verdict.no{background:var(--bad-soft);color:var(--bad);border:1px solid var(--bad-line)}
+.blk{margin:11px 0;font-size:15px;line-height:1.75;color:var(--ink-2)}
+.blk .lb{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;border-radius:5px;padding:1px 7px;margin-right:8px;vertical-align:1.5px}
+.blk.why .lb{background:var(--ok-soft);color:var(--ok-ink);border:1px solid var(--ok-line)}
+.blk.trap .lb{background:var(--bad-soft);color:var(--bad);border:1px solid var(--bad-line)}
+.blk.coach{background:var(--accent-soft);border:1px solid var(--line-2);border-radius:11px;padding:13px 16px}
+.blk.coach .lb{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.blk b{color:var(--ink);font-weight:700}
+.blk code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+
+/* ===== 결과 ===== */
+.result{max-width:820px;margin:0 auto;padding:40px 0}
+.verd{text-align:center;border-radius:18px;padding:30px 24px;margin-bottom:26px;border:1px solid}
+.verd.pass{background:var(--ok-soft);border-color:var(--ok-line)}
+.verd.fail{background:var(--bad-soft);border-color:var(--bad-line)}
+.verd .big{font-family:'Noto Serif KR',serif;font-size:clamp(32px,7vw,50px);font-weight:700;line-height:1.1}
+.verd.pass .big{color:var(--ok-ink)} .verd.fail .big{color:var(--bad)}
+.verd .sc{font-family:'JetBrains Mono',monospace;font-size:17px;margin-top:8px;color:var(--ink-2)}
+.verd .msg{font-size:15px;color:var(--ink-2);margin-top:12px;max-width:46ch;margin-inline:auto}
+table{border-collapse:collapse;width:100%;background:var(--surface);font-size:14.5px}
+.tbl{border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);margin:18px 0}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+thead th{background:var(--surface-3);font-weight:700;font-size:13.5px}
+tbody tr:last-child td{border-bottom:none}
+td.c,th.c{text-align:center}
+.meter{height:7px;border-radius:4px;background:var(--surface-3);overflow:hidden;min-width:90px}
+.meter i{display:block;height:100%;background:var(--ok)}
+.meter i.low{background:var(--bad)}
+.badge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;border-radius:20px;padding:2px 9px}
+.badge.ok{background:var(--ok-soft);color:var(--ok-ink);border:1px solid var(--ok-line)}
+.badge.no{background:var(--bad-soft);color:var(--bad);border:1px solid var(--bad-line)}
+.rev{margin-top:30px}
+.revq{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow-sm)}
+.revq.miss{border-left:3px solid var(--bad)}
+.revq.hit{border-left:3px solid var(--ok)}
+.filters{display:flex;gap:8px;margin:14px 0 16px;flex-wrap:wrap}
+footer{text-align:center;color:var(--ink-3);font-size:13px;padding:40px 0 20px;border-top:1px solid var(--line);margin-top:40px}
+.cmt{color:var(--code-cmt)} .key{color:var(--code-key)} .str{color:var(--code-str)} .num{color:var(--code-num)}
+
+/* ===== 폰(앱) 최적화 ===== */
+@media (max-width:620px){
+  body{font-size:15.5px}
+  .bar .in{padding:8px 12px;gap:9px}
+  .bar .bt{font-size:13.5px}
+  .timer{font-size:17px;padding:2px 10px}
+  .btn{padding:7px 11px;font-size:13px}
+  .wrap{padding:0 12px 40px}
+  .intro{padding:30px 0}
+  .qtext{font-size:16.5px}
+  /* 보기를 손가락으로 누르기 좋게 */
+  .opt{padding:13px 14px;font-size:15.5px}
+  .nav{position:sticky;bottom:0;background:var(--surface);padding:10px 0 calc(10px + env(safe-area-inset-bottom));
+    margin:14px -16px -18px;border-top:1px solid var(--line);z-index:10;padding-left:16px;padding-right:16px}
+  .exam{padding-top:14px}
+  .side{margin-top:6px}
+  .blk{font-size:14.5px}
+  .verd{padding:24px 16px}
+}
+/* 홈화면에서 실행할 때 하단 여백 */
+@supports(padding:env(safe-area-inset-bottom)){
+  body{padding-bottom:env(safe-area-inset-bottom)}
+}
+/* ===== 약점 드릴 목록 ===== */
+.drills{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:620px){.drills{grid-template-columns:1fr}}
+.drillbtn{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:13px;
+  padding:14px 16px;box-shadow:var(--shadow-sm);transition:.14s;position:relative}
+.drillbtn:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.drillbtn b{display:block;font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:3px;padding-right:52px}
+.drillbtn span{display:block;font-size:13px;color:var(--ink-3);line-height:1.55}
+.drillbtn em{position:absolute;top:14px;right:14px;font-style:normal;font-size:11px;font-weight:600;
+  color:var(--accent-ink);background:var(--accent-soft);border:1px solid var(--line-2);border-radius:20px;padding:1px 8px}
+
+.installcard{background:var(--accent-soft);border:1px solid var(--line-2);border-radius:12px;padding:14px 17px;margin:20px 0;font-size:14.5px;color:var(--ink-2)}
+.installcard b{color:var(--ink)}
+.installcard ol{margin:8px 0 0;padding-left:20px}
+.installcard li{margin:3px 0}
+</style>
+<style>
+/* ===== 폰에서 보기 (앱) ===== */
+@media (max-width:620px){
+  /* 위쪽 띠가 두 줄로 넘치지 않게 압축 */
+  .bar .in{padding:7px 12px;gap:7px}
+  .bar .bt{font-size:13px;line-height:1.25}
+  .bar .bt small{font-size:10px}
+  .btn{padding:6px 10px;font-size:12.5px}
+  .navlink{padding:6px 9px}
+  .verbadge{font-size:10px;padding:1px 7px}
+  .timer{font-size:16px;padding:2px 9px}
+
+  /* 문항 이동 : 손가락으로 누르기 좋게 */
+  .grid{grid-template-columns:repeat(8,1fr);gap:5px}
+  .gq{padding:7px 0;font-size:11.5px}
+
+  .qcard{padding:16px 15px;border-radius:14px}
+  .qtext{font-size:16.5px}
+  .opt{padding:14px 14px}
+  pre{font-size:12.6px}
+  .blk{font-size:14.2px}
+}
+</style>
+
+<style>
+/* ===== 판 표시 ===== */
+.verbadge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.03em;
+  color:#727892;background:rgba(127,132,155,.10);border:1px solid rgba(127,132,155,.28);
+  border-radius:20px;padding:2px 9px;white-space:nowrap;vertical-align:middle}
+#vertoast{position:fixed;left:50%;transform:translateX(-50%) translateY(-14px);top:14px;z-index:9999;
+  max-width:min(92vw,460px);padding:11px 17px;border-radius:12px;font-size:14px;line-height:1.5;
+  background:#191C28;color:#E9EBF3;box-shadow:0 6px 30px rgba(0,0,0,.28);
+  opacity:0;transition:opacity .28s ease,transform .28s ease;pointer-events:none}
+#vertoast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+#vertoast b{color:#8FD8B4}
+#vertoast .m{font-family:'JetBrains Mono',monospace;font-size:12.5px;opacity:.75;display:block;margin-top:2px}
+@media (prefers-reduced-motion:reduce){#vertoast{transition:none}}
+</style>
+
+
+<div class="bar">
+  <div class="in">
+    <div class="bt">정처기 실전 모의고사<small id="barsub">100문항 · 150분</small></div>
+    <a class="btn navlink" href="index.html">🏠 홈</a>
+    <a class="btn navlink" href="jeongcheogi.html">📘 교재</a>
+    <span class="verbadge" data-version-slot></span>
+    <button class="btn hide" id="btheme" type="button">◐</button>
+    <div class="timer hide" id="timer">150:00</div>
+    <button class="btn hide" id="btsubmit" type="button">답안 제출</button>
+  </div>
+  <div class="progbar"><i id="prog"></i></div>
+</div>
+
+<div class="wrap">
+  <!-- 시작 -->
+  <section id="screen-intro" class="intro">
+    <div class="eyebrow">실전 대비 · 1회분</div>
+    <h1>정보처리기사 필기<br>실전 모의고사</h1>
+    <p class="lede">출제기준의 과목별 비중을 그대로 반영해 <b>100문항</b>을 설계했습니다. 실제 시험처럼 <b>150분</b> 안에 풀고, 끝나면 <b>과목별 점수·과락·합격 여부</b>가 바로 나옵니다.</p>
+    <div class="specs">
+      <div class="spec"><b>100</b><span>문항 (과목당 20)</span></div>
+      <div class="spec"><b>150</b><span>분</span></div>
+      <div class="spec"><b>60</b><span>점 이상 합격</span></div>
+      <div class="spec"><b>40</b><span>점 미만 과락</span></div>
+    </div>
+    <div class="note">
+      <b>해설이 이 모의고사의 핵심입니다.</b> 문항마다 ① 정답 근거 ② 오답이 왜 매력적인지(함정) ③ <b>실전에서 어떻게 판단할지</b>를 강사 관점으로 붙였습니다. 채점 후 <b>틀린 문제만</b> 골라 보는 기능도 있습니다.
+    </div>
+    <div class="note warn">
+      <b>이 문제는 실제 시험지 복사본이 아닙니다.</b> 필기는 2022년부터 CBT라 문제가 공개되지 않습니다. 출제기준·빈출 개념·최근 경향(2025년 1회 자료구조 강화 등)을 반영해 <b>같은 유형·난이도로 새로 출제</b>했습니다. 실제 복원 기출은 무료 CBT 사이트에서 병행하세요.
+    </div>
+    <div id="resume-box" class="hide"></div>
+    <div class="modes">
+      <button class="mode" id="mode-real" type="button">
+        <b>⏱ 실전 모드</b>
+        <span>150분 타이머가 돌아갑니다. 제출 전까지 정답·해설이 보이지 않습니다. 실제 시험처럼 감을 잡을 때.</span>
+      </button>
+      <button class="mode" id="mode-study" type="button">
+        <b>📖 학습 모드</b>
+        <span>답을 고르면 <b>즉시</b> 정답과 해설이 열립니다. 타이머 없음. 개념을 익히며 풀 때.</span>
+      </button>
+    </div>
+    <h3 style="font-size:17px;margin:30px 0 4px">🎯 약점 집중 드릴</h3>
+    <p style="font-size:14px;color:var(--ink-3);margin:0 0 12px">시험에서 <b>서로 바꿔 내는 짝</b>만 모았습니다. 한 세트 5문항이라 출퇴근길에 한 세트씩 딱 좋습니다.</p>
+    <div id="drill-list" class="drills"></div>
+
+    <div id="hist-box"></div>
+    <div class="installcard" id="installcard">
+      <b>📱 폰 홈화면에 앱처럼 설치하기</b>
+      <div id="install-ios">
+        <ol>
+          <li><b>아이폰</b>: 사파리에서 이 페이지를 열고 아래 <b>공유(⬆️)</b> → <b>「홈 화면에 추가」</b></li>
+          <li><b>안드로이드</b>: 크롬 오른쪽 위 <b>⋮</b> → <b>「홈 화면에 추가」</b> 또는 「앱 설치」</li>
+        </ol>
+        <p style="margin:9px 0 0">추가하면 <b>「정」 아이콘</b>이 생기고, 주소창 없이 앱처럼 전체 화면으로 열립니다. 푼 내용도 그대로 이어집니다.</p>
+      </div>
+      <button class="btn pri hide" id="b-install" type="button" style="margin-top:10px">📲 앱으로 설치하기</button>
+    </div>
+    <p class="dim" id="save-note" style="font-size:13px;color:var(--ink-3);margin-top:18px"></p>
+  </section>
+
+  <!-- 시험 -->
+  <section id="screen-exam" class="exam hide">
+    <div>
+      <div class="qhead">
+        <span class="pill" id="p-sub">1과목</span>
+        <span class="pill sub" id="p-topic">개념</span>
+        <span class="pill sub" id="p-pos">1 / 100</span>
+      </div>
+      <div class="qcard">
+        <p class="qtext"><span class="qno" id="q-no">1</span><span id="q-text"></span></p>
+        <div id="q-code"></div>
+        <ul class="opts" id="q-opts"></ul>
+        <div id="q-sol"></div>
+        <div class="nav">
+          <button class="btn" id="b-prev" type="button">← 이전</button>
+          <button class="btn" id="b-next" type="button">다음 →</button>
+          <button class="btn flag sp" id="b-flag" type="button">🚩 나중에 다시</button>
+        </div>
+      </div>
+    </div>
+    <aside class="side">
+      <h3>문항 이동</h3>
+      <div class="legend">
+        <span><i style="background:var(--accent)"></i>푼 문제</span>
+        <span><i style="background:var(--flag)"></i>표시</span>
+        <span><i style="background:var(--surface-2);border:1px solid var(--line-2)"></i>미응답</span>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="sidefoot" id="sidefoot">응답 0 / 100</div>
+    </aside>
+  </section>
+
+  <!-- 결과 -->
+  <section id="screen-result" class="result hide">
+    <div class="verd" id="verd">
+      <div class="big" id="verd-big">합격</div>
+      <div class="sc" id="verd-sc"></div>
+      <div class="msg" id="verd-msg"></div>
+    </div>
+    <div class="tbl"><table>
+      <thead><tr><th>과목</th><th class="c">정답</th><th class="c">점수</th><th>득점률</th><th class="c">판정</th></tr></thead>
+      <tbody id="res-body"></tbody>
+    </table></div>
+    <div class="rev">
+      <h2 style="font-size:22px">문항별 해설</h2>
+      <div class="filters">
+        <button class="btn pri" data-f="wrong" type="button">틀린 문제만</button>
+        <button class="btn" data-f="all" type="button">전체 100문항</button>
+        <button class="btn" data-f="flag" type="button">🚩 표시한 문제</button>
+        <button class="btn" data-f="retry" type="button" id="b-retry">다시 풀기</button>
+      </div>
+      <div id="rev-list"></div>
+    </div>
+  </section>
+</div>
+<footer>정처기 실전 모의고사 · 비전공자 60점 돌파판 &nbsp;|&nbsp; 출제기준 5과목 100문항 150분 기준</footer>
+
+<script>
+/* ============================================================
+   문항 데이터
+   a = 정답 인덱스(0~3) / why=근거 / trap=오답·함정 / coach=강사 관점
+   ============================================================ */
+var EXAM = [
+{s:"1과목 소프트웨어 설계", items:[
+
+{t:"생명주기", q:"보엠(Boehm)이 제안한 것으로, 개발 과정을 여러 번 반복하면서 매 반복마다 위험을 분석·해결해 나가는 생명주기 모델은?",
+ o:["폭포수 모델","프로토타입 모델","나선형 모델","V-모델"], a:2,
+ why:"나선형(Spiral)의 한 사이클은 <b>계획 → 위험 분석 → 개발 → 고객 평가</b>로 돌고, 이 나선을 돌 때마다 시스템이 커집니다. 제안자가 보엠이라는 것과 '위험 분석'이 짝을 이룹니다.",
+ trap:"②프로토타입도 '반복'해서 헷갈립니다. 하지만 프로토타입이 반복하는 목적은 <b>요구사항이 맞는지 확인</b>이고, 나선형이 반복하는 목적은 <b>위험을 줄이는 것</b>입니다. ①폭포수는 되돌아가지 않는 순차 모델이라 '반복'과 정반대입니다.",
+ coach:"저는 이 문제를 <b>목적어 읽기</b>로 풉니다. '무엇을 반복하는가'만 보세요. 위험을 반복하면 나선형, 견본을 반복하면 프로토타입입니다. 그리고 나선형은 <b>대규모·고비용 사업</b>과 세트로 나옵니다 — 위험 분석에 돈과 시간이 들기 때문이죠. 보기에 '대규모'가 같이 있으면 거의 확정입니다."},
+
+{t:"요구사항", q:"다음 요구사항 중 성격이 <b>다른</b> 하나는?",
+ o:["관리자는 회원 정보를 수정할 수 있어야 한다","사용자는 상품을 검색할 수 있어야 한다","시스템은 동시 접속자 1,000명을 처리해야 한다","고객은 주문 내역을 조회할 수 있어야 한다"], a:2,
+ why:"①②④는 시스템이 <b>무엇을 하는가</b>(기능 요구사항)이고, ③은 <b>얼마나 잘 하는가</b>(성능=비기능 요구사항)입니다.",
+ trap:"'~해야 한다'는 표현이 모두 붙어 있어 문장 끝만 보면 구분이 안 됩니다. 출제자가 노린 지점이 정확히 여기입니다.",
+ coach:"문장 끝이 아니라 <b>동사</b>를 보세요. '수정한다·검색한다·조회한다'처럼 <b>사용자가 하는 행위</b>면 기능입니다. 반대로 '처리한다·응답한다·유지한다'에 <b>숫자나 품질 기준</b>이 붙으면 비기능이에요. 비기능은 결국 <b>성능·보안·신뢰성·사용성·이식성</b> 다섯 갈래로 떨어집니다. 숫자가 보이면 일단 비기능을 의심하세요."},
+
+{t:"요구공학", q:"요구공학 프로세스를 순서대로 바르게 나열한 것은?",
+ o:["요구사항 도출 → 분석 → 명세 → 확인","요구사항 분석 → 도출 → 명세 → 확인","요구사항 명세 → 도출 → 분석 → 확인","요구사항 도출 → 명세 → 분석 → 확인"], a:0,
+ why:"<b>도출(Elicitation) → 분석(Analysis) → 명세(Specification) → 확인(Validation)</b>. 이해관계자에게서 끌어내고, 충돌·중복을 정리하고, 문서로 적고, 제대로 적혔는지 검토합니다.",
+ trap:"④처럼 '명세'와 '분석'을 바꾼 보기가 자주 나옵니다. 분석하지 않은 요구를 문서로 쓸 수는 없으니 명세가 분석보다 앞설 수 없습니다.",
+ coach:"순서 문제는 <b>인과로 묶으면</b> 절대 안 틀립니다. 재료를 모으고(도출) → 다듬고(분석) → 계약서를 쓰고(명세) → 서명 전 검토(확인). 실무 흐름 그대로예요. 참고로 확인 단계 산출물이 <b>요구사항 명세서 검토·베이스라인</b>이고, 여기서 확정된 것이 이후 형상관리의 기준선이 됩니다."},
+
+{t:"애자일", q:"스크럼(Scrum)에 대한 설명으로 옳지 <b>않은</b> 것은?",
+ o:["스프린트는 보통 2~4주 단위의 반복 개발 주기이다","제품 백로그는 우선순위가 매겨진 요구사항 목록이다","스크럼 마스터는 팀원에게 업무를 지시하고 일정을 통제하는 관리자이다","번다운 차트는 남은 작업량의 추이를 보여준다"], a:2,
+ why:"스크럼 마스터는 지시자가 아니라 <b>장애물을 제거하고 프로세스가 지켜지도록 돕는 조력자</b>(퍼실리테이터)입니다. 일을 지시하는 관리자가 아닙니다.",
+ trap:"'마스터'라는 단어 때문에 상급자로 착각하기 쉽습니다. 이 명칭이 곧 함정입니다.",
+ coach:"애자일 문제는 <b>수직적 통제를 말하면 오답</b>이라는 원칙 하나로 대부분 걸러집니다. 지시·통제·감독·상세 문서화가 등장하면 애자일 정신과 어긋납니다. 참고로 개발 항목의 우선순위를 정하는 사람은 <b>제품 책임자(PO)</b>이고, 팀은 자기조직적으로 일을 가져갑니다. '누가 시키느냐'가 아니라 '누가 돕느냐'가 스크럼 마스터입니다."},
+
+{t:"애자일", q:"XP(eXtreme Programming)의 실천 방법으로 거리가 <b>먼</b> 것은?",
+ o:["짝 프로그래밍(Pair Programming)","테스트 주도 개발(TDD)","지속적 통합(Continuous Integration)","상세 설계 문서 우선 작성"], a:3,
+ why:"XP는 문서보다 <b>동작하는 코드와 피드백</b>을 중시합니다. 상세 설계 문서를 먼저 완성하는 방식은 폭포수적 접근입니다.",
+ trap:"④가 '좋은 개발 습관'처럼 보여 정답으로 고르기 망설여집니다. 하지만 문제는 '옳은가'가 아니라 'XP의 실천법인가'를 묻습니다.",
+ coach:"이런 문제에서는 <b>질문의 주어</b>를 반드시 확인하세요. 일반적으로 바람직한 것과 특정 방법론의 실천법은 다릅니다. XP의 다섯 가치(<b>용기·단순성·의사소통·피드백·존중</b>)를 떠올려 보면 '문서 우선'은 어디에도 걸리지 않습니다. 참고로 XP 실천법에는 리팩토링·소규모 릴리스·공동 코드 소유·계획 게임도 포함됩니다."},
+
+{t:"UML", q:"UML 다이어그램 중 <b>구조(정적) 다이어그램</b>에 해당하는 것으로만 묶인 것은?",
+ o:["클래스, 컴포넌트, 배치","유스케이스, 시퀀스, 활동","클래스, 시퀀스, 상태","활동, 배치, 커뮤니케이션"], a:0,
+ why:"구조 다이어그램은 <b>클래스·객체·컴포넌트·배치·복합체구조·패키지</b> 6종입니다. ①은 모두 여기에 속합니다.",
+ trap:"③처럼 정답 후보(클래스)에 동적인 것(시퀀스·상태)을 섞어 놓는 방식이 가장 흔한 오답 설계입니다. 하나만 보고 고르면 걸립니다.",
+ coach:"묶음 문제는 <b>확실한 오답 하나를 찾아 그 보기를 통째로 버리는</b> 방식이 빠릅니다. 시퀀스·활동·상태·유스케이스는 '움직임'이라 무조건 동적이니, 이 넷 중 하나라도 들어간 보기는 즉시 제외하세요. 그러면 ①만 남습니다. 시간 아끼는 실전 요령입니다."},
+
+{t:"UML", q:"UML에서 '주문' 객체가 사라지면 '주문상세' 객체도 함께 소멸하는 관계를 표현할 때 사용하는 것은?",
+ o:["연관(Association)","집합(Aggregation)","합성(Composition)","의존(Dependency)"], a:2,
+ why:"생명주기를 <b>공유</b>하는 강한 전체-부분 관계는 <b>합성(Composition)</b>이며 <b>속이 채워진 마름모(◆)</b>로 그립니다.",
+ trap:"②집합(Aggregation)도 전체-부분이라 헷갈립니다. 차이는 딱 하나 — 집합은 부분이 <b>혼자서도 존재</b>합니다(부서가 없어져도 사원은 남음). 기호도 <b>빈 마름모(◇)</b>로 다릅니다.",
+ coach:"제 판단 기준은 <b>'전체를 지우면 부분도 지워지는가'</b> 이 한 문장입니다. 주문이 취소되면 주문상세는 존재할 이유가 없죠 → 합성. 반면 학과가 폐지돼도 학생은 다른 과로 갑니다 → 집합. 지문에 '함께 소멸·생명주기를 같이한다'가 나오면 <b>무조건 합성</b>입니다."},
+
+{t:"UML", q:"유스케이스 다이어그램에서 여러 유스케이스가 <b>공통으로 반드시 포함</b>하는 기능을 분리해 표현할 때 사용하는 관계는?",
+ o:["include","extend","generalization","association"], a:0,
+ why:"<b>include</b>는 기본 유스케이스가 실행될 때 <b>항상 반드시</b> 포함되어 실행되는 필수 관계입니다. '로그인 확인'처럼 여러 기능이 공통으로 필요로 하는 절차를 뽑아낼 때 씁니다.",
+ trap:"②extend와 반드시 구분해야 합니다. extend는 <b>특정 조건에서만 선택적으로</b> 확장되는 관계입니다(예: 결제 시 '쿠폰 적용').",
+ coach:"한 글자로 외우면 <b>include는 '필수', extend는 '선택'</b>입니다. 실전에서는 지문에 '반드시·항상·공통으로'가 있으면 include, '~인 경우에·필요하면·추가로'가 있으면 extend로 갈리니 부사만 봐도 됩니다. 화살표 방향까지 묻는 문제도 있는데, 둘 다 점선 화살표이고 include는 포함하는 쪽에서 포함되는 쪽을 가리킵니다."},
+
+{t:"UI", q:"사용자 인터페이스 설계 원칙 중 <b>유연성</b>에 대한 설명으로 옳은 것은?",
+ o:["누구나 쉽게 이해하고 사용할 수 있어야 한다","사용자의 요구를 최대한 수용하고 실수를 방지할 수 있어야 한다","사용자의 목적을 정확하고 완전하게 달성해야 한다","사용 방법을 쉽게 배우고 익힐 수 있어야 한다"], a:1,
+ why:"유연성은 <b>사용자 요구 수용 + 오류 방지·복구</b>입니다. 되돌리기(Undo)·확인창·다양한 입력 경로가 여기 해당합니다.",
+ trap:"①은 직관성, ③은 유효성, ④는 학습성입니다. 넷 다 그럴듯해서 정의를 정확히 기억하지 않으면 찍게 됩니다.",
+ coach:"이 네 개는 <b>키워드 한 단어씩</b>만 붙잡으면 끝납니다. 직관성=<b>이해</b>, 유효성=<b>목적 달성</b>, 학습성=<b>배우기</b>, 유연성=<b>수용·실수 방지</b>. 특히 '실수·오류'라는 단어가 보이면 유연성으로 직행하세요. 시험에서 이 네 개는 서로의 오답으로만 출제되므로, 넷을 함께 외우는 게 효율적입니다."},
+
+{t:"UI", q:"UI 설계 산출물을 완성도가 낮은 것부터 높은 순으로 바르게 나열한 것은?",
+ o:["와이어프레임 → 목업 → 프로토타입 → 스토리보드","목업 → 와이어프레임 → 스토리보드 → 프로토타입","프로토타입 → 목업 → 와이어프레임 → 스토리보드","스토리보드 → 와이어프레임 → 목업 → 프로토타입"], a:0,
+ why:"뼈대만 그린 <b>와이어프레임</b> → 실제처럼 보이지만 동작 안 하는 <b>목업</b> → 실제로 동작하는 <b>프로토타입</b> → 화면과 설명·흐름을 모두 묶은 최종 문서 <b>스토리보드</b> 순입니다.",
+ trap:"목업과 프로토타입의 선후를 바꾼 보기가 단골입니다. 판단 기준은 <b>동작 여부</b> 하나입니다.",
+ coach:"저는 '집 짓기'로 설명합니다. 도면 스케치(와이어프레임) → 모델하우스(목업, 보기만 됨) → 실제 시운전 되는 견본주택(프로토타입) → 시공 지침서 전체(스토리보드). <b>목업은 사진, 프로토타입은 영상</b>이라고 생각해도 좋습니다. 실기에서도 나오는 개념이라 지금 확실히 잡아두면 두 번 이득입니다."},
+
+{t:"결합도", q:"모듈 A가 모듈 B를 호출하면서 B의 <b>내부 실행 흐름을 결정하는 플래그 값</b>을 전달하고 있다. 이때의 결합도는?",
+ o:["자료 결합도","스탬프 결합도","제어 결합도","공통 결합도"], a:2,
+ why:"넘기는 값이 <b>데이터가 아니라 '어떻게 동작하라'는 지시(제어 신호·플래그)</b>이면 <b>제어 결합도</b>입니다. 호출하는 쪽이 상대의 내부 로직을 알고 있다는 뜻이라 결합이 강해집니다.",
+ trap:"'값을 전달한다'는 표현 때문에 ①자료 결합도로 착각하기 쉽습니다. 하지만 자료 결합은 <b>순수한 데이터</b>만 넘길 때이고, ②스탬프는 <b>자료구조 전체</b>를 넘기고 일부만 쓸 때입니다.",
+ coach:"이 문제는 단어 암기가 아니라 <b>상황 판별</b>을 요구하는 최근 출제 스타일입니다. 판단 순서를 이렇게 잡으세요 — 전역변수를 쓰나?(공통) → 내부를 직접 건드리나?(내용) → 넘기는 게 지시인가?(제어) → 구조체 통째인가?(스탬프) → 아니면 자료. 이 다섯 질문이면 어떤 시나리오든 분류됩니다."},
+
+{t:"응집도", q:"하나의 모듈 안에 '초기화', '로그 기록', '메모리 해제'처럼 <b>서로 관련은 없지만 프로그램 시작 시점에 함께 수행되는</b> 기능들이 모여 있다. 이 모듈의 응집도는?",
+ o:["기능적 응집도","시간적 응집도","논리적 응집도","우연적 응집도"], a:1,
+ why:"기능들이 <b>특정 시점(시간대)에 함께 실행된다</b>는 이유만으로 묶였다면 <b>시간적 응집도</b>입니다. 초기화 루틴이 대표적인 예입니다.",
+ trap:"④우연적으로 보기 쉽습니다. 하지만 우연적은 <b>아무 관련도, 아무 기준도 없이</b> 모인 경우입니다. 여기서는 '시작 시점'이라는 분명한 기준이 있으므로 우연적이 아닙니다. ③논리적은 '비슷한 성격끼리'(예: 모든 입력 처리 모음) 묶은 경우입니다.",
+ coach:"응집도 판별의 핵심은 <b>'무엇을 기준으로 묶였나'</b>를 찾는 것입니다. 시점이면 시간적, 성격이면 논리적, 실행 순서면 절차적, 같은 데이터면 교환적, 출력이 다음 입력이면 순차적, 단일 기능이면 기능적. 기준이 아예 없으면 우연적이고요. 지문에서 '함께 수행·같은 시점'이 보이면 시간적입니다."},
+
+{t:"모듈화", q:"팬인(Fan-In)과 팬아웃(Fan-Out)에 대한 설명으로 옳은 것은?",
+ o:["팬인이 높으면 재사용성이 높고, 팬아웃이 높으면 복잡도가 증가한다","팬인이 높으면 복잡도가 증가하고, 팬아웃이 높으면 재사용성이 높다","팬인과 팬아웃 모두 높을수록 좋은 설계이다","팬인과 팬아웃 모두 낮을수록 좋은 설계이다"], a:0,
+ why:"팬인은 <b>나를 호출하는 상위 모듈 수</b>라 높을수록 여러 곳에서 쓰이는 <b>공통·재사용 모듈</b>임을 뜻합니다. 팬아웃은 <b>내가 호출하는 하위 모듈 수</b>라 높을수록 관리할 것이 많아 <b>복잡</b>해집니다.",
+ trap:"②는 정확히 반대로 서술한 보기입니다. 방향(들어오는 화살표 vs 나가는 화살표)을 반대로 기억하면 그대로 걸립니다.",
+ coach:"화살표로 그려서 기억하세요. <b>In은 들어오는 것</b>이니 나를 찾는 사람이 많다는 뜻 = 인기 있는 공통 모듈 = 좋음. <b>Out은 나가는 것</b>이니 내가 챙길 부하가 많다는 뜻 = 부담 = 나쁨. 설계 목표는 한 줄로 <b>'팬인은 높게, 팬아웃은 낮게'</b>입니다. 결합도·응집도와 함께 물으면 '결합도 낮게, 응집도 높게, 팬인 높게, 팬아웃 낮게'가 정답 세트입니다."},
+
+{t:"아키텍처", q:"데이터를 처리하는 여러 단계를 거치며, 각 단계의 <b>출력이 다음 단계의 입력</b>이 되는 구조로 컴파일러나 스트림 처리에 적합한 아키텍처 패턴은?",
+ o:["MVC 패턴","계층화 패턴","파이프-필터 패턴","브로커 패턴"], a:2,
+ why:"각 <b>필터</b>가 데이터를 변환하고 <b>파이프</b>를 통해 다음 필터로 흘려보내는 구조가 <b>파이프-필터</b>입니다. 유닉스 셸의 <code>|</code>나 컴파일러 단계가 대표 예입니다.",
+ trap:"②계층화도 '단계'라는 말 때문에 헷갈립니다. 하지만 계층화는 <b>추상화 수준별로 층을 나눈 것</b>(표현-업무-데이터)이지, 데이터가 변환되며 흘러가는 구조가 아닙니다.",
+ coach:"구분 기준은 <b>'데이터가 흐르는가, 역할이 나뉘는가'</b>입니다. 데이터가 변형되며 통과하면 파이프-필터, 책임을 층으로 쌓았으면 계층화, 화면·데이터·제어로 나뉘면 MVC입니다. 아키텍처 패턴은 종류가 많지만 시험은 <b>MVC·계층화·파이프필터·클라이언트서버·브로커·마스터슬레이브</b> 정도만 반복 출제합니다. 이 여섯 개만 확실히 하세요."},
+
+{t:"디자인패턴", q:"GoF 디자인 패턴 중 <b>구조(Structural) 패턴</b>에 속하지 <b>않는</b> 것은?",
+ o:["어댑터(Adapter)","데코레이터(Decorator)","퍼사드(Facade)","옵서버(Observer)"], a:3,
+ why:"옵서버는 객체 간 <b>상호작용·책임</b>을 다루는 <b>행위(Behavioral) 패턴</b>입니다. 나머지 셋은 객체를 조립·연결하는 구조 패턴입니다.",
+ trap:"패턴 이름은 아는데 <b>분류</b>를 모르면 못 푸는 문제입니다. 최근에는 이렇게 '분류'를 묻는 형태가 이름 자체를 묻는 것보다 많습니다.",
+ coach:"23개를 다 외우려 하지 마세요. <b>분류당 대표 2~3개</b>만 확실히 하면 대부분 풀립니다. 생성=<b>싱글턴·팩토리·빌더</b>, 구조=<b>어댑터·데코레이터·퍼사드·프록시</b>, 행위=<b>옵서버·스트래티지·템플릿메서드·커맨드·이터레이터</b>. 요령 하나 — 이름이 <b>'~하는 사람/행동'</b> 느낌이면(관찰자·전략·명령·반복자) 대개 행위 패턴입니다. 실제로 잘 맞습니다."},
+
+{t:"디자인패턴", q:"기존 코드를 수정하지 않고 객체에 <b>기능을 동적으로 덧붙이고</b> 싶을 때 사용하기에 가장 적절한 패턴은?",
+ o:["싱글턴(Singleton)","데코레이터(Decorator)","어댑터(Adapter)","팩토리 메서드(Factory Method)"], a:1,
+ why:"<b>데코레이터</b>는 객체를 같은 인터페이스의 껍질로 계속 감싸며 <b>기능을 층층이 추가</b>합니다. 상속 없이 런타임에 조합할 수 있는 것이 장점입니다.",
+ trap:"③어댑터와 자주 혼동됩니다. 어댑터는 <b>인터페이스가 안 맞는 것을 맞춰 주는</b> 변환기이지 기능을 더하지 않습니다. 목적이 '호환'이냐 '추가'냐가 갈림길입니다.",
+ coach:"이름 그대로 생각하면 쉽습니다. <b>데코(장식)</b>는 케이크에 장식을 계속 얹는 것 — 본체는 그대로인데 기능이 늘죠. <b>어댑터</b>는 해외여행 갈 때 쓰는 <b>돼지코 변환 플러그</b>입니다 — 전기를 더 주는 게 아니라 모양만 맞춰 줍니다. 이 두 비유면 헷갈릴 일이 없습니다."},
+
+{t:"디자인패턴", q:"데이터베이스 연결 객체처럼 시스템에서 <b>단 하나의 인스턴스만 생성</b>하여 전역적으로 공유해야 할 때 사용하는 패턴은?",
+ o:["프로토타입(Prototype)","빌더(Builder)","싱글턴(Singleton)","브리지(Bridge)"], a:2,
+ why:"<b>싱글턴</b>은 생성자를 감추고 정적 메서드로만 인스턴스를 제공해 <b>객체가 하나만</b> 존재하도록 보장합니다. 설정·로그·커넥션 풀이 대표 사례입니다.",
+ trap:"①프로토타입도 생성 패턴이라 후보로 보이지만, 이건 기존 객체를 <b>복제</b>해서 새로 만드는 패턴이라 '하나만'과 정반대입니다.",
+ coach:"싱글턴은 시험에서 <b>생성 패턴 중 최빈출</b>입니다. '단 하나·유일한·전역 공유'라는 표현이 나오면 고민 없이 고르세요. 한 가지 덧붙이면, 실무에서는 싱글턴이 <b>테스트를 어렵게 하고 전역 상태를 만든다</b>는 이유로 남용을 경계합니다. 이런 단점을 묻는 문제도 가끔 나오니 '남용하면 결합도가 올라간다'는 점도 기억해 두세요."},
+
+{t:"인터페이스", q:"기업 내 여러 시스템을 통합할 때, 시스템들을 <b>1:1로 직접 연결</b>하여 초기에는 단순하지만 시스템 수가 늘면 연결선이 급격히 복잡해지는 EAI 구축 유형은?",
+ o:["Point-to-Point","Hub &amp; Spoke","Message Bus","Hybrid"], a:0,
+ why:"<b>Point-to-Point</b>는 필요한 시스템끼리 직접 연결하는 가장 단순한 방식입니다. 시스템이 n개면 연결이 최대 <code>n(n-1)/2</code>개까지 늘어 거미줄처럼 됩니다.",
+ trap:"②Hub &amp; Spoke는 중앙 허브를 두는 방식이라 오히려 연결 수가 <b>n개</b>로 줄어듭니다. '단순하다'는 서술만 보고 고르면 헷갈립니다.",
+ coach:"네 유형은 <b>그림으로</b> 외우는 게 최고입니다. P2P는 <b>거미줄</b>, Hub&amp;Spoke는 <b>자전거 바퀴살</b>, Message Bus는 <b>지하철 노선</b>, Hybrid는 둘의 혼합. 그리고 각 단점도 세트로 — P2P는 확장성 최악, Hub&amp;Spoke는 <b>허브가 죽으면 전체 마비</b>(단일 장애점). 이 '허브 단일 장애점'이 자주 출제됩니다."},
+
+{t:"미들웨어", q:"미들웨어에 대한 설명으로 옳지 <b>않은</b> 것은?",
+ o:["RPC는 원격에 있는 프로시저를 로컬처럼 호출하게 해 준다","MOM은 메시지 기반의 비동기 통신을 지원한다","TP 모니터는 온라인 트랜잭션을 처리·감시한다","WAS는 정적인 HTML 파일만 전달하는 웹 서버를 의미한다"], a:3,
+ why:"<b>WAS</b>(Web Application Server)는 JSP·서블릿 등을 실행해 <b>동적인 결과</b>를 만들어 내는 서버입니다. 정적 파일만 전달하는 것은 일반 <b>웹 서버</b>(Apache, Nginx)의 역할입니다.",
+ trap:"WAS와 웹 서버를 같은 것으로 알고 있으면 그냥 넘어갑니다. 실제로 둘을 섞어 서술하는 오답이 자주 등장합니다.",
+ coach:"<b>웹 서버는 배달, WAS는 조리</b>라고 기억하세요. 이미 만들어진 파일을 그대로 주면 웹 서버, 요청을 받아 계산해서 만들어 주면 WAS입니다. 미들웨어 문제는 대부분 이런 '옳지 않은 것' 형태로 나오는데, <b>RPC=원격 호출, MOM=메시지·비동기, TP모니터=거래, ORB=객체</b>만 정확하면 나머지 하나가 자동으로 답이 됩니다."},
+
+{t:"인터페이스", q:"시스템 간 데이터 교환 형식에 대한 설명으로 옳은 것은?",
+ o:["JSON은 태그를 사용하여 데이터를 표현하는 마크업 언어이다","XML은 사용자 정의 태그를 사용해 구조화된 데이터를 표현한다","YAML은 이진 형식으로만 데이터를 표현한다","JSON은 XML보다 항상 파일 크기가 크다"], a:1,
+ why:"<b>XML</b>은 사용자가 직접 태그를 정의해 데이터를 구조화하는 마크업 언어입니다. 문서 구조를 엄격히 표현할 수 있어 표준 연계에 오래 쓰였습니다.",
+ trap:"①은 JSON과 XML의 설명을 바꿔 놓았습니다. JSON은 태그가 아니라 <b>키:값 쌍과 중괄호</b>로 표현합니다. ④도 반대입니다 — JSON이 태그 반복이 없어 보통 <b>더 가볍습니다</b>.",
+ coach:"셋의 성격을 한 줄로 잡아두세요. <b>XML은 무겁지만 엄격, JSON은 가볍고 웹 표준, YAML은 사람이 읽기 편한 설정 파일용</b>(들여쓰기로 구조 표현, 텍스트 기반입니다). 요즘 시스템 연계는 대부분 JSON이라 '가볍다·경량'이라는 서술이 JSON에 붙으면 옳은 문장입니다."}
+
+]},
+
+{s:"2과목 소프트웨어 개발", items:[
+
+{t:"자료구조", q:"자료구조에 대한 설명으로 옳지 <b>않은</b> 것은?",
+ o:["스택은 LIFO 방식으로 동작하며 함수의 재귀 호출에 사용된다","큐는 FIFO 방식으로 동작하며 프린터 대기열에 사용된다","데크(Deque)는 양쪽 끝에서 삽입과 삭제가 모두 가능하다","트리는 노드가 한 줄로 연결된 선형 자료구조이다"], a:3,
+ why:"트리는 부모-자식 <b>계층</b> 구조를 갖는 <b>비선형</b> 자료구조입니다. 그래프도 마찬가지로 비선형입니다.",
+ trap:"①②③이 모두 맞는 설명이라 끝까지 읽지 않으면 앞에서 답을 골라 버립니다. '옳지 않은 것'을 묻는 문제는 반드시 4번까지 읽어야 합니다.",
+ coach:"선형/비선형 구분은 <b>'한 줄로 세울 수 있는가'</b>로 판단하세요. 배열·연결리스트·스택·큐·데크는 한 줄(선형), 트리·그래프는 가지가 갈라져 한 줄이 안 됩니다(비선형). 참고로 이 문제처럼 <b>2025년 1회에 자료구조가 대거 출제</b>돼 난이도를 올렸습니다. 2과목에서는 자료구조를 절대 버리지 마세요."},
+
+{t:"스택", q:"스택에 다음 순서로 연산을 수행했을 때, 최종적으로 스택에 남아 있는 데이터를 <b>아래에서 위로</b> 나열한 것은?",
+ code:"push(1), push(2), push(3), pop(), push(4), pop(), push(5)",
+ o:["1, 2, 5","1, 2, 4","1, 3, 5","2, 4, 5"], a:0,
+ why:"push 1,2,3 → 스택 [1,2,3]. pop()으로 <b>3 제거</b> → [1,2]. push 4 → [1,2,4]. pop()으로 <b>4 제거</b> → [1,2]. push 5 → <b>[1,2,5]</b>.",
+ trap:"②는 마지막 pop이 없었다고 착각한 경우, ③은 pop을 앞에서만 했다고 본 경우입니다. 연산이 섞여 있으면 <b>순서대로 한 줄씩</b> 적어야 합니다.",
+ coach:"이런 추적 문제는 머릿속으로 하면 90% 틀립니다. <b>반드시 옆에 스택 상태를 손으로 적으세요.</b> CBT라 종이가 없다고 걱정할 필요 없습니다 — 시험장에서 <b>연습장(백지)과 필기구를 줍니다</b>. pop은 항상 <b>맨 위(마지막에 넣은 것)</b>를 꺼낸다는 것만 지키면 실수할 여지가 없습니다."},
+
+{t:"후위표기", q:"후위 표기법(Postfix)으로 표현된 다음 수식의 계산 결과는?",
+ code:"3 4 + 2 * 7 -",
+ o:["7","3","10","21"], a:0,
+ why:"왼쪽부터 읽어 피연산자는 쌓고, 연산자를 만나면 <b>스택에서 두 개를 꺼내 계산</b>합니다. <code>3 4 +</code> → 7, <code>7 2 *</code> → 14, <code>14 7 -</code> → <b>7</b>.",
+ trap:"연산 순서를 중위식처럼 <code>3+4*2-7</code>로 착각하면 4가 나옵니다. 후위 표기는 <b>연산자가 나온 시점에 바로 계산</b>합니다.",
+ coach:"후위 표기는 <b>스택 응용의 대표 문제</b>라 거의 매 회차 나옵니다. 계산 요령은 딱 하나 — 연산자를 만나면 <b>바로 앞 두 개</b>를 묶어 계산하고 그 자리에 결과를 써넣기. 뺄셈·나눗셈은 <b>순서가 중요</b>합니다(먼저 꺼낸 것이 뒤쪽 피연산자). <code>14 7 -</code>는 7−14가 아니라 <b>14−7</b>입니다. 이 순서에서 실수가 제일 많이 납니다."},
+
+{t:"트리", q:"다음 이진 트리를 <b>중위 순회(Inorder)</b>한 결과로 옳은 것은?",
+ code:"        A\n       / \\\n      B   C\n     / \\   \\\n    D   E   F",
+ o:["D B E A C F","A B D E C F","D E B F C A","D B E A F C"], a:0,
+ why:"중위는 <b>왼쪽 → 뿌리 → 오른쪽</b>입니다. B의 서브트리를 먼저 중위로(D→B→E), 다음 뿌리 A, 마지막 C의 서브트리(C에는 오른쪽 자식 F만 있으므로 C→F). 따라서 <b>D B E A C F</b>.",
+ trap:"④는 마지막 C-F 순서를 뒤집은 것입니다. F는 C의 <b>오른쪽</b> 자식이므로 중위에서는 C가 먼저입니다. ②는 전위, ③은 후위 결과입니다.",
+ coach:"순회 문제는 <b>재귀적으로</b> 접근하세요. '전체 = 왼쪽 뭉치 + 뿌리 + 오른쪽 뭉치'로 큰 덩어리를 먼저 나눈 다음 각 덩어리 안에서 같은 규칙을 반복합니다. 그리고 팁 하나 — <b>중위 순회는 이진 탐색 트리에서 오름차순 정렬 결과</b>가 됩니다. 이 성질을 묻는 응용 문제도 나오니 함께 기억하세요."},
+
+{t:"트리", q:"노드가 15개인 <b>이진 트리</b>에서 단말 노드(leaf)가 8개일 때, 자식이 <b>2개인 노드</b>의 개수는?",
+ o:["6개","7개","8개","9개"], a:1,
+ why:"이진 트리에서는 항상 <b>[단말 노드 수] = [자식이 2개인 노드 수] + 1</b>이 성립합니다. 따라서 자식이 2개인 노드는 <b>8 − 1 = 7개</b>입니다.",
+ trap:"전체 노드 15개에서 단말 8개를 뺀 7을 그냥 답으로 고르면 <b>우연히 맞습니다</b>. 하지만 그건 자식이 1개인 노드가 0개일 때만 성립하는 우연이라, 숫자가 바뀌면 틀립니다.",
+ coach:"공식 <b>n₀ = n₂ + 1</b>은 외워 두면 좋습니다. 증명은 필요 없고 관계만 기억하세요. 이 문제는 최근 자료구조 강화 경향에서 나오는 <b>계산형 트리 문제</b>의 전형입니다. 함께 나오는 공식으로 <b>높이 h인 포화 이진 트리의 노드 수 = 2^h − 1</b>, <b>레벨 k의 최대 노드 수 = 2^(k-1)</b>도 챙겨 두세요."},
+
+{t:"정렬", q:"다음 데이터를 <b>버블 정렬</b>로 오름차순 정렬할 때, <b>1회전(1 pass)</b>을 마친 결과는?",
+ code:"8, 5, 6, 2, 4",
+ o:["5, 6, 2, 4, 8","2, 5, 6, 8, 4","5, 8, 6, 2, 4","2, 4, 5, 6, 8"], a:0,
+ why:"버블은 <b>인접한 두 개</b>를 비교·교환하며 끝까지 훑습니다. (8,5)→교환 [5,8,6,2,4], (8,6)→교환 [5,6,8,2,4], (8,2)→교환 [5,6,2,8,4], (8,4)→교환 <b>[5,6,2,4,8]</b>. 1회전이 끝나면 <b>가장 큰 값 8이 맨 뒤</b>에 자리잡습니다.",
+ trap:"②는 <b>선택 정렬</b>의 1회전 결과입니다(최솟값 2를 맨 앞으로). 두 정렬의 1회전 결과를 나란히 보기로 주는 것이 전형적인 함정입니다.",
+ coach:"1회전 결과만 봐도 어떤 정렬인지 구분됩니다 — <b>버블은 최댓값이 맨 뒤로</b>, <b>선택은 최솟값이 맨 앞으로</b>, <b>삽입은 앞 두 개만 정렬</b>됩니다. 이 세 가지 '지문(指紋)'을 기억하면 어떤 정렬의 몇 회전을 묻든 바로 답이 보입니다. 정렬 과정 추적은 2과목 단골이니 손으로 두세 번 굴려 보세요."},
+
+{t:"정렬", q:"정렬 알고리즘의 시간 복잡도에 대한 설명으로 옳은 것은?",
+ o:["퀵 정렬은 최악의 경우에도 O(n log n)을 보장한다","병합 정렬은 평균과 최악 모두 O(n log n)이다","선택 정렬의 평균 시간 복잡도는 O(n log n)이다","버블 정렬은 이미 정렬된 경우 O(log n)이다"], a:1,
+ why:"<b>병합 정렬</b>은 항상 절반씩 나눠 합치므로 데이터 상태와 무관하게 <b>평균·최악 모두 O(n log n)</b>입니다. 안정 정렬이기도 합니다.",
+ trap:"①이 가장 매력적인 오답입니다. 퀵 정렬은 평균은 O(n log n)이지만 피벗이 한쪽으로 치우치면 <b>최악 O(n²)</b>입니다. '퀵=제일 빠름'이라는 인상 때문에 최악까지 보장한다고 착각하기 쉽습니다.",
+ coach:"복잡도 문제는 <b>퀵의 최악만 정확히 알면</b> 절반이 풀립니다. 정리하면 — 느린 3형제(버블·선택·삽입) 평균 O(n²), 빠른 3형제(퀵·병합·힙) 평균 O(n log n), 그중 <b>퀵만 최악 O(n²)</b>. 삽입 정렬은 이미 정렬된 데이터에서 <b>최선 O(n)</b>이 되는 예외가 있으니 이것도 함께 알아두면 좋습니다."},
+
+{t:"검색", q:"1부터 100까지 정렬된 100개의 데이터에서 <b>이진 검색</b>으로 특정 값을 찾을 때, 최악의 경우 비교 횟수는?",
+ o:["5회","6회","7회","10회"], a:2,
+ why:"이진 검색은 한 번 비교마다 후보가 절반으로 줄어듭니다. 100 → 50 → 25 → 13 → 7 → 4 → 2 → 1로 <b>7번</b>이면 후보가 하나로 좁혀집니다(⌈log₂101⌉ = 7).",
+ trap:"④10회는 log₁₀ 100 = 2 같은 계산 착오나, 순차 검색과 혼동한 경우입니다. 이진 검색의 기준은 <b>2의 거듭제곱</b>입니다.",
+ coach:"암산 요령을 드리면 <b>2의 거듭제곱을 외워두고 데이터 수를 넘기는 지점</b>을 찾으면 됩니다. 2⁶=64, 2⁷=128이므로 100은 64와 128 사이 → <b>7회</b>. 계산기 없이 3초면 끝납니다. 참고로 이진 검색은 <b>정렬이 전제</b>라는 조건이 함께 출제되니, 그 조건도 반드시 챙기세요."},
+
+{t:"해싱", q:"해싱에서 서로 다른 키가 같은 버킷에 할당되는 <b>충돌(Collision)</b>을 해결하는 방법으로, 같은 주소에 연결 리스트를 이어 붙이는 방식은?",
+ o:["선형 조사법","이차 조사법","체이닝(Chaining)","이중 해싱"], a:2,
+ why:"<b>체이닝</b>은 하나의 버킷에 <b>연결 리스트</b>를 매달아 충돌한 항목을 계속 이어 붙입니다. 버킷이 가득 차는 개념이 없어 적재율이 높아도 동작합니다.",
+ trap:"①②④는 모두 <b>개방 주소법</b>(빈 자리를 찾아 옮겨 담는 방식)에 속합니다. 셋을 하나로 묶어 두면 헷갈릴 일이 없습니다.",
+ coach:"충돌 해결은 <b>두 갈래</b>로만 나누면 끝납니다 — <b>밖으로 매달면 체이닝, 안에서 빈 자리를 찾으면 개방 주소법</b>. 개방 주소법의 세부(선형·이차·이중 해싱)는 이름만 알면 충분하고 구현까지는 안 나옵니다. 해싱의 강점은 평균 <b>O(1)</b> 검색이라는 점인데, 이건 복잡도 비교 문제에서 자주 물어봅니다."},
+
+{t:"형상관리", q:"소프트웨어 형상관리(SCM)의 활동에 해당하지 <b>않는</b> 것은?",
+ o:["형상 식별","형상 통제","형상 감사","형상 배포"], a:3,
+ why:"형상관리의 활동은 <b>식별 → 통제 → 감사 → 기록(상태 보고)</b> 네 가지입니다. '형상 배포'는 표준 활동 명칭이 아닙니다.",
+ trap:"'배포'는 소프트웨어 개발에서 늘 쓰는 익숙한 단어라 자연스럽게 넘어갑니다. 이런 문제는 <b>없는 용어를 그럴듯하게 만들어</b> 넣는 방식입니다.",
+ coach:"보기에 <b>익숙하지만 목록에 없는 단어</b>가 하나 섞여 있으면 그게 답인 경우가 많습니다. 정확한 네 개를 외우고 있어야 판별되니, <b>'식·통·감·기'</b>로 묶어 두세요. 형상관리의 목적도 함께 — 변경 이력 추적, <b>이전 버전 복구</b>, 무단 변경 방지입니다."},
+
+{t:"버전관리", q:"버전 관리 도구에 대한 설명으로 옳은 것은?",
+ o:["SVN은 각 개발자가 전체 이력을 갖는 분산형이다","Git에서 branch는 원격 저장소에 변경을 올리는 명령이다","Git은 분산형으로, 로컬에서도 커밋 이력을 관리할 수 있다","CVS는 Git보다 나중에 개발된 최신 도구이다"], a:2,
+ why:"<b>Git은 분산형(DVCS)</b>이라 개발자마다 저장소 전체 복사본을 갖고, <b>네트워크 없이도 커밋</b>할 수 있습니다.",
+ trap:"①은 SVN과 Git의 설명이 바뀌었습니다(SVN은 중앙집중형). ②의 '원격에 올리는' 명령은 <b>push</b>이고, branch는 가지를 만드는 명령입니다.",
+ coach:"Git 명령은 <b>방향</b>으로 외우면 안 헷갈립니다. <b>push는 밀어 올리기(로컬→원격), pull은 당겨 오기(원격→로컬)</b>, commit은 로컬에 <b>확정 저장</b>, branch는 <b>가지치기</b>, merge는 <b>합치기</b>. 여기에 clone(복제), checkout(전환)까지 일곱 개면 필기에서 물어보는 범위는 다 덮습니다."},
+
+{t:"패키징", q:"소프트웨어 패키징에 대한 설명으로 옳지 <b>않은</b> 것은?",
+ o:["패키징은 개발자 관점이 아닌 사용자 관점에서 진행한다","릴리스 노트에는 버전, 변경 사항, 개선 내용 등을 기록한다","DRM은 콘텐츠의 불법 복제와 유통을 방지하는 저작권 보호 기술이다","패키징은 소스 코드를 전부 공개하여 배포하는 것을 원칙으로 한다"], a:3,
+ why:"패키징은 사용자가 <b>설치·실행할 수 있는 형태</b>로 묶는 작업입니다. 소스 코드 전면 공개는 원칙이 아니며, 오히려 <b>DRM으로 보호</b>하는 것이 함께 다뤄집니다.",
+ trap:"④는 오픈소스 개념과 섞어 만든 오답입니다. 패키징과 오픈소스 라이선스는 별개 주제입니다.",
+ coach:"패키징 주제는 <b>'사용자 관점'</b>이라는 한 문장이 거의 모든 문제의 열쇠입니다. 사용자 중심·설치 편의·매뉴얼 제공·저작권 보호가 옳은 방향이고, 개발 편의나 내부 공개를 말하면 오답입니다. 함께 나오는 산출물은 <b>릴리스 노트·설치 매뉴얼·사용자 매뉴얼</b> 세 가지입니다."},
+
+{t:"테스트", q:"테스트 원리 중, 동일한 테스트 케이스를 반복하면 더 이상 새로운 결함을 발견하지 못하므로 테스트 케이스를 지속적으로 개선해야 한다는 것은?",
+ o:["결함 집중","살충제 패러독스","오류-부재의 궤변","완벽한 테스트는 불가능"], a:1,
+ why:"같은 살충제를 계속 쓰면 해충에 내성이 생기듯, 같은 테스트 케이스로는 새 결함이 안 잡힌다는 것이 <b>살충제 패러독스</b>입니다.",
+ trap:"③오류-부재의 궤변은 <b>결함을 다 없앴어도 요구사항과 다르면 좋은 소프트웨어가 아니다</b>라는 뜻으로, 전혀 다른 원리입니다. 이름이 낯설어 서로 바꿔 내기 좋은 짝입니다.",
+ coach:"테스트 7원리 중 시험에 나오는 건 사실상 <b>네 개</b>입니다 — 살충제 패러독스(케이스 개선), 결함 집중(파레토 80:20), 오류-부재의 궤변(요구 불일치), 완벽한 테스트 불가능. 각각 <b>키워드 한 단어</b>로 붙잡아 두면 어떤 서술로 바꿔 내도 잡힙니다."},
+
+{t:"테스트", q:"화이트박스 테스트에서 사용하는 <b>검증 기준(커버리지)</b>이 아닌 것은?",
+ o:["구문(문장) 커버리지","결정(분기) 커버리지","조건 커버리지","동등 분할 커버리지"], a:3,
+ why:"<b>동등 분할</b>은 입력 값을 그룹으로 나눠 대표값을 시험하는 <b>블랙박스</b> 기법입니다. 커버리지라는 개념 자체가 아닙니다.",
+ trap:"'커버리지'라는 단어를 뒤에 붙여 놓아 그럴듯해 보입니다. 앞 단어(동등 분할)가 블랙박스 기법이라는 걸 알아야 걸러집니다.",
+ coach:"두 기법군을 <b>완전히 분리해서</b> 외우세요. 화이트박스 = <b>커버리지 계열</b>(구문→결정→조건→조건/결정→다중조건, 뒤로 갈수록 강함) + 기초 경로. 블랙박스 = <b>동등분할·경계값분석·원인결과그래프·결정표·상태전이·오류추정</b>. 한쪽 목록에 있는 단어가 반대쪽에 섞여 나오면 그게 답입니다."},
+
+{t:"테스트", q:"통합 테스트에서 <b>상향식(Bottom-Up)</b> 방식을 수행할 때 필요한 것은?",
+ o:["스텁(Stub)","드라이버(Driver)","목 오브젝트만 사용","별도의 보조 모듈이 필요 없다"], a:1,
+ why:"상향식은 하위 모듈부터 검증하므로, 아직 없는 <b>상위 모듈 역할을 대신할 드라이버</b>가 필요합니다. 드라이버가 하위 모듈을 호출해 결과를 확인합니다.",
+ trap:"①스텁은 <b>하향식</b>에서 필요한 <b>가짜 하위 모듈</b>입니다. 이 둘을 바꿔 내는 것이 2과목에서 가장 자주 나오는 함정입니다.",
+ coach:"저는 이렇게 외우게 합니다 — <b>'위에서 아래로 가면 아래가 없으니 스텁, 아래에서 위로 가면 위가 없으니 드라이버'</b>. 없는 쪽을 채운다는 관점이면 절대 안 헷갈립니다. 덧붙여 <b>드라이버는 운전자(위에서 조종)</b>, <b>스텁은 그루터기(아래에 남은 밑동)</b>라는 어원으로도 연결됩니다."},
+
+{t:"테스트", q:"다음 제어 흐름 그래프의 <b>순환 복잡도(McCabe)</b>는? (노드 8개, 간선 11개)",
+ o:["3","4","5","6"], a:2,
+ why:"V(G) = <b>E − N + 2</b> = 11 − 8 + 2 = <b>5</b>입니다. E는 간선(edge), N은 노드(node) 수입니다.",
+ trap:"E와 N을 바꿔 8 − 11 + 2로 계산하면 −1이 되어 당황하게 됩니다. <b>간선이 항상 앞</b>입니다.",
+ coach:"공식을 못 외우겠으면 <b>'복잡도는 양수여야 한다'</b>로 검산하세요. 보통 간선이 노드보다 많으니 큰 수에서 작은 수를 빼고 2를 더하면 됩니다. 그리고 <b>V(G) = 판단 노드(조건문) 수 + 1</b>이라는 두 번째 공식도 있습니다. 그래프 대신 코드를 주고 if 개수를 세게 하는 문제가 나오면 이쪽이 훨씬 빠릅니다."},
+
+{t:"테스트", q:"소프트웨어 테스트 레벨을 순서대로 바르게 나열한 것은?",
+ o:["단위 테스트 → 통합 테스트 → 시스템 테스트 → 인수 테스트","통합 테스트 → 단위 테스트 → 인수 테스트 → 시스템 테스트","단위 테스트 → 시스템 테스트 → 통합 테스트 → 인수 테스트","인수 테스트 → 시스템 테스트 → 통합 테스트 → 단위 테스트"], a:0,
+ why:"<b>단위(모듈 하나) → 통합(모듈 간 연결) → 시스템(전체) → 인수(고객 확인)</b> 순으로 범위가 넓어집니다.",
+ trap:"③처럼 시스템과 통합을 바꾼 보기가 흔합니다. 모듈을 합치지도 않고 전체 시스템을 시험할 수는 없습니다.",
+ coach:"<b>V-모델</b>을 떠올리면 순서가 저절로 나옵니다. 왼쪽 내려가는 축(요구분석→설계→상세설계→구현)의 <b>거울상</b>이 오른쪽 올라가는 테스트 축입니다. 상세설계↔단위, 설계↔통합, 요구분석↔시스템, 사용자요구↔인수. 이렇게 짝을 지어두면 순서 문제와 V-모델 문제를 한 번에 잡습니다."},
+
+{t:"테스트", q:"블랙박스 테스트 기법 중, 입력 조건의 <b>경계에 있는 값</b>에서 결함이 발생할 확률이 높다는 점을 이용하는 것은?",
+ o:["동등 분할 검사","경계값 분석","오류 예측 검사","원인-결과 그래프 검사"], a:1,
+ why:"<b>경계값 분석</b>은 유효 범위의 <b>최솟값·최댓값과 그 바로 앞뒤 값</b>을 집중적으로 시험합니다. 개발자가 <code>&lt;</code>와 <code>&lt;=</code>를 헷갈리는 지점이 바로 경계이기 때문입니다.",
+ trap:"①동등 분할과 짝으로 출제됩니다. 동등 분할은 구간을 나눠 <b>대표값 하나씩</b> 뽑는 것이고, 경계값 분석은 그 구간의 <b>가장자리</b>를 뽑는 것입니다.",
+ coach:"실무 감각으로 이해하면 절대 안 잊습니다. '1~100만 입력 가능'이라는 조건이 있으면 버그는 50에서 나지 않고 <b>0, 1, 100, 101</b>에서 납니다. 그래서 경계값을 봅니다. 두 기법은 보통 <b>함께 사용</b>하며, 시험에서도 짝으로 나오니 세트로 외우세요."},
+
+{t:"품질", q:"소프트웨어의 <b>외부 동작은 그대로 두고 내부 구조만 개선</b>하여 가독성과 유지보수성을 높이는 활동은?",
+ o:["리팩토링","리엔지니어링","리버스 엔지니어링","마이그레이션"], a:0,
+ why:"<b>리팩토링</b>은 기능(외부 동작)을 바꾸지 않으면서 코드 구조를 정리하는 작업입니다.",
+ trap:"②리엔지니어링은 기존 시스템을 <b>재분석·재구축</b>하는 더 큰 범위의 작업이고, ③리버스 엔지니어링은 <b>완성품에서 설계를 역으로 추출</b>하는 것입니다. 이름이 비슷해 셋을 섞어 냅니다.",
+ coach:"'re-' 삼형제는 <b>방향</b>으로 구분하세요. <b>리팩토링=안을 정리</b>(기능 불변), <b>리버스=거꾸로 설계 추출</b>(코드→문서), <b>리엔지니어링=아예 새로 다시</b>(재구축). 여기에 <b>마이그레이션=옮기기</b>(다른 환경으로 이전)까지 넣으면 네 개가 한 세트로 정리됩니다."},
+
+{t:"성능", q:"애플리케이션 성능 측정 지표에 해당하지 <b>않는</b> 것은?",
+ o:["처리량(Throughput)","응답 시간(Response Time)","자원 사용률(Resource Utilization)","기능 점수(Function Point)"], a:3,
+ why:"<b>기능 점수(FP)</b>는 소프트웨어의 기능 규모를 세어 <b>개발 비용·공수를 산정</b>하는 지표(5과목)이지, 실행 성능 지표가 아닙니다.",
+ trap:"'점수'라는 말이 측정 지표처럼 들려 자연스럽습니다. 성능 지표 네 개를 정확히 알고 있어야 걸러집니다.",
+ coach:"성능 4대 지표는 <b>처리량·응답 시간·경과 시간·자원 사용률</b>입니다. 다 <b>'실행 중에 잴 수 있는 것'</b>이라는 공통점이 있어요. 반대로 LOC·기능점수·COCOMO는 <b>만들기 전에 추정하는 것</b>이라 성격이 다릅니다. '재는 것이냐 미리 추정하는 것이냐'로 나누면 이런 문제는 실수하지 않습니다."}
+
+]},
+
+{s:"3과목 데이터베이스 구축", items:[
+
+{t:"관계모델", q:"릴레이션에 대한 설명으로 옳은 것은?",
+ o:["튜플의 수를 차수(Degree)라 한다","속성의 수를 카디널리티(Cardinality)라 한다","튜플의 수를 카디널리티, 속성의 수를 차수라 한다","차수와 카디널리티는 항상 같은 값을 갖는다"], a:2,
+ why:"<b>카디널리티 = 튜플(행)의 수</b>, <b>차수(Degree) = 속성(열)의 수</b>입니다.",
+ trap:"①②는 둘을 정확히 맞바꾼 보기입니다. 용어를 반대로 외우면 두 문제를 한 번에 틀립니다.",
+ coach:"저는 <b>'카드(Card)는 한 장씩 쌓인다'</b>로 기억시킵니다. 카드가 한 장 한 장 쌓이듯 <b>행이 쌓이는 것이 카디널리티</b>예요. 남은 하나가 자동으로 차수(열)가 됩니다. 참고로 릴레이션의 성질도 함께 나옵니다 — 튜플에 <b>순서가 없고, 중복 튜플이 없으며, 모든 속성값은 원자값</b>입니다."},
+
+{t:"키", q:"키(Key)에 대한 설명으로 옳지 <b>않은</b> 것은?",
+ o:["후보키는 유일성과 최소성을 모두 만족한다","기본키는 NULL 값을 가질 수 없다","슈퍼키는 유일성은 만족하지만 최소성은 만족하지 않을 수 있다","외래키는 반드시 유일한 값을 가져야 한다"], a:3,
+ why:"<b>외래키(FK)</b>는 다른 테이블의 기본키를 참조할 뿐, <b>중복될 수 있고 NULL도 가능</b>합니다. 한 부서에 여러 사원이 속하듯 같은 부서번호가 여러 행에 나타납니다.",
+ trap:"'키'라는 이름 때문에 모든 키가 유일해야 한다고 착각합니다. 유일성이 필수인 것은 <b>슈퍼키·후보키·기본키</b>이고, 외래키는 성격이 다릅니다.",
+ coach:"외래키는 <b>'키'가 아니라 '연결고리'</b>라고 생각하는 편이 정확합니다. 자기 테이블에서 행을 구분하는 역할이 아니라, <b>다른 테이블을 가리키는 포인터</b>니까요. 그래서 중복도 되고 NULL도 됩니다. 참조 무결성 문제와 세트로 나오니 '<b>FK는 참조 대상에 실제 존재하는 값이거나 NULL</b>'까지 함께 외우세요."},
+
+{t:"무결성", q:"학생 테이블의 '학과코드'가 학과 테이블에 존재하지 않는 값을 갖지 않도록 보장하는 제약 조건은?",
+ o:["개체 무결성","도메인 무결성","참조 무결성","고유 무결성"], a:2,
+ why:"외래키 값이 <b>참조하는 테이블의 기본키에 실제로 존재</b>해야 한다는 규칙이 <b>참조 무결성</b>입니다.",
+ trap:"①개체 무결성은 <b>기본키가 NULL·중복이면 안 된다</b>는 규칙으로, 테이블 <b>내부</b> 이야기입니다. 이 문제는 <b>두 테이블 사이</b>의 관계라 참조 무결성입니다.",
+ coach:"판단 기준은 간단합니다 — <b>테이블이 두 개 등장하면 참조 무결성</b>, 한 테이블 안의 기본키 이야기면 개체 무결성, 값의 범위·타입 이야기면 도메인 무결성. 참조 무결성과 함께 나오는 옵션이 <b>CASCADE(같이 삭제)·SET NULL·RESTRICT(삭제 거부)</b>인데, 이것도 자주 물어봅니다."},
+
+{t:"정규화", q:"다음 설명에 해당하는 정규형은?",
+ code:"기본키가 아닌 모든 속성이 기본키에 완전 함수 종속되어야 하며,\n부분 함수 종속을 제거한 상태",
+ o:["제1정규형","제3정규형","제2정규형","BCNF"], a:2,
+ why:"<b>부분 함수 종속 제거 = 제2정규형(2NF)</b>입니다. 복합키의 <b>일부</b>에만 종속된 속성을 분리합니다.",
+ trap:"②3NF는 <b>이행 함수 종속</b>(A→B→C) 제거이고, ④BCNF는 <b>모든 결정자가 후보키</b>가 되도록 하는 단계입니다. 셋 다 '종속 제거'라는 표현을 써서 어느 종속인지 정확히 봐야 합니다.",
+ coach:"정규화는 <b>제거하는 대상</b>만 붙잡으면 됩니다 — 1NF는 <b>반복(비원자값)</b>, 2NF는 <b>부분</b>, 3NF는 <b>이행</b>, BCNF는 <b>결정자</b>, 4NF는 <b>다치</b>, 5NF는 <b>조인</b>. 앞 글자로 <b>'도·부·이·결·다·조'</b>. 그리고 힌트 하나 — <b>부분 함수 종속은 복합키(키가 2개 이상)일 때만</b> 생깁니다. 지문에 복합키가 보이면 2NF 이야기일 확률이 높습니다."},
+
+{t:"이상현상", q:"정규화되지 않은 테이블에서 발생할 수 있는 이상(Anomaly) 현상이 <b>아닌</b> 것은?",
+ o:["삽입 이상","삭제 이상","갱신 이상","검색 이상"], a:3,
+ why:"이상 현상은 <b>삽입·삭제·갱신</b> 세 가지입니다. 조회(검색)는 데이터를 바꾸지 않으므로 이상 현상이 생기지 않습니다.",
+ trap:"'검색 이상'은 존재하지 않는 용어인데, 나머지와 나란히 놓으면 자연스러워 보입니다. 없는 것을 만들어 넣는 전형적인 오답 설계입니다.",
+ coach:"세 가지가 <b>모두 데이터를 변경하는 연산</b>이라는 공통점을 기억하세요. 그래서 조회는 애초에 후보가 아닙니다. 각각의 정의도 한 줄로 — 삽입 이상은 <b>원치 않는 값까지 넣어야 하는 것</b>, 삭제 이상은 <b>지우면 필요한 정보까지 사라지는 것</b>, 갱신 이상은 <b>중복된 값 일부만 바뀌어 불일치가 생기는 것</b>입니다."},
+
+{t:"관계대수", q:"관계대수에서 릴레이션의 <b>특정 속성(열)만 추출</b>하는 연산과 그 기호로 옳은 것은?",
+ o:["Select, σ","Join, ⋈","Project, π","Division, ÷"], a:2,
+ why:"<b>Project(π, 파이)</b>가 원하는 <b>열</b>만 뽑는 수직적 연산입니다. SQL의 <code>SELECT 열목록</code>에 해당합니다.",
+ trap:"①Select(σ)는 이름이 SQL의 SELECT와 같아 착각하기 쉽지만, 관계대수의 Select는 <b>조건에 맞는 행</b>을 고르는 연산으로 SQL의 <code>WHERE</code>에 해당합니다.",
+ coach:"이 <b>이름 충돌</b>이 이 문제의 핵심 함정입니다. 정리하면 — 관계대수 <b>σ(Select) = SQL의 WHERE(행)</b>, 관계대수 <b>π(Project) = SQL의 SELECT절(열)</b>. 기호 모양으로도 외울 수 있습니다: <b>π는 기둥 두 개(세로=열)</b>. 저는 이렇게 가르치는데 실제로 잘 안 잊습니다."},
+
+{t:"SQL", q:"SQL 명령어의 분류가 옳지 <b>않은</b> 것은?",
+ o:["DDL — CREATE, ALTER, DROP","DML — SELECT, INSERT, UPDATE, DELETE","DCL — GRANT, REVOKE","TCL — TRUNCATE, ALTER"], a:3,
+ why:"TCL(트랜잭션 제어)은 <b>COMMIT·ROLLBACK·SAVEPOINT</b>입니다. TRUNCATE와 ALTER는 구조를 다루는 <b>DDL</b>입니다.",
+ trap:"TRUNCATE가 '데이터를 지운다'는 점 때문에 DML이나 TCL로 오해되기 쉽습니다. 하지만 TRUNCATE는 <b>구조는 두고 전체 행을 즉시 비우는 DDL</b>이며 <b>롤백이 안 됩니다</b>.",
+ coach:"삭제 3형제를 확실히 정리하고 가세요. <b>DELETE</b>=DML, 조건 지정 가능, <b>롤백 가능</b>. <b>TRUNCATE</b>=DDL, 전체 삭제, 빠름, <b>롤백 불가</b>. <b>DROP</b>=DDL, <b>테이블 자체를 없앰</b>. 이 세 개의 차이는 거의 매 회 출제되고, 실기에서도 나옵니다."},
+
+{t:"SQL", q:"다음 SQL문에서 <b>실행 순서</b>가 가장 마지막인 절은?",
+ code:"SELECT 부서, COUNT(*)\nFROM   사원\nWHERE  급여 &gt;= 3000\nGROUP BY 부서\nHAVING COUNT(*) &gt;= 2\nORDER BY 부서;",
+ o:["WHERE","GROUP BY","SELECT","ORDER BY"], a:3,
+ why:"실행 순서는 <b>FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY</b>입니다. 정렬은 결과가 다 만들어진 뒤에 하므로 <b>ORDER BY가 마지막</b>입니다.",
+ trap:"SELECT가 맨 위에 쓰여 있어 먼저 실행된다고 착각하기 쉽습니다. <b>작성 순서와 실행 순서는 다릅니다.</b>",
+ coach:"이 순서를 알면 딸려 오는 문제가 여럿 풀립니다. 예를 들어 <b>SELECT에서 붙인 별칭(AS)을 WHERE에서 못 쓰는 이유</b>가 바로 WHERE이 SELECT보다 먼저 실행되기 때문이고, <b>ORDER BY에서는 별칭을 쓸 수 있는 이유</b>는 SELECT 다음이기 때문입니다. 순서 하나로 여러 문제가 설명됩니다."},
+
+{t:"SQL", q:"집계 함수의 결과에 조건을 걸어 <b>그룹을 걸러낼 때</b> 사용하는 절은?",
+ o:["WHERE","ORDER BY","GROUP BY","HAVING"], a:3,
+ why:"<b>HAVING</b>은 GROUP BY로 묶인 <b>그룹</b>에 조건을 겁니다. <code>HAVING COUNT(*) &gt;= 2</code>처럼 집계 함수를 조건으로 쓸 수 있습니다.",
+ trap:"WHERE에 집계 함수를 쓰면 오류가 납니다. WHERE는 그룹화 <b>이전</b>에 개별 행을 거르는 단계라, 그 시점엔 COUNT 값이 존재하지 않기 때문입니다.",
+ coach:"<b>'집계 함수가 조건에 들어가면 무조건 HAVING'</b> 하나면 끝납니다. 반대로 개별 행의 값(급여, 날짜 등)으로 거르는 것은 WHERE이고요. 실무 팁도 하나 — 가능하면 WHERE로 먼저 줄이고 그다음 그룹화하는 것이 성능에 유리합니다. 이런 성능 관점을 묻는 문제도 가끔 나옵니다."},
+
+{t:"SQL", q:"두 테이블에서 <b>양쪽 모두에 매칭되는 행만</b> 결과에 포함하는 조인은?",
+ o:["INNER JOIN","LEFT OUTER JOIN","FULL OUTER JOIN","CROSS JOIN"], a:0,
+ why:"<b>INNER JOIN</b>은 조인 조건을 만족하는 행, 즉 <b>교집합</b>만 결과로 냅니다.",
+ trap:"②LEFT OUTER JOIN은 <b>왼쪽 테이블 전부</b>를 남기고 짝이 없으면 NULL을 채웁니다. '조인'이라는 말만 보고 고르면 헷갈립니다.",
+ coach:"조인은 <b>벤 다이어그램</b>으로 그리면 전부 정리됩니다. INNER=겹치는 부분, LEFT=왼쪽 원 전체, RIGHT=오른쪽 원 전체, FULL=두 원 전체, CROSS=모든 조합(<b>곱집합</b>, 행 수가 m×n). 특히 CROSS JOIN은 <b>결과 행 수를 계산하라</b>는 문제로 나오니 곱셈이라는 것만 기억하세요."},
+
+{t:"SQL", q:"다음 SQL문의 실행 결과로 옳은 것은? (사원 테이블에 급여가 NULL인 행이 2건 포함되어 있고, 전체 행은 10건이다)",
+ code:"SELECT COUNT(*), COUNT(급여) FROM 사원;",
+ o:["10, 8","10, 10","8, 8","8, 10"], a:0,
+ why:"<b>COUNT(*)</b>는 NULL 여부와 무관하게 <b>모든 행</b>을 세므로 10입니다. 반면 <b>COUNT(열이름)</b>은 그 열이 <b>NULL이 아닌 행만</b> 세므로 10 − 2 = <b>8</b>입니다.",
+ trap:"둘을 같다고 생각하면 ②을 고릅니다. 집계 함수는 <b>NULL을 무시</b>한다는 성질이 이 문제의 전부입니다.",
+ coach:"NULL은 3과목에서 가장 자주 나오는 <b>숨은 함정</b>입니다. 기억할 규칙 세 가지 — ⑴ <b>COUNT(*)만 NULL을 포함</b>해서 셉니다. ⑵ SUM·AVG·MAX·MIN은 <b>NULL을 무시</b>합니다(그래서 AVG는 NULL을 0으로 치지 않습니다). ⑶ NULL 비교는 <code>= NULL</code>이 아니라 <b><code>IS NULL</code></b>로 해야 합니다. 이 세 개가 문제로 자주 나옵니다."},
+
+{t:"SQL", q:"테이블의 <b>모든 행을 삭제하되 테이블 구조는 유지</b>하며, 롤백이 불가능한 명령은?",
+ o:["DELETE FROM 테이블","TRUNCATE TABLE 테이블","DROP TABLE 테이블","ALTER TABLE 테이블"], a:1,
+ why:"<b>TRUNCATE</b>는 전체 행을 한 번에 비우고 <b>구조는 남깁니다</b>. DDL이라 <b>자동 커밋</b>되어 롤백할 수 없습니다.",
+ trap:"①DELETE도 전체 삭제가 가능해 헷갈리지만, DELETE는 DML이라 <b>롤백이 됩니다</b>. 문제의 '롤백 불가'가 결정적 단서입니다.",
+ coach:"문제에 <b>조건이 두 개 이상 붙으면 그 조합으로 답이 하나로 좁혀집니다.</b> 여기서는 '구조 유지'로 DROP이 빠지고, '롤백 불가'로 DELETE가 빠집니다. 이렇게 <b>조건을 하나씩 소거</b>하는 습관을 들이면 애매한 문제도 안전하게 풀립니다."},
+
+{t:"뷰", q:"뷰(View)에 대한 설명으로 옳지 <b>않은</b> 것은?",
+ o:["하나 이상의 기본 테이블로부터 유도된 가상 테이블이다","필요한 열만 보여줄 수 있어 보안에 유리하다","뷰를 통해 데이터를 조회하면 실제 테이블의 데이터를 참조한다","뷰는 독립적인 물리적 저장 공간을 가지므로 데이터가 중복 저장된다"], a:3,
+ why:"뷰는 <b>정의(SELECT문)만 저장</b>되는 <b>가상 테이블</b>입니다. 별도의 물리적 데이터 저장 공간을 갖지 않으므로 중복 저장이 없습니다.",
+ trap:"'테이블'이라는 이름 때문에 실제 데이터를 갖고 있다고 착각하기 쉽습니다. '가상'이라는 수식어가 핵심입니다.",
+ coach:"뷰는 <b>'창문'</b>이라고 생각하세요. 창문 너머 풍경(데이터)은 원래 테이블에 있고, 창문은 <b>어디를 어떻게 볼지만</b> 정해 놓은 것입니다. 그래서 원본이 바뀌면 뷰의 결과도 바뀝니다. 함께 나오는 특징 — 뷰는 <b>독립적인 인덱스를 만들 수 없고</b>, 정의를 변경할 수 없어 바꾸려면 <b>DROP 후 재생성</b>해야 합니다."},
+
+{t:"인덱스", q:"인덱스(Index)에 대한 설명으로 옳은 것은?",
+ o:["인덱스를 많이 만들수록 삽입·수정 성능이 향상된다","인덱스는 검색 속도를 높이지만 삽입·삭제 시 부가적인 갱신 비용이 발생한다","인덱스는 테이블당 하나만 생성할 수 있다","인덱스를 생성하면 원본 테이블의 데이터가 정렬되어 저장된다"], a:1,
+ why:"인덱스는 <b>조회를 빠르게</b> 하는 대신, 데이터가 바뀔 때마다 <b>인덱스도 함께 갱신</b>해야 해서 삽입·수정·삭제에는 부담이 됩니다.",
+ trap:"①은 정확히 반대로 서술했습니다. 인덱스가 많을수록 쓰기 성능은 <b>나빠집니다</b>. ③도 틀립니다 — 인덱스는 <b>여러 개</b> 만들 수 있습니다.",
+ coach:"<b>책의 색인</b>으로 이해하면 전부 설명됩니다. 색인이 있으면 원하는 쪽을 빨리 찾지만(조회 ↑), 책 내용을 고칠 때마다 색인도 다시 만들어야 하죠(쓰기 ↓). 그래서 실무에서는 <b>조회가 잦은 열에만</b> 인덱스를 겁니다. '많을수록 좋다'는 서술이 보이면 그건 오답입니다."},
+
+{t:"트랜잭션", q:"트랜잭션의 특성 중 다음 설명에 해당하는 것은?",
+ code:"트랜잭션이 성공적으로 완료되면 그 결과는 시스템에 장애가\n발생하더라도 영구적으로 반영되어야 한다.",
+ o:["원자성(Atomicity)","일관성(Consistency)","격리성(Isolation)","지속성(Durability)"], a:3,
+ why:"완료된 결과가 <b>영구히 유지</b>되어야 한다는 것이 <b>지속성(Durability)</b>입니다. 이를 위해 로그와 체크포인트를 사용합니다.",
+ trap:"①원자성은 <b>전부 반영되거나 전혀 반영되지 않아야 한다</b>는 것으로, '완료 후'가 아니라 '완료 여부'에 관한 성질입니다.",
+ coach:"ACID는 <b>시점</b>으로 나누면 명쾌합니다 — <b>원자성은 실행 중</b>(다 되거나 다 안 되거나), <b>격리성도 실행 중</b>(다른 트랜잭션과 간섭 없이), <b>지속성은 완료 후</b>(영구 보존), <b>일관성은 전후 비교</b>(제약 조건 유지). 지문에 '장애가 나도·영구히'가 있으면 지속성입니다."},
+
+{t:"병행제어", q:"두 개 이상의 트랜잭션이 서로 상대가 점유한 자원을 기다리며 <b>무한정 대기</b>하는 상태는?",
+ o:["교착상태(Deadlock)","기아상태(Starvation)","경쟁상태(Race Condition)","로킹(Locking)"], a:0,
+ why:"서로가 서로를 기다려 <b>아무도 진행하지 못하는</b> 상태가 <b>교착상태</b>입니다. 발생 조건은 상호배제·점유와 대기·비선점·환형대기 <b>네 가지가 모두</b> 성립할 때입니다.",
+ trap:"②기아상태는 <b>우선순위에 계속 밀려</b> 자원을 못 받는 것으로, 서로 기다리는 것이 아니라 <b>한쪽만 계속 밀리는</b> 상황입니다.",
+ coach:"둘의 차이를 그림으로 잡으세요 — <b>교착은 서로 마주보고 멈춤(양방향)</b>, <b>기아는 혼자 계속 뒤로 밀림(일방향)</b>. 그리고 교착 4조건은 <b>'하나만 깨도 예방된다'</b>는 점이 자주 출제됩니다. 특히 <b>'비선점'</b>이 조건이라는 것 — '선점'이라고 적힌 보기는 틀린 것이니 주의하세요."},
+
+{t:"회복", q:"데이터베이스 장애 발생 시, 이미 커밋된 트랜잭션의 변경 내용을 로그를 이용해 <b>다시 반영</b>하는 회복 기법은?",
+ o:["UNDO","REDO","ROLLBACK","CHECKPOINT"], a:1,
+ why:"<b>REDO</b>는 커밋은 되었으나 디스크에 반영되지 못한 변경을 로그를 보고 <b>다시 수행</b>하는 것입니다. 반대로 <b>UNDO</b>는 완료되지 못한 트랜잭션의 변경을 <b>취소</b>합니다.",
+ trap:"③ROLLBACK은 사용자가 명시적으로 트랜잭션을 취소하는 <b>명령어(TCL)</b>이지 회복 기법의 명칭이 아닙니다. 의미가 UNDO와 비슷해 헷갈립니다.",
+ coach:"방향으로 외우세요 — <b>REDO는 앞으로(다시 하기), UNDO는 뒤로(되돌리기)</b>. 판단 기준은 <b>커밋 여부</b>입니다. <b>커밋된 것은 REDO, 커밋 안 된 것은 UNDO</b>. 이 한 줄이면 어떤 상황을 줘도 분류됩니다. CHECKPOINT는 회복 시작 지점을 표시해 <b>회복 범위를 줄이는</b> 장치입니다."},
+
+{t:"스키마", q:"데이터베이스 3단계 스키마 중, <b>조직 전체의 관점에서 데이터베이스 전체의 논리적 구조</b>를 정의하는 것은?",
+ o:["외부 스키마","개념 스키마","내부 스키마","물리 스키마"], a:1,
+ why:"<b>개념 스키마</b>는 조직 전체를 아우르는 <b>통합된 논리 구조</b>로, 데이터베이스당 <b>하나만</b> 존재하며 DBA가 관리합니다.",
+ trap:"①외부 스키마는 <b>사용자·응용별 관점</b>이라 여러 개가 존재합니다. '전체'와 '개별'을 구분하는 것이 핵심입니다.",
+ coach:"개수로 외우면 편합니다 — <b>외부는 여러 개(사용자마다), 개념은 하나, 내부도 하나</b>. 그리고 이 3단계를 나누는 이유가 <b>데이터 독립성</b>인데, 이것도 세트로 출제됩니다. <b>논리적 독립성 = 개념↔외부</b>(논리 구조가 바뀌어도 응용은 영향 최소), <b>물리적 독립성 = 내부↔개념</b>(저장 방식이 바뀌어도 논리 구조는 그대로)."},
+
+{t:"설계", q:"성능 향상을 위해 정규화된 테이블을 의도적으로 통합하거나 중복을 허용하는 것은?",
+ o:["정규화","반정규화(De-normalization)","무결성 제약","트랜잭션 분리"], a:1,
+ why:"<b>반정규화</b>는 조인을 줄여 조회 성능을 높이려고 <b>일부러 중복을 허용</b>하는 설계 기법입니다. 정규화의 반대 방향 절충입니다.",
+ trap:"'정규화'와 이름이 비슷해 지문을 대충 읽으면 ①을 고릅니다. <b>의도적으로 중복을 허용</b>한다는 부분이 결정적입니다.",
+ coach:"정규화와 반정규화는 <b>맞바꿈(trade-off) 관계</b>입니다. 정규화하면 <b>중복↓ 무결성↑</b>이지만 조인이 늘어 <b>조회 성능↓</b>. 반정규화는 그 반대고요. 그래서 시험에서 '반정규화의 단점'을 물으면 답은 <b>데이터 중복으로 인한 무결성 저하·갱신 비용 증가</b>입니다. 장단점을 짝으로 정리해 두세요."},
+
+{t:"ERD", q:"E-R 다이어그램의 표기법으로 옳지 <b>않은</b> 것은?",
+ o:["개체(Entity)는 사각형으로 표현한다","속성(Attribute)은 타원으로 표현한다","관계(Relationship)는 마름모로 표현한다","기본키 속성은 이중 사각형으로 표현한다"], a:3,
+ why:"기본키 속성은 타원 안의 이름에 <b>밑줄</b>을 그어 표시합니다. 이중 사각형은 <b>약한 개체</b>를 나타내는 기호입니다.",
+ trap:"①②③이 모두 맞아서 앞에서 답을 고르기 쉽습니다. 기본키 표기까지 정확히 알아야 걸러지는 문제입니다.",
+ coach:"ERD 기호는 <b>사각형(개체) · 타원(속성) · 마름모(관계) · 선(연결) · 밑줄(기본키)</b> 다섯 개면 충분합니다. 여기에 <b>이중 사각형=약한 개체, 이중 타원=다중값 속성, 점선 타원=유도 속성</b>까지 알면 어떤 변형도 대응됩니다. 이 문제처럼 <b>맞는 것 세 개 + 미묘하게 틀린 하나</b> 구조가 3과목의 전형입니다."}
+
+]},
+
+{s:"4과목 프로그래밍 언어 활용", items:[
+
+{t:"C 언어", q:"다음 C 프로그램의 출력 결과는?",
+ code:"<span class=\"key\">int</span> main() {\n    <span class=\"key\">int</span> a = <span class=\"num\">5</span>, b, c;\n    b = a++;\n    c = ++a;\n    printf(<span class=\"str\">\"%d %d %d\"</span>, a, b, c);\n    <span class=\"key\">return</span> <span class=\"num\">0</span>;\n}",
+ o:["7 5 7","6 5 6","7 6 7","5 5 7"], a:0,
+ why:"<code>b = a++</code>는 <b>b에 현재값 5를 먼저 넣고</b> a를 6으로 올립니다(b=5, a=6). 이어서 <code>c = ++a</code>는 <b>a를 7로 먼저 올린 뒤</b> c에 대입합니다(a=7, c=7). 따라서 <b>7 5 7</b>.",
+ trap:"연산이 두 줄이라 a의 최종값을 6으로 착각하기 쉽습니다. a는 <b>두 번 증가</b>했습니다.",
+ coach:"증감 연산자는 <b>++의 위치가 곧 순서</b>입니다. <b>뒤에 붙으면(a++) '쓰고 올린다', 앞에 붙으면(++a) '올리고 쓴다'</b>. 이 문제처럼 여러 줄이 이어지면 <b>변수 값을 줄마다 옆에 적으면서</b> 따라가세요. 머리로만 하면 마지막 값에서 꼭 한 번 틀립니다. 4과목 코드 문제는 손으로 적는 사람이 이깁니다."},
+
+{t:"C 언어", q:"다음 C 코드의 출력 결과는?",
+ code:"<span class=\"key\">int</span> a[<span class=\"num\">5</span>] = {<span class=\"num\">1</span>, <span class=\"num\">2</span>, <span class=\"num\">3</span>, <span class=\"num\">4</span>, <span class=\"num\">5</span>};\n<span class=\"key\">int</span> *p = a;\np++;\nprintf(<span class=\"str\">\"%d\"</span>, *p + *(p + <span class=\"num\">2</span>));",
+ o:["4","8","6","5"], a:2,
+ why:"<code>p = a</code>이면 p는 a[0]을 가리킵니다. <code>p++</code>로 <b>a[1]</b>로 이동하므로 <code>*p</code> = 2입니다. <code>*(p+2)</code>는 <b>a[3]</b> = 4이므로 합은 <b>6</b>입니다.",
+ trap:"<code>p++</code>를 놓치고 <code>*p</code>를 1로 계산하면 1+3=4(①)가 됩니다. 포인터 이동을 반드시 반영해야 합니다.",
+ coach:"포인터 문제는 <b>'지금 몇 번 칸을 가리키는가'</b>만 추적하면 됩니다. 배열 위에 인덱스를 적고 화살표를 옮겨 보세요. 핵심 등식은 <b><code>*(p+i)</code> = <code>p[i]</code></b>입니다. 이 둘이 완전히 같다는 걸 알면 포인터 표기가 나와도 그냥 배열 문제로 바꿔 풀 수 있습니다."},
+
+{t:"C 언어", q:"다음 C 코드의 실행 결과 sum의 값은?",
+ code:"<span class=\"key\">int</span> i = <span class=\"num\">0</span>, sum = <span class=\"num\">0</span>;\n<span class=\"key\">while</span> (i &lt; <span class=\"num\">5</span>) {\n    i++;\n    <span class=\"key\">if</span> (i % <span class=\"num\">2</span> == <span class=\"num\">1</span>) <span class=\"key\">continue</span>;\n    sum += i;\n}",
+ o:["6","9","15","4"], a:0,
+ why:"<code>continue</code>는 <b>홀수일 때 남은 부분을 건너뛰고</b> 다음 반복으로 갑니다. 결국 짝수만 더해지므로 <b>2 + 4 = 6</b>입니다.",
+ trap:"③15는 1~5를 모두 더한 값으로, continue를 무시했을 때 나옵니다. ②9는 홀수(1+3+5)를 더한 경우입니다.",
+ coach:"<b>continue와 break</b>를 정확히 구분하세요 — <b>continue는 이번 회차만 건너뛰고 반복은 계속</b>, <b>break는 반복문 자체를 탈출</b>합니다. 이 문제에서 continue를 break로 바꾸면 sum은 0이 됩니다(i=1에서 바로 탈출). 출제자는 이 둘을 바꿔 내는 걸 좋아하니, 코드에서 두 단어를 보면 표시부터 하세요."},
+
+{t:"C 언어", q:"C에서 <code>int x = 12;</code> 일 때 <code>x &gt;&gt; 2</code> 의 결과는?",
+ o:["3","6","24","48"], a:0,
+ why:"오른쪽 시프트 <code>&gt;&gt;n</code>은 <b>2ⁿ으로 나누기</b>입니다. 12 ÷ 2² = 12 ÷ 4 = <b>3</b>입니다. (2진수 1100 → 0011)",
+ trap:"방향을 반대로 알아 곱하기로 계산하면 48(④)이 나옵니다. <b>왼쪽(&lt;&lt;)이 곱하기, 오른쪽(&gt;&gt;)이 나누기</b>입니다.",
+ coach:"화살표가 가리키는 쪽으로 <b>비트가 밀려간다</b>고 생각하면 방향이 안 헷갈립니다. 왼쪽으로 밀면 자릿수가 커지니 ×2, 오른쪽으로 밀면 작아지니 ÷2. 비트 연산은 이것 말고 <b>XOR(^)</b>도 잘 나오는데, <b>같으면 0, 다르면 1</b>이고 <b>같은 수끼리 XOR하면 0</b>이라는 성질을 기억하세요."},
+
+{t:"Java", q:"다음 Java 코드의 출력 결과는?",
+ code:"<span class=\"key\">class</span> Parent {\n    <span class=\"key\">void</span> print() { System.out.print(<span class=\"str\">\"Parent\"</span>); }\n}\n<span class=\"key\">class</span> Child <span class=\"key\">extends</span> Parent {\n    <span class=\"key\">void</span> print() { System.out.print(<span class=\"str\">\"Child\"</span>); }\n}\n<span class=\"cmt\">// main</span>\nParent p = <span class=\"key\">new</span> Child();\np.print();",
+ o:["Parent","ParentChild","Child","컴파일 오류"], a:2,
+ why:"참조 변수의 타입은 Parent지만 <b>실제 생성된 객체는 Child</b>입니다. 오버라이딩된 메서드는 <b>실행 시점의 실제 객체</b>를 기준으로 호출되므로(동적 바인딩) <b>Child</b>가 출력됩니다.",
+ trap:"선언 타입(Parent)을 보고 ①을 고르기 쉽습니다. 하지만 자바에서 <b>메서드는 객체 기준</b>으로 결정됩니다.",
+ coach:"이게 <b>다형성</b>의 핵심이고 필기에서 매우 자주 나옵니다. 한 문장으로 <b>'변수는 껍데기, 실행은 알맹이(실제 객체)'</b>라고 기억하세요. 단 예외가 있습니다 — <b>필드(변수)와 static 메서드는 선언 타입 기준</b>으로 결정됩니다. 이 예외를 이용한 함정 문제도 나오니 '메서드만 객체 기준'이라고 정확히 새기세요."},
+
+{t:"Java", q:"Java에 대한 설명으로 옳지 <b>않은</b> 것은?",
+ o:["static 메서드는 오버라이딩할 수 없다","생성자는 상속되지 않는다","클래스의 다중 상속을 지원한다","final로 선언된 메서드는 오버라이딩할 수 없다"], a:2,
+ why:"Java는 <b>클래스의 다중 상속을 지원하지 않습니다.</b> 여러 부모에서 같은 메서드를 물려받을 때 생기는 모호함(다이아몬드 문제) 때문이며, 대신 <b>인터페이스는 여러 개 구현</b>할 수 있습니다.",
+ trap:"C++가 다중 상속을 지원하기 때문에 자바도 된다고 착각하기 쉽습니다. 언어별로 다르다는 점이 함정입니다.",
+ coach:"'오버라이딩이 안 되는 것' 3종 세트를 묶어 외우세요 — <b>static · final · private</b> 메서드입니다. 여기에 <b>생성자는 상속 자체가 안 된다</b>까지가 자주 나오는 지문입니다. 반대로 <b>인터페이스는 다중 구현 가능</b>이라는 것도 짝으로 기억하면, 이 유형은 어떻게 꼬아 내도 잡힙니다."},
+
+{t:"Java", q:"Java의 접근 제어자 중 <b>같은 패키지 내부와 상속받은 자식 클래스</b>에서 접근을 허용하는 것은?",
+ o:["public","default","protected","private"], a:2,
+ why:"<b>protected</b>는 같은 패키지 + <b>다른 패키지의 자식 클래스</b>까지 접근을 허용합니다. default(package-private)는 <b>같은 패키지만</b> 허용하고 상속은 고려하지 않습니다.",
+ trap:"②default와 헷갈립니다. 결정적 차이는 <b>'상속받은 자식'</b>인데, default는 다른 패키지의 자식에게 열리지 않습니다.",
+ coach:"범위를 넓은 순으로 <b>public &gt; protected &gt; default &gt; private</b>으로 외우고, 각 경계를 한 단어로 — public=<b>전부</b>, protected=<b>패키지+자식</b>, default=<b>패키지</b>, private=<b>자기 클래스</b>. 문제에 <b>'자식·상속'</b>이 등장하면 거의 protected입니다. 캡슐화 개념 문제와 함께 나오면 '필드는 private, 접근은 메서드로'가 정답 방향입니다."},
+
+{t:"Python", q:"다음 Python 코드의 출력 결과는?",
+ code:"a = [<span class=\"num\">1</span>, <span class=\"num\">2</span>, <span class=\"num\">3</span>, <span class=\"num\">4</span>, <span class=\"num\">5</span>]\nprint(a[<span class=\"num\">1</span>:<span class=\"num\">4</span>])",
+ o:["[1, 2, 3]","[2, 3, 4, 5]","[2, 3, 4]","[1, 2, 3, 4]"], a:2,
+ why:"슬라이싱 <code>a[시작:끝]</code>은 <b>시작은 포함, 끝은 제외</b>합니다. 인덱스 1, 2, 3에 해당하는 <b>[2, 3, 4]</b>입니다.",
+ trap:"끝 인덱스를 포함한다고 생각하면 ②[2,3,4,5]가 됩니다. <b>끝은 항상 미포함</b>이라는 규칙을 기계적으로 적용하세요.",
+ coach:"슬라이싱은 <b>'개수 = 끝 − 시작'</b>으로 검산하면 실수를 잡습니다. 여기선 4−1=3개니까 원소 세 개짜리 보기만 후보가 됩니다. 그것만으로 ②④가 걸러지죠. 함께 알아둘 관용구 — <b><code>a[::-1]</code>은 역순</b>, <b><code>a[:n]</code>은 앞에서 n개</b>, <b><code>a[-n:]</code>은 뒤에서 n개</b>입니다."},
+
+{t:"Python", q:"다음 Python 코드의 실행 결과로 출력되는 값은?",
+ code:"d = {<span class=\"str\">'a'</span>: <span class=\"num\">1</span>, <span class=\"str\">'b'</span>: <span class=\"num\">2</span>}\nd[<span class=\"str\">'a'</span>] = <span class=\"num\">9</span>\nd[<span class=\"str\">'c'</span>] = <span class=\"num\">3</span>\nprint(<span class=\"key\">len</span>(d))",
+ o:["2","오류 발생","4","3"], a:3,
+ why:"딕셔너리는 <b>키가 중복될 수 없습니다.</b> <code>d['a']=9</code>는 새 항목이 아니라 기존 'a'의 <b>값을 덮어쓴</b> 것이고, <code>d['c']=3</code>만 새로 추가됩니다. 따라서 항목은 a, b, c <b>3개</b>입니다.",
+ trap:"대입을 모두 '추가'로 세면 4개(③)가 됩니다. <b>키가 이미 있으면 수정, 없으면 추가</b>라는 동작이 핵심입니다.",
+ coach:"파이썬 자료형은 <b>'중복 허용 여부'와 '수정 가능 여부'</b> 두 축으로 정리하면 어떤 문제든 대응됩니다. <b>list</b>=순서O·중복O·수정O, <b>tuple</b>=순서O·중복O·<b>수정X</b>, <b>set</b>=순서X·<b>중복X</b>, <b>dict</b>=<b>키 중복X</b>·값은 자유. 이 표가 4과목 파이썬 문제의 절반을 커버합니다."},
+
+{t:"Python", q:"다음 Python 코드의 출력 결과는?",
+ code:"result = [x * <span class=\"num\">2</span> <span class=\"key\">for</span> x <span class=\"key\">in</span> <span class=\"key\">range</span>(<span class=\"num\">1</span>, <span class=\"num\">4</span>)]\nprint(result)",
+ o:["[2, 4, 6]","[2, 4, 6, 8]","[1, 2, 3]","[0, 2, 4]"], a:0,
+ why:"<code>range(1,4)</code>는 <b>1, 2, 3</b>을 만들고(끝값 4 미포함), 각각 2를 곱해 <b>[2, 4, 6]</b>이 됩니다.",
+ trap:"range의 끝값을 포함한다고 보면 4까지 계산해 ②가 됩니다. 슬라이싱과 마찬가지로 <b>range도 끝값 미포함</b>입니다.",
+ coach:"파이썬에서 <b>'끝은 포함하지 않는다'</b>는 규칙은 range·슬라이싱에 공통으로 적용됩니다. 이거 하나로 두 유형이 동시에 정리돼요. <code>range(a, b)</code>의 <b>개수는 b − a</b>라는 것도 검산에 유용합니다(여기선 4−1=3개). 리스트 컴프리헨션 자체는 어렵지 않으니 <b>range 범위</b>에만 집중하세요."},
+
+{t:"운영체제", q:"CPU 스케줄링 기법 중 <b>선점(Preemptive)</b> 방식에 해당하는 것은?",
+ o:["FCFS","SJF","HRN","Round Robin"], a:3,
+ why:"<b>라운드 로빈(RR)</b>은 시간 할당량(Time Quantum)이 끝나면 실행 중인 프로세스를 <b>강제로 중단</b>하고 다음으로 넘깁니다. 이것이 선점입니다.",
+ trap:"①②③은 모두 비선점입니다. 특히 <b>SJF는 비선점, SRT는 선점</b>이라는 짝을 정확히 알아야 합니다(SRT가 SJF의 선점 버전).",
+ coach:"<b>선점 = 뺏을 수 있다</b>입니다. 선점형은 <b>RR·SRT·다단계 큐·선점 우선순위</b>, 비선점형은 <b>FCFS·SJF·HRN·기한부</b>. 구분 요령 — <b>시간을 쪼개거나 남은 시간을 계속 비교하면 선점</b>, 한 번 잡으면 끝까지 하면 비선점입니다. RR은 응답 시간이 좋아 <b>시분할 시스템</b>에 쓰인다는 점도 함께 나옵니다."},
+
+{t:"운영체제", q:"HRN 스케줄링에서 대기 시간이 20, 서비스 시간이 5인 작업의 우선순위 값은?",
+ o:["4","25","3","5"], a:3,
+ why:"HRN 우선순위 = <b>(대기 시간 + 서비스 시간) ÷ 서비스 시간</b> = (20 + 5) ÷ 5 = 25 ÷ 5 = <b>5</b>입니다. 값이 <b>클수록 먼저</b> 실행됩니다.",
+ trap:"분모에 서비스 시간을 넣는 것을 잊고 20÷5=4(①)로 계산하는 실수가 가장 흔합니다. <b>분자에도 서비스 시간이 더해집니다.</b>",
+ coach:"공식을 못 외웠어도 <b>의미로 복원</b>할 수 있습니다. HRN은 SJF의 단점인 <b>긴 작업의 기아</b>를 막으려고 <b>기다린 시간에 가산점</b>을 주는 방식입니다. 그래서 분자에 대기 시간이 들어가고, 짧은 작업이 유리하도록 서비스 시간으로 나눕니다. 계산 결과는 <b>항상 1보다 큽니다</b>(대기가 0이어도 1). 1 미만이 나오면 계산이 틀린 겁니다."},
+
+{t:"운영체제", q:"페이지 참조열이 다음과 같고 프레임이 3개일 때, <b>LRU</b> 알고리즘의 페이지 부재(Page Fault) 횟수는?",
+ code:"참조열 :  2  3  2  1  5  2  4",
+ o:["5회","4회","6회","7회"], a:0,
+ why:"2(부재) 3(부재) 2(적중) 1(부재) → [2,3,1]. 5(부재, 가장 오래 안 쓴 <b>3</b> 교체) → [2,1,5]. 2(적중). 4(부재, 가장 오래 안 쓴 <b>1</b> 교체) → 총 <b>5회</b>.",
+ trap:"FIFO로 계산하면 6회가 나와 ③을 고르게 됩니다. LRU는 들어온 순서가 아니라 <b>마지막으로 사용한 시점</b>을 봅니다.",
+ coach:"LRU 계산은 <b>표를 그려 프레임 상태를 매 단계 적는 것</b>이 정석입니다. 그리고 반드시 <b>적중(hit)한 페이지도 '사용 시각'을 갱신</b>해야 합니다 — 이 갱신을 빠뜨려서 FIFO와 같은 답을 내는 실수가 가장 많습니다. 위에서 2가 중간에 적중하면서 살아남은 것이 그 예입니다. 표 그리는 30초를 아끼려다 틀리는 대표적 문제입니다."},
+
+{t:"운영체제", q:"UNIX/Linux에서 파일 권한이 <code>rwxr-xr--</code> 일 때, 이를 8진수로 나타낸 것은?",
+ o:["744","754","755","764"], a:1,
+ why:"r=4, w=2, x=1로 계산합니다. 소유자 <code>rwx</code>=4+2+1=<b>7</b>, 그룹 <code>r-x</code>=4+0+1=<b>5</b>, 기타 <code>r--</code>=4+0+0=<b>4</b> → <b>754</b>.",
+ trap:"③755는 기타에도 실행 권한(x)이 있는 경우입니다. 마지막 세 칸이 <code>r--</code>인지 <code>r-x</code>인지 꼼꼼히 봐야 합니다.",
+ coach:"권한 문자열은 <b>세 칸씩 끊어서</b> 읽는 습관을 들이세요 — <code>rwx | r-x | r--</code>. 그리고 자주 쓰는 조합은 값을 통째로 외워두면 빠릅니다: <b>777(전부 허용), 755(소유자만 쓰기), 644(실행 불가 일반 파일), 700(소유자 전용)</b>. 반대로 숫자를 문자로 바꾸는 문제도 나오니 양방향으로 연습하세요."},
+
+{t:"네트워크", q:"OSI 7계층 중 <b>라우터</b>가 동작하며, 논리 주소(IP)를 이용한 경로 설정을 담당하는 계층은?",
+ o:["데이터링크 계층","네트워크 계층","전송 계층","세션 계층"], a:1,
+ why:"<b>네트워크 계층(3계층)</b>이 IP 주소를 기반으로 <b>경로를 결정(라우팅)</b>합니다. 대표 장비가 라우터, 대표 프로토콜이 IP·ICMP입니다.",
+ trap:"①데이터링크는 <b>MAC 주소</b>를 쓰는 <b>같은 네트워크 안</b>의 전달을 담당합니다(장비: 스위치·브리지). '주소'라는 말만 보고 고르면 헷갈립니다.",
+ coach:"계층별 <b>주소와 장비</b>를 세트로 외우면 관련 문제가 한꺼번에 풀립니다 — <b>1계층: 비트, 허브·리피터</b> / <b>2계층: MAC 프레임, 스위치·브리지</b> / <b>3계층: IP 패킷, 라우터</b> / <b>4계층: 포트·세그먼트, TCP/UDP</b>. 순서는 <b>'물·데·네·전·세·표·응'</b>. 이 표 하나로 4과목 네트워크 문제 서너 개를 확보합니다."},
+
+{t:"네트워크", q:"TCP와 UDP에 대한 설명으로 옳은 것은?",
+ o:["UDP는 3-way handshake로 연결을 설정한다","TCP는 데이터의 순서 보장과 재전송을 지원한다","TCP는 UDP보다 전송 속도가 빠르다","UDP는 흐름 제어와 혼잡 제어를 모두 제공한다"], a:1,
+ why:"<b>TCP</b>는 연결형 프로토콜로 <b>순서 보장·오류 검출·재전송·흐름 제어</b>를 제공합니다. 그래서 신뢰성이 높습니다.",
+ trap:"①의 3-way handshake는 <b>TCP</b>의 연결 설정 과정입니다. ③도 반대로, 신뢰성 처리 때문에 <b>TCP가 더 느립니다</b>.",
+ coach:"둘의 성격은 <b>맞바꿈 관계</b>로 이해하세요 — <b>TCP는 확실하지만 느리고, UDP는 빠르지만 확실하지 않습니다.</b> 그래서 용도가 갈립니다: 파일·웹·메일은 TCP, <b>실시간 스트리밍·화상통화·DNS</b>는 UDP. '조금 끊겨도 빨라야 하는 것'은 UDP라고 기억하면 용도 문제도 함께 풀립니다."},
+
+{t:"네트워크", q:"IP 주소 <code>192.168.10.0/26</code>으로 서브네팅했을 때, <b>서브넷 하나당 사용 가능한 호스트 수</b>는?",
+ o:["30개","62개","126개","64개"], a:1,
+ why:"/26이면 호스트 비트가 32 − 26 = <b>6비트</b>입니다. 2⁶ = 64개 주소 중 <b>네트워크 주소와 브로드캐스트 주소 2개를 빼면</b> 64 − 2 = <b>62개</b>입니다.",
+ trap:"④64는 <b>2를 빼지 않은</b> 값입니다. 이 '−2'를 잊는 것이 서브넷 문제의 최대 실수 요인입니다.",
+ coach:"공식은 <b>2^(32−프리픽스) − 2</b> 하나뿐입니다. 자주 나오는 값은 아예 외워두세요 — <b>/24 → 254, /25 → 126, /26 → 62, /27 → 30, /28 → 14</b>. 규칙이 보이시죠? 프리픽스가 1 늘 때마다 대략 <b>절반</b>이 됩니다. 이 다섯 개만 알면 서브넷 문제는 계산 없이 즉답할 수 있습니다."},
+
+{t:"네트워크", q:"IP 주소를 물리 주소(MAC)로 변환해 주는 프로토콜은?",
+ o:["DNS","DHCP","ARP","ICMP"], a:2,
+ why:"<b>ARP</b>(Address Resolution Protocol)는 통신 상대의 <b>IP 주소로부터 MAC 주소를 알아냅니다.</b> 반대로 MAC에서 IP를 알아내는 것은 RARP입니다.",
+ trap:"①DNS는 <b>도메인 이름 → IP</b> 변환이라 '변환'이라는 공통점 때문에 헷갈립니다. 무엇을 무엇으로 바꾸는지가 갈림길입니다.",
+ coach:"이 넷은 <b>'무엇을 하는가'</b> 한 줄씩만 잡으면 됩니다 — <b>ARP: IP→MAC</b>, <b>DNS: 도메인→IP</b>, <b>DHCP: IP 자동 할당</b>, <b>ICMP: 오류 보고·ping</b>. 실생활로 연결하면 더 쉽습니다: 인터넷이 안 될 때 <code>ping</code>을 치죠? 그게 ICMP고, 공유기가 IP를 자동으로 주는 게 DHCP입니다."},
+
+{t:"프로그래밍", q:"객체지향의 특징 중, 데이터와 그 데이터를 처리하는 함수를 <b>하나로 묶고 내부 구현을 감추는</b> 것은?",
+ o:["상속","캡슐화","다형성","추상화"], a:1,
+ why:"<b>캡슐화</b>는 데이터(속성)와 메서드를 한 클래스로 묶고, 외부에서 내부에 직접 접근하지 못하게 <b>정보를 은닉</b>합니다. private 필드 + public 메서드가 전형적인 구현입니다.",
+ trap:"④추상화와 혼동됩니다. 추상화는 <b>공통 특성만 뽑아 단순화</b>하는 개념이고, 캡슐화는 <b>묶고 감추는</b> 것입니다.",
+ coach:"네 가지를 한 단어로 못 박아 두세요 — <b>캡슐화=묶고 감춤</b>, <b>상속=물려받음</b>, <b>다형성=같은 이름 다른 동작</b>, <b>추상화=핵심만 남김</b>. 캡슐화의 <b>효과</b>를 묻는 문제도 나오는데, 답은 <b>결합도가 낮아지고 재사용성·유지보수성이 높아진다</b>입니다. 1과목 결합도 개념과 연결되는 지점입니다."},
+
+{t:"프로그래밍", q:"프로그래밍 언어의 분류가 옳지 <b>않은</b> 것은?",
+ o:["C — 절차적 언어","Java — 객체지향 언어","Python — 스크립트 언어","LISP — 절차적 언어"], a:3,
+ why:"<b>LISP</b>는 대표적인 <b>함수형 언어</b>입니다. 함수형 언어에는 LISP 외에 Haskell, Scheme, Erlang 등이 있습니다.",
+ trap:"LISP가 오래된 언어라 '옛날 = 절차적'이라고 넘겨짚기 쉽습니다. 오래됐지만 계열은 함수형입니다.",
+ coach:"언어 분류는 <b>대표 선수 한 명씩</b>만 기억하면 됩니다 — <b>절차적: C, FORTRAN</b> / <b>객체지향: Java, C++, C#</b> / <b>스크립트: Python, JavaScript</b> / <b>함수형: LISP, Haskell</b>. 시험에서 함수형의 예로 나오는 건 사실상 <b>LISP</b>뿐이니, 'LISP=함수형' 하나만 확실히 해도 이 유형은 방어됩니다."}
+
+]},
+
+{s:"5과목 정보시스템 구축관리", items:[
+
+{t:"방법론", q:"소프트웨어 프로세스의 <b>성숙도</b>를 초기·관리·정의·정량적 관리·최적화의 5단계로 평가하는 모델은?",
+ o:["CMMI","SPICE","COCOMO","PMBOK"], a:0,
+ why:"<b>CMMI</b>(Capability Maturity Model Integration)가 조직의 프로세스 성숙도를 <b>5단계</b>로 평가합니다.",
+ trap:"②SPICE(ISO/IEC 15504)도 프로세스 평가 모델이지만 <b>0~5의 6단계</b>로 나눕니다. 단계 수가 결정적 차이입니다.",
+ coach:"둘을 <b>숫자로</b> 구분하세요 — <b>CMMI는 5단계, SPICE는 6단계(0단계부터)</b>. 그리고 CMMI의 5단계 이름은 <b>'초기에 관리하고 정의해서 정량적으로 최적화한다'</b>라는 문장으로 외우면 순서까지 나옵니다. ③COCOMO는 비용 산정, ④PMBOK은 프로젝트 관리 지식체계로 성격이 아예 다릅니다."},
+
+{t:"비용산정", q:"LOC 기법으로 예측할 때 낙관치가 12,000, 기대치가 24,000, 비관치가 36,000 라인이라면 예측 LOC는?",
+ o:["20,000","26,000","24,000","30,000"], a:2,
+ why:"예측치 = <b>(낙관치 + 4 × 기대치 + 비관치) ÷ 6</b> = (12,000 + 96,000 + 36,000) ÷ 6 = 144,000 ÷ 6 = <b>24,000</b>입니다.",
+ trap:"기대치에 곱하는 <b>4</b>를 빠뜨리고 세 값의 단순 평균(=24,000)을 내면 <b>우연히 같은 답</b>이 나옵니다. 하지만 값이 대칭이 아닐 때는 달라지므로 공식을 정확히 써야 합니다.",
+ coach:"이 문제는 제가 일부러 대칭 수치를 넣었는데, 실제 시험에서는 <b>비대칭</b>으로 내서 단순 평균과 답이 갈리게 합니다. 그러니 반드시 <b>가중치 4</b>를 쓰세요. 이 공식은 PERT의 기대시간 공식과 <b>완전히 같습니다</b> — 일정 산정 문제에서도 그대로 쓰이니 한 번 외워 두 곳에서 씁니다."},
+
+{t:"비용산정", q:"COCOMO 모델의 개발 유형 중, <b>5만 라인 이하의 소규모</b>이며 사무 처리·업무용 프로그램에 적합한 것은?",
+ o:["Organic(조직형)","Semi-detached(반분리형)","Embedded(내장형)","Distributed(분산형)"], a:0,
+ why:"<b>조직형(Organic)</b>은 5만 라인 이하 소규모 프로젝트에 해당합니다. 반분리형은 30만 라인 이하 중간 규모, 내장형은 <b>초대형·실시간·복잡</b>한 시스템입니다.",
+ trap:"④분산형은 <b>COCOMO의 유형이 아닙니다.</b> 그럴듯한 이름을 만들어 넣은 오답입니다.",
+ coach:"세 유형은 <b>규모 숫자</b>로 외우는 게 가장 확실합니다 — <b>5만 이하 조직형, 30만 이하 반분리형, 30만 초과 내장형</b>. 그리고 성격으로도 연결됩니다: 내장형은 <b>하드웨어에 내장되는 실시간 제어</b>(항공·군사)라 가장 어렵고 비용 계수도 큽니다. '실시간·초대형'이라는 단어가 보이면 내장형입니다."},
+
+{t:"프로젝트관리", q:"PERT/CPM에서 프로젝트의 <b>전체 완료 기간을 결정</b>하는, 가장 시간이 오래 걸리는 경로는?",
+ o:["최단 경로","병렬 경로","임계 경로(Critical Path)","여유 경로"], a:2,
+ why:"<b>임계 경로</b>는 시작부터 종료까지의 경로 중 <b>소요 시간이 가장 긴</b> 경로이며, 이 경로의 길이가 곧 프로젝트 최소 완료 기간입니다.",
+ trap:"'가장 오래 걸리는 것이 완료 기간'이라는 점이 직관과 어긋나 헷갈립니다. 하지만 모든 작업이 끝나야 프로젝트가 끝나므로, <b>가장 늦게 끝나는 경로</b>가 기준이 됩니다.",
+ coach:"임계 경로의 핵심 성질은 <b>'여유 시간(Slack)이 0'</b>이라는 것입니다. 즉 <b>이 경로의 작업이 하루 지연되면 프로젝트 전체가 하루 지연됩니다.</b> 그래서 관리자는 여기에 자원을 집중하죠. 시험에서는 '지연되면 전체가 지연되는 경로'라는 서술로도 나오니 같은 말임을 알아두세요."},
+
+{t:"보안", q:"정보보안의 3대 요소(CIA)에 해당하지 <b>않는</b> 것은?",
+ o:["기밀성(Confidentiality)","무결성(Integrity)","가용성(Availability)","확장성(Scalability)"], a:3,
+ why:"보안 3대 요소는 <b>기밀성·무결성·가용성</b>입니다. 확장성은 시스템 설계 품질 속성이지 보안 요소가 아닙니다.",
+ trap:"'~성'으로 끝나는 익숙한 IT 용어를 하나 섞어 넣는 방식입니다. 세 개를 정확히 알고 있으면 즉시 걸러집니다.",
+ coach:"각 요소가 <b>어떤 공격에 대응하는지</b>까지 엮으면 응용 문제도 풀립니다 — <b>기밀성 ↔ 도청·유출</b>(대응: 암호화, 접근통제), <b>무결성 ↔ 위·변조</b>(대응: 해시, 전자서명), <b>가용성 ↔ DDoS·서비스 마비</b>(대응: 이중화, 백업). 지문에 'DDoS로 서비스가 중단됐다'가 나오면 침해된 것은 <b>가용성</b>입니다."},
+
+{t:"접근통제", q:"접근통제 정책 중, 데이터 <b>소유자가 직접</b> 다른 사용자에게 접근 권한을 부여하는 방식은?",
+ o:["MAC(강제적 접근통제)","RBAC(역할기반 접근통제)","DAC(임의적 접근통제)","ACL"], a:2,
+ why:"<b>DAC</b>는 소유자의 <b>재량(Discretionary)</b>으로 권한을 주고받는 방식입니다. 파일 소유자가 공유 설정을 바꾸는 것이 대표 예입니다.",
+ trap:"①MAC은 <b>관리자가 보안 등급에 따라 강제로</b> 결정하는 방식(군사·기밀 환경)이라 정반대입니다. D와 M의 의미를 기억하지 않으면 헷갈립니다.",
+ coach:"머리글자의 원어로 구분하면 절대 안 헷갈립니다 — <b>D는 Discretionary(재량)이니 소유자 마음</b>, <b>M은 Mandatory(강제)이니 규정대로</b>, <b>R은 Role(역할)이니 직책 기준</b>. 실무에서 가장 널리 쓰이는 건 <b>RBAC</b>인데, 사람이 바뀌어도 역할만 부여하면 되어 관리가 편하기 때문입니다. 이 장점을 묻는 문제도 나옵니다."},
+
+{t:"암호화", q:"다음 중 <b>비대칭키(공개키)</b> 암호 알고리즘은?",
+ o:["AES","SEED","RSA","ARIA"], a:2,
+ why:"<b>RSA</b>는 공개키·개인키 쌍을 사용하는 대표적인 비대칭키 알고리즘입니다. 큰 수의 소인수분해가 어렵다는 점에 기반합니다.",
+ trap:"①AES(미국 표준) ②SEED(국내 표준) ④ARIA(국내 표준)는 <b>모두 대칭키</b>입니다. 이름이 낯설수록 비대칭일 것 같은 인상을 주지만 사실은 반대입니다.",
+ coach:"제가 늘 쓰는 요령은 <b>'비대칭은 RSA·ECC·디피헬만·DSA 넷뿐, 나머지는 대칭'</b>입니다. 실제로 시험 보기에 등장하는 대칭키는 <b>DES·3DES·AES·SEED·ARIA·IDEA·RC4</b> 정도인데, 이걸 다 외우기보다 <b>비대칭 네 개만 외우고 나머지를 대칭으로 처리</b>하는 편이 훨씬 효율적입니다."},
+
+{t:"암호화", q:"해시 함수에 대한 설명으로 옳지 <b>않은</b> 것은?",
+ o:["임의 길이의 입력을 고정 길이의 값으로 변환한다","같은 입력에 대해 항상 같은 출력을 생성한다","출력값으로부터 원래 입력을 복원할 수 있다","무결성 검증과 비밀번호 저장에 사용된다"], a:2,
+ why:"해시는 <b>일방향(단방향) 함수</b>라 출력값에서 원래 입력을 <b>복원할 수 없습니다.</b> 이 성질 때문에 비밀번호 저장에 적합합니다.",
+ trap:"'암호'라는 범주에 함께 묶여 있어 복호화가 될 것처럼 느껴집니다. 하지만 <b>암호화는 복호화가 되고, 해시는 안 됩니다.</b>",
+ coach:"셋을 <b>복호화 가능 여부</b>로 갈라 두면 정리가 끝납니다 — <b>대칭키: 복호화 O(같은 키)</b>, <b>비대칭키: 복호화 O(다른 키)</b>, <b>해시: 복호화 X</b>. 대표 해시는 <b>MD5·SHA</b> 계열입니다. 참고로 MD5는 충돌 취약점 때문에 <b>더 이상 안전하지 않다</b>고 보며, 이 점을 묻는 문제도 있습니다."},
+
+{t:"보안", q:"전자서명(Digital Signature)이 제공하는 보안 서비스로 거리가 <b>먼</b> 것은?",
+ o:["무결성","인증","부인 방지","기밀성"], a:3,
+ why:"전자서명은 <b>송신자의 개인키로 서명</b>하고 누구나 공개키로 검증하므로, <b>인증·무결성·부인 방지</b>를 제공합니다. 그러나 내용 자체를 감추지는 않으므로 <b>기밀성은 제공하지 않습니다.</b>",
+ trap:"'전자서명'이 보안 기술이니 기밀성도 당연히 줄 것 같지만, 서명은 <b>'누가 썼고 안 바뀌었다'</b>를 보장할 뿐 내용을 숨기지 않습니다.",
+ coach:"기밀성이 필요하면 <b>서명과 암호화를 함께</b> 써야 합니다. 방향을 정리하면 — <b>서명은 개인키로 하고 공개키로 검증</b>(나만 만들 수 있고 누구나 확인), <b>암호화는 공개키로 하고 개인키로 복호화</b>(누구나 보낼 수 있고 나만 열람). 이 <b>키 사용 방향</b>을 반대로 서술한 보기가 자주 나오니 꼭 확인하세요."},
+
+{t:"보안공격", q:"입력값 검증이 미흡한 웹 페이지에 악의적인 질의문을 삽입하여 데이터베이스를 조작하는 공격은?",
+ o:["XSS","버퍼 오버플로","CSRF","SQL 인젝션"], a:3,
+ why:"<b>SQL 인젝션</b>은 입력란에 <code>' OR '1'='1</code> 같은 구문을 넣어 <b>인증 우회나 데이터 유출</b>을 일으킵니다. 방어는 <b>입력값 검증과 파라미터 바인딩(Prepared Statement)</b>입니다.",
+ trap:"①XSS도 '삽입' 공격이라 헷갈립니다. 차이는 <b>무엇을 삽입하느냐</b>입니다 — SQL 인젝션은 <b>질의문</b>을 DB에, XSS는 <b>스크립트</b>를 웹 페이지에 삽입합니다.",
+ coach:"공격 유형은 <b>'표적'</b>으로 구분하세요 — <b>SQL 인젝션은 DB를, XSS는 다른 사용자의 브라우저를, CSRF는 사용자의 권한을, 버퍼 오버플로는 메모리를</b> 노립니다. 이 한 줄 표만 있으면 어떻게 서술을 바꿔도 분류됩니다. 참고로 이 넷은 시큐어 코딩 문제에서 <b>대응 방안</b>과 짝으로도 나옵니다."},
+
+{t:"보안공격", q:"사용자가 자신의 의도와 무관하게, 로그인된 권한을 이용해 <b>공격자가 원하는 요청</b>을 서버에 전송하도록 만드는 공격은?",
+ o:["XSS","스니핑","세션 하이재킹","CSRF"], a:3,
+ why:"<b>CSRF</b>(Cross-Site Request Forgery)는 이미 인증된 사용자의 브라우저가 <b>공격자가 준비한 요청</b>을 자기도 모르게 보내게 만듭니다. 방어는 <b>CSRF 토큰</b>·Referer 검증입니다.",
+ trap:"①XSS와 짝으로 출제되며 가장 많이 혼동됩니다. <b>XSS는 스크립트를 실행시켜 정보를 빼내는 것</b>, <b>CSRF는 요청을 위조해 행위를 시키는 것</b>입니다.",
+ coach:"저는 이렇게 구분합니다 — <b>XSS는 '훔치기', CSRF는 '시키기'</b>. XSS는 쿠키·세션을 탈취하는 데 관심이 있고, CSRF는 탈취 없이 <b>피해자 손을 빌려 행동(송금·비밀번호 변경)</b>하게 만듭니다. 지문에 '<b>의도하지 않은 요청</b>'이 있으면 CSRF, '<b>스크립트 실행</b>'이 있으면 XSS입니다."},
+
+{t:"보안공격", q:"메모리에 할당된 저장 공간의 경계를 넘어 데이터를 기록하여 프로그램의 제어 흐름을 변경하는 공격은?",
+ o:["버퍼 오버플로","레이스 컨디션","포맷 스트링","리버스 엔지니어링"], a:0,
+ why:"<b>버퍼 오버플로</b>는 정해진 크기를 넘겨 인접 메모리를 덮어써서 <b>복귀 주소를 조작</b>하는 등 실행 흐름을 가로챕니다. C의 <code>strcpy</code>, <code>gets</code>처럼 <b>경계 검사가 없는 함수</b>가 원인입니다.",
+ trap:"②레이스 컨디션은 <b>동시 접근의 순서 문제</b>를 악용하는 공격이라 메모리 경계와는 다릅니다.",
+ coach:"방어책까지 세트로 외우면 응용 문제도 잡힙니다 — 버퍼 오버플로 대응은 <b>경계 검사, 안전한 함수 사용(strncpy), 스택 가드, ASLR</b>입니다. 그리고 이 공격은 시큐어 코딩에서 <b>'입력 데이터 검증 및 표현'</b> 항목에 속합니다. 시큐어 코딩 7개 항목 중 <b>입력값 검증</b>이 가장 자주 출제됩니다."},
+
+{t:"보안솔루션", q:"침입 탐지 시스템(IDS)과 침입 방지 시스템(IPS)의 차이로 옳은 것은?",
+ o:["IDS는 탐지와 차단을 모두 수행하고, IPS는 탐지만 수행한다","IDS는 탐지 후 경고하며, IPS는 탐지와 함께 능동적으로 차단한다","둘은 동일한 기능을 하며 명칭만 다르다","IDS는 네트워크에만, IPS는 호스트에만 설치할 수 있다"], a:1,
+ why:"<b>IDS는 탐지·경보</b>까지, <b>IPS는 탐지 후 차단</b>까지 수행합니다. IPS는 트래픽 경로 위에 놓여 실시간으로 막습니다.",
+ trap:"①은 정확히 뒤집은 서술입니다. D(Detection)와 P(Prevention)의 뜻만 알면 즉시 걸러집니다.",
+ coach:"영어 원어가 곧 답입니다 — <b>Detection은 발견, Prevention은 예방(차단)</b>. 함께 정리할 것: <b>방화벽</b>은 미리 정한 규칙으로 <b>통과/차단</b>을 결정하고, <b>IDS/IPS</b>는 <b>공격 패턴·이상 행위</b>를 분석합니다. 그리고 <b>DMZ</b>는 외부 공개 서버를 두는 <b>완충 구역</b>, <b>VPN</b>은 공용망 위의 <b>암호화된 전용 통로</b>입니다."},
+
+{t:"보안공격", q:"다수의 감염된 좀비 PC를 이용해 동시에 대량의 트래픽을 발생시켜 서비스를 마비시키는 공격은?",
+ o:["DDoS","스니핑","스푸핑","APT"], a:0,
+ why:"<b>DDoS</b>(Distributed Denial of Service)는 <b>분산된 다수의 시스템</b>에서 동시에 공격해 서비스를 <b>가용 불가</b> 상태로 만듭니다.",
+ trap:"단일 시스템에서 하면 DoS이고, <b>여러 대(분산)</b>면 DDoS입니다. '좀비 PC 다수'가 D 하나 더 붙는 근거입니다.",
+ coach:"이 공격이 침해하는 보안 요소가 <b>가용성</b>이라는 연결도 함께 기억하세요 — 이렇게 묻는 문제가 실제로 나옵니다. 그리고 좀비 PC들의 무리를 <b>봇넷(Botnet)</b>이라 하고, 이를 조종하는 서버를 <b>C&amp;C 서버</b>라 부릅니다. 용어 문제로 나올 수 있으니 함께 담아 두세요."},
+
+{t:"보안공격", q:"네트워크상의 패킷을 몰래 <b>가로채어 훔쳐보는</b> 수동적 공격은?",
+ o:["스푸핑(Spoofing)","스니핑(Sniffing)","피싱(Phishing)","랜섬웨어"], a:1,
+ why:"<b>스니핑</b>은 전송 중인 패킷을 <b>도청</b>하는 공격으로, 데이터를 변경하지 않으므로 <b>수동적(passive) 공격</b>으로 분류됩니다.",
+ trap:"①스푸핑은 IP·MAC·DNS 등을 <b>위조</b>해 신분을 속이는 <b>능동적</b> 공격입니다. 이름이 비슷해 가장 자주 바뀌어 나옵니다.",
+ coach:"영어 뜻으로 가르면 명확합니다 — <b>sniff는 '냄새를 맡다(엿듣다)', spoof는 '속이다'</b>. 그리고 <b>수동적/능동적</b> 분류도 자주 묻습니다: <b>수동적=도청·트래픽 분석</b>(탐지가 어려움), <b>능동적=위조·변조·삽입·서비스 거부</b>. 스니핑의 대응책은 <b>암호화 통신(SSL/TLS)</b>이라는 점까지 챙기면 완벽합니다."},
+
+{t:"악성코드", q:"시스템의 파일을 암호화한 뒤 복호화 키를 대가로 금전을 요구하는 악성코드는?",
+ o:["트로이 목마","랜섬웨어","웜(Worm)","스파이웨어"], a:1,
+ why:"<b>랜섬웨어</b>(Ransom + Ware)는 몸값을 요구하는 악성코드입니다. 가장 효과적인 대비책은 <b>정기적인 오프라인 백업</b>입니다.",
+ trap:"③웜은 <b>스스로 복제·전파</b>하는 것이 특징이고, ①트로이 목마는 <b>정상 프로그램으로 위장</b>해 잠입합니다. 각각의 정의가 다릅니다.",
+ coach:"악성코드는 <b>'행동 방식'</b>으로 나뉩니다 — <b>바이러스=숙주 파일에 기생</b>, <b>웜=스스로 복제·전파(숙주 불필요)</b>, <b>트로이 목마=위장·자기복제 없음</b>, <b>랜섬웨어=암호화·금전 요구</b>, <b>스파이웨어=정보 수집</b>. 특히 <b>'웜은 자기 복제, 트로이 목마는 자기 복제를 하지 않는다'</b>는 비교가 시험에 자주 나옵니다."},
+
+{t:"보안", q:"특정 대상을 목표로 <b>장기간에 걸쳐 은밀하고 지속적으로</b> 수행되는 지능형 표적 공격은?",
+ o:["제로데이 공격","APT","무차별 대입 공격","사회공학"], a:1,
+ why:"<b>APT</b>(Advanced Persistent Threat)는 특정 조직을 노려 <b>오랜 기간 잠복하며</b> 목표를 달성할 때까지 공격을 이어갑니다.",
+ trap:"①제로데이는 <b>패치가 나오기 전의 취약점</b>을 노리는 공격으로, 기간이 아니라 <b>시점</b>에 초점이 있습니다.",
+ coach:"머리글자가 곧 정의입니다 — <b>A</b>dvanced(지능적) <b>P</b>ersistent(<b>지속적</b>) <b>T</b>hreat(위협). 지문에 <b>'장기간·지속적·특정 대상'</b>이 있으면 APT입니다. 참고로 APT 공격은 보통 <b>사회공학(스피어 피싱)으로 시작</b>해 내부로 침투하는 흐름을 갖는데, 이 과정을 묻는 문제도 출제됩니다."},
+
+{t:"신기술", q:"거래 내역을 블록에 담아 체인으로 연결하고, 이를 <b>참여자 모두가 나눠 보관</b>하여 위·변조를 어렵게 만든 기술은?",
+ o:["블록체인","빅데이터","클라우드 컴퓨팅","엣지 컴퓨팅"], a:0,
+ why:"<b>블록체인</b>은 <b>분산 원장</b> 기술로, 모든 참여자가 동일한 장부를 갖기 때문에 일부를 조작해도 <b>다수의 사본과 불일치</b>하여 위·변조가 사실상 불가능합니다.",
+ trap:"신기술 용어는 정의가 비슷하게 느껴져 헷갈립니다. 블록체인의 결정적 단서는 <b>'분산 저장'과 '위·변조 방지'</b>입니다.",
+ coach:"5과목 신기술 용어는 <b>매년 새 단어가 나오는 영역</b>이라 다 외울 수 없습니다. 저는 <b>영어 단어의 뜻으로 유추하는 훈련</b>을 권합니다 — Block+Chain(블록을 사슬로), Edge(가장자리=단말 가까이서 처리), Docker(컨테이너), Mesh(그물망). 모르는 용어가 나와도 <b>단어 뜻에서 절반은 맞힐 수 있습니다.</b> 그래도 모르면 과감히 넘기세요 — 5과목은 과락만 면하면 됩니다."},
+
+{t:"신기술", q:"애플리케이션을 <b>격리된 컨테이너 단위</b>로 패키징하여 환경에 상관없이 동일하게 실행되도록 하는 기술은?",
+ o:["가상 머신(VM)","도커(Docker)","하둡(Hadoop)","쿠버네티스 클러스터의 노드"], a:1,
+ why:"<b>도커</b>는 애플리케이션과 실행 환경을 <b>컨테이너</b>로 묶어 어디서든 같은 방식으로 동작하게 합니다. OS 커널을 공유해 <b>VM보다 가볍고 빠릅니다.</b>",
+ trap:"①가상 머신도 격리 기술이지만, VM은 <b>게스트 OS 전체</b>를 포함해 무겁습니다. '가볍다·OS를 공유한다'가 컨테이너의 표식입니다.",
+ coach:"둘의 차이는 <b>OS 포함 여부</b> 하나로 갈립니다 — <b>VM은 OS까지 통째로(무거움), 컨테이너는 앱만(가벼움)</b>. 그리고 컨테이너가 많아지면 관리 도구가 필요한데 그게 <b>쿠버네티스(K8s)</b>입니다. '컨테이너 오케스트레이션'이라는 표현이 나오면 쿠버네티스입니다. 이 세 용어는 묶어서 나오는 편입니다."},
+
+{t:"시큐어코딩", q:"시큐어 코딩 관점에서 가장 <b>적절하지 않은</b> 것은?",
+ o:["사용자 입력값은 서버 측에서 반드시 검증한다","비밀번호는 해시하여 저장한다","오류 메시지에 시스템 내부 정보를 상세히 노출한다","권한 검사는 모든 요청마다 수행한다"], a:2,
+ why:"오류 메시지에 <b>DB 구조·경로·쿼리문</b> 등이 노출되면 공격자에게 정보를 제공합니다. 사용자에게는 <b>일반적인 메시지</b>만 보이고 상세 내용은 <b>서버 로그</b>에만 남겨야 합니다.",
+ trap:"디버깅에 유리하다는 이유로 상세 메시지를 좋게 볼 수 있지만, <b>운영 환경에서는 취약점</b>입니다. 개발 편의와 보안이 충돌하는 지점입니다.",
+ coach:"시큐어 코딩 문제는 <b>'공격자에게 유리한 선택지가 답'</b>이라는 원칙으로 풀립니다. 정보를 더 보여주거나, 검증을 생략하거나, 클라이언트만 믿는 보기가 있으면 그게 오답(=정답)입니다. 특히 <b>'클라이언트 측에서만 검증한다'</b>는 보기는 무조건 틀린 것입니다 — 클라이언트 검증은 <b>우회가 가능</b>하기 때문입니다."}
+
+]},
+];
+
+/* ============================================================
+   약점 집중 드릴 — 시험에서 서로 바꿔 내는 '헷갈리는 짝'만 모음
+   ============================================================ */
+var DRILL = [
+{s:"① 결합도 · 응집도 판별", d:"1과목 최빈출. 상황을 주고 어느 유형인지 고르는 형태로 진화했습니다.", items:[
+  {t:"결합도", q:"모듈 A가 모듈 B에게 <b>구조체(레코드) 전체를 넘겼지만</b>, B는 그중 한 필드만 사용한다. 이때의 결합도는?",
+   o:["자료 결합도","스탬프 결합도","제어 결합도","공통 결합도"], a:1,
+   why:"자료구조 <b>전체</b>를 넘기고 일부만 쓰면 <b>스탬프(Stamp) 결합도</b>입니다. 쓰지 않는 필드까지 알게 되어 자료 결합보다 결합이 강합니다.",
+   trap:"'값을 넘겼다'만 보고 자료 결합도로 가면 틀립니다. <b>넘긴 것이 낱개 값인지 덩어리인지</b>가 갈림길입니다.",
+   coach:"판별 순서를 고정하세요 — <b>전역변수?(공통) → 내부 직접 참조?(내용) → 넘긴 게 지시·플래그?(제어) → 구조체 통째?(스탬프) → 낱개 값?(자료)</b>. 위에서부터 훑으면 어떤 상황이든 3초에 분류됩니다."},
+  {t:"결합도", q:"모듈 A가 모듈 B의 <b>내부 변수를 직접 참조</b>하여 값을 변경한다. 가장 바람직하지 <b>않은</b> 이 결합도는?",
+   o:["공통 결합도","외부 결합도","내용 결합도","제어 결합도"], a:2,
+   why:"다른 모듈의 <b>내부를 직접</b> 건드리면 <b>내용(Content) 결합도</b>로, 6가지 중 가장 강한(나쁜) 결합입니다.",
+   trap:"공통 결합도와 헷갈립니다. 공통은 <b>전역변수를 공유</b>하는 것이고, 내용은 <b>상대 모듈 안으로 침범</b>하는 것입니다.",
+   coach:"저는 '남의 집에 들어가느냐'로 구분합니다. <b>공용 창고를 같이 쓰면 공통, 남의 집 안방을 뒤지면 내용</b>. 내용 결합은 상대를 고치면 무조건 같이 깨지므로 최악입니다."},
+  {t:"응집도", q:"모듈 내부의 요소들이 <b>모두 하나의 기능</b>을 수행하기 위해서만 존재한다. 이 응집도는?",
+   o:["순차적 응집도","교환적 응집도","절차적 응집도","기능적 응집도"], a:3,
+   why:"단일 기능만 수행하면 <b>기능적(Functional) 응집도</b>로 가장 이상적입니다.",
+   trap:"①순차적은 <b>앞의 출력이 뒤의 입력</b>이 되는 경우로, 여러 작업이 이어진 상태입니다. '하나의 기능'과는 다릅니다.",
+   coach:"응집도는 <b>기·순·교·절·시·논·우</b> 순서(강→약)를 외우고, 지문에서 <b>묶인 기준</b>을 찾으세요. 기준이 '단일 기능'이면 최상위입니다. 좋은 설계는 <b>결합도 낮게, 응집도 높게</b>인데, 둘 다 암기 순서의 <b>앞쪽이 좋다</b>는 점이 편합니다."},
+  {t:"응집도", q:"입력 자료를 읽어 <b>가공한 결과를 다음 요소가 그대로 입력으로 받아</b> 처리하는 모듈의 응집도는?",
+   o:["순차적 응집도","시간적 응집도","논리적 응집도","우연적 응집도"], a:0,
+   why:"앞 요소의 <b>출력이 뒤 요소의 입력</b>이 되면 <b>순차적(Sequential) 응집도</b>입니다. 기능적 다음으로 좋은 응집도입니다.",
+   trap:"③절차적 응집도와 비슷해 보입니다. 절차적은 <b>정해진 순서로 실행</b>될 뿐 데이터가 이어지지는 않습니다. <b>데이터가 이어지면 순차적</b>입니다.",
+   coach:"둘의 차이는 <b>'데이터가 흐르느냐, 순서만 있느냐'</b>입니다. 컨베이어 벨트처럼 결과물이 넘어가면 순차적, 그냥 순서대로 하는 일이면 절차적. 이 구분을 물으면 대부분 순차적이 답입니다."},
+  {t:"모듈화", q:"바람직한 모듈 설계 방향으로 옳은 것은?",
+   o:["결합도는 높이고 응집도는 낮춘다","결합도와 응집도 모두 높인다","결합도는 낮추고 응집도는 높인다","결합도와 응집도 모두 낮춘다"], a:2,
+   why:"모듈은 <b>서로 독립적(결합도 ↓)</b>이고 <b>내부는 한 가지 일에 집중(응집도 ↑)</b>해야 좋습니다.",
+   trap:"두 지표의 방향이 반대라 헷갈립니다. '둘 다 높게/낮게'라는 보기가 항상 함께 나옵니다.",
+   coach:"한 문장으로 <b>'남과는 멀게, 안은 똘똘하게'</b>라고 외우세요. 여기에 <b>팬인은 높게, 팬아웃은 낮게</b>까지 붙이면 모듈 설계 문제는 전부 방어됩니다."}
+]},
+
+{s:"② 테스트 — 스텁·드라이버 / 화이트·블랙박스", d:"2과목에서 서로 바꿔 내기로 악명 높은 짝입니다.", items:[
+  {t:"통합테스트", q:"하향식 통합 테스트에서 <b>아직 구현되지 않은 하위 모듈</b>을 대신하는 임시 모듈은?",
+   o:["드라이버(Driver)","스텁(Stub)","목(Mock)","하네스(Harness)"], a:1,
+   why:"하향식은 위에서 아래로 내려가므로 <b>없는 하위</b>를 <b>스텁</b>으로 대체합니다.",
+   trap:"드라이버와 반드시 구분하세요. <b>상향식</b>일 때 없는 <b>상위</b>를 대신하는 것이 드라이버입니다.",
+   coach:"<b>'없는 쪽을 채운다'</b>로 기억하면 절대 안 헷갈립니다. 하향식→아래가 없음→스텁, 상향식→위가 없음→드라이버. 어원으로도 <b>드라이버=운전자(위에서 조종)</b>, <b>스텁=그루터기(아래 밑동)</b>."},
+  {t:"통합테스트", q:"상향식 통합 테스트에 대한 설명으로 옳은 것은?",
+   o:["상위 모듈부터 검증하며 스텁이 필요하다","하위 모듈부터 검증하며 드라이버가 필요하다","모든 모듈을 한 번에 결합해 검증한다","보조 모듈 없이 수행할 수 있다"], a:1,
+   why:"상향식(Bottom-Up)은 <b>하위 모듈부터</b> 검증하고, 이를 호출해 줄 <b>드라이버</b>가 필요합니다.",
+   trap:"③은 <b>빅뱅(Big-Bang)</b> 방식의 설명입니다. 빅뱅은 보조 모듈이 필요 없는 대신 <b>결함 위치를 찾기 어렵습니다.</b>",
+   coach:"통합 방식은 세 가지 — <b>하향식(스텁)·상향식(드라이버)·빅뱅(둘 다 없음)</b>. 빅뱅의 단점(원인 추적 곤란)까지 세트로 물어보니 함께 기억하세요."},
+  {t:"테스트기법", q:"다음 중 <b>화이트박스</b> 테스트 기법은?",
+   o:["동등 분할","경계값 분석","기초 경로 검사","원인-결과 그래프"], a:2,
+   why:"<b>기초 경로 검사(Basis Path Testing)</b>는 프로그램의 <b>제어 흐름·경로</b>를 분석하는 화이트박스 기법입니다. 순환 복잡도와 함께 다룹니다.",
+   trap:"나머지 셋은 전부 <b>블랙박스</b>입니다. 목록을 반대로 알고 있으면 통째로 틀립니다.",
+   coach:"두 목록을 통으로 외우는 게 가장 빠릅니다. <b>화이트박스 = 커버리지(구문·결정·조건·다중조건) + 기초 경로 + 루프 검사</b>. <b>블랙박스 = 동등분할·경계값·원인결과·결정표·상태전이·오류추정</b>. 한쪽 목록에 없는 단어가 섞여 있으면 그게 답입니다."},
+  {t:"테스트기법", q:"프로그램의 <b>내부 구조를 모르는 상태</b>에서 입력과 출력만으로 기능을 검증하는 테스트는?",
+   o:["화이트박스 테스트","블랙박스 테스트","구조 기반 테스트","경로 테스트"], a:1,
+   why:"내부를 보지 않고 <b>명세(입력→출력)</b> 기준으로 검증하면 <b>블랙박스</b>입니다.",
+   trap:"③구조 기반 테스트는 화이트박스의 다른 이름입니다. 용어를 바꿔 부르는 방식으로 함정을 만듭니다.",
+   coach:"별칭까지 알아두면 안전합니다 — <b>화이트박스 = 구조 기반 = 코드 기반</b>, <b>블랙박스 = 명세 기반 = 기능 기반</b>. 시험은 이 별칭을 섞어 씁니다."},
+  {t:"커버리지", q:"검증 기준이 <b>약한 것부터 강한 순서</b>로 바르게 나열한 것은?",
+   o:["구문 → 결정 → 조건 → 다중조건","조건 → 구문 → 결정 → 다중조건","다중조건 → 조건 → 결정 → 구문","결정 → 구문 → 조건 → 다중조건"], a:0,
+   why:"<b>구문(문장) → 결정(분기) → 조건 → 조건/결정 → 다중조건</b> 순으로 검증 강도가 높아집니다.",
+   trap:"③은 정확히 역순입니다. '강한 것부터'인지 '약한 것부터'인지 <b>질문 방향</b>을 먼저 확인하세요.",
+   coach:"의미로 이해하면 순서가 저절로 나옵니다 — 구문은 <b>줄만 실행</b>하면 되고, 결정은 <b>참·거짓 두 갈래</b>를 다 타야 하고, 다중조건은 <b>조건들의 모든 조합</b>을 봐야 하니 가장 빡셉니다. 요구가 많아질수록 강한 기준입니다."}
+]},
+
+{s:"③ UML — 집합·합성 / include·extend", d:"기호와 부사(반드시·선택적으로)로 갈리는 문제입니다.", items:[
+  {t:"UML", q:"UML에서 <b>속이 빈 마름모(◇)</b>로 표현하며, 부분 객체가 전체 객체 없이도 존재할 수 있는 관계는?",
+   o:["합성(Composition)","집합(Aggregation)","일반화(Generalization)","실체화(Realization)"], a:1,
+   why:"<b>집합(Aggregation)</b>은 전체-부분이지만 부분이 <b>독립적으로 존재</b>할 수 있습니다. 기호는 <b>빈 마름모 ◇</b>입니다.",
+   trap:"합성은 <b>채워진 마름모 ◆</b>이고 생명주기를 공유합니다. 마름모의 <b>속이 비었나 찼나</b>가 결정적입니다.",
+   coach:"<b>'빈 마름모는 헤어져도 살고, 찬 마름모는 같이 죽는다'</b>로 외우세요. 부서–사원은 집합(이직 가능), 주문–주문상세는 합성(주문 취소되면 함께 소멸)."},
+  {t:"UML", q:"유스케이스에서 특정 조건이 만족될 때만 <b>선택적으로</b> 수행되는 기능을 표현하는 관계는?",
+   o:["include","extend","generalization","dependency"], a:1,
+   why:"<b>extend</b>는 조건부·선택적 확장입니다. '쿠폰 적용', '추가 옵션 선택'처럼 항상 일어나지 않는 기능에 씁니다.",
+   trap:"include는 <b>반드시 항상</b> 포함되는 필수 관계입니다. 정확히 반대 개념입니다.",
+   coach:"부사만 보면 끝납니다 — <b>'반드시·항상·공통'이면 include</b>, <b>'~인 경우·선택적으로·필요하면'이면 extend</b>. 지문에서 이 단어에 동그라미 치는 습관을 들이세요."},
+  {t:"UML", q:"UML 다이어그램 중 <b>동적(행위)</b> 다이어그램으로만 묶인 것은?",
+   o:["클래스, 객체, 패키지","유스케이스, 시퀀스, 상태","컴포넌트, 배치, 복합체구조","클래스, 활동, 배치"], a:1,
+   why:"유스케이스·시퀀스·상태·활동·커뮤니케이션·타이밍이 <b>행위(동적)</b> 다이어그램입니다.",
+   trap:"④처럼 동적 하나(활동)에 정적 둘을 섞어 놓는 방식이 흔합니다. <b>보기 안의 셋을 모두</b> 확인해야 합니다.",
+   coach:"묶음 문제는 <b>확실한 하나를 찾아 그 보기를 통째로 버리는</b> 소거법이 빠릅니다. 클래스·배치·컴포넌트·패키지·객체가 보이면 그 보기는 즉시 탈락(정적)."},
+  {t:"UML", q:"자식 클래스가 부모 클래스를 상속받는 관계를 나타내는 UML 표기는?",
+   o:["실선 + 속 빈 삼각형","점선 + 화살표","실선 + 채워진 마름모","점선 + 속 빈 삼각형"], a:0,
+   why:"<b>일반화(상속)</b>는 <b>실선에 속 빈 삼각형</b>으로, 자식에서 부모를 향해 그립니다.",
+   trap:"④는 <b>실체화(인터페이스 구현)</b> 표기입니다. 삼각형은 같고 <b>선이 실선이냐 점선이냐</b>로 갈립니다.",
+   coach:"선의 종류에 의미가 있습니다 — <b>실선은 '진짜 관계', 점선은 '느슨한 관계'</b>. 그래서 상속은 실선, 인터페이스 구현·의존은 점선입니다. 이 원리를 알면 표기를 외우지 않아도 추론됩니다."},
+  {t:"UML", q:"시퀀스 다이어그램의 구성 요소가 <b>아닌</b> 것은?",
+   o:["생명선(Lifeline)","활성 박스(Activation)","메시지(Message)","마름모(Diamond)"], a:3,
+   why:"시퀀스 다이어그램은 <b>객체·생명선·활성박스·메시지</b>로 구성됩니다. 마름모는 <b>클래스 다이어그램</b>의 집합·합성 기호입니다.",
+   trap:"UML이라는 큰 범주 안에서 다른 다이어그램의 기호를 섞어 놓는 방식입니다.",
+   coach:"시퀀스는 <b>'시간이 아래로 흐르는 그림'</b>이라고 떠올리세요. 세로선(생명선) 위를 가로 화살표(메시지)가 오가는 구조라, 마름모 같은 <b>구조 기호가 들어갈 자리가 없습니다.</b>"}
+]},
+
+{s:"④ 데이터베이스 — 정규화 · SQL 삭제 3형제", d:"3과목 득점 구간. 조건 하나로 답이 갈립니다.", items:[
+  {t:"정규화", q:"릴레이션의 모든 속성이 <b>원자값</b>만 갖도록 하는 정규형은?",
+   o:["제1정규형","제2정규형","제3정규형","BCNF"], a:0,
+   why:"한 칸에 여러 값(반복 그룹)이 들어가지 않도록 하는 것이 <b>제1정규형(1NF)</b>입니다. 정규화의 출발점입니다.",
+   trap:"'속성'이라는 말 때문에 2NF(부분 종속)와 헷갈립니다. <b>값의 형태</b>를 말하면 1NF, <b>종속 관계</b>를 말하면 2NF 이상입니다.",
+   coach:"제거 대상만 외우면 끝납니다 — <b>1NF는 반복(비원자값), 2NF는 부분 종속, 3NF는 이행 종속, BCNF는 결정자</b>. 앞 글자로 <b>도·부·이·결</b>. 지문의 키워드가 그대로 답을 가리킵니다."},
+  {t:"정규화", q:"릴레이션 R에서 <b>A → B, B → C</b> 의 함수 종속이 존재할 때 제거해야 하는 종속과 그 정규형은?",
+   o:["부분 함수 종속, 2NF","이행 함수 종속, 3NF","다치 종속, 4NF","조인 종속, 5NF"], a:1,
+   why:"A를 통해 C가 간접적으로 결정되는 <b>이행(Transitive) 함수 종속</b>이며, 이를 제거하면 <b>제3정규형</b>이 됩니다.",
+   trap:"부분 종속(2NF)과 혼동됩니다. 부분 종속은 <b>복합키의 일부</b>에만 종속되는 것으로, 키가 두 개 이상일 때만 생깁니다.",
+   coach:"모양으로 구분하세요 — <b>A→B→C처럼 징검다리면 이행(3NF)</b>, <b>(A,B)가 키인데 A만으로 C가 결정되면 부분(2NF)</b>. 화살표를 그려 보면 즉시 갈립니다."},
+  {t:"SQL", q:"WHERE 절과 HAVING 절에 대한 설명으로 옳은 것은?",
+   o:["WHERE는 그룹화 후, HAVING은 그룹화 전에 적용된다","WHERE에는 집계 함수를 조건으로 쓸 수 있다","HAVING은 GROUP BY로 묶인 그룹에 조건을 적용한다","둘은 완전히 동일하게 동작한다"], a:2,
+   why:"<b>HAVING은 그룹화 후 그룹에</b> 조건을 겁니다. <code>HAVING COUNT(*) &gt;= 2</code>처럼 집계 함수를 쓸 수 있습니다.",
+   trap:"②가 매력적입니다. WHERE는 그룹화 <b>전</b>에 실행되므로 그 시점에는 COUNT 값이 없어 <b>집계 함수를 쓸 수 없습니다.</b>",
+   coach:"실행 순서를 알면 전부 설명됩니다 — <b>FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY</b>. 이 한 줄이면 '별칭을 WHERE에서 못 쓰는 이유'까지 함께 풀립니다."},
+  {t:"SQL", q:"다음 중 <b>롤백(ROLLBACK)이 가능한</b> 삭제 명령은?",
+   o:["DROP TABLE","TRUNCATE TABLE","DELETE FROM","ALTER TABLE"], a:2,
+   why:"<b>DELETE</b>는 DML이므로 트랜잭션 안에서 <b>ROLLBACK으로 되돌릴 수 있습니다.</b> 조건(WHERE)도 줄 수 있습니다.",
+   trap:"TRUNCATE도 '행을 지운다'는 점이 같지만 <b>DDL이라 자동 커밋</b>되어 되돌릴 수 없습니다.",
+   coach:"삭제 3형제를 표로 굳히세요 — <b>DELETE(DML·조건O·롤백O·느림)</b>, <b>TRUNCATE(DDL·전체·롤백X·빠름)</b>, <b>DROP(DDL·테이블 자체 삭제)</b>. 문제에 조건이 둘 이상 붙으면 이 표에서 하나로 좁혀집니다."},
+  {t:"트랜잭션", q:"트랜잭션의 ACID 특성과 설명이 <b>잘못</b> 짝지어진 것은?",
+   o:["원자성 — 전부 수행되거나 전혀 수행되지 않는다","일관성 — 실행 전후 데이터베이스가 일관된 상태를 유지한다","격리성 — 동시에 실행되는 트랜잭션끼리 서로 영향을 주지 않는다","지속성 — 트랜잭션 수행 중 언제든 취소할 수 있다"], a:3,
+   why:"<b>지속성(Durability)</b>은 완료된 결과가 <b>영구히 보존</b>된다는 뜻입니다. '언제든 취소'는 오히려 지속성과 반대입니다.",
+   trap:"'취소'가 원자성의 롤백을 연상시켜 그럴듯해 보입니다. 하지만 지속성은 <b>완료 후</b>의 성질입니다.",
+   coach:"시점으로 나누면 명확합니다 — <b>실행 중: 원자성·격리성</b>, <b>완료 후: 지속성</b>, <b>전후 비교: 일관성</b>. 지문에 '장애가 나도·영구히'가 있으면 지속성입니다."}
+]},
+
+{s:"⑤ 보안 — 암호 분류 / XSS·CSRF / IDS·IPS", d:"5과목 최다 출제 구간. 여기만 잡아도 과락은 면합니다.", items:[
+  {t:"암호화", q:"암호화와 복호화에 <b>서로 다른 키</b>를 사용하는 알고리즘으로만 묶인 것은?",
+   o:["AES, DES","RSA, ECC","SEED, ARIA","MD5, SHA"], a:1,
+   why:"<b>RSA·ECC</b>가 공개키/개인키 쌍을 쓰는 <b>비대칭키</b> 알고리즘입니다.",
+   trap:"④MD5·SHA는 <b>해시</b>라서 애초에 복호화가 없습니다. '다른 키'라는 조건에 해당하지 않습니다.",
+   coach:"<b>비대칭은 RSA·ECC·디피헬만·DSA 넷뿐</b>이라고 외우고 나머지는 대칭으로 처리하세요. 실제 시험 보기의 90%가 이 방법으로 해결됩니다. 해시(MD5·SHA)는 <b>복호화 불가</b>라 따로 분류합니다."},
+  {t:"암호화", q:"대칭키 암호 방식의 특징으로 옳은 것은?",
+   o:["키 분배가 쉽고 관리할 키의 수가 적다","비대칭키보다 암·복호화 속도가 빠르다","공개키와 개인키 쌍을 사용한다","전자서명에 주로 사용된다"], a:1,
+   why:"대칭키는 연산이 단순해 <b>속도가 빠릅니다.</b> 그래서 대용량 데이터 암호화에 씁니다.",
+   trap:"①이 함정입니다. 대칭키는 <b>상대마다 다른 키</b>가 필요해 사람이 n명이면 키가 <b>n(n-1)/2개</b>로 폭증하고, <b>키 분배도 어렵습니다.</b>",
+   coach:"둘은 <b>맞바꿈 관계</b>입니다 — <b>대칭키: 빠르지만 키 분배·관리가 어려움</b>, <b>비대칭키: 느리지만 키 분배가 쉽고 전자서명 가능</b>. 그래서 실무는 <b>키 교환은 비대칭, 데이터는 대칭</b>으로 섞어 씁니다(하이브리드)."},
+  {t:"공격", q:"공격자가 게시판에 스크립트를 삽입해 <b>이를 열람한 다른 사용자</b>의 브라우저에서 실행되게 하는 공격은?",
+   o:["SQL 인젝션","XSS","CSRF","세션 하이재킹"], a:1,
+   why:"<b>XSS</b>(Cross-Site Scripting)는 웹 페이지에 악성 스크립트를 심어 <b>열람자의 브라우저</b>에서 실행시켜 쿠키·세션을 탈취합니다.",
+   trap:"CSRF와 최다 혼동 짝입니다. CSRF는 스크립트 실행이 아니라 <b>피해자가 의도치 않은 요청을 보내게</b> 만드는 공격입니다.",
+   coach:"<b>XSS는 '훔치기', CSRF는 '시키기'</b>로 갈라 두세요. 지문에 <b>'스크립트'</b>가 있으면 XSS, <b>'의도하지 않은 요청'</b>이 있으면 CSRF입니다. 이 한 줄로 두 문제를 동시에 잡습니다."},
+  {t:"보안장비", q:"침입을 탐지한 뒤 <b>경고만 발생</b>시키고 직접 차단하지는 않는 보안 시스템은?",
+   o:["IDS","IPS","방화벽","WAF"], a:0,
+   why:"<b>IDS</b>(Intrusion <b>Detection</b> System)는 탐지·경보까지가 역할입니다.",
+   trap:"IPS와 한 글자 차이라 매번 바꿔 냅니다. <b>P는 Prevention(차단까지)</b>입니다.",
+   coach:"영어 원어가 곧 답입니다 — <b>D=Detection(발견만), P=Prevention(막기까지)</b>. 함께 정리하면 <b>방화벽</b>은 규칙 기반 통과/차단, <b>WAF</b>는 웹 전용 방화벽입니다."},
+  {t:"공격", q:"네트워크 패킷을 <b>몰래 도청</b>하는 수동적 공격과, <b>주소·신분을 위조</b>하는 능동적 공격을 바르게 짝지은 것은?",
+   o:["스푸핑 — 스니핑","스니핑 — 스푸핑","피싱 — 파밍","스미싱 — 스니핑"], a:1,
+   why:"<b>스니핑</b>은 엿듣는 <b>수동적</b> 공격, <b>스푸핑</b>은 속이는 <b>능동적</b> 공격입니다.",
+   trap:"①처럼 순서를 뒤집은 보기가 항상 함께 나옵니다. 이름이 비슷해 순간적으로 헷갈립니다.",
+   coach:"영어 뜻으로 못 박으세요 — <b>sniff = 냄새 맡다(엿듣다)</b>, <b>spoof = 속이다</b>. 그리고 분류도 함께: <b>수동적 = 도청·트래픽 분석(탐지 어려움)</b>, <b>능동적 = 위조·변조·삽입·서비스 거부</b>."}
+]},
+
+{s:"⑥ 계산 문제 총집합", d:"공식만 알면 무조건 맞히는 구간. 시험장에서 가장 먼저 챙기세요.", items:[
+  {t:"계산", q:"제어 흐름 그래프의 노드가 9개, 간선이 13개일 때 순환 복잡도 V(G)는?",
+   o:["4","5","6","7"], a:2,
+   why:"V(G) = <b>E − N + 2</b> = 13 − 9 + 2 = <b>6</b>입니다.",
+   trap:"E와 N의 순서를 바꿔 9 − 13 + 2 = −2가 되면 당황합니다. <b>간선이 항상 앞</b>입니다.",
+   coach:"결과가 <b>음수나 0이면 무조건 계산 실수</b>입니다. 검산 기준으로 쓰세요. 코드를 주고 물으면 <b>조건문 개수 + 1</b>로 더 빠르게 구할 수 있습니다."},
+  {t:"계산", q:"HRN 방식에서 대기 시간 9, 서비스 시간 3인 작업의 우선순위 값은?",
+   o:["3","4","6","12"], a:1,
+   why:"(대기 + 서비스) ÷ 서비스 = (9 + 3) ÷ 3 = 12 ÷ 3 = <b>4</b>입니다.",
+   trap:"분자에 서비스 시간을 더하는 것을 잊고 9÷3=3(①)으로 계산하는 실수가 가장 흔합니다.",
+   coach:"결과는 <b>항상 1보다 큽니다</b>(대기가 0이어도 1). 1 이하가 나오면 계산이 틀린 겁니다. 공식을 잊었다면 'SJF의 기아를 막으려 <b>기다린 시간에 가산점</b>을 준다'는 취지에서 복원하세요."},
+  {t:"계산", q:"페이지 참조열이 <b>2 3 2 1 5 2 4</b>이고 프레임이 3개일 때, <b>FIFO</b> 알고리즘의 페이지 부재 횟수는?",
+   o:["4회","5회","6회","7회"], a:2,
+   why:"2(부재) 3(부재) 2(적중) 1(부재) → [2,3,1]. 5(부재, 가장 먼저 들어온 <b>2</b> 교체) → [3,1,5]. 2(<b>부재</b>) → [1,5,2]. 4(부재) → 총 <b>6회</b>입니다.",
+   trap:"LRU로 풀면 5회가 나와 ②를 고르게 됩니다. FIFO는 <b>사용 여부와 무관하게 들어온 순서</b>로만 내보냅니다.",
+   coach:"FIFO의 핵심은 <b>적중해도 순서가 바뀌지 않는다</b>는 점입니다. 위에서 2가 중간에 적중했지만 FIFO는 그걸 무시하고 먼저 내보내죠 — 그래서 LRU보다 부재가 1회 더 납니다. <b>표를 그려 프레임 상태를 매 단계 적는 것</b>이 정석입니다."},
+  {t:"계산", q:"서브넷 마스크가 <b>/27</b>인 네트워크에서 할당 가능한 호스트 수는?",
+   o:["14개","30개","62개","32개"], a:1,
+   why:"호스트 비트 = 32 − 27 = 5비트 → 2⁵ = 32, 여기서 네트워크·브로드캐스트 <b>2개를 빼면 30개</b>입니다.",
+   trap:"④32는 <b>−2를 하지 않은</b> 값입니다. 서브넷 문제의 최대 실수 요인입니다.",
+   coach:"자주 나오는 값은 통째로 외우세요 — <b>/24=254, /25=126, /26=62, /27=30, /28=14</b>. 프리픽스가 1 늘 때마다 <b>대략 절반</b>이 되는 규칙만 알면 계산 없이 즉답합니다."},
+  {t:"계산", q:"LOC 기법에서 낙관치 6,000 · 기대치 15,000 · 비관치 18,000 라인일 때 예측 LOC는?",
+   o:["13,000","14,000","15,000","16,000"], a:1,
+   why:"(낙관 + 4×기대 + 비관) ÷ 6 = (6,000 + 60,000 + 18,000) ÷ 6 = 84,000 ÷ 6 = <b>14,000</b>입니다.",
+   trap:"단순 평균(13,000)을 답으로 고르기 쉽습니다. <b>기대치에 4를 곱하는</b> 가중치가 핵심입니다.",
+   coach:"이 공식은 <b>PERT의 기대 소요시간 공식과 완전히 같습니다</b> — 비용 산정과 일정 산정 두 곳에서 동시에 쓰이니 한 번 외워 두 배로 씁니다. 계산할 때 <b>4를 곱했는지</b>만 확인하면 실수가 없습니다."}
+]}
+,{s:"⑦ 최신경향 · 검토회의와 설계 도구", d:"2026년에 실제로 나온 영역. FTR·워크스루·CASE — 몰랐다면 여기서 잡으세요.", items:[
+  {t:"FTR", q:"정형 기술 검토(FTR)의 지침으로 옳지 <b>않은</b> 것은?",
+   o:["제품(산출물)의 검토에만 집중한다","문제 영역을 명확히 표현한다","참가자의 수를 제한하고 사전 준비를 강요한다","논쟁이나 반박을 제한하지 않는다"], a:3,
+   why:"FTR은 <b>논쟁과 반박을 제한</b>합니다. 회의가 산으로 가는 것을 막기 위한 규칙이며, 이 보기가 실제 2026년 1회에 오답 지문으로 나왔습니다.",
+   trap:"③이 '강요'라는 강한 단어 때문에 틀려 보입니다. 하지만 인원 제한·사전 준비 강요는 <b>맞는 지침</b>입니다.",
+   coach:"FTR 지침은 <b>'세 가지 제한'</b>으로 기억하세요 — <b>검토 대상 제한(제품만), 논쟁 제한, 인원 제한</b>. 그리고 '사람이 아니라 제품을 검토한다'는 정신이 바탕입니다. 옳지 않은 것 고르기로 나오면 '제한하지 않는다' 류의 보기가 답일 확률이 높습니다."},
+  {t:"검토회의", q:"검토 자료를 회의 전에 미리 배포하여 <b>사전 검토</b>하게 한 뒤, 짧은 회의로 결함을 찾는 <b>비형식적</b> 검토 방법은?",
+   o:["인스펙션","감리","회귀 테스트","워크스루"], a:3,
+   why:"<b>워크스루</b>는 작성자가 자료를 미리 나눠주고 짧게 진행하는 <b>비형식적</b> 검토입니다.",
+   trap:"인스펙션과 헷갈립니다. 인스펙션은 <b>훈련된 중재자</b>가 <b>체크리스트</b>로 이끄는 <b>가장 격식 있는</b> 검토입니다.",
+   coach:"격식 수준으로 세우면 <b>동료검토 < 워크스루 < 인스펙션</b>입니다. 구분 단서는 두 가지 — <b>'미리 배포'가 보이면 워크스루</b>, <b>'중재자·체크리스트'가 보이면 인스펙션</b>. 이 두 단서만으로 대부분 풀립니다."},
+  {t:"CASE", q:"CASE(Computer Aided Software Engineering) 도구의 주요 기능으로 거리가 <b>먼</b> 것은?",
+   o:["언어 번역","그래픽 지원","소프트웨어 생명주기 전 단계의 연결","다양한 소프트웨어 개발 모델 지원"], a:0,
+   why:"<b>언어 번역은 컴파일러</b>의 일이지 CASE의 기능이 아닙니다. 이 함정이 2026년 1회에 그대로 출제됐습니다.",
+   trap:"CASE가 '개발을 돕는 도구'라는 인상 때문에 번역도 할 것 같지만, CASE는 <b>설계·모델링·문서화</b>를 자동화하는 도구입니다.",
+   coach:"CASE 기능 세 가지를 세트로 — <b>그래픽 지원 · 생명주기 전 단계 연결 · 다양한 모델 지원</b>. 보기에서 이 셋을 지우면 남는 것이 답입니다. '번역·컴파일·실행' 같은 <b>코드 처리</b> 계열이 나오면 CASE가 아닙니다."},
+  {t:"설계표기", q:"Nassi-Shneiderman(N-S) 차트에 대한 설명으로 옳은 것은?",
+   o:["화살표 중심의 자유로운 흐름도이다","구조화된 상자 형태로 순차·선택·반복을 표현한다","데이터베이스의 개체 관계를 표현한다","객체 간 메시지의 시간 순서를 표현한다"], a:1,
+   why:"N-S 차트는 <b>화살표 없이 상자만으로</b> 순차·선택·반복 구조를 표현하는 구조적 표기법입니다.",
+   trap:"①이 최대 함정입니다 — 흐름도(Flowchart)와 반대로, N-S 차트는 <b>화살표가 없습니다</b>. ③은 ERD, ④는 시퀀스 다이어그램.",
+   coach:"이름이 낯설어도 <b>'상자 쌓기'</b> 하나로 기억하면 됩니다. goto 없는 구조적 프로그래밍을 그림으로 강제하는 도구라 화살표(임의 이동)가 없는 게 본질입니다. 비슷하게 나오는 <b>HIPO</b>는 '계층 + 입력·처리·출력 문서화'로 구분하세요."},
+  {t:"HIPO", q:"HIPO(Hierarchy Input Process Output)에 대한 설명으로 거리가 <b>먼</b> 것은?",
+   o:["하향식 소프트웨어 개발에 유용하다","시스템을 계층 구조로 표현한다","기호와 도표가 복잡하여 이해하기 어렵다","입력·처리·출력 기능을 나타낸다"], a:2,
+   why:"HIPO는 <b>기호·도표가 단순해 이해하기 쉬운</b> 것이 장점입니다. '복잡해서 어렵다'는 정반대 서술입니다.",
+   trap:"틀린 것 고르기에서 나머지 세 보기가 모두 이름(HIPO) 그대로라 쉽게 맞지만, ③을 못 거르면 흔들립니다.",
+   coach:"HIPO는 이름이 곧 정의입니다 — <b>H</b>ierarchy(계층) + <b>IPO</b>(입력·처리·출력). 특징 세 개: <b>하향식 · 계층적 · 단순해서 쉬움</b>. '복잡하다'가 보이면 무조건 오답 지문입니다."}
+]}
+
+,{s:"⑧ 최신경향 · 토폴로지와 IP 클래스", d:"2025~2026년 네트워크 구성 문제가 늘었습니다. 계산 포함 5문항.", items:[
+  {t:"토폴로지", q:"중앙의 제어 장비에 모든 노드가 연결되어 관리가 쉽지만, <b>중앙 장비가 고장 나면 전체가 마비</b>되는 네트워크 구성 형태는?",
+   o:["성형(Star)","버스형","링형","망형(Mesh)"], a:0,
+   why:"<b>성형(Star)</b>은 중앙 집중 구조라 관리가 쉽고 확장이 편하지만, 중앙 장비가 <b>단일 장애점</b>입니다.",
+   trap:"'중앙'이라는 말이 없으면 버스형(한 회선 공유)과 헷갈립니다. 버스형은 <b>회선 자체</b>가 끊길 때 전체가 영향받습니다.",
+   coach:"토폴로지는 <b>고장 시나리오</b>로 외우는 게 가장 빠릅니다 — 성형: 중앙 죽으면 끝 / 버스형: 회선 끊기면 끝 / 링형: 한 노드 고장이 전파 / 망형: 하나 죽어도 우회 가능(신뢰성 최고, 비용 최고). EAI의 Hub&Spoke가 성형과 같은 약점을 갖는 것도 연결해 두세요."},
+  {t:"토폴로지", q:"완전 연결형(망형, Mesh) 네트워크에서 노드가 <b>6개</b>일 때 필요한 회선 수는?",
+   o:["12","15","30","36"], a:1,
+   why:"망형 회선 수 = <b>n(n−1)/2</b> = 6×5/2 = <b>15</b>입니다.",
+   trap:"n(n−1)=30으로 계산하면 ③에 걸립니다. 회선은 양방향 하나로 세므로 2로 나눠야 합니다.",
+   coach:"이 공식은 <b>세 군데서 재활용</b>됩니다 — 망형 회선 수, 무방향 그래프 최대 간선, 대칭키 암호에서 n명이 필요로 하는 키 수. 전부 n(n−1)/2입니다. 하나 외워 세 문제를 잡는 가성비 공식입니다."},
+  {t:"IP클래스", q:"다음 중 <b>C 클래스</b>에 속하는 IP 주소는?",
+   o:["10.3.2.1","172.16.98.3","200.168.30.1","225.2.4.1"], a:2,
+   why:"C 클래스는 첫 옥텟이 <b>192~223</b>입니다. 200.168.30.1이 여기 해당합니다. (2026년 1회 실제 유형)",
+   trap:"④ 225는 <b>D 클래스(멀티캐스트)</b>입니다. 크니까 C일 것 같은 직감을 노린 함정입니다.",
+   coach:"경계 숫자 <b>128 · 192 · 224</b>만 외우세요 — 0~127 A, 128~191 B, 192~223 C, 224~239 D. 첫 숫자만 보고 3초에 끝내는 유형이라, 경계만 정확하면 무조건 득점입니다."},
+  {t:"IoT", q:"사물인터넷(IoT) 환경에서 사용되는 <b>발행-구독(Publish-Subscribe) 기반의 경량 메시징 프로토콜</b>은?",
+   o:["TELNET","MQTT","GRID","SMTP"], a:1,
+   why:"<b>MQTT</b>는 저전력·저대역폭 환경(IoT)을 위한 경량 발행-구독 프로토콜입니다. 2026년 1회에 이 정의 그대로 출제됐습니다.",
+   trap:"낯선 약어들 사이에서 SMTP(메일)를 '메시징'으로 착각하기 쉽습니다. SMTP는 이메일 전송입니다.",
+   coach:"신기술 프로토콜은 <b>정의 속 키워드 한 개</b>로 승부합니다 — <b>'발행-구독'이면 MQTT</b>, '메일'이면 SMTP, '원격 접속'이면 TELNET/SSH. MQTT는 옵서버 패턴(구독-알림)과 같은 발상이라는 점도 연결하면 안 잊힙니다."},
+  {t:"토폴로지", q:"하나의 통신 회선에 여러 노드가 연결되어 <b>설치 비용이 저렴</b>하지만, 회선 장애 시 전체가 영향을 받고 충돌이 발생할 수 있는 형태는?",
+   o:["성형","버스형","망형","트리형"], a:1,
+   why:"<b>버스형</b>은 한 회선을 모두가 공유합니다. 싸고 단순하지만 회선이 단일 장애점이고, 동시 전송 시 <b>충돌</b>이 납니다.",
+   trap:"성형과 헷갈리면 '중앙 장비'의 유무를 보세요 — 버스형엔 중앙 장비가 없고 <b>공유 회선</b>만 있습니다.",
+   coach:"버스형의 충돌을 해결하는 방식이 바로 <b>CSMA/CD(IEEE 802.3, 이더넷)</b>입니다 — 토폴로지와 IEEE 802가 이렇게 이어집니다. 시험도 이 연결고리를 좋아하니 묶어서 기억하세요."}
+]}
+
+,{s:"⑨ 최신경향 · 스토리지와 인프라", d:"DAS·NAS·SAN이 2026년 1·2회 연속 출제. 신기술 이름 맞히기 포함.", items:[
+  {t:"스토리지", q:"DAS(Direct Attached Storage)에서 일반적으로 사용하는 <b>직접 연결 프로토콜이 아닌</b> 것은?",
+   o:["SCSI","SAS","eSATA","NFS"], a:3,
+   why:"<b>NFS는 네트워크 파일 공유 프로토콜(NAS용)</b>입니다. DAS는 SCSI·SATA·SAS·eSATA처럼 <b>케이블 직접 연결 규격</b>을 씁니다. 2026년 1·2회 연속 출제 유형입니다.",
+   trap:"iSCSI가 보기에 있으면 그것도 답이 됩니다 — i(인터넷)SCSI는 <b>SAN용</b>이라 직접 연결이 아닙니다.",
+   coach:"세 스토리지는 <b>연결 방식</b>으로 가르세요 — <b>직접 케이블이면 DAS</b>(SCSI·SATA·SAS·eSATA), <b>LAN으로 파일 공유면 NAS</b>(NFS·SMB), <b>전용 고속망으로 블록 접근이면 SAN</b>(Fibre Channel·iSCSI). 프로토콜 이름만 보고 소속을 답하는 문제가 반복됩니다."},
+  {t:"스토리지", q:"저장 장치 구성 방식에 대한 설명으로 옳지 <b>않은</b> 것은?",
+   o:["DAS는 서버에 저장 장치를 직접 연결하는 방식이다","NAS는 네트워크를 통해 파일 단위로 데이터를 공유한다","SAN은 전용 네트워크로 블록 단위 접근을 제공한다","NAS는 반드시 전용 파이버 채널 망을 구축해야 한다"], a:3,
+   why:"전용 파이버 채널 망이 필요한 것은 <b>SAN</b>입니다. NAS는 <b>기존 LAN</b>에 붙이는 것이 장점입니다.",
+   trap:"NAS와 SAN의 설명을 서로 바꿔 넣는 것이 이 유형의 공식입니다. '전용망=SAN, 기존 LAN=NAS'만 확실하면 걸리지 않습니다.",
+   coach:"비유로 잡으면 — <b>DAS는 외장하드</b>(직접 꽂음), <b>NAS는 공유 폴더</b>(회사 네트워크로 접근), <b>SAN은 전용 고속도로를 깐 창고</b>. 규모와 비용이 DAS < NAS < SAN 순으로 커진다는 것도 함께 기억하세요."},
+  {t:"RAID", q:"두 개 이상의 디스크에 <b>동일한 데이터를 복제(미러링)</b>하여 하나가 고장 나도 데이터를 보존하는 RAID 레벨은?",
+   o:["RAID 0","RAID 1","RAID 5","RAID 6"], a:1,
+   why:"<b>RAID 1 = 미러링</b>. 같은 내용을 두 벌 쓰므로 안전하지만 <b>용량이 절반</b>이 됩니다.",
+   trap:"RAID 0(스트라이핑)과 짝으로 나옵니다 — 0은 <b>속도만</b> 얻고 하나 죽으면 <b>전부 잃습니다</b>. 숫자가 작다고 안전한 게 아닙니다.",
+   coach:"네 레벨만 정리하면 충분합니다 — <b>0 스트라이핑(속도, 무보호) · 1 미러링(복제) · 5 패리티 분산(절충, 최소 3장) · 6 이중 패리티(2장 고장 견딤)</b>. '미러'라는 단어가 보이면 1, '패리티'가 보이면 5나 6입니다."},
+  {t:"신기술", q:"오픈 소스 기반의 분산 컴퓨팅 플랫폼으로, 일반 PC급 컴퓨터들을 묶어 <b>빅데이터를 병렬 처리</b>하는 기술은?",
+   o:["하둡(Hadoop)","비컨(Beacon)","멤리스터(Memristor)","포스퀘어(Foursquare)"], a:0,
+   why:"<b>하둡</b> = 오픈소스 + 분산 + 빅데이터 병렬 처리. 2026년 2회에 이 정의 그대로 출제됐습니다.",
+   trap:"나머지 셋은 일부러 낯설게 고른 이름들입니다. 정의의 키워드와 이름을 잇지 못하면 찍게 됩니다.",
+   coach:"신기술 용어는 <b>키워드 두 개</b>만 잡으세요 — 하둡은 <b>'분산' + '빅데이터'</b>입니다. 매년 새 용어가 나오지만 정의문 안에 항상 결정적 단서가 있습니다. 모르는 이름이 보기에 있어도 당황하지 말고 <b>정의문을 역추적</b>하세요."},
+  {t:"MSA", q:"마이크로서비스 아키텍처(MSA)에 대한 설명으로 옳지 <b>않은</b> 것은?",
+   o:["비즈니스 기능 단위로 서비스를 작게 나눈다","서비스마다 서로 다른 개발 언어를 쓸 수 있다","모든 서비스가 하나의 데이터베이스를 공유해야 한다","서비스 간 통신에 주로 HTTP 기반 API를 사용한다"], a:2,
+   why:"MSA의 핵심은 <b>서비스별 독립</b>입니다 — 데이터베이스도 서비스마다 <b>따로</b> 가질 수 있어야 독립 배포가 됩니다. 'DB 공유 강제'는 정반대 서술입니다.",
+   trap:"'공유'가 협력처럼 긍정적으로 들려 넘어가기 쉽습니다. MSA 문제에서 <b>'하나로 통합·공유해야 한다'는 보기는 대부분 오답 지문</b>입니다.",
+   coach:"MSA는 <b>'작게, 따로따로'</b> 한 마디로 기억하세요. 작게 나누고(기능 단위), 따로 개발하고(언어 자유), 따로 저장하고(DB 분리), 표준 통신(HTTP API)으로만 대화합니다. 반대말이 모놀리식(한 덩어리)이라는 것까지 알면 비교 문제도 잡습니다."}
+]}
+
+,{s:"⑩ 최신경향 · DB 심화 (관계해석·카탈로그)", d:"관계해석 기호가 2026년에 그대로 나왔습니다.", items:[
+  {t:"관계해석", q:"관계 해석에서 <b>\"모든 것에 대하여(for all)\"</b>를 의미하는 논리 기호는?",
+   o:["∀","∃","∈","∪"], a:0,
+   why:"<b>∀</b>(전칭 정량자) = for all. 2026년 1회에 이 문제가 그대로 나왔습니다.",
+   trap:"∃(존재 정량자)와 짝으로 출제됩니다 — ∃는 '하나라도 존재하면'입니다.",
+   coach:"글자를 뒤집어 보세요 — <b>∀는 A(All)를, ∃는 E(Exists)를 뒤집은 모양</b>입니다. 이 한 줄이면 평생 안 헷갈립니다. ∈(속한다), ∪(합집합)은 집합 기호로 별개입니다."},
+  {t:"관계해석", q:"관계 해석(Relational Calculus)에 대한 설명으로 옳지 <b>않은</b> 것은?",
+   o:["수학의 프레디킷 해석(술어 논리)에 기반을 둔다","관계 데이터 모델의 제안자인 코드(Codd)가 제안했다","원하는 정보가 무엇인지를 선언하는 비절차적 언어이다","관계 대수로 표현할 수 있는 것은 관계 해석으로 표현할 수 없다"], a:3,
+   why:"관계 대수와 관계 해석은 <b>표현력이 동등</b>합니다 — 한쪽으로 되는 것은 다른 쪽으로도 됩니다.",
+   trap:"'절차적/비절차적' 구분을 물을 수도 있습니다 — <b>대수는 절차적(어떻게), 해석은 비절차적(무엇을)</b>. 방향을 바꿔 내면 헷갈립니다.",
+   coach:"관계해석 문제의 옳은 문장 세 개는 늘 같습니다 — <b>프레디킷 기반 · 코드 제안 · 비절차적</b>. 여기에 <b>'표현력 동등'</b>까지 네 가지가 사실상 전부라, 이 넷과 어긋나는 보기를 고르면 됩니다."},
+  {t:"카탈로그", q:"시스템 카탈로그에 대한 설명으로 옳지 <b>않은</b> 것은?",
+   o:["시스템 자신이 관리하는 객체 정보(메타 데이터)를 담는다","카탈로그 자체도 시스템 테이블로 구성되어 SQL로 조회할 수 있다","일반 사용자도 INSERT·UPDATE 문으로 직접 갱신할 수 있다","DBMS가 스스로 생성하고 유지한다"], a:2,
+   why:"카탈로그는 <b>조회(SELECT)는 가능하지만 직접 갱신은 불가</b>합니다. DDL을 실행하면 <b>DBMS가 자동으로</b> 갱신합니다.",
+   trap:"'SQL로 조회 가능'과 '직접 갱신 가능'을 섞어 놓는 것이 공식입니다. 조회 O, 갱신 X.",
+   coach:"카탈로그 = <b>'DBMS의 자기소개서'</b>입니다. 읽는 건 누구나(SELECT), 고치는 건 본인만(DBMS 자동). '메타 데이터', '데이터 사전'이라는 별칭도 같은 것을 가리킵니다."},
+  {t:"무결성", q:"참조 무결성 제약에서, 부모 테이블의 행을 삭제할 때 <b>이를 참조하는 자식 행들을 함께 삭제</b>하는 옵션은?",
+   o:["RESTRICT","CASCADE","SET NULL","NO ACTION"], a:1,
+   why:"<b>CASCADE</b> = 폭포처럼 연쇄. 부모를 지우면 참조하던 자식도 <b>따라서</b> 지워집니다.",
+   trap:"RESTRICT/NO ACTION은 <b>참조가 있으면 삭제를 거부</b>, SET NULL은 자식의 외래키를 <b>NULL로 바꿈</b>. 셋의 방향이 다 다릅니다.",
+   coach:"단어 뜻 그대로입니다 — CASCADE(폭포: 같이 쓸려감), RESTRICT(제한: 못 지우게 막음), SET NULL(비움). 상황을 주고 '어느 옵션인가'로 나오니, <b>삭제 후 자식이 어떻게 되는가</b>만 따라가면 됩니다."},
+  {t:"트랜잭션", q:"하나의 트랜잭션이 실행 중일 때 <b>다른 트랜잭션의 중간 결과에 접근할 수 없다</b>는 트랜잭션 특성은?",
+   o:["원자성","일관성","격리성","지속성"], a:2,
+   why:"<b>격리성(Isolation)</b> — 동시에 실행돼도 서로의 <b>중간 상태</b>를 보지 못하게 합니다. 병행제어(로킹)가 이를 구현합니다.",
+   trap:"원자성과 헷갈립니다. 원자성은 '전부 or 전무'(실행 완결성), 격리성은 '간섭 금지'(동시성)로 관점이 다릅니다.",
+   coach:"ACID를 <b>질문 형태</b>로 구분하세요 — 중간에 죽으면? <b>원자성</b> / 동시에 돌면? <b>격리성</b> / 끝난 뒤 장애 나면? <b>지속성</b> / 규칙이 깨지면? <b>일관성</b>. 지문이 어떤 질문에 답하는지 보면 즉시 갈립니다."}
+]}
+
+,{s:"⑪ 최신경향 · 코드 함정 모음", d:"2026년 실제 유형 — 콤마 연산자·변수명·예외까지. 손으로 따라가세요.", items:[
+  {t:"C 콤마", q:"다음 C 코드 실행 후 <b>r</b>의 값은?",
+   code:"<span class=\"key\">int</span> a = <span class=\"num\">1</span>, b = <span class=\"num\">2</span>;\n<span class=\"key\">int</span> r = (++a, a++, b++);",
+   o:["1","2","3","4"], a:1,
+   why:"콤마 연산자는 왼쪽부터 차례로 실행하고 <b>마지막 식의 값</b>을 돌려줍니다. ++a로 a=2 → a++는 값 2를 내고 a=3 → b++는 <b>값 2</b>를 내고 b=3. r = 마지막 식의 값 = <b>2</b>. (2026년 1회 실제 유형)",
+   trap:"b++가 '증가 후 값 3'이라고 착각하면 ③에 걸립니다. <b>후위는 증가 전 값</b>을 돌려줍니다.",
+   coach:"콤마 연산자 문제는 두 가지만 지키면 됩니다 — ⑴ <b>전부 실행</b>되지만 ⑵ <b>값은 마지막 것</b>. 그리고 마지막이 후위(b++)면 <b>증가 전 값</b>이라는 함정이 거의 항상 붙습니다. 변수 값을 줄마다 적으면서 따라가세요."},
+  {t:"C 변수명", q:"C 언어에서 변수 이름으로 사용할 수 <b>없는</b> 것은?",
+   o:["student2026","_korea","text-color","amount"], a:2,
+   why:"변수명에 <b>붙임표(-)는 쓸 수 없습니다</b> — 뺄셈 연산자로 해석되기 때문입니다. 영문·숫자·밑줄(_)만 가능하고 숫자로 시작할 수 없습니다.",
+   trap:"밑줄로 시작하는 ②가 이상해 보이지만 <b>_korea는 적법</b>합니다. 밑줄 시작은 허용됩니다.",
+   coach:"변수명 규칙은 세 줄로 끝납니다 — <b>영문·숫자·_만 / 숫자로 시작 금지 / 예약어(int, for 등) 금지</b>. 보기에서 <b>하이픈(-), 공백, 숫자 시작, 예약어</b> 네 가지 결격 사유를 찾으면 됩니다. 2026년 1회에 text-color가 그대로 나왔습니다."},
+  {t:"Java 예외", q:"Java에서 정수를 <b>0으로 나눌 때</b> 발생하는 예외는?",
+   o:["ArithmeticException","NullPointerException","ArrayIndexOutOfBoundsException","ClassCastException"], a:0,
+   why:"정수 나눗셈에서 0으로 나누면 <b>ArithmeticException</b>(산술 예외)이 발생합니다.",
+   trap:"실수(double) 나눗셈은 예외가 아니라 <b>Infinity</b>가 나온다는 것까지 물으면 심화입니다. 필기는 정수 기준으로 답하면 됩니다.",
+   coach:"예외 이름은 <b>사고 장면</b>과 짝지으세요 — 0으로 나눔=<b>Arithmetic</b>, null 참조=<b>NullPointer</b>, 배열 범위 초과=<b>ArrayIndexOutOfBounds</b>, 잘못된 형변환=<b>ClassCast</b>. 이름이 곧 사고 내용이라 짝만 익히면 무조건 맞힙니다."},
+  {t:"제어문", q:"반복문 안에서 <b>break</b> 문이 실행될 때의 동작으로 옳은 것은?",
+   o:["프로그램 전체를 종료한다","가장 가까운 반복문을 즉시 빠져나간다","이번 회차만 건너뛰고 반복을 계속한다","반복문을 처음부터 다시 시작한다"], a:1,
+   why:"break는 <b>자신을 감싼 가장 가까운 반복문 하나</b>를 즉시 탈출합니다. 바깥 반복문은 계속됩니다.",
+   trap:"③은 <b>continue</b>의 동작입니다. 둘을 바꿔 내는 것이 이 유형의 전부입니다.",
+   coach:"<b>break=탈출, continue=건너뜀</b>. 중첩 반복문에서 'break는 안쪽 하나만 나간다'까지 물으면 심화인데, 그때도 '가장 가까운 것 하나'만 기억하면 됩니다. 코드 추적 문제에서 이 둘이 바뀌면 답이 완전히 달라지니 표시하며 읽으세요."},
+  {t:"Python", q:"Python의 자료형에 대한 설명으로 옳지 <b>않은</b> 것은?",
+   o:["list는 생성 후 원소를 변경할 수 있다","tuple은 생성 후 원소를 변경할 수 없다","dict는 키(key)의 중복을 허용하지 않는다","set은 원소의 중복을 허용하고 순서를 유지한다"], a:3,
+   why:"set은 <b>중복을 허용하지 않고 순서도 없습니다</b>. 둘 다 반대로 서술한 ④가 틀렸습니다.",
+   trap:"보기 하나에 <b>거짓을 두 개</b>(중복 허용 + 순서 유지) 넣어 확신을 흔드는 방식입니다. 하나만 틀려도 그 보기가 답입니다.",
+   coach:"네 자료형은 표 하나로 끝납니다 — list(순서O·수정O), tuple(순서O·<b>수정X</b>), set(<b>중복X</b>·순서X), dict(<b>키 중복X</b>). 2026년에도 이 표에서만 나왔습니다. 표를 통째로 외우는 게 문제 다섯 개 값을 합니다."}
+]}
+
+,{s:"⑫ 최신경향 · 생명주기·애자일 심화", d:"22~26년 통틀어 최다 출제 주제(111문항). 여기는 만점이 목표입니다.", items:[
+  {t:"나선형", q:"나선형(Spiral) 모델의 한 사이클을 순서대로 바르게 나열한 것은?",
+   o:["계획 → 위험 분석 → 개발 → 고객 평가","위험 분석 → 계획 → 개발 → 고객 평가","계획 → 개발 → 위험 분석 → 고객 평가","요구 분석 → 설계 → 구현 → 테스트"], a:0,
+   why:"나선형은 <b>계획 → 위험 분석 → 개발(공학) → 고객 평가</b>를 반복합니다. 위험 분석이 <b>개발보다 먼저</b>라는 것이 핵심입니다.",
+   trap:"④는 폭포수의 단계입니다. 나선형 문제에 폭포수 단계를 섞어 놓는 것이 단골 함정입니다.",
+   coach:"순서를 이야기로 만들면 안 잊힙니다 — <b>'계획을 세우고, 위험한지 따져보고, 만들고, 고객에게 보여준다'</b>. 위험 분석의 위치(2번째)를 바꾼 보기가 반복 출제되니, '만들기 전에 위험부터'만 붙잡으세요."},
+  {t:"XP", q:"XP(eXtreme Programming)의 5가지 가치에 해당하지 <b>않는</b> 것은?",
+   o:["용기(Courage)","단순성(Simplicity)","경쟁(Competition)","피드백(Feedback)"], a:2,
+   why:"XP 5가치는 <b>용기 · 단순성 · 의사소통 · 피드백 · 존중</b>입니다. 경쟁은 없습니다 — 애자일은 협력의 문화입니다.",
+   trap:"그럴듯한 가치 단어(열정·성실·경쟁)를 끼워 넣는 유형입니다. 다섯 개를 정확히 외워야 걸러냅니다.",
+   coach:"<b>'용단의피존'</b>으로 외우세요 — 용기·단순·의사소통·피드백·존중. 문제는 '아닌 것'으로만 나오니 다섯 개 목록만 있으면 100% 맞힙니다. 실천법(짝 프로그래밍·TDD·리팩토링·지속적 통합)과 가치를 구분하는 것도 포인트입니다."},
+  {t:"스크럼", q:"스크럼에서 제품 백로그의 <b>우선순위를 결정할 권한</b>을 가진 사람은?",
+   o:["스크럼 마스터","제품 책임자(Product Owner)","개발팀 전원","프로젝트 관리자(PM)"], a:1,
+   why:"백로그의 내용과 우선순위는 <b>제품 책임자(PO)</b>의 권한이자 책임입니다. 스크럼 마스터는 프로세스를 돕는 조력자입니다.",
+   trap:"스크럼 마스터를 '팀장'으로 오해하면 ①에 걸립니다. 마스터는 <b>지시하지 않습니다</b>.",
+   coach:"스크럼 세 역할을 한 줄씩 — <b>PO: 무엇을 만들지(우선순위)</b>, <b>개발팀: 어떻게 만들지(자기조직)</b>, <b>스크럼 마스터: 잘 굴러가게(장애물 제거)</b>. '누가 정하나' 유형은 전부 이 세 줄에서 나옵니다."},
+  {t:"폭포수", q:"폭포수(Waterfall) 모델에 대한 설명으로 옳지 <b>않은</b> 것은?",
+   o:["각 단계가 끝난 뒤 다음 단계로 순차적으로 진행된다","단계별 산출물(문서)이 명확하다","요구사항 변경에 유연하게 대응할 수 있다","가장 오래된 고전적 생명주기 모델이다"], a:2,
+   why:"폭포수의 최대 약점이 바로 <b>변경에 취약</b>하다는 것입니다. 앞 단계로 되돌아가기 어려워, 요구가 바뀌면 비용이 큽니다.",
+   trap:"'유연하다'는 긍정적 서술이 폭포수에 붙으면 거의 항상 오답 지문입니다. 유연함은 애자일의 몫입니다.",
+   coach:"모델별 '틀린 설명' 문제는 <b>장점·단점을 서로 바꿔치기</b>하는 게 공식입니다 — 폭포수에 '유연', 애자일에 '문서 중심', 프로토타입에 '위험 분석'이 붙으면 그게 답입니다. 각 모델의 대표 약점 하나씩만 정확히 잡아두세요."},
+  {t:"애자일", q:"애자일(Agile) 방법론에 대한 설명으로 가장 옳은 것은?",
+   o:["방대한 문서 작성을 가장 중시한다","고객과의 협력보다 계약 협상을 우선한다","변화하는 요구사항을 수용하며 짧은 주기로 반복 개발한다","프로젝트 초기에 모든 요구사항을 확정해야 한다"], a:2,
+   why:"애자일 = <b>짧은 반복 + 변화 수용 + 동작하는 소프트웨어 우선</b>. ①②④는 모두 애자일 선언의 '왼쪽 가치'(덜 중요한 쪽) 또는 폭포수적 접근입니다.",
+   trap:"애자일 선언은 '왼쪽<b>보다</b> 오른쪽'의 구조라, 좌우를 뒤집은 보기가 계속 나옵니다. 화살표 방향만 확인하면 됩니다.",
+   coach:"22~26년 전체에서 <b>생명주기·애자일이 최다 출제(111문항)</b>였습니다. 투자 대비 효율이 가장 좋은 영역이니, 애자일 4선언·XP 5가치·스크럼 용어·모델별 장단점 이 네 덩어리는 <b>만점을 목표로</b> 잡으세요."}
+]}
+
+];
+
+/* ============================================================
+   앱 로직
+   ============================================================ */
+(function(){
+var Q=[], state={}, mode='real', started=0, timerId=null, remain=150*60, submitted=false, cur=0, filter='wrong';
+var $=function(id){return document.getElementById(id)};
+
+/* ---------- 저장 (브라우저에 보관) ---------- */
+var KEY='jcg_mock_progress_v1', HKEY='jcg_mock_history_v1', canSave=true;
+function store(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); return true; }catch(e){ canSave=false; return false; } }
+function load(k){ try{ var s=localStorage.getItem(k); return s?JSON.parse(s):null; }catch(e){ canSave=false; return null; } }
+function drop(k){ try{ localStorage.removeItem(k); }catch(e){} }
+(function probe(){ try{ localStorage.setItem('__t','1'); localStorage.removeItem('__t'); }catch(e){ canSave=false; } })();
+
+function saveProgress(){
+  if(!canSave||submitted) return;
+  store(KEY,{mode:mode,state:state,cur:cur,remain:remain,ts:Date.now()});
+}
+function saveResult(rec){
+  if(!canSave) return;
+  var h=load(HKEY)||[]; h.unshift(rec); if(h.length>10) h=h.slice(0,10); store(HKEY,h);
+}
+function fmtDate(ts){
+  var d=new Date(ts);
+  return d.getFullYear()+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+('0'+d.getDate()).slice(-2)+' '+
+         ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+}
+
+// 현재 풀고 있는 문제집 (모의고사 전체 또는 드릴 한 세트)
+var SECTIONS = EXAM;
+function buildQ(sections){
+  Q=[];
+  sections.forEach(function(sec,si){
+    sec.items.forEach(function(it){
+      Q.push({sub:sec.s, si:si, t:it.t, q:it.q, code:it.code, o:it.o, a:it.a,
+              why:it.why, trap:it.trap, coach:it.coach});
+    });
+  });
+}
+buildQ(EXAM);
+$('barsub').textContent = Q.length+'문항 · 150분';
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// ---- 저장된 진행/기록 표시
+function showIntroExtras(){
+  var note=$('save-note');
+  note.innerHTML = canSave
+    ? '💾 푼 내용은 <b>이 브라우저에 자동 저장</b>됩니다. 창을 닫았다 열어도 이어서 풀 수 있어요.'
+    : '⚠️ 이 화면에서는 자동 저장이 차단되어 있습니다. 저장이 필요하면 바탕화면의 <b>정처기_실전모의고사.html</b> 파일을 직접 열어 주세요.';
+  var p=load(KEY), box=$('resume-box');
+  if(p && p.state){
+    var n=0; for(var k in p.state) if(p.state[k].pick!=null) n++;
+    box.className='note';
+    box.innerHTML='<b>이어서 풀 수 있습니다.</b> '+fmtDate(p.ts)+'에 '+(p.mode==='real'?'실전':'학습')+' 모드로 <b>'+n+'문항</b>까지 푸셨어요.'+
+      '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">'+
+      '<button class="btn pri" id="b-resume" type="button">이어서 풀기</button>'+
+      '<button class="btn" id="b-fresh" type="button">처음부터 새로</button></div>';
+    box.classList.remove('hide');
+    $('b-resume').onclick=function(){ resume(p); };
+    $('b-fresh').onclick=function(){ drop(KEY); box.classList.add('hide'); };
+  }
+  var h=load(HKEY);
+  if(h && h.length){
+    var rows=h.map(function(r){
+      return '<tr><td class="mono" style="font-size:13px">'+fmtDate(r.ts)+'</td>'+
+        '<td class="c mono"><b>'+r.avg+'</b>점</td>'+
+        '<td class="c mono">'+r.total+'/100</td>'+
+        '<td class="c"><span class="badge '+(r.pass?'ok':'no')+'">'+(r.pass?'합격':'불합격')+'</span></td></tr>';
+    }).join('');
+    $('hist-box').innerHTML='<h3 style="font-size:16px;margin:26px 0 8px">지난 응시 기록</h3>'+
+      '<div class="tbl"><table><thead><tr><th>응시일</th><th class="c">평균</th><th class="c">정답</th><th class="c">판정</th></tr></thead>'+
+      '<tbody>'+rows+'</tbody></table></div>';
+  }
+}
+showIntroExtras();
+
+function resume(p){
+  mode=p.mode; state=p.state||{}; cur=p.cur||0; remain=(p.remain!=null?p.remain:150*60);
+  submitted=false; started=Date.now();
+  $('screen-intro').classList.add('hide');
+  $('screen-result').classList.add('hide');
+  $('screen-exam').classList.remove('hide');
+  $('btsubmit').classList.remove('hide');
+  $('btheme').classList.remove('hide');
+  if(mode==='real'){ $('timer').classList.remove('hide'); tick(); timerId=setInterval(tick,1000); }
+  buildGrid(); render(); window.scrollTo(0,0);
+}
+
+// ---- 뒤로가기로 앱이 닫히지 않게 (설치형 앱은 되돌아갈 기록이 없다)
+function backToIntro(){
+  if(timerId){ clearInterval(timerId); timerId=null; }
+  saveProgress();                       // 풀던 내용은 남겨 둔다
+  $('screen-exam').classList.add('hide');
+  $('screen-result').classList.add('hide');
+  $('screen-intro').classList.remove('hide');
+  $('btsubmit').classList.add('hide');
+  $('timer').classList.add('hide');
+  showIntroExtras();                    // 이어풀기 안내를 새로 그린다
+  window.scrollTo(0,0);
+}
+function pushGuard(){ try{ history.pushState({jcg:1}, ''); }catch(e){} }
+pushGuard();                            // 첫 방어막
+window.addEventListener('popstate', function(){
+  var onExam   = !$('screen-exam').classList.contains('hide');
+  var onResult = !$('screen-result').classList.contains('hide');
+  if(onExam || onResult){
+    backToIntro();
+    pushGuard();                        // 다음 뒤로가기도 받아낸다
+  }
+  // 시작 화면에서 한 번 더 누르면 그때는 앱이 닫히도록 둔다
+});
+
+// ---- 시작
+function start(m, sections){
+  mode=m; started=Date.now(); submitted=false; cur=0; state={};
+  drop(KEY);
+  SECTIONS = sections || EXAM;
+  buildQ(SECTIONS);
+  $('barsub').textContent = Q.length+'문항'+(m==='real'?' · 150분':'');
+  $('screen-intro').classList.add('hide');
+  $('screen-result').classList.add('hide');
+  $('screen-exam').classList.remove('hide');
+  $('btsubmit').classList.remove('hide');
+  $('btheme').classList.remove('hide');
+  if(m==='real'){ $('timer').classList.remove('hide'); remain=150*60; tick(); timerId=setInterval(tick,1000); }
+  else { $('timer').classList.add('hide'); }
+  buildGrid(); render(); pushGuard();
+  window.scrollTo(0,0);
+}
+$('mode-real').onclick=function(){start('real')};
+$('mode-study').onclick=function(){start('study')};
+
+// ---- 약점 드릴 목록 그리기
+(function(){
+  var box=$('drill-list');
+  DRILL.forEach(function(set,i){
+    var b=document.createElement('button');
+    b.type='button'; b.className='drillbtn';
+    b.innerHTML='<b>'+set.s+'</b><span>'+set.d+'</span>'+
+                '<em class="mono">'+set.items.length+'문항</em>';
+    b.onclick=function(){ start('study',[set]); };
+    box.appendChild(b);
+  });
+})();
+
+function tick(){
+  var m=Math.floor(remain/60), s=remain%60;
+  $('timer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  if(remain<=600) $('timer').classList.add('warn');
+  if(remain<=0){ clearInterval(timerId); alert('시험 시간이 종료되었습니다. 답안을 제출합니다.'); submit(); return; }
+  remain--;
+  if(remain%15===0) saveProgress();   // 15초마다 남은 시간까지 저장
+}
+
+// ---- 문항 그리드
+function buildGrid(){
+  var g=$('grid'); g.innerHTML='';
+  Q.forEach(function(q,i){
+    var b=document.createElement('button'); b.type='button'; b.className='gq'; b.textContent=i+1;
+    b.onclick=function(){ cur=i; render(); window.scrollTo({top:0,behavior:'smooth'}); };
+    g.appendChild(b);
+  });
+  paintGrid();
+}
+function paintGrid(){
+  var kids=$('grid').children, n=0;
+  for(var i=0;i<Q.length;i++){
+    var c='gq', st=state[i]||{};
+    if(submitted){ if(st.pick!=null){ c+= (st.pick===Q[i].a?' ok':' no'); } else { c+=' no'; } }
+    else { if(st.flag) c+=' flagged'; else if(st.pick!=null) c+=' done'; }
+    if(i===cur) c+=' cur';
+    kids[i].className=c;
+    if(st.pick!=null) n++;
+  }
+  $('sidefoot').textContent='응답 '+n+' / '+Q.length;
+  $('prog').style.width=(n/Q.length*100)+'%';
+}
+
+// ---- 렌더
+function render(){
+  var q=Q[cur], st=state[cur]||{};
+  $('p-sub').textContent=q.sub;
+  $('p-topic').textContent=q.t;
+  $('p-pos').textContent=(cur+1)+' / '+Q.length;
+  $('q-no').textContent=cur+1;
+  $('q-text').innerHTML=q.q;
+  $('q-code').innerHTML = q.code ? '<pre><code>'+q.code+'</code></pre>' : '';
+  var reveal = submitted || (mode==='study' && st.pick!=null);
+  var ul=$('q-opts'); ul.innerHTML='';
+  q.o.forEach(function(txt,i){
+    var li=document.createElement('li');
+    var b=document.createElement('button'); b.type='button'; b.className='opt';
+    if(reveal){
+      if(i===q.a) b.className+=' correct';
+      else if(st.pick===i) b.className+=' wrong';
+      b.disabled=true;
+    } else if(st.pick===i) b.className+=' sel';
+    b.innerHTML='<span class="num">'+['①','②','③','④'][i]+'</span><span>'+txt+'</span>';
+    b.onclick=function(){ pick(i); };
+    li.appendChild(b); ul.appendChild(li);
+  });
+  $('q-sol').innerHTML = reveal ? solHTML(q, st.pick) : '';
+  $('b-flag').className='btn flag sp'+(st.flag?' on':'');
+  $('b-prev').disabled = (cur===0);
+  $('b-next').disabled = (cur===Q.length-1);
+  paintGrid();
+}
+function solHTML(q,pick){
+  var ok = pick===q.a;
+  var h='<div class="sol">';
+  h+='<div class="verdict '+(ok?'ok':'no')+'">'+(ok?'✓ 정답':'✗ 오답')+' &nbsp;·&nbsp; 정답 '+['①','②','③','④'][q.a]+'</div>';
+  h+='<div class="blk why"><span class="lb">정답 근거</span>'+q.why+'</div>';
+  if(q.trap) h+='<div class="blk trap"><span class="lb">함정</span>'+q.trap+'</div>';
+  if(q.coach) h+='<div class="blk coach"><span class="lb">강사 한마디</span>'+q.coach+'</div>';
+  return h+'</div>';
+}
+function pick(i){
+  if(submitted) return;
+  var st=state[cur]||(state[cur]={}); st.pick=i;
+  render(); saveProgress();
+}
+$('b-prev').onclick=function(){ if(cur>0){cur--;render();saveProgress();window.scrollTo(0,0);} };
+$('b-next').onclick=function(){ if(cur<Q.length-1){cur++;render();saveProgress();window.scrollTo(0,0);} };
+$('b-flag').onclick=function(){ var st=state[cur]||(state[cur]={}); st.flag=!st.flag; render(); saveProgress(); };
+document.addEventListener('keydown',function(e){
+  if($('screen-exam').classList.contains('hide')) return;
+  if(e.key==='ArrowLeft') $('b-prev').click();
+  if(e.key==='ArrowRight') $('b-next').click();
+  if(['1','2','3','4'].indexOf(e.key)>=0) pick(parseInt(e.key,10)-1);
+});
+$('btheme').onclick=function(){
+  var r=document.documentElement;
+  var curT=r.getAttribute('data-theme')|| (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  r.setAttribute('data-theme', curT==='dark'?'light':'dark');
+};
+
+// ---- 제출·채점
+$('btsubmit').onclick=function(){
+  var n=0; for(var k in state) if(state[k].pick!=null) n++;
+  var left=Q.length-n;
+  if(left>0 && !confirm('아직 '+left+'문항이 비어 있습니다. 그래도 제출할까요?\n(빈 문항은 오답 처리됩니다)')) return;
+  submit();
+};
+function submit(){
+  submitted=true; if(timerId) clearInterval(timerId); drop(KEY);
+  $('timer').classList.add('hide'); $('btsubmit').classList.add('hide');
+  $('screen-exam').classList.add('hide'); $('screen-result').classList.remove('hide');
+  score(); window.scrollTo(0,0);
+}
+function score(){
+  var byS={}, total=0;
+  SECTIONS.forEach(function(sec){ byS[sec.s]={right:0,total:0}; });
+  Q.forEach(function(q,i){
+    byS[q.sub].total++;
+    var st=state[i]||{};
+    if(st.pick===q.a){ byS[q.sub].right++; total++; }
+  });
+  var tb=$('res-body'); tb.innerHTML=''; var fail=false, sum=0, cnt=0;
+  SECTIONS.forEach(function(sec){
+    var r=byS[sec.s], pts=Math.round(r.right/r.total*100);
+    sum+=pts; cnt++;
+    var bad = pts<40; if(bad) fail=true;
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><b>'+sec.s+'</b></td>'+
+      '<td class="c mono">'+r.right+' / '+r.total+'</td>'+
+      '<td class="c mono"><b>'+pts+'</b></td>'+
+      '<td><div class="meter"><i class="'+(bad?'low':'')+'" style="width:'+pts+'%"></i></div></td>'+
+      '<td class="c"><span class="badge '+(bad?'no':'ok')+'">'+(bad?'과락':'통과')+'</span></td>';
+    tb.appendChild(tr);
+  });
+  var avg=Math.round(sum/cnt);
+  var isFull = (SECTIONS===EXAM);
+  var pass = isFull ? (avg>=60 && !fail) : (avg>=80);
+  var v=$('verd'); v.className='verd '+(pass?'pass':'fail');
+  var msg;
+  if(isFull){
+    $('verd-big').textContent = pass?'합격':'불합격';
+    $('verd-sc').textContent = '평균 '+avg+'점 · 총 '+total+' / '+Q.length+'문항';
+    if(pass) msg='축하합니다. 이 점수대면 실제 시험에서도 충분합니다. 틀린 문제 해설만 훑고 다음 회독으로 넘어가세요.';
+    else if(fail && avg>=60) msg='평균은 넘겼지만 과락 과목이 있습니다. 평균보다 과락 과목을 먼저 잡아야 합니다 — 그 과목에서 8문항만 확보하면 합격입니다.';
+    else if(avg>=50) msg='합격선이 눈앞입니다. 틀린 문제의 「강사 한마디」만 정독해도 다음 회에 10점은 오릅니다.';
+    else msg='아직 개념이 덜 잡힌 상태입니다. 채점표에서 가장 낮은 과목부터 교재 본문으로 돌아가 다시 보세요. 지금 점수는 신경 쓰지 않아도 됩니다.';
+    saveResult({ts:Date.now(), avg:avg, total:total, pass:pass});
+  } else {
+    $('verd-big').textContent = pass?'통과':'복습 필요';
+    $('verd-sc').textContent = total+' / '+Q.length+'문항 정답 · '+avg+'점';
+    msg = pass ? '이 짝은 이제 헷갈리지 않으시겠네요. 다른 드릴 세트로 넘어가세요.'
+               : '이 부분이 아직 흔들립니다. 틀린 문제의 「강사 한마디」를 읽고 바로 한 번 더 푸세요 — 헷갈리는 짝은 붙여서 외워야 잡힙니다.';
+  }
+  $('verd-msg').textContent=msg;
+  renderReview();
+}
+
+// ---- 리뷰
+function renderReview(){
+  var box=$('rev-list'); box.innerHTML='';
+  var list=[];
+  Q.forEach(function(q,i){
+    var st=state[i]||{};
+    var wrong = st.pick!==q.a;
+    if(filter==='wrong' && !wrong) return;
+    if(filter==='flag' && !st.flag) return;
+    list.push(i);
+  });
+  if(!list.length){ box.innerHTML='<div class="note">해당하는 문항이 없습니다. 훌륭합니다!</div>'; return; }
+  list.forEach(function(i){
+    var q=Q[i], st=state[i]||{}, ok=(st.pick===q.a);
+    var d=document.createElement('div'); d.className='revq '+(ok?'hit':'miss');
+    var opts=q.o.map(function(t,k){
+      var mark = k===q.a?'✓':(st.pick===k?'✗':'&nbsp;');
+      var col = k===q.a?'var(--ok-ink)':(st.pick===k?'var(--bad)':'var(--ink-3)');
+      var w = (k===q.a||st.pick===k)?'600':'400';
+      return '<li style="color:'+col+';font-weight:'+w+'">'+mark+' '+['①','②','③','④'][k]+' '+t+'</li>';
+    }).join('');
+    d.innerHTML='<div class="qhead"><span class="pill">'+q.sub+'</span><span class="pill sub">'+q.t+'</span>'+
+      '<span class="pill sub">'+(st.pick==null?'미응답':(ok?'정답':'오답'))+'</span></div>'+
+      '<p class="qtext"><span class="qno">'+(i+1)+'</span>'+q.q+'</p>'+
+      (q.code?'<pre><code>'+q.code+'</code></pre>':'')+
+      '<ul style="list-style:none;padding:0;margin:12px 0;font-size:15px;line-height:1.9">'+opts+'</ul>'+
+      solHTML(q, st.pick).replace('<div class="sol">','<div class="sol" style="border-top:1px dashed var(--line-2)">');
+    box.appendChild(d);
+  });
+}
+/* ---------- 설치(홈화면 추가) 지원 ---------- */
+(function(){
+  var deferred=null, btn=$('b-install');
+  window.addEventListener('beforeinstallprompt',function(e){
+    e.preventDefault(); deferred=e;
+    btn.classList.remove('hide');
+    $('install-ios').style.display='none';
+  });
+  btn.onclick=function(){
+    if(!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function(){ deferred=null; btn.classList.add('hide'); });
+  };
+  // 이미 홈화면에서 실행 중이면 안내를 감춘다
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if(standalone) $('installcard').classList.add('hide');
+})();
+
+document.querySelectorAll('.filters .btn').forEach(function(b){
+  b.onclick=function(){
+    if(b.id==='b-retry'){ location.reload(); return; }
+    filter=b.getAttribute('data-f');
+    document.querySelectorAll('.filters .btn').forEach(function(x){ if(x.id!=='b-retry') x.className='btn'; });
+    b.className='btn pri';
+    renderReview();
+  };
+});
+})();
+</script>
+
+<script>
+/* 오프라인 지원 · 홈화면 설치 (http(s) 에서만 동작, 아티팩트에서는 조용히 건너뜀) */
+(function(){
+  if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
+    try{ navigator.serviceWorker.register('sw.js'); }catch(e){}
+  }
+})();
+</script>
+
+<script>
+/* claude.ai 아티팩트로 열렸을 때는 옆 파일(exam.html 등)을 찾을 수 없으므로
+   같은 내용이 올라가 있는 아티팩트 주소로 바꿔 준다. 깃허브 페이지에서는 그대로 둔다. */
+(function(){
+  if (location.hostname.indexOf('claude') < 0) return;
+  var MAP = {
+    'jeongcheogi.html' : 'https://claude.ai/code/artifact/12095e63-c629-46ba-9daf-3c4b2055ac75',
+    'index.html' : 'https://claude.ai/code/artifact/28a5565f-1a23-4dfb-bb3a-3918edfc3af9'
+  };
+  var links = document.querySelectorAll('a[href]');
+  for (var i = 0; i < links.length; i++) {
+    var h = links[i].getAttribute('href').replace(/^\.\//, '');
+    if (MAP[h]) { links[i].setAttribute('href', MAP[h]); links[i].setAttribute('target', '_blank'); }
+  }
+})();
+</script>
+
+<script>
+/* ===== 판(버전) 표시 =====
+   올린 내용이 실제로 반영됐는지 열자마자 알 수 있게 한다.
+   지난번에 본 판과 다르면 '갱신됨' 을 띄운다. */
+var APP_VERSION = 'v9';
+var APP_BUILT = '2026-08-20';
+(function(){
+  // 화면 곳곳의 판 자리를 채운다
+  var slots = document.querySelectorAll('[data-version-slot]');
+  for (var i = 0; i < slots.length; i++) {
+    slots[i].textContent = APP_VERSION + ' · ' + APP_BUILT;
+  }
+  // 지난번에 본 판과 비교
+  var KEY = 'jcg_seen_version', prev = null;
+  try { prev = localStorage.getItem(KEY); localStorage.setItem(KEY, APP_VERSION); } catch (e) {}
+
+  var msg;
+  if (prev && prev !== APP_VERSION) {
+    msg = '<b>새 판으로 갱신됐습니다</b> &nbsp;' + prev + ' → ' + APP_VERSION +
+          '<span class="m">' + APP_BUILT + '</span>';
+  } else if (!prev) {
+    msg = '정처기 학습 앱 <b>' + APP_VERSION + '</b><span class="m">' + APP_BUILT + '</span>';
+  } else {
+    msg = '정처기 학습 앱 ' + APP_VERSION + '<span class="m">' + APP_BUILT + ' · 최신판입니다</span>';
+  }
+  var t = document.createElement('div');
+  t.id = 'vertoast'; t.innerHTML = msg;
+  document.body.appendChild(t);
+  setTimeout(function(){ t.classList.add('on'); }, 250);
+  setTimeout(function(){ t.classList.remove('on'); }, 3600);
+
+  /* 새 파일이 내려와 준비되면 알려 준다 (깃허브에 올린 직후) */
+  if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+    navigator.serviceWorker.ready.then(function(reg){
+      reg.addEventListener('updatefound', function(){
+        var nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener('statechange', function(){
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+            t.innerHTML = '<b>새 판이 준비됐습니다</b><span class="m">화면을 새로 고치면 적용됩니다</span>';
+            t.classList.add('on');
+            setTimeout(function(){ t.classList.remove('on'); }, 6000);
+          }
+        });
+      });
+    }).catch(function(){});
+  }
+})();
+</script>

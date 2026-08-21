@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>정현준 자격증 학습</title>
+<title>자격증 학습</title>
 <meta name="theme-color" content="#33509C">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -103,7 +103,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
 <body>
 <div class="bar">
   <img class="logo" src="icons/icon-192.png" alt="">
-  <b>정현준 자격증 학습</b>
+  <b>자격증 학습</b>
   <span class="vpill" id="vpill">v1</span>
   <button class="btheme" id="btheme" type="button" title="화면 밝기 전환">🌗</button>
 </div>
@@ -175,7 +175,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
   </div>
 
   <div class="foot">
-    정현준 자격증 학습 · 개인 학습용<br>
+    자격증 학습 · 개인 학습용<br>
     <span id="foot-ver"></span>
   </div>
 </div>
@@ -222,7 +222,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
 })();
 
 /* ===== 판(버전) 표시 — 열자마자 갱신 여부를 알 수 있게 ===== */
-var APP_VERSION='v3';
+var APP_VERSION='v4';
 var APP_BUILT='2026-08-21';
 (function(){
   document.getElementById('vpill').textContent=APP_VERSION;
@@ -233,9 +233,9 @@ var APP_BUILT='2026-08-21';
     box.className='verbar upd';
     box.innerHTML='<b>새 판으로 갱신됐습니다</b> &nbsp;'+prev+' → '+APP_VERSION+'<span class="m">'+APP_BUILT+'</span>';
   } else if(!prev){
-    box.innerHTML='정현준 자격증 학습 <b>'+APP_VERSION+'</b><span class="m">'+APP_BUILT+'</span>';
+    box.innerHTML='자격증 학습 <b>'+APP_VERSION+'</b><span class="m">'+APP_BUILT+'</span>';
   } else {
-    box.innerHTML='정현준 자격증 학습 '+APP_VERSION+'<span class="m">'+APP_BUILT+' · 최신판입니다</span>';
+    box.innerHTML='자격증 학습 '+APP_VERSION+'<span class="m">'+APP_BUILT+' · 최신판입니다</span>';
   }
 })();
 

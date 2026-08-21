@@ -3,7 +3,7 @@
    방식은 '네트워크 우선' 이다 — 인터넷이 되면 늘 최신 파일을 받고, 없을 때만 저장본을 쓴다.
    그래서 내용 갱신에 판 올리기가 꼭 필요하지는 않다(판은 갱신 확인용 표시).
    VERSION 은 캐시 이름이자 판 번호다(옛 캐시 청소 + 갱신 확인용). */
-const VERSION = 'hub-v1';
+const VERSION = 'hub-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -11,6 +11,9 @@ const ASSETS = [
   './jeongcheogi-exam.html',
   './network.html',
   './network-exam.html',
+  './jeongcheogi-silgi.html',
+  './jeongcheogi-silgi-mock.html',
+  './network-silgi.html',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',

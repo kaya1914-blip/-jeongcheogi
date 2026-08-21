@@ -1,0 +1,679 @@
+<title>네트워크관리사 실기 대비</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#33509C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="네트워크관리사 교재">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+
+<meta name="description" content="네트워크관리사 2급 실기 대비 — 라우터 명령·서버 설정·케이블·단답">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+/* ===== 토큰 : 라이트 (기본) ===== */
+:root{
+  --bg:#FBFBFD; --surface:#FFFFFF; --surface-2:#F4F5F9; --surface-3:#EDEFF6;
+  --ink:#191C2A; --ink-2:#454A60; --ink-3:#727892; --ink-4:#9AA0B6;
+  --line:#E4E6F0; --line-2:#D2D6E4;
+  --accent:#33509C; --accent-deep:#22366A; --accent-soft:#EAEEF9; --accent-ink:#2B437F;
+  --morning:#B3620A; --morning-ink:#8A4A05; --morning-soft:#FBF1E1; --morning-line:#EAD2A6;
+  --exam:#0C7A66; --exam-ink:#0A5F50; --exam-soft:#E2F4EF; --exam-line:#B4E0D5;
+  --warn:#B0322E; --warn-soft:#FBE9E7; --warn-line:#EEC5C1;
+  --code-bg:#20243A; --code-ink:#E7E9F5; --code-cmt:#8B92B8; --code-key:#9FB4F2; --code-str:#8FD1B0; --code-num:#E0A96B;
+  --shadow:0 1px 2px rgba(20,24,45,.05), 0 8px 30px rgba(20,24,45,.06);
+  --shadow-sm:0 1px 2px rgba(20,24,45,.06);
+}
+/* ===== 토큰 : 다크 (OS 자동) ===== */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12141E; --surface:#191C28; --surface-2:#1F2331; --surface-3:#262B3C;
+    --ink:#E9EBF3; --ink-2:#B7BCD0; --ink-3:#878DA6; --ink-4:#666C86;
+    --line:#2C3145; --line-2:#3A4059;
+    --accent:#8AA1E8; --accent-deep:#AEBEF0; --accent-soft:#20273F; --accent-ink:#A9BAF0;
+    --morning:#E0A458; --morning-ink:#EAB877; --morning-soft:#2A2113; --morning-line:#4A3A1C;
+    --exam:#4FCFB4; --exam-ink:#6FDBC5; --exam-soft:#122A26; --exam-line:#234A43;
+    --warn:#F0918B; --warn-soft:#2C1817; --warn-line:#4A2724;
+    --code-bg:#0E1017; --code-ink:#E4E7F2; --code-cmt:#7C84A6; --code-key:#A9BCF5; --code-str:#8FD8B4; --code-num:#E8B27C;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.35);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+/* ===== 토큰 : 다크 (수동 토글) ===== */
+:root[data-theme="dark"]{
+  --bg:#12141E; --surface:#191C28; --surface-2:#1F2331; --surface-3:#262B3C;
+  --ink:#E9EBF3; --ink-2:#B7BCD0; --ink-3:#878DA6; --ink-4:#666C86;
+  --line:#2C3145; --line-2:#3A4059;
+  --accent:#8AA1E8; --accent-deep:#AEBEF0; --accent-soft:#20273F; --accent-ink:#A9BAF0;
+  --morning:#E0A458; --morning-ink:#EAB877; --morning-soft:#2A2113; --morning-line:#4A3A1C;
+  --exam:#4FCFB4; --exam-ink:#6FDBC5; --exam-soft:#122A26; --exam-line:#234A43;
+  --warn:#F0918B; --warn-soft:#2C1817; --warn-line:#4A2724;
+  --code-bg:#0E1017; --code-ink:#E4E7F2; --code-cmt:#7C84A6; --code-key:#A9BCF5; --code-str:#8FD8B4; --code-num:#E8B27C;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.35);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:16.5px; line-height:1.78; letter-spacing:-.003em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4{font-family:'Noto Serif KR','Nanum Myeongjo',serif; text-wrap:balance; line-height:1.32; letter-spacing:-.01em}
+
+/* ===== 레이아웃 ===== */
+.layout{display:grid; grid-template-columns:288px minmax(0,1fr); align-items:start; max-width:1240px; margin:0 auto}
+.sidebar{position:sticky; top:0; height:100vh; overflow-y:auto; padding:26px 18px 40px; border-right:1px solid var(--line); background:var(--surface)}
+.main{min-width:0; padding:0 clamp(20px,4vw,64px)}
+.wrap{max-width:770px; margin:0 auto}
+
+/* ===== 목차 ===== */
+.brand{display:flex; gap:11px; align-items:center; padding:4px 8px 16px; margin-bottom:8px; border-bottom:1px solid var(--line)}
+.brand .mk{width:34px;height:34px;flex:none;border-radius:9px;display:block;box-shadow:var(--shadow-sm)}
+.brand b{font-family:'Noto Serif KR',serif; font-size:15.5px; letter-spacing:-.02em; display:block; line-height:1.25}
+.brand span{font-size:11.5px;color:var(--ink-3);font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
+.toc-details>summary{display:none}
+.toc{font-size:13.5px; line-height:1.5}
+.toc .grp{margin-top:14px}
+.toc .glabel{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; color:var(--ink-4); text-transform:uppercase; padding:0 10px; margin-bottom:6px}
+.toc a{display:block; padding:6px 10px; border-radius:7px; color:var(--ink-2); text-decoration:none; transition:background .12s,color .12s}
+.toc a:hover{background:var(--surface-2); color:var(--ink)}
+.toc a.sub{padding-left:22px; font-size:12.8px; color:var(--ink-3)}
+.toc a.top{font-weight:600; color:var(--ink)}
+.toc a.active{background:var(--accent-soft); color:var(--accent-ink); font-weight:600}
+.toc .num{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--accent); margin-right:7px}
+.toc .soon{font-size:10px; color:var(--ink-4); border:1px solid var(--line-2); border-radius:20px; padding:0 6px; margin-left:6px; font-family:'JetBrains Mono',monospace}
+
+.themebtn{margin:16px 8px 0; display:inline-flex; gap:7px; align-items:center; cursor:pointer; border:1px solid var(--line-2); background:var(--surface-2); color:var(--ink-2); border-radius:8px; padding:7px 12px; font-size:12.5px; font-family:inherit}
+.themebtn:hover{border-color:var(--accent); color:var(--accent-ink)}
+
+/* ===== 히어로 ===== */
+.hero{padding:64px 0 30px; border-bottom:1px solid var(--line); margin-bottom:8px}
+.eyebrow{font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:600}
+.hero h1{font-size:clamp(30px,5vw,46px); font-weight:700; margin:16px 0 0; letter-spacing:-.02em}
+.hero .lede{font-size:18px; color:var(--ink-2); margin:18px 0 0; max-width:60ch}
+.hero .facts{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+.fact{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px 16px; box-shadow:var(--shadow-sm)}
+.fact b{display:block; font-family:'JetBrains Mono',monospace; font-size:20px; color:var(--accent-ink); font-weight:600; letter-spacing:-.01em}
+.fact span{font-size:12px; color:var(--ink-3)}
+
+/* ===== 섹션/제목 ===== */
+section{padding-top:26px}
+.sect-head{scroll-margin-top:14px; padding-top:44px; margin-top:20px; border-top:2px solid var(--line)}
+h2{font-size:clamp(23px,3.4vw,31px); font-weight:700; margin:8px 0 6px}
+h2 .kbadge{font-family:'JetBrains Mono',monospace; font-size:13px; color:#fff; background:var(--accent); border-radius:7px; padding:3px 9px; vertical-align:middle; margin-right:12px; font-weight:600; letter-spacing:.02em}
+h3{font-size:20.5px; font-weight:700; margin:38px 0 4px; scroll-margin-top:14px; color:var(--ink)}
+h3 .n{color:var(--accent); font-family:'JetBrains Mono',monospace; font-size:16px; margin-right:8px}
+h4{font-size:16.5px; font-weight:700; margin:26px 0 6px; color:var(--ink); font-family:'IBM Plex Sans KR',sans-serif}
+p{margin:12px 0}
+.main a{color:var(--accent-ink); text-decoration:underline; text-underline-offset:2px; text-decoration-color:var(--line-2)}
+strong,b{font-weight:700}
+.hl{color:var(--accent-deep); font-weight:600}
+.dim{color:var(--ink-3)}
+ul,ol{padding-left:22px; margin:12px 0}
+li{margin:5px 0}
+li::marker{color:var(--accent)}
+.lead-in{font-size:17px; color:var(--ink-2)}
+
+/* 용어 강조칩 */
+.term{font-weight:600; color:var(--accent-deep); border-bottom:2px solid var(--accent-soft); padding-bottom:1px}
+kbd,.mono{font-family:'JetBrains Mono',monospace; font-size:.9em; background:var(--surface-2); border:1px solid var(--line); border-radius:5px; padding:1px 6px; color:var(--ink)}
+
+/* ===== 카드 ===== */
+.card{border-radius:14px; padding:20px 22px; margin:22px 0; border:1px solid var(--line); background:var(--surface); box-shadow:var(--shadow-sm)}
+.card .ct{display:flex; gap:9px; align-items:center; font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; margin-bottom:6px}
+.card .ct .ic{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:13px;font-family:'IBM Plex Sans KR',sans-serif}
+.card h4:first-of-type{margin-top:2px}
+
+.morning{background:var(--morning-soft); border-color:var(--morning-line)}
+.morning .ct{color:var(--morning-ink)} .morning .ct .ic{background:var(--morning);color:#fff}
+.morning .k{font-weight:700;color:var(--morning-ink)}
+
+.exam{background:var(--exam-soft); border-color:var(--exam-line)}
+.exam .ct{color:var(--exam-ink)} .exam .ct .ic{background:var(--exam);color:#fff}
+.exam details{border-top:1px dashed var(--exam-line); margin-top:10px; padding-top:8px}
+.exam details:first-of-type{border-top:none;margin-top:4px}
+.exam summary{cursor:pointer; font-weight:600; color:var(--ink); list-style:none; padding:4px 0; display:flex; gap:9px; align-items:baseline}
+.exam summary::-webkit-details-marker{display:none}
+.exam summary .q{font-family:'JetBrains Mono',monospace; color:var(--exam-ink); font-size:13px; flex:none}
+.exam summary::after{content:'정답 ▾'; margin-left:auto; font-size:11.5px; color:var(--exam-ink); font-family:'JetBrains Mono',monospace; font-weight:600; opacity:.8}
+.exam details[open] summary::after{content:'닫기 ▴'}
+.exam .ans{margin:6px 0 4px 26px; padding:10px 14px; background:var(--surface); border:1px solid var(--exam-line); border-radius:9px; font-size:15px}
+.exam .ans .a{font-weight:700; color:var(--exam-ink)}
+
+.warn{background:var(--warn-soft); border-color:var(--warn-line)}
+.warn .ct{color:var(--warn)} .warn .ct .ic{background:var(--warn);color:#fff}
+
+.tip{background:var(--accent-soft); border-color:var(--line-2)}
+.tip .ct{color:var(--accent-ink)} .tip .ct .ic{background:var(--accent);color:#fff}
+
+.mnemonic{background:var(--surface-2);border:1px dashed var(--line-2);border-radius:10px;padding:12px 16px;margin:16px 0;font-size:15px}
+.mnemonic .mm{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;display:block;margin-bottom:3px}
+.mnemonic b{color:var(--accent-deep)}
+
+/* ===== 기출문제 은행 ===== */
+.bankintro{background:var(--exam-soft);border:1px solid var(--exam-line);border-radius:12px;padding:14px 18px;margin:18px 0;font-size:14.5px;color:var(--ink-2)}
+.bankintro b{color:var(--exam-ink)}
+.qbank{margin:16px 0;display:flex;flex-direction:column;gap:12px}
+.qitem{border:1px solid var(--line);border-radius:12px;padding:15px 18px;background:var(--surface);box-shadow:var(--shadow-sm)}
+.qitem>.qh{display:flex;gap:11px;align-items:baseline}
+.qitem .qn{flex:none;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:#fff;background:var(--accent);border-radius:6px;padding:2px 8px;line-height:1.55}
+.qitem .qq{font-weight:600;color:var(--ink)}
+.qitem .qq .tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.04em;color:var(--accent-ink);background:var(--accent-soft);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px;margin-left:7px;vertical-align:middle}
+.qitem .opts{list-style:none;padding:0;margin:9px 0 0 39px;font-size:15px}
+.qitem .opts li{margin:3px 0;color:var(--ink-2)}
+.qitem pre{margin:10px 0 0 39px}
+.qitem details{margin:11px 0 0 39px;border-top:1px dashed var(--line-2);padding-top:9px}
+.qitem summary{cursor:pointer;list-style:none;font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;color:var(--exam-ink)}
+.qitem summary::-webkit-details-marker{display:none}
+.qitem summary::after{content:'  ▾ 정답·해설 보기'}
+.qitem details[open] summary::after{content:'  ▴ 접기'}
+.qitem .sol{margin-top:9px;font-size:14.5px;line-height:1.7;color:var(--ink-2);background:var(--exam-soft);border:1px solid var(--exam-line);border-radius:9px;padding:11px 15px}
+.qitem .sol .ok{font-weight:700;color:var(--exam-ink)}
+.qitem .sol .trap{color:var(--warn);font-weight:600}
+/* 3단 해설 */
+.qitem .sol p{margin:7px 0}
+.qitem .sol p:first-child{margin-top:0}
+.qitem .sol .lb{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
+  letter-spacing:.07em;border-radius:5px;padding:1px 7px;margin-right:7px;vertical-align:1.5px}
+.qitem .sol .lb.w{background:var(--surface);color:var(--exam-ink);border:1px solid var(--exam-line)}
+.qitem .sol .lb.t{background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn-line)}
+.qitem .sol .lb.c{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.qitem .sol .co{background:var(--surface);border:1px solid var(--line-2);border-radius:9px;padding:10px 13px;margin-top:9px}
+@media (max-width:1000px){
+  .qitem .opts,.qitem details,.qitem pre{margin-left:0}
+}
+
+/* ===== 표 ===== */
+.tbl{overflow-x:auto; margin:20px 0; border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow-sm)}
+table{border-collapse:collapse; width:100%; font-size:14.5px; background:var(--surface)}
+th,td{padding:10px 14px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:var(--surface-3); color:var(--ink); font-weight:700; font-size:13.5px; white-space:nowrap; border-bottom:2px solid var(--line-2)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface-2)}
+td.c,th.c{text-align:center}
+td .mono,td kbd{white-space:nowrap}
+
+/* ===== 코드 ===== */
+pre{background:var(--code-bg); color:var(--code-ink); border-radius:12px; padding:16px 18px; overflow-x:auto; margin:16px 0; font-size:13.6px; line-height:1.62; box-shadow:var(--shadow-sm)}
+pre code{font-family:'JetBrains Mono',monospace}
+.cmt{color:var(--code-cmt); font-style:italic}
+.key{color:var(--code-key)} .str{color:var(--code-str)} .num{color:var(--code-num)}
+.co{display:block;color:var(--code-cmt);font-size:11.5px;letter-spacing:.08em;margin-bottom:8px;text-transform:uppercase}
+
+/* 결과 라벨 */
+.run{display:inline-block;margin-top:2px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--exam-ink);background:var(--exam-soft);border:1px solid var(--exam-line);border-radius:6px;padding:3px 9px}
+
+/* 진도 표시 */
+.soon-sect{color:var(--ink-3); background:var(--surface-2); border:1px dashed var(--line-2); border-radius:12px; padding:22px 24px; margin:20px 0}
+.soon-sect b{color:var(--ink)}
+
+hr.soft{border:none;border-top:1px solid var(--line);margin:30px 0}
+
+footer{border-top:2px solid var(--line); margin-top:60px; padding:34px 0 80px; color:var(--ink-3); font-size:13.5px}
+
+/* ===== 모바일 ===== */
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:sticky; top:0; height:auto; max-height:none; z-index:20; border-right:none; border-bottom:1px solid var(--line); padding:12px 16px; box-shadow:var(--shadow-sm)}
+  .toc-details>summary{display:flex; align-items:center; gap:10px; cursor:pointer; font-family:'Noto Serif KR',serif; font-weight:700; font-size:15px; list-style:none; padding:6px 4px}
+  .toc-details>summary::-webkit-details-marker{display:none}
+  .toc-details>summary::after{content:'목차 ▾'; margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--accent); font-weight:600}
+  .toc-details[open]>summary::after{content:'접기 ▴'}
+  .brand{border-bottom:none;padding-bottom:0;margin-bottom:0}
+  .hero{padding-top:34px}
+  .toc{max-height:66vh;overflow-y:auto;margin-top:8px}
+}
+@media print{
+  .sidebar,.themebtn{display:none}
+  .layout{grid-template-columns:1fr; max-width:none}
+  .main{padding:0}
+  body{font-size:11pt; background:#fff}
+  .card,.tbl,pre{box-shadow:none; break-inside:avoid}
+  h2,h3{break-after:avoid}
+  .exam .ans{margin-left:0}
+}
+</style>
+<style>
+/* ===== 폰에서 보기 ===== */
+.brand>div>span{display:block}
+.brand .verbadge{display:inline-block;margin-top:5px}
+@media (max-width:1000px){
+  .themebtn{margin:6px 4px 0;padding:5px 10px;font-size:11.5px}
+}
+
+@media (max-width:1000px){
+  /* 목차가 화면을 다 잡아먹지 않도록 — 기본은 접힘(아래 스크립트가 처리) */
+  .sidebar{padding:10px 14px}
+  .brand{padding:2px 4px 8px}
+  .themebtn{margin:8px 4px 2px;padding:6px 10px;font-size:12px}
+}
+
+@media (max-width:620px){
+  body{font-size:16px;line-height:1.72}
+  .main{padding:0 15px}
+  .hero{padding-top:26px}
+  h2{font-size:23px}
+  h3{font-size:19px;margin-top:30px}
+
+  /* 표 : 글자를 줄이고, 옆으로 미는 표는 그림자로 알려 준다 */
+  table{font-size:13.5px}
+  th,td{padding:8px 10px}
+  thead th{font-size:12.5px}
+  .tbl{background:
+      linear-gradient(to right,var(--surface) 30%,rgba(255,255,255,0)),
+      linear-gradient(to right,rgba(0,0,0,0),var(--surface) 70%) 100% 0,
+      radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.10),transparent),
+      radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.10),transparent) 100% 0;
+    background-repeat:no-repeat;background-size:34px 100%,34px 100%,14px 100%,14px 100%;
+    background-attachment:local,local,scroll,scroll}
+
+  /* 코드·판독 블록 */
+  pre{font-size:12.6px;padding:13px 14px;border-radius:10px}
+
+  /* 기출 유형 체크 : 「정답 ▾」 가 세로로 쪼개지던 것 수정 */
+  .exam summary{flex-wrap:wrap;row-gap:4px}
+  .exam summary::after{margin-left:0;width:100%;text-align:right}
+  .exam .ans{margin-left:0}
+
+  /* 문제은행 */
+  .qitem{padding:14px 15px}
+  .qitem .opts,.qitem details,.qitem pre{margin-left:0}
+  .qitem .qq{font-size:15.5px}
+  .qitem .sol{font-size:14px}
+
+  /* 카드 여백 */
+  .card{padding:16px 17px;border-radius:13px}
+  .mnemonic{padding:11px 14px}
+}
+</style>
+
+<style>
+/* ===== 판 표시 ===== */
+.verbadge{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.03em;
+  color:#727892;background:rgba(127,132,155,.10);border:1px solid rgba(127,132,155,.28);
+  border-radius:20px;padding:2px 9px;white-space:nowrap;vertical-align:middle}
+#vertoast{position:fixed;left:50%;transform:translateX(-50%) translateY(-14px);top:14px;z-index:9999;
+  max-width:min(92vw,460px);padding:11px 17px;border-radius:12px;font-size:14px;line-height:1.5;
+  background:#191C28;color:#E9EBF3;box-shadow:0 6px 30px rgba(0,0,0,.28);
+  opacity:0;transition:opacity .28s ease,transform .28s ease;pointer-events:none}
+#vertoast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+#vertoast b{color:#8FD8B4}
+#vertoast .m{font-family:'JetBrains Mono',monospace;font-size:12.5px;opacity:.75;display:block;margin-top:2px}
+@media (prefers-reduced-motion:reduce){#vertoast{transition:none}}
+</style>
+
+
+<style>
+/* 실기 페이지 전용 보조 스타일 (교재 변수·클래스 재사용) */
+.sbar{position:sticky;top:0;z-index:40;background:var(--surface);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:10px;padding:10px 16px;box-shadow:var(--shadow-sm)}
+.sbar b{font-size:15px}
+.sbar .sp{margin-left:auto;display:flex;gap:8px;align-items:center}
+.sbar a{font-size:13px;text-decoration:none;color:var(--accent-ink);background:var(--accent-soft);
+  border:1px solid var(--line-2);border-radius:9px;padding:5px 11px;white-space:nowrap}
+.vpill{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-3)}
+.verbar{margin:16px 0 0;border-radius:11px;padding:10px 14px;font-size:13.5px;
+  background:var(--accent-soft);border:1px solid var(--line-2);color:var(--accent-ink)}
+.smain{max-width:820px;margin:0 auto;padding:6px 18px 90px}
+.qitem{border:1px solid var(--line);border-radius:12px;padding:15px 18px;background:var(--surface);margin:12px 0;box-shadow:var(--shadow-sm)}
+.qitem .qh{font-size:15px;font-weight:600;line-height:1.6}
+.qitem .qn{display:inline-block;min-width:24px;height:24px;line-height:24px;text-align:center;background:var(--accent);color:#fff;border-radius:7px;font-family:'JetBrains Mono',monospace;font-size:12px;margin-right:8px}
+.qitem details{margin-top:10px;border-top:1px dashed var(--line-2);padding-top:8px}
+.qitem summary{cursor:pointer;font-weight:600;color:var(--accent-ink);font-size:14px}
+.sol{font-size:14.2px;line-height:1.75;margin-top:8px}
+.sol .ok{font-weight:700;color:var(--accent-ink)}
+.sol .lb{display:inline-block;font-size:11.5px;font-weight:700;border-radius:5px;padding:1px 7px;margin-right:6px;vertical-align:1px}
+.sol .lb.w{background:var(--accent-soft);color:var(--accent-ink);border:1px solid var(--line-2)}
+.sol .lb.t{background:#FBE9E7;color:#B0322E;border:1px solid #EEC5C1}
+.sol .co{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 11px;margin-top:7px}
+.sol .lb.c{background:var(--accent);color:#fff}
+pre.code{background:#20243A;color:#E7E9F5;border-radius:11px;padding:13px 15px;overflow-x:auto;font-family:'JetBrains Mono',Consolas,monospace;font-size:13.2px;line-height:1.65;margin:10px 0}
+.badge-part{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;background:var(--accent);border-radius:7px;padding:2px 9px;margin-right:7px;vertical-align:2px}
+.anx details{margin:6px 0;border:1px solid var(--line);border-radius:9px;padding:9px 13px;background:var(--surface)}
+.anx summary{cursor:pointer;font-size:14.2px;line-height:1.6}
+@media (max-width:560px){ .sbar .sp a.hidemb{display:none} }
+</style>
+
+<div class="sbar">
+  <b>🖧 네트워크관리사 실기 대비</b>
+  <span class="vpill" data-version-slot></span>
+  <span class="sp">
+    <a href="network.html" class="hidemb">📘 필기 교재</a>
+    <a href="network-exam.html" class="hidemb">✎ 필기 앱</a>
+    <a href="index.html">🏠 홈</a>
+  </span>
+</div>
+
+<main class="smain">
+  <div class="verbar" id="verbar"></div>
+
+  <h2 style="margin-top:26px">실기, 손이 기억하게 만드는 시험</h2>
+  <p>네트워크관리사 2급 실기는 <b>총 18문제 · 80분 · 100점 만점에 60점</b>(약 11문제) 합격입니다.
+  필기 합격 후 <b>2년 안에</b> 응시하고, 합격률은 대략 30% 안팎입니다. 실측 구성은 아래와 같습니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>유형</th><th>문항 · 배점</th><th>시간</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><b>케이블 제작</b></td><td>1문 · 6.5점</td><td>10분</td><td>다이렉트/크로스 중 하나를 실물 제작·제출</td></tr>
+      <tr><td><b>Windows 서버</b></td><td>8문 · 각 5.5점</td><td rowspan="2">50분</td><td>에뮬레이터에서 DNS·DHCP·IIS·보안정책 등 설정</td></tr>
+      <tr><td><b>리눅스·단답</b></td><td>6문 · 각 5.5점</td><td>이론 단답·선택·끌어놓기</td></tr>
+      <tr><td><b>라우터(Cisco)</b></td><td>3문 · 각 5.5점</td><td>20분</td><td>에뮬레이터에 명령 입력, <b>저장까지</b></td></tr>
+    </tbody>
+  </table></div>
+  <p>즉 <b>윈도우 8문 + 라우터 3문 = 60.5점</b> — 이 두 유형만 다 잡아도 합격입니다.
+  세부 배점은 회차 공고(icqa.or.kr) 기준으로 확인하세요.</p>
+
+  <div class="card tip" style="margin:16px 0 6px">
+    <div class="ct"><span class="ic">◎</span>이 페이지 사용법</div>
+    <p style="margin:6px 0 0">라우터 문제는 <b>명령을 종이에 순서대로 쓴 뒤</b> 정답을 여세요.
+    에뮬레이터는 오타에 관대하지 않습니다 — 손이 명령을 기억할 때까지 반복이 답입니다.</p>
+  </div>
+
+  <!-- ================= 최신 경향 ================= -->
+  <h2 id="n0" style="margin-top:34px"><span class="badge-part">경향</span>최신 출제 흐름 — 2026년 실측</h2>
+  <div class="card exam" style="margin:12px 0 6px">
+    <div class="ct"><span class="ic">✓</span>2026년 1회 실기에서 실제로 벌어진 일</div>
+    <p style="margin:6px 0 0">① <b>보안 문제가 대거 등장</b> — 교재 밖에서 <b>NGFW(차세대 방화벽)</b> 같은 신출 용어까지 나왔습니다.
+    ② <b>리눅스 명령어가 한 문제도 안 나오고</b>, 대신 <b>심볼릭 링크 vs 하드 링크</b> 구분이 나왔습니다.
+    ③ 라우터·윈도우 유형은 예년 그대로 반복 — 즉 <b>작업형은 정형화, 단답만 진화</b>하는 구도입니다.
+    아래 단답 은행에 이 최신 유형을 반영해 두었습니다.</p>
+  </div>
+  <details style="margin:10px 0 0"><summary style="cursor:pointer;font-weight:600;color:var(--accent-ink)">연습 자료는 어디서 (링크)</summary>
+  <ul style="font-size:14px;line-height:1.9;margin-top:8px">
+    <li><a href="https://www.icqa.or.kr/cn/board/dataroom?sca=%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EA%B4%80%EB%A6%AC%EC%82%AC" target="_blank" rel="noopener">ICQA 자료실</a> — <b>공식 라우터·윈도우 에뮬레이터 내려받기</b>. 시험 전 반드시 돌려볼 것.</li>
+    <li><a href="https://velog.io/@zlevn/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EA%B4%80%EB%A6%AC%EC%82%AC-2%EA%B8%89-%EC%8B%A4%EA%B8%B0-%EB%9D%BC%EC%9A%B0%ED%84%B0-%EB%AC%B8%EC%A0%9C-%EB%AA%A8%EC%9D%8C" target="_blank" rel="noopener">라우터 문제 전체 모음(velog)</a> — 역대 출제 명령 총정리.</li>
+    <li><a href="https://solyi.kr/234" target="_blank" rel="noopener">라우터 문제 4유형 정리</a> — 인터페이스·show·line·기타로 분류.</li>
+    <li><a href="https://namu.wiki/w/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EA%B4%80%EB%A6%AC%EC%82%AC" target="_blank" rel="noopener">나무위키 네트워크관리사</a> — 구성·배점·최근 경향.</li>
+  </ul>
+  <p style="font-size:12.5px;color:var(--ink-3)">복원 문제 원문은 복원자들의 작업물이라 싣지 않고, 같은 유형을 새로 만들어 아래에 담았습니다.</p>
+  </details>
+
+  <!-- ================= 1부 라우터 ================= -->
+  <h2 id="r1" style="margin-top:34px"><span class="badge-part">1부</span>라우터(Cisco) 설정 — 실기의 심장</h2>
+  <p>화면의 라우터 에뮬레이터에 명령을 직접 입력하는 유형입니다. 모든 문제의 끝은
+  <b>저장(copy running-config startup-config)</b>입니다 — 설정을 다 해 놓고 저장을 빠뜨리면 그 문제는 0점입니다.</p>
+
+  <div class="qitem"><div class="qh"><span class="qn">1</span>라우터의 호스트 이름을 <b>ICQA</b>로 변경하고 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router&gt; enable
+Router# configure terminal
+Router(config)# hostname ICQA
+ICQA(config)# exit
+ICQA# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span>이름 변경은 전역 설정 모드의 <b>hostname</b>. 프롬프트가 ICQA로 바뀌면 적용된 것입니다.</p>
+    <p><span class="lb t">함정</span>enable → configure terminal 순서를 건너뛰고 바로 hostname을 치면 에러. <b>모드 계단</b>을 지키세요.</p>
+    <p class="co"><span class="lb c">한마디</span>모든 라우터 문제의 뼈대는 「en → conf t → (설정) → exit → copy run start」. 이 다섯 줄이 손에 붙으면 절반은 끝났습니다.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">2</span>FastEthernet 0/0 인터페이스에 IP <b>192.168.0.100/24</b>를 설정하고 활성화한 뒤 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router&gt; enable
+Router# configure terminal
+Router(config)# interface fastethernet 0/0
+Router(config-if)# ip address 192.168.0.100 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# end
+Router# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span>/24는 <b>255.255.255.0</b>으로 풀어 씁니다. 포트는 기본 shutdown 상태라 <b>no shutdown</b>이 필수.</p>
+    <p><span class="lb t">함정</span>no shutdown 누락이 최다 감점 요인입니다. IP만 주면 포트는 여전히 죽어 있습니다.</p>
+    <p class="co"><span class="lb c">한마디</span>프리픽스(/24, /26…)를 마스크로 즉시 변환하는 연습을 하세요 — /26=255.255.255.192, /27=255.255.255.224. 필기 서브넷 계산이 실기에서 이렇게 쓰입니다.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">3</span>모든 목적지로 가는 기본 경로(디폴트 라우트)를 게이트웨이 <b>192.168.0.1</b>로 설정하고 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router# configure terminal
+Router(config)# ip route 0.0.0.0 0.0.0.0 192.168.0.1
+Router(config)# exit
+Router# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span>디폴트 라우트는 <b>ip route 0.0.0.0 0.0.0.0 다음홉</b>. 「모든 주소·모든 마스크」라는 뜻입니다.</p>
+    <p><span class="lb t">함정</span>0.0.0.0을 한 번만 쓰면 문법 오류입니다. <b>주소·마스크 두 번</b> 씁니다.</p>
+    <p class="co"><span class="lb c">한마디</span>「제로 넷, 제로 마스크, 게이트웨이」 — 소리 내어 외우면 시험장에서 손이 먼저 나갑니다.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">4</span>텔넷(원격) 접속이 가능하도록 VTY 0~4 회선에 비밀번호 <b>icqa123</b>을 설정하고 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router# configure terminal
+Router(config)# line vty 0 4
+Router(config-line)# password icqa123
+Router(config-line)# login
+Router(config-line)# end
+Router# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span>원격 접속 회선은 <b>line vty 0 4</b>(5개 회선). password 지정 후 <b>login</b>을 쳐야 비밀번호 검사가 켜집니다.</p>
+    <p><span class="lb t">함정</span>login을 빠뜨리면 비밀번호를 정해도 검사 없이 통과됩니다. password와 login은 한 몸입니다.</p>
+    <p class="co"><span class="lb c">한마디</span>콘솔이면 line console 0, 원격이면 line vty 0 4 — <b>들어오는 문이 다를 뿐 나머지는 똑같습니다.</b></p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">5</span>관리자(특권) 모드 진입 비밀번호를 암호화된 형태로 <b>admin123</b> 설정하고 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router# configure terminal
+Router(config)# enable secret admin123
+Router(config)# exit
+Router# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span><b>enable secret</b>은 암호화 저장, enable password는 평문 저장입니다. 「암호화」 조건이 붙으면 secret.</p>
+    <p><span class="lb t">함정</span>문제에 「암호화하여」가 있는데 enable password를 쓰면 감점입니다.</p>
+    <p class="co"><span class="lb c">한마디</span>secret이 password보다 우선 적용됩니다. 실무에서도 password는 쓰지 않는다고 기억하면 헷갈릴 일이 없습니다.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">6</span>다음을 확인하는 show 명령을 각각 쓰시오 — ⑴ 현재 동작 중인 설정 ⑵ 인터페이스별 IP·상태 요약 ⑶ 라우팅 테이블</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">⑴ show running-config
+⑵ show ip interface brief
+⑶ show ip route</pre>
+    <p><span class="lb w">근거</span>확인 명령 3형제입니다. 모두 <b>특권 모드(#)</b>에서 실행합니다.</p>
+    <p><span class="lb t">함정</span>show running-config(현재 RAM)와 show startup-config(저장본 NVRAM)를 구분하세요.</p>
+    <p class="co"><span class="lb c">한마디</span>설정 문제를 풀고 나서 스스로 show ip interface brief로 확인하는 습관을 들이면, 실수(no shutdown 누락)를 시험장에서 잡아낼 수 있습니다.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">7</span>Serial 2/0 인터페이스에 설명(description)을 <b>ICQA_LINE</b>으로 넣고, 대역폭을 <b>2048</b>로 설정한 뒤 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router# configure terminal
+Router(config)# interface serial 2/0
+Router(config-if)# description ICQA_LINE
+Router(config-if)# bandwidth 2048
+Router(config-if)# end
+Router# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span>description은 관리용 메모, bandwidth는 라우팅 계산용 대역폭(kbps)입니다. 역대 실기 단골 짝입니다.</p>
+    <p><span class="lb t">함정</span>bandwidth 2048은 <b>단위 없이 숫자만</b> 씁니다. 2048k처럼 쓰면 오류.</p>
+    <p class="co"><span class="lb c">한마디</span>인터페이스 문제는 「interface 진입 → 설정 → end → 저장」 틀이 늘 같습니다. 바뀌는 건 가운데 한 줄뿐입니다.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">8</span>Serial 2/0의 클럭 속도를 <b>72K</b>로 설정하고 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router# configure terminal
+Router(config)# interface serial 2/0
+Router(config-if)# clock rate 72000
+Router(config-if)# end
+Router# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span>clock rate 단위는 <b>bps</b>입니다. 72K = <b>72000</b>.</p>
+    <p><span class="lb t">함정</span>72 또는 72k로 쓰면 틀립니다. K를 <b>천 단위로 풀어 쓰는 것</b>이 이 문제의 전부입니다.</p>
+    <p class="co"><span class="lb c">한마디</span>bandwidth는 kbps(2048), clock rate는 bps(72000) — 단위가 서로 다르다는 게 출제 포인트입니다.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">9</span>DHCP 풀 이름을 <b>icqa</b>로 만들고, 네트워크 <b>192.168.100.0/24</b>를 임대 범위로 설정한 뒤 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router# configure terminal
+Router(config)# ip dhcp pool icqa
+Router(dhcp-config)# network 192.168.100.0 255.255.255.0
+Router(dhcp-config)# exit
+Router(config)# exit
+Router# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span>ip dhcp pool 이름 → network 주소 마스크. /24는 255.255.255.0으로 풀어 씁니다.</p>
+    <p class="co"><span class="lb c">한마디</span>프롬프트가 (dhcp-config)#로 바뀌는 걸 확인하세요. 모드 표시가 곧 「제대로 들어왔다」는 신호입니다.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">10</span>텔넷 접속이 <b>3분 50초</b> 동안 입력이 없으면 자동 종료되도록 설정하고 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router# configure terminal
+Router(config)# line vty 0 4
+Router(config-line)# exec-timeout 3 50
+Router(config-line)# end
+Router# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span>exec-timeout <b>분 초</b> 순서입니다. 3분 50초 → exec-timeout 3 50.</p>
+    <p><span class="lb t">함정</span>350이나 3:50으로 붙여 쓰면 안 됩니다. <b>띄어쓰기로 분·초를 구분</b>합니다.</p>
+    <p class="co"><span class="lb c">한마디</span>이 문제는 역대 기출에서 숫자만 바꿔 반복됩니다. 「분 초, 띄어서」 — 이 여섯 글자만 기억하세요.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">11</span>라우터의 도메인 이름을 <b>icqa.or.kr</b>로 설정하고 저장하시오.</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">Router# configure terminal
+Router(config)# ip domain-name icqa.or.kr
+Router(config)# exit
+Router# copy running-config startup-config</pre>
+    <p><span class="lb w">근거</span>도메인 이름은 전역 설정의 <b>ip domain-name</b>입니다. hostname(장비 이름)과 다릅니다.</p>
+    <p class="co"><span class="lb c">한마디</span>hostname=장비의 이름표, domain-name=장비가 속한 주소 — 헷갈리면 「명함의 이름과 회사 주소」로 기억하세요.</p></div></details>
+  </div>
+
+  <div class="qitem"><div class="qh"><span class="qn">12</span>다음을 확인하는 show 명령을 각각 쓰시오 — ⑴ 접속 중인 사용자 ⑵ 플래시 메모리 내용 ⑶ 실행 중인 프로세스</div>
+    <details><summary>정답 명령</summary><div class="sol">
+    <pre class="code">⑴ show user
+⑵ show flash
+⑶ show process</pre>
+    <p><span class="lb w">근거</span>show 문제는 「무엇을 보고 싶은가」의 영어 단어를 그대로 붙이면 됩니다.</p>
+    <p class="co"><span class="lb c">한마디</span>6번의 3형제(running-config·ip interface brief·ip route)와 이 셋을 합치면 역대 show 출제 전부입니다. 여섯 개를 한 세트로 외우세요.</p></div></details>
+  </div>
+
+  <!-- ================= 2부 Windows 서버 ================= -->
+  <h2 id="r2" style="margin-top:40px"><span class="badge-part">2부</span>Windows 서버 설정 — 절차를 외우는 문제</h2>
+  <p>에뮬레이터에서 마우스로 절차를 수행하는 유형입니다. <b>경로(어디를 눌러 들어가는가)</b>가 곧 답입니다.</p>
+
+  <div class="qitem anx">
+    <details><summary>1. PC의 IP 주소를 수동(고정)으로 설정하는 절차를 쓰시오</summary><div class="sol"><p><span class="ok">제어판 → 네트워크 및 공유 센터 → 어댑터 설정 변경 → 이더넷 속성 → 인터넷 프로토콜 버전 4(TCP/IPv4) → 「다음 IP 주소 사용」</span>에 IP·서브넷 마스크·기본 게이트웨이·DNS 입력.</p></div></details>
+    <details><summary>2. 명령 프롬프트에서 현재 IP 설정을 자세히 확인하는 명령은?</summary><div class="sol"><p><span class="ok">ipconfig /all</span> — DHCP 갱신은 ipconfig /release → ipconfig /renew.</p></div></details>
+    <details><summary>3. 로컬 사용자 계정을 추가하는 관리 도구 경로는?</summary><div class="sol"><p><span class="ok">컴퓨터 관리 → 로컬 사용자 및 그룹 → 사용자 → 새 사용자</span> — 암호 정책(다음 로그온 시 변경 등) 체크 항목까지 눈에 익혀 두세요.</p></div></details>
+    <details><summary>4. 웹 사이트를 게시하기 위해 Windows Server에 설치하는 역할은?</summary><div class="sol"><p><span class="ok">IIS(인터넷 정보 서비스)</span> — 서버 관리자 → 역할 및 기능 추가.</p></div></details>
+    <details><summary>5. IP를 자동으로 나눠 주는 서버 역할과, 임대 범위를 부르는 이름은?</summary><div class="sol"><p><span class="ok">DHCP 서버 · 범위(Scope)</span> — 시작/끝 IP, 임대 기간을 지정.</p></div></details>
+    <details><summary>6. 폴더를 네트워크에 공유하고 특정 사용자에게만 읽기 권한을 주는 절차의 핵심 두 단계는?</summary><div class="sol"><p><span class="ok">폴더 속성 → 공유(공유 사용 권한) + 보안 탭(NTFS 권한)</span> — 둘이 겹치면 <b>더 엄격한 쪽</b>이 적용된다는 것까지가 세트.</p></div></details>
+    <details><summary>7. DNS 서버에서 웹서버(www)의 IPv4 주소를 등록할 때 만드는 레코드와, 별칭(ftp→www)을 만들 때의 레코드는?</summary><div class="sol"><p><span class="ok">A(호스트) 레코드 · CNAME(별칭) 레코드</span> — 메일 서버는 MX. <b>SOA의 책임자(관리자) 칸은 @ 대신 점(.)</b>으로 씁니다(예: admin.icqa.or.kr) — 실기 단골 함정.</p></div></details>
+    <details><summary>8. DHCP에서 IP를 나눠 줄 시작~끝 주소 묶음을 부르는 이름과, 특정 장비에 늘 같은 IP를 주는 기능은?</summary><div class="sol"><p><span class="ok">범위(Scope) · 예약(Reservation)</span> — 예약은 장비의 <b>MAC 주소</b>로 겁니다. 제외 범위(Exclusion)와 구분하세요.</p></div></details>
+    <details><summary>9. IIS에서 FTP 사이트를 추가하는 시작 절차는?</summary><div class="sol"><p><span class="ok">IIS 관리자 → 사이트 우클릭 → 「FTP 사이트 추가」</span> → 이름·물리 경로 → 바인딩(포트 21)·SSL → 인증·권한. 웹 사이트 추가도 같은 흐름(포트 80)입니다.</p></div></details>
+    <details><summary>10. 「암호는 최소 8자, 5회 실패하면 계정 잠금」을 설정하는 곳은?</summary><div class="sol"><p><span class="ok">로컬 보안 정책 → 계정 정책 → 암호 정책(최소 암호 길이) · 계정 잠금 정책(계정 잠금 임계값)</span> — 문제에 따라 「로컬 정책 → 보안 옵션」에서 찾아야 하는 항목도 있으니 두 곳을 다 눌러 보세요.</p></div></details>
+    <details><summary>11. 서비스가 부팅할 때 자동으로 실행되게 하려면 어디서 무엇을 바꾸나?</summary><div class="sol"><p><span class="ok">서비스 관리자(services.msc) → 해당 서비스 속성 → 시작 유형을 「자동」</span> — 끄라고 하면 「사용 안 함」 + 중지. 문제 지문의 설명으로 서비스를 찾는 연습이 필요합니다.</p></div></details>
+    <details><summary>12. 2진수 11000000.10101000.00000001.00001010 을 10진 IP로 변환하면?</summary><div class="sol"><p><span class="ok">192.168.1.10</span> — 128+64=192, 128+32+8=168, 1, 8+2=10. 실기 윈도우 유형에 <b>2진수↔IP 변환</b>이 섞여 나옵니다. 자리값 128·64·32·16·8·4·2·1을 적어 놓고 더하세요.</p></div></details>
+  </div>
+
+  <!-- ================= 3부 케이블 ================= -->
+  <h2 id="r3" style="margin-top:40px"><span class="badge-part">3부</span>UTP 케이블 제작 — 몸으로 3번이면 끝</h2>
+  <p>실물 케이블을 만드는 유형입니다. 색 순서는 필기 교재 「실기 전용 대비」의 표와 같습니다 — <b>T568B: 흰주·주·흰녹·파·흰파·녹·흰갈·갈</b>.</p>
+
+  <div class="qitem anx">
+    <details><summary>1. T568B 배열을 1번 핀부터 순서대로 쓰시오</summary><div class="sol"><p><span class="ok">흰주황 → 주황 → 흰녹 → 파랑 → 흰파랑 → 녹색 → 흰갈색 → 갈색</span> — T568A는 주황↔녹색만 맞바꾼 것.</p></div></details>
+    <details><summary>2. PC–스위치 연결과 PC–PC 직접 연결에 각각 필요한 케이블은?</summary><div class="sol"><p><span class="ok">PC–스위치 = 다이렉트(양쪽 T568B) · PC–PC = 크로스(한쪽 A, 한쪽 B)</span> — 같은 장비끼리는 크로스.</p></div></details>
+    <details><summary>3. 제작 순서를 단계대로 쓰시오</summary><div class="sol"><p><span class="ok">피복 탈피 → 색 순서 정렬 → 끝단 일자 절단 → RJ-45 끝까지 삽입 → 압착(크림핑) → 테스터 확인</span> — 구리선이 커넥터 끝까지 닿았는지 눈으로 확인 후 압착.</p></div></details>
+  </div>
+
+  <!-- ================= 4부 단답 ================= -->
+  <h2 id="r4" style="margin-top:40px"><span class="badge-part">4부</span>단답 은행 — 쓸 수 있어야 점수</h2>
+  <p>필기에선 고르면 됐지만 실기에선 <b>직접 씁니다</b>. 철자까지 정확히.</p>
+
+  <h3>프로토콜 · 포트 (8)</h3>
+  <div class="qitem anx">
+    <details><summary>1. IP 주소를 MAC 주소로 변환하는 프로토콜</summary><div class="sol"><p><span class="ok">ARP</span></p></div></details>
+    <details><summary>2. IP를 자동 할당하는 프로토콜과 그 4단계 과정</summary><div class="sol"><p><span class="ok">DHCP · Discover → Offer → Request → Ack(DORA)</span></p></div></details>
+    <details><summary>3. 암호화 원격 접속 프로토콜과 포트</summary><div class="sol"><p><span class="ok">SSH · 22</span> — 평문은 Telnet(23).</p></div></details>
+    <details><summary>4. HTTPS의 포트 번호</summary><div class="sol"><p><span class="ok">443</span> — HTTP는 80.</p></div></details>
+    <details><summary>5. 메일 발신 프로토콜과 포트</summary><div class="sol"><p><span class="ok">SMTP · 25</span> — 수신은 POP3(110)/IMAP(143).</p></div></details>
+    <details><summary>6. 장비 상태를 원격 감시·관리하는 프로토콜</summary><div class="sol"><p><span class="ok">SNMP</span> — 포트 161.</p></div></details>
+    <details><summary>7. 장비 시각을 동기화하는 프로토콜</summary><div class="sol"><p><span class="ok">NTP</span> — 포트 123.</p></div></details>
+    <details><summary>8. 인증 없이 UDP로 동작하는 경량 파일 전송 프로토콜과 포트</summary><div class="sol"><p><span class="ok">TFTP · 69</span></p></div></details>
+  </div>
+
+  <h3>계산 · 주소 (6)</h3>
+  <div class="qitem anx">
+    <details><summary>9. /26 서브넷의 사용 가능 호스트 수</summary><div class="sol"><p><span class="ok">62</span> — 2⁶−2. /27=30, /28=14.</p></div></details>
+    <details><summary>10. 255.255.255.224를 프리픽스로 쓰면?</summary><div class="sol"><p><span class="ok">/27</span> — 224=11100000, 24+3.</p></div></details>
+    <details><summary>11. C 클래스의 첫 옥텟 범위</summary><div class="sol"><p><span class="ok">192~223</span> — A 1~126, B 128~191.</p></div></details>
+    <details><summary>12. 사설 IP 3개 대역을 쓰시오</summary><div class="sol"><p><span class="ok">10.0.0.0/8 · 172.16.0.0~172.31.255.255 · 192.168.0.0/16</span></p></div></details>
+    <details><summary>13. 루프백 주소</summary><div class="sol"><p><span class="ok">127.0.0.1</span></p></div></details>
+    <details><summary>14. IPv6의 주소 길이</summary><div class="sol"><p><span class="ok">128비트</span> — 콜론으로 8그룹.</p></div></details>
+  </div>
+
+  <h3>리눅스 명령 쓰기 (6)</h3>
+  <div class="qitem anx">
+    <details><summary>15. 현재 디렉토리 경로를 출력하는 명령</summary><div class="sol"><p><span class="ok">pwd</span></p></div></details>
+    <details><summary>16. 파일 권한을 rwxr-xr-x로 주는 명령(8진수)</summary><div class="sol"><p><span class="ok">chmod 755 파일명</span></p></div></details>
+    <details><summary>17. 파일 소유자를 바꾸는 명령</summary><div class="sol"><p><span class="ok">chown</span> — 그룹만 바꾸면 chgrp.</p></div></details>
+    <details><summary>18. 네트워크 연결 상태·포트를 확인하는 명령</summary><div class="sol"><p><span class="ok">netstat</span></p></div></details>
+    <details><summary>19. 계정 정보 파일과 암호 저장 파일 경로</summary><div class="sol"><p><span class="ok">/etc/passwd · /etc/shadow</span></p></div></details>
+    <details><summary>20. 시스템을 재부팅하는 런레벨 번호</summary><div class="sol"><p><span class="ok">6</span> — 0은 종료, 3 텍스트, 5 GUI.</p></div></details>
+  </div>
+
+  <h3>장비 · 보안 (4)</h3>
+  <div class="qitem anx">
+    <details><summary>21. 브로드캐스트 도메인을 나누는 3계층 장비</summary><div class="sol"><p><span class="ok">라우터</span> — 스위치는 콜리전 도메인만 분리.</p></div></details>
+    <details><summary>22. 스위치를 논리적으로 분할해 브로드캐스트 도메인을 나누는 기술</summary><div class="sol"><p><span class="ok">VLAN</span></p></div></details>
+    <details><summary>23. 침입을 탐지만 하는 시스템과 차단까지 하는 시스템</summary><div class="sol"><p><span class="ok">IDS · IPS</span></p></div></details>
+    <details><summary>24. 공중망 위에 암호화 터널을 만들어 사설망처럼 쓰는 기술</summary><div class="sol"><p><span class="ok">VPN</span></p></div></details>
+  </div>
+
+  <h3>최신 경향 단답 (6) — 2026년 실측 반영</h3>
+  <div class="qitem anx">
+    <details><summary>25. 방화벽에 침입 방지(IPS)·애플리케이션 식별·사용자 인식까지 통합한 차세대 보안 장비</summary><div class="sol"><p><span class="ok">NGFW(차세대 방화벽)</span> — 2026년 1회에 교재 밖 신출로 등장. Next Generation FireWall.</p></div></details>
+    <details><summary>26. 원본 파일이 삭제되면 무효가 되는 링크와, 삭제돼도 내용이 유지되는 링크를 각각 쓰시오</summary><div class="sol"><p><span class="ok">심볼릭 링크(ln -s) · 하드 링크(ln)</span> — 심볼릭=바로가기(경로를 가리킴), 하드=같은 실체(inode 공유). 2026년 1회 출제.</p></div></details>
+    <details><summary>27. IPv4와 IPv6를 한 장비에서 동시에 운용하는 전환 기술</summary><div class="sol"><p><span class="ok">듀얼 스택(Dual Stack)</span> — 터널링(6을 4로 감싸 전달)과 짝으로 외우세요.</p></div></details>
+    <details><summary>28. 192.168.10.64/26 네트워크의 브로드캐스트 주소는?</summary><div class="sol"><p><span class="ok">192.168.10.127</span> — /26 블록은 64칸(64~127). 구간의 마지막 주소가 브로드캐스트.</p></div></details>
+    <details><summary>29. Windows에서 DNS 캐시를 비우는 명령은?</summary><div class="sol"><p><span class="ok">ipconfig /flushdns</span> — 확인은 /displaydns. 갱신 3형제(/all·/release·/renew)와 세트로.</p></div></details>
+    <details><summary>30. 하나의 물리 서버에서 여러 운영체제를 동시에 돌리게 해 주는 소프트웨어 계층</summary><div class="sol"><p><span class="ok">하이퍼바이저(Hypervisor)</span> — 가상화 문제가 단답으로 늘고 있습니다. VM과 컨테이너(도커) 구분까지.</p></div></details>
+  </div>
+
+  <h2 style="margin-top:40px">시험장 요령</h2>
+  <ul style="font-size:15px;line-height:1.9">
+    <li><b>시간 배분이 정해져 있습니다</b> — 케이블 10분 → 작업형·단답 50분 → 라우터 20분. 유형별로 따로 진행되니 각 구간 안에서 끝내야 합니다.</li>
+    <li>라우터 문제는 <b>무조건 저장까지</b>. copy run start 를 치지 않으면 한 일이 사라집니다.</li>
+    <li><b>ICQA 자료실의 공식 에뮬레이터</b>(라우터·윈도우)를 시험 전 반드시 설치해 손에 익히세요. 위 「연습 자료」 링크에 있습니다.</li>
+    <li>랜툴·스트리퍼는 <b>본인 것 지참을 권장</b>합니다(시험장 비치품은 상태 복불복).</li>
+    <li>케이블은 시험 전 <b>실물로 3번</b>만 만들어 보면 됩니다. 재료(랜툴·커넥터·케이블)는 인터넷에서 소액으로 구입 가능합니다.</li>
+    <li>단답은 <b>영문 철자</b>가 점수입니다. DHCP, SNMP처럼 비슷한 약어를 소리 내어 구분하며 외우세요.</li>
+    <li>순서: 이 페이지 반복 → 필기 교재 「실기 전용 대비」 복습 → 최신 실기 공개 문제(ICQA 홈페이지) 확인.</li>
+  </ul>
+
+  <p style="margin-top:34px;color:var(--ink-3);font-size:13px">네트워크관리사 실기 대비 · <span data-version-slot></span> · 세부 일정·구성은 icqa.or.kr 공고 기준</p>
+</main>
+
+<script>
+/* claude.ai 아티팩트에서 열리면 옆 파일 링크를 각자의 아티팩트 주소로 바꾼다.
+   깃허브 페이지·폰 설치본에서는 그대로 옆 파일을 연다. */
+(function(){
+  if (location.hostname.indexOf('claude') < 0) return;
+  var MAP = {
+    'network.html' : 'https://claude.ai/code/artifact/9768cb37-5faf-4d6a-a6f8-075603101dbc',
+    'network-exam.html' : 'https://claude.ai/code/artifact/0566c3ad-a0aa-47b9-83a0-4d065346776b',
+    'index.html' : 'https://claude.ai/code/artifact/28a5565f-1a23-4dfb-bb3a-3918edfc3af9'
+  };
+  var links = document.querySelectorAll('a[href]');
+  for (var i = 0; i < links.length; i++) {
+    var h = links[i].getAttribute('href').replace(/^\.\//, '');
+    if (MAP[h]) { links[i].setAttribute('href', MAP[h]); links[i].setAttribute('target', '_blank'); }
+  }
+})();
+</script>
+
+<script>
+/* ===== 판(버전) 표시 ===== */
+var APP_VERSION = 'v7';
+var APP_BUILT = '2026-08-21';
+(function () {
+  var slots = document.querySelectorAll('[data-version-slot]');
+  for (var i = 0; i < slots.length; i++) slots[i].textContent = APP_VERSION + ' · ' + APP_BUILT;
+  var KEY = 'nw2_silgi_ver', prev = null, box = document.getElementById('verbar');
+  try { prev = localStorage.getItem(KEY); localStorage.setItem(KEY, APP_VERSION); } catch (e) {}
+  if (box) {
+    if (prev && prev !== APP_VERSION) {
+      box.innerHTML = '<b>새 판으로 갱신됐습니다</b> &nbsp;' + prev + ' → ' + APP_VERSION + ' <span style="opacity:.7">' + APP_BUILT + '</span>';
+    } else {
+      box.innerHTML = '네트워크관리사 실기 대비 <b>' + APP_VERSION + '</b> <span style="opacity:.7">' + APP_BUILT + '</span>';
+    }
+  }
+})();
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    try { navigator.serviceWorker.register('sw.js'); } catch (e) {}
+  });
+}
+</script>
+</body>
+</html>

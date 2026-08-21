@@ -79,7 +79,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
 .meta{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 16px}
 .chip{font-size:12px;font-weight:600;color:var(--ink-3);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:3px 9px}
 .chip b{color:var(--ink-2)}
-.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.acts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .act{display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;
   border-radius:12px;padding:13px 10px;font-size:15px;font-weight:600;transition:.14s;border:1px solid transparent}
 .act.book{background:var(--accent);color:#fff}
@@ -124,6 +124,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
         <div>
           <h2>정보처리기사</h2>
           <p class="sub">필기 · 비전공자 합격 맞춤</p>
+          <p class="sub" id="jb-dday" style="font-weight:700"></p>
         </div>
       </div>
       <p class="desc">개념을 스타 강사처럼 풀어 쓴 교재와, 3단 해설이 붙은 실전 모의고사. 평균 60점만 넘으면 됩니다.</p>
@@ -136,6 +137,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
       <div class="acts">
         <a class="act book" data-doc="jeongcheogi.html" href="jeongcheogi.html">📘 교재</a>
         <a class="act mock" data-doc="jeongcheogi-exam.html" href="jeongcheogi-exam.html">✎ 모의고사</a>
+        <a class="act mock" data-doc="jeongcheogi-silgi.html" href="jeongcheogi-silgi.html">🔧 실기</a>
       </div>
     </section>
 
@@ -158,6 +160,7 @@ body{margin:0;background:var(--bg);color:var(--ink);
       <div class="acts">
         <a class="act book" data-doc="network.html" href="network.html">📘 교재</a>
         <a class="act mock" data-doc="network-exam.html" href="network-exam.html">✎ 모의고사</a>
+        <a class="act mock" data-doc="network-silgi.html" href="network-silgi.html">🔧 실기</a>
       </div>
     </section>
   </div>
@@ -186,7 +189,9 @@ body{margin:0;background:var(--bg);color:var(--ink);
     'jeongcheogi.html'      : 'https://claude.ai/code/artifact/12095e63-c629-46ba-9daf-3c4b2055ac75',
     'jeongcheogi-exam.html' : 'https://claude.ai/code/artifact/2e0fa859-3865-4d4a-afd7-43f7453c37b3',
     'network.html'          : 'https://claude.ai/code/artifact/9768cb37-5faf-4d6a-a6f8-075603101dbc',
-    'network-exam.html'     : 'https://claude.ai/code/artifact/0566c3ad-a0aa-47b9-83a0-4d065346776b'
+    'network-exam.html'     : 'https://claude.ai/code/artifact/0566c3ad-a0aa-47b9-83a0-4d065346776b',
+    'jeongcheogi-silgi.html' : 'https://claude.ai/code/artifact/e4f98850-008a-4398-a4ca-18827a082a74',
+    'network-silgi.html'    : 'https://claude.ai/code/artifact/8521cad8-c8c7-4638-a736-dcbda5340c53'
   };
   var a = document.querySelectorAll('a[data-doc]');
   for (var i=0;i<a.length;i++){
@@ -207,8 +212,17 @@ body{margin:0;background:var(--bg);color:var(--ink);
   };
 })();
 
+/* ===== 목표 D-day (2027년 1회 정처기 필기 · 2월 중순 추정, 큐넷 발표 시 조정) ===== */
+(function(){
+  var el=document.getElementById('jb-dday'); if(!el) return;
+  var target=new Date(2027,1,15);
+  var d=Math.ceil((target-new Date())/(24*3600*1000));
+  el.textContent='🎯 2027년 1회 필기 D-'+d+' (2월 중순 추정)';
+  el.style.color='var(--jb)';
+})();
+
 /* ===== 판(버전) 표시 — 열자마자 갱신 여부를 알 수 있게 ===== */
-var APP_VERSION='v1';
+var APP_VERSION='v3';
 var APP_BUILT='2026-08-21';
 (function(){
   document.getElementById('vpill').textContent=APP_VERSION;

@@ -349,6 +349,7 @@ footer{border-top:2px solid var(--line); margin-top:60px; padding:34px 0 80px; c
           <a class="sub" href="#s4-2">네트워크 장비</a>
           <a class="sub" href="#s4-3">스위칭 · VLAN</a>
           <a class="sub" href="#s4-4">라우터 · 무선랜</a>
+          <a class="sub" href="#s4-5">보안 · 기타 장비</a>
         </div>
         <div class="grp">
           <div class="glabel">마무리</div>
@@ -1007,6 +1008,31 @@ footer{border-top:2px solid var(--line); margin-top:60px; padding:34px 0 80px; c
         <details><summary><span class="q">Q1</span>Cisco 라우터에서 특권(관리자) 모드로 들어가는 명령은?</summary><div class="ans"><span class="a">정답</span> <b>enable</b>.</div></details>
         <details><summary><span class="q">Q2</span>현재 널리 권장되는 무선랜 보안 규격은?</summary><div class="ans"><span class="a">정답</span> <b>WPA2</b>(AES 기반). WEP은 취약해 사용 안 함.</div></details>
       </div>
+
+      <h3 id="s4-5"><span class="n">4.5</span>보안 · 기타 운용 장비</h3>
+      <p>깊게는 안 나옵니다. <b>이름과 역할 한 줄</b>만 짝지으면 맞히는 문제들인데, 이 짝을 모르면 통째로 틀립니다.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>장비 · 기술</th><th>역할 (시험 키워드)</th></tr></thead>
+        <tbody>
+          <tr><td><b>방화벽</b></td><td>정책(규칙)에 따라 트래픽 <b>허용·차단</b></td></tr>
+          <tr><td><b>IDS</b></td><td>침입 <b>탐지·경보까지만</b> (Detection)</td></tr>
+          <tr><td><b>IPS</b></td><td>탐지 + <b>차단까지</b> (Prevention)</td></tr>
+          <tr><td><b>프록시 서버</b></td><td>대리 접속 · 캐시로 속도 개선 · 내부 IP 숨김</td></tr>
+          <tr><td><b>VPN</b></td><td>공중망 위에 <b>암호화 터널</b> — 사설망처럼 안전하게 연결</td></tr>
+          <tr><td><b>로드 밸런서</b></td><td>요청을 여러 서버로 <b>분산</b>해 부하 균등</td></tr>
+          <tr><td><b>UPS</b></td><td>정전 시 <b>배터리로 전원 유지</b>(무정전 전원장치)</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li><b>NTP</b>(123) = 장비 <b>시각 동기화</b>. 서버·장비 로그의 시간을 맞추는 기본.</li>
+        <li>파일 공유: Windows = <b>SMB(CIFS)</b>, 리눅스·유닉스 = <b>NFS</b>.</li>
+        <li>IPv6 전환 기술: <b>듀얼 스택</b>(IPv4·6 동시 운용) · <b>터널링</b>(IPv6를 IPv4로 감싸 전달) · 주소 변환.</li>
+      </ul>
+      <div class="card exam">
+        <div class="ct"><span class="ic">✓</span>기출 유형 체크</div>
+        <p style="margin:6px 0 0">「탐지만 하면?」 → IDS. 「차단까지 하면?」 → IPS. 「암호화 터널로 지사 연결?」 → VPN.
+        VLAN(스위치 논리 분할)과 VPN(공중망 암호화 터널)을 <b>바꿔 내는 함정</b>이 단골입니다.</p>
+      </div>
     </section>
 
     <!-- ============================================================ -->
@@ -1146,6 +1172,7 @@ footer{border-top:2px solid var(--line); margin-top:60px; padding:34px 0 80px; c
         <li>같은 장비=<b>크로스</b>, 다른 장비=<b>다이렉트</b>. 커넥터 RJ-45. 광 싱글=장거리 / 멀티=단거리.</li>
         <li>스위치=콜리전 도메인 분리, <b>라우터/VLAN=브로드캐스트 도메인 분리</b>. <b>STP</b>=루프 방지(802.1D).</li>
         <li>무선 <b>WPA2</b> 권장(WEP 취약). 11n=2.4/5G · 11ac=5G. RAID 0속도/1미러/5패리티.</li>
+        <li>보안: 방화벽=허용/차단 · <b>IDS=탐지만</b> · <b>IPS=차단까지</b> · VPN=암호화 터널 · 프록시=대리+캐시. <b>UPS</b>=정전 대비 · <b>NTP</b>=시각 동기화 · SMB=윈도 공유/NFS=리눅스 공유.</li>
       </ul>
       <div class="card exam" style="margin-top:20px">
         <div class="ct"><span class="ic">✓</span>마지막 점검</div>
@@ -1225,7 +1252,7 @@ footer{border-top:2px solid var(--line); margin-top:60px; padding:34px 0 80px; c
 /* ===== 판(버전) 표시 =====
    올린 내용이 실제로 반영됐는지 열자마자 알 수 있게 한다.
    지난번에 본 판과 다르면 '갱신됨' 을 띄운다. */
-var APP_VERSION = 'v4';
+var APP_VERSION = 'v5';
 var APP_BUILT = '2026-08-21';
 (function(){
   // 화면 곳곳의 판 자리를 채운다
